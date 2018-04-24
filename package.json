@@ -16,7 +16,7 @@
     "start": "DATA_SOURCE=localhost node ./app.js",
     "auth": "AUTH=true DATA_SOURCE=localhost node ./app.js",
     "coverage": "jest --coverage --json --noStackTrace --outputFile=coverageResults.json --ci --testResultsProcessor='jest-junit'",
-    "test": "jestisom",
+    "test": "jest",
     "e2e": "node test/e2e/runner.js",
     "alltest": "npm run coverage && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
