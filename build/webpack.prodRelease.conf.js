@@ -59,7 +59,9 @@ const webpackConfig =  {
     'd3-horizon-chart': 'd3-horizon-chart',
     'topojson-client': 'topojson-client',
     vuetify: 'vuetify',
-    'vue-socket.io': 'vue-socket.io'
+    'vue-socket.io': 'vue-socket.io',
+    'ag-grid': 'ag-grid',
+    'ag-grid-vue': 'ag-grid-vue'
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

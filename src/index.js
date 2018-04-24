@@ -56,7 +56,14 @@ import PlotlyHeatMap from '@/components/visualizations/Plotly/PlotlyHeatMap.vue'
 import PlotlyScatterPlot from '@/components/visualizations/Plotly/PlotlyScatterplot.vue'
 import PlotlySurfacePlot from '@/components/visualizations/Plotly/PlotlySurfacePlot.vue'
 
-import './assets/stylus/main.styl'
+import AgTable from '@/components/Tables/AgTable.vue'
+import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
+import JSONDataSource from '@/components/Tables/JSONDataSource.js'
+import LocalDataSource from '@/components/Tables/LocalDataSource.js'
+import NumericEditorComponent from '@/components/Tables/NumericEditorComponent.js'
+import ValidationEditorComponent from '@/components/Tables/ValidationEditorComponent.js'
+import MongoDataSource from '@/components/Tables/MongoDataSource.js'
+import ViewportDataSource from '@/components/Tables/ViewportDataSource.js'
 
 const charts = {
   formatTimeMixin,
@@ -109,7 +116,15 @@ const charts = {
   ChartjsScatterChart,
   ChartistBarChart,
   ChartistLineChart,
-  ChartistPieChart
+  ChartistPieChart,
+  AgTable,
+  EnterpriseDataSource,
+  JSONDataSource,
+  LocalDataSource,
+  NumericEditorComponent,
+  ValidationEditorComponent,
+  MongoDataSource,
+  ViewportDataSource
 }
 
 export default charts
@@ -164,5 +179,13 @@ export {
   ChartjsScatterChart,
   ChartistBarChart,
   ChartistLineChart,
-  ChartistPieChart
+  ChartistPieChart,
+  AgTable,
+  EnterpriseDataSource,
+  JSONDataSource,
+  LocalDataSource,
+  NumericEditorComponent,
+  ValidationEditorComponent,
+  MongoDataSource,
+  ViewportDataSource
 }
