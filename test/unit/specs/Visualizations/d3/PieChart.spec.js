@@ -26,7 +26,7 @@ describe('Pie Chart', () => {
         store,
         localVue,
         computed: {
-          themeColors: mockBaseColors
+          colors: mockBaseColors
         }
       })
     })
@@ -67,7 +67,7 @@ describe('Pie Chart, custom props', () => {
          store,
          localVue,
          computed: {
-           themeColors: mockBaseColors
+           colors: mockBaseColors
          }
       })
 
@@ -112,7 +112,7 @@ describe('Pie Chart, draw SVG', () => {
          store,
          localVue,
          computed: {
-           themeColors: mockBaseColors
+           colors: mockBaseColors
          }
       })
       spy = jest.spyOn(wrapper.vm, 'drawPieChart')

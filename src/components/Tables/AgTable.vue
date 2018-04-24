@@ -31,17 +31,17 @@ export default {
 
     },
     computed: {
-        appTheme: function() { 
-            return this.$store.state.displayTheme 
+        appTheme: function() {
+            return this.$store.state.themeMod.displayTheme
         },
         gridTheme: function(){
             if (this.appTheme === 'light') {
                 return 'ag-material ag-theme-material'
             } else if (this.appTheme === 'dark') {
-                return 'ag-dark ag-theme-dark' 
+                return 'ag-dark ag-theme-dark'
                 // HTK we could potentially set up our own fork of the material theme with dark colors instead of this guy
             }
-        } 
+        }
 
     }
 }
