@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/d3/GanttChart.vue'
+import Component from '@/components/visualizations/d3/GanttChart.vue'
 import { shallow, mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 import { createRenderer } from 'vue-server-renderer'

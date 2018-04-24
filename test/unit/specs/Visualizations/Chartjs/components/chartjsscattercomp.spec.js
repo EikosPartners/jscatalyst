@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/Chartjs/ChartjsScatterComp'
+import Component from '@/components/visualizations/Chartjs/ChartjsScatterComp'
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import Vue from 'vue'

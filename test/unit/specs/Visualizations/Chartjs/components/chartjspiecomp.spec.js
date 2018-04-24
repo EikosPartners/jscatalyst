@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/Chartjs/ChartjsPieComp'
+import Component from '@/components/visualizations/Chartjs/ChartjsPieComp'
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import Vue from 'vue'

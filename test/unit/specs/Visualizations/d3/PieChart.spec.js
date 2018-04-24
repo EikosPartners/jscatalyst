@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/d3/PieChart.vue'
+import Component from '@/components/visualizations/d3/PieChart.vue'
 import { ResizeObserver } from 'vue-resize';
 import { mount, createLocalVue } from '@vue/test-utils'
 import Vue from 'vue'

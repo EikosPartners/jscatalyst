@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/d3/SankeyDiagram.vue'
+import Component from '@/components/visualizations/d3/SankeyDiagram.vue'
 import { shallow, mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 import { createRenderer } from 'vue-server-renderer'

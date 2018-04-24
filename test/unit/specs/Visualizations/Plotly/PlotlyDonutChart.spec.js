@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/Plotly/PlotlyDonutChart.vue'
+import Component from '@/components/visualizations/Plotly/PlotlyDonutChart.vue'
 import Vue from 'vue'
 import { ResizeObserver } from 'vue-resize';
 import { shallow, mount, createLocalVue } from '@vue/test-utils'

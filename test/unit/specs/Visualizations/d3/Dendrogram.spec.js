@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Component from '@/components/Visualizations/d3/Dendrogram.vue'
+import Component from '@/components/visualizations/d3/Dendrogram.vue'
 import * as d3 from "d3";
 import { shallow, mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';

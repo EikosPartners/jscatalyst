@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/d3/PunchCard.vue'
+import Component from '@/components/visualizations/d3/PunchCard.vue'
 import { createLocalVue, shallow, mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import { ResizeObserver } from 'vue-resize'

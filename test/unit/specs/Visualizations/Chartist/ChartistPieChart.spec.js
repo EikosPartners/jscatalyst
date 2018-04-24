@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/Chartist/ChartistPieChart'
+import Component from '@/components/visualizations/Chartist/ChartistPieChart'
 import Vue from 'vue'
 import { shallow, mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'

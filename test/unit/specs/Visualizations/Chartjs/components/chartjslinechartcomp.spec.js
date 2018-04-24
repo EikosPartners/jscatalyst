@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/Chartjs/ChartjsLineChartComp'
+import Component from '@/components/visualizations/Chartjs/ChartjsLineChartComp'
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import Vue from 'vue'

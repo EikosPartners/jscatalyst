@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/Plotly/PlotlyScatterplot.vue'
+import Component from '@/components/visualizations/Plotly/PlotlyScatterplot.vue'
 import Vue from 'vue'
 import { ResizeObserver } from 'vue-resize';
 import { shallow, mount, createLocalVue } from '@vue/test-utils'

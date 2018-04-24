@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Component from '@/components/Visualizations/d3/BubbleChart.vue'
+import Component from '@/components/visualizations/d3/BubbleChart.vue'
 import { shallow, mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import { ResizeObserver } from 'vue-resize';

@@ -1,4 +1,4 @@
-import Component from '@/components/Visualizations/d3/HeatMap.vue'
+import Component from '@/components/visualizations/d3/HeatMap.vue'
 import { shallow, mount, createLocalVue } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 const propData = [ { date: '2017-11-23', volume: 7 }, { date: '2017-11-22', volume: 2 }, { date: '2017-11-21', volume: 4 }, { date: '2017-11-20', volume: 1 }, { date: '2017-11-19', volume: 1 }, { date: '2017-11-18', volume: 1 }, { date: '2017-11-17', volume: 1 }, { date: '2017-11-16', volume: 1 }, { date: '2017-11-15', volume: 2 }, { date: '2017-11-14', volume: 0 } ]
