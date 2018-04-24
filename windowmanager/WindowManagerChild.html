@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<style>
+			body {
+				line-height: 150%;
+				overflow: scroll;
+			}
+			#logOutput {
+				width:100%;
+				height:70%;
+				cursor:default;
+				resize:none;
+			}
+
+			/*::-webkit-scrollbar {
+			  -webkit-appearance: none;
+			  width: 5px;
+			  height: 5px;
+			}
+
+			::-webkit-scrollbar-thumb {
+			  background-color: rgba(0,0,0,.5);
+			    border-radius: 5%;
+			}
+*/
+		</style>
+	</head>
+	<body>
+		<div class="window-drag">
+			<h2 style="text-align: center;" class="window-drag" id="labelHeader"></h2>
+		</div>
+		<div style="padding-bottom: 5px">
+			<input id="textMessage" size="45" type="text" placeholder="Enter message to send..."/>
+			<button onclick="sendMessage()">Send Message</button>
+		</div>
+
+	    <div class="divTextArea">
+	        <textarea disabled id="logOutput"></textarea>
+	    </div>
+
+	    <div id="dockButtons"></div>
+
+		<script src="./windowmanager.min.js"></script>
+		<script src="./windowmanagerchild.js"></script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+[
+  {
+    "chart": "GHG",
+    "label": "US",
+    "value": 16
+  },
+  {
+    "chart": "GHG",
+    "label": "China",
+    "value": 15
+  },
+  {
+    "chart": "GHG",
+    "label": "EU",
+    "value": 12
+  },
+  {
+    "chart": "GHG",
+    "label": "Russian Fed.",
+    "value": 6
+  },
+  {
+    "chart": "GHG",
+    "label": "Brazil",
+    "value": 5
+  },
+  {
+    "chart": "GHG",
+    "label": "India",
+    "value": 4
+  },
+  {
+    "chart": "GHG",
+    "label": "Rest of World",
+    "value": 42
+  },
+  {
+    "chart": "CO2",
+    "label": "US",
+    "value": 27
+  },
+  {
+    "chart": "CO2",
+    "label": "China",
+    "value": 11
+  },
+  {
+    "chart": "CO2",
+    "label": "EU",
+    "value": 25
+  },
+  {
+    "chart": "CO2",
+    "label": "Russian Fed",
+    "value": 8
+  },
+  {
+    "chart": "CO2",
+    "label": "Brazil",
+    "value": 1
+  },
+  {
+    "chart": "CO2",
+    "label": "India",
+    "value": 3
+  },
+  {
+    "chart": "CO2",
+    "label": "Rest of World",
+    "value": 25
+  }
+]

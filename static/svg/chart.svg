@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="213px" height="123px" viewBox="0 0 213 123" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Chart - Background</title>
+    <defs>
+        <linearGradient x1="116.4096%" y1="35.866178%" x2="41.7181729%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#3D58FF" offset="0%"></stop>
+            <stop stop-color="#121B4B" offset="100%"></stop>
+        </linearGradient>
+        <radialGradient cx="94.526318%" cy="59.3791109%" fx="94.526318%" fy="59.3791109%" r="75.822475%" gradientTransform="translate(0.945263,0.593791),scale(0.574763,1.000000),rotate(-164.126506),translate(-0.945263,-0.593791)" id="radialGradient-2">
+            <stop stop-color="#3D58FF" offset="0%"></stop>
+            <stop stop-color="#121B4B" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-40.000000, -58.000000)" fill="url(#linearGradient-1)" stroke="url(#radialGradient-2)">
+            <polygon id="Chart---Background" points="41 134.116211 172.847656 59 251.457031 103.943359 120.380859 179.962891"></polygon>
+        </g>
+    </g>
+</svg>

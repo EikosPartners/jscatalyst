@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chartjs Bubble chart, snapshot matches snapshot 1`] = `
+<div>
+    <canvas id="bubble-chart" width="400" height="400"></canvas>
+</div>
+`;

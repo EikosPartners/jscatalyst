@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Chart Sender",
+    "text": "The Chart Sender component contains all the logic necessary for a chart or dashboard to be sent between users. Just import the component from the package and register it on your page. Then place the Chart Sender anywhere there are charts and it will make the charts and dashboard completely sendable.",
+    "code": "<chart-sender>\n</chart-sender>"
+  },
+  {
+    "title": "Line Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<chartist-line-chart\n:dataModel='lineChartData'\ntitle='Chartist Line Chart'\n></chartist-line-chart>"
+  },
+  {
+    "title": "Bar Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<chartist-bar-chart\n:dataModel='barChartData'\ntitle='Chartist Bar Chart'\n></chartist-bar-chart>"
+  },
+  {
+    "title": "Pie Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<chartist-pie-chart\n:dataModel='pieChartData'\ntitle='Chartist Pie Chart'\n></chartist-pie-chart>"
+  }
+]

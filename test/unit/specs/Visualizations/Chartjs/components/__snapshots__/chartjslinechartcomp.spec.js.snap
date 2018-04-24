@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chartjs Line Comp, snapshot matches snapshot 1`] = `
+<div style="height:100%;width:100%;position:relative;">
+    <!---->
+    <div>
+        <canvas id="chartjs-line" width="400" height="400"></canvas>
+    </div>
+</div>
+`;

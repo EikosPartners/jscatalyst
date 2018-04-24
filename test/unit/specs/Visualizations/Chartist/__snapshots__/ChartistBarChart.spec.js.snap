@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chartist Bar chart, snapshot matches snapshot 1`] = `
+<div style="width:100%;height:100%;">
+    <!---->
+    <chartist type="Bar" data="[object Object]" options="[object Object]" id="chartist-bar-chart" style="height:100%;"></chartist>
+</div>
+`;

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Chart Sender",
+    "text": "The Chart Sender component contains all the logic necessary for a chart or dashboard to be sent between users. Just import the component from the package and register it on your page. Then place the Chart Sender anywhere there are charts and it will make the charts and dashboard completely sendable.",
+    "code": "<chart-sender>\n</chart-sender>"
+  },
+  {
+    "title": "Line Graph",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<line-chart-comp\nref='line'\n:dataModel='lineChartData'\ntitle='Line Graph'\n></line-chart-comp>"
+  },
+  {
+    "title": "Multi-Dataset Line Graph",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<line-chart-comp\n:dataModel='multiLineChartData'\ntitle='Multi Dataset Line Graph'\n></line-chart-comp>"
+  },
+  {
+    "title": "Bar Graph",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<bar-chart-comp\n:dataModel='barChartData'\ntitle='Bar Graph'\n></bar-chart-comp>"
+  },
+  {
+    "title": "Polar Area Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<polar-comp\n:dataModel='polarAreaData'\ntitle='Polar Area Chart'\n></polar-comp>"
+  },
+  {
+    "title": "Bubble Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<bubble-comp\n:dataModel='bubbleChartData'\ntitle='Bubble Chart'\n></bubble-comp>"
+  },
+  {
+    "title": "Sactter Plot Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<scatter-comp\n:dataModel='scatterData'\ntitle='Scatter Plot Chart'\n></scatter-comp>"
+  },
+  {
+    "title": "Pie Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<pie-comp\n:dataModel='pieChartData'\ntitle='Pie Chart'\n></pie-comp>"
+  },
+  {
+    "title": "Bar Line Graph",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<bar-line-comp\n:dataModel='barLineData'\ntitle='Bar Line Graph'\n></bar-line-comp>"
+  },
+  {
+    "title": "Radar Chart",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum maiores modi quidem veniam, expedita quis laboriosam, ullam facere adipisci, iusto, voluptate sapiente corrupti asperiores rem nemo numquam fuga ab at.",
+    "code": "<radar-comp\n:dataModel='radarChartData'\ntitle='Radar Chart'\n></radar-comp>"
+  }
+]

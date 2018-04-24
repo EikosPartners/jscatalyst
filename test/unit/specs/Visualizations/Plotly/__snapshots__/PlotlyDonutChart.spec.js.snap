@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plotly DonutChart, snapshot matches snapshot 1`] = `
+<div style="width:100%;height:100%;">
+    <!---->
+    <div tabindex="-1" class="resize-observer" data-v-b329ee4c></div>
+    <div id="foobar" style="width:100%;height:100%;"></div>
+</div>
+`;

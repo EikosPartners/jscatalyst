@@ -1,0 +1,111 @@
+[{
+	"description_words": "",
+	"escalated_med": 0.833333333333333,
+	"duration_med": 128,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_9",
+	"volume": 6,
+	"agent": "all",
+	"pk": 11512
+}, {
+	"description_words": "",
+	"escalated_med": 0.5,
+	"duration_med": 155,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_8",
+	"volume": 2,
+	"agent": "all",
+	"pk": 11511
+}, {
+	"description_words": "",
+	"escalated_med": 0.8,
+	"duration_med": 116,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_7",
+	"volume": 5,
+	"agent": "all",
+	"pk": 11510
+}, {
+	"description_words": "",
+	"escalated_med": 0.285714285714286,
+	"duration_med": 45,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_6",
+	"volume": 7,
+	"agent": "all",
+	"pk": 11509
+}, {
+	"description_words": "",
+	"escalated_med": 0.5,
+	"duration_med": 49,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_5",
+	"volume": 8,
+	"agent": "all",
+	"pk": 11508
+}, {
+	"description_words": "",
+	"escalated_med": 0.555555555555556,
+	"duration_med": 118,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_4",
+	"volume": 9,
+	"agent": "all",
+	"pk": 11507
+}, {
+	"description_words": "",
+	"escalated_med": 0.571428571428571,
+	"duration_med": 74,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_3",
+	"volume": 7,
+	"agent": "all",
+	"pk": 11506
+}, {
+	"description_words": "",
+	"escalated_med": 0.666666666666667,
+	"duration_med": 61,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_2",
+	"volume": 6,
+	"agent": "all",
+	"pk": 11505
+}, {
+	"description_words": "",
+	"escalated_med": 0.6,
+	"duration_med": 88,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_10",
+	"volume": 5,
+	"agent": "all",
+	"pk": 11504
+}, {
+	"description_words": "",
+	"escalated_med": 0.25,
+	"duration_med": 74,
+	"category_3": "all",
+	"created": "2017-09-13",
+	"category_2": "all",
+	"category_1": "tier_1_cat_1",
+	"volume": 8,
+	"agent": "all",
+	"pk": 11503
+}]
