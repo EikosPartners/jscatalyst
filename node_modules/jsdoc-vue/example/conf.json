@@ -1,6 +1,0 @@
-{
-  "plugins": ["../index.js"],
-  "source": {
-    "includePattern": "\\.(vue|js)$"
-  }
-}
