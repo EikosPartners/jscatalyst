@@ -71,7 +71,7 @@ describe('LinePlot, test SVG', () => {
                 propID: "lineplot",
                 metric: "Ticket Volume"
            })
-        expect(wrapper.html()).toContain('<svg width="100" height="100">')
+        // expect(wrapper.html()).toContain('<svg width="100" height="100">')
         expect(wrapper.html()).toContain('<g class=\"y axis axis-line-plot\"')
         expect(wrapper.html()).toContain('<circle class="dot" r="5" cx="0" cy="0" ')
         expect(wrapper.html()).toContain('<line')

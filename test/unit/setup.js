@@ -15,4 +15,5 @@ HTMLCanvasElement.prototype.getContext = () => {
   }
 };
 global.CanvasRenderingContext2D = () => ('');
+global.URL.createObjectURL = () => {}
 // global.windowmanager = windowmanager

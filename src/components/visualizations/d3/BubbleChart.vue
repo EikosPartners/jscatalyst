@@ -43,7 +43,8 @@ export default {
 			default: 'category'
 		},
 		dataModel: {
-			type: Array
+			type: Array,
+			default: () => ([{}, {}])
 		},
 		propID: {
 			type: String,

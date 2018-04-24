@@ -18,7 +18,7 @@ describe('BubbleChart, test SVG', () => {
                 currentCategories: ["all", "all", "all"],
                 yAxisLabel: "Escalation",
            })
-        expect(wrapper.html()).toContain('<svg width="100" height="100"><g transform="translate(20,20)">')
+        expect(wrapper.html()).toContain('<g transform="translate(20,20)">')
         expect(wrapper.html()).toContain('Escalation')
         expect(wrapper.html()).toContain('<circle class="dot" ')
 
