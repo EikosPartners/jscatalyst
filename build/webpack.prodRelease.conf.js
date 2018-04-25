@@ -66,14 +66,24 @@ const webpackConfig =  {
       commonjs2: 'd3',
       amd: 'd3'
     },
-    chartist: 'chartist',
+    chartist: {
+      root: 'Chartist',
+      commonjs: 'chartist',
+      commonjs2: 'chartist',
+      amd: 'chartist'
+    },
     moment: {
       root: 'moment',
       commonjs: 'moment',
       commonjs2: 'moment',
       amd: 'moment'
     },
-    jquery: 'jQuery',
+    jquery: {
+      root: 'jQuery',
+      commonjs: 'jquery',
+      commonjs2: 'jquery',
+      amd: 'jquery'
+    },
     'chart.js': {
       root: 'Chart',
       commonjs: 'chart.js',
