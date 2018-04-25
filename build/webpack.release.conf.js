@@ -34,6 +34,8 @@ const webpackConfig =  {
   output: {
     path: config.build.assetsRoot,
     filename: 'jscatalyst.js',
+    library: 'jscatalyst',
+    libraryTarget: 'umd'
   },
   devtool: 'source-map',
   resolve: {
