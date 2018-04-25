@@ -1,15 +1,15 @@
 <template>
     <div style="width: 100%; height: 100%">
-        <vue-grid style="width: 100%; height: 100%;" :class="gridTheme"
+        <ag-grid-vue style="width: 100%; height: 100%;" :class="gridTheme"
                      :gridOptions="gridOptions">
-        </vue-grid>
+        </ag-grid-vue>
     </div>
 </template>
 
 <script>
-import "@@/ag-grid/dist/styles/ag-grid.css";
-import "@@/ag-grid/dist/styles/theme-material.css";
-import "@@/ag-grid/dist/styles/theme-dark.css";
+// import "@@/ag-grid/dist/styles/ag-grid.css";
+// import "@@/ag-grid/dist/styles/theme-material.css";
+// import "@@/ag-grid/dist/styles/theme-dark.css";
 
 import {AgGridVue} from "ag-grid-vue";
 
@@ -25,7 +25,7 @@ export default {
         }
     },
     components: {
-        'vue-grid': AgGridVue,
+        'ag-grid-vue': AgGridVue,
     },
     mounted(){
 

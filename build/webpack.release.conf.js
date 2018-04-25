@@ -131,24 +131,6 @@ const webpackConfig =  {
       commonjs: 'ag-grid-vue',
       commonjs2: 'ag-grid-vue',
       amd: 'ag-grid-vue'
-    },
-    "@@/ag-grid/dist/styles/ag-grid.css": {
-      root: 'AgGridStyle',
-      commonjs: '/ag-grid/dist/styles/ag-grid.css',
-      commonjs2: '/ag-grid/dist/styles/ag-grid.css',
-      amd: '/ag-grid/dist/styles/ag-grid.css'
-    },
-    "@@/ag-grid/dist/styles/theme-material.css": {
-      root: 'AgGridTheme',
-      commonjs: '/ag-grid/dist/styles/theme-material.css',
-      commonjs2: '/ag-grid/dist/styles/theme-material.css',
-      amd: '/ag-grid/dist/styles/theme-material.css'
-    },
-    "@@/ag-grid/dist/styles/theme-dark.css": {
-      root: 'AgGridDark',
-      commonjs: '/ag-grid/dist/styles/theme-dark.css',
-      commonjs2: '/ag-grid/dist/styles/theme-dark.css',
-      amd: '/ag-grid/dist/styles/theme-dark.css'
     }
   },
   node: {
