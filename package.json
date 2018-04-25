@@ -4,29 +4,17 @@
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
+  "module": "src/index.js",
   "unpkg": "dist/jscatalyst.min.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
-    "docker": "docker-compose build && docker-compose up",
-    "dock_start": "DATA_SOURCE=mongo node ./app.js",
-    "dock_start_auth": "AUTH=true DATA_SOURCE=mongo node ./app.js",
-    "start": "DATA_SOURCE=localhost node ./app.js",
-    "auth": "AUTH=true DATA_SOURCE=localhost node ./app.js",
-    "coverage": "jest --coverage --json --noStackTrace --outputFile=coverageResults.json --ci --testResultsProcessor='jest-junit'",
-    "test": "jest",
-    "e2e": "node test/e2e/runner.js",
-    "alltest": "npm run coverage && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "test": "nyc jest",
     "build": "node build/build.js",
-    "fin": "openfin --launch --config ./app.json --allow-running-insecure-content",
-    "jsdoc": "./node_modules/jsdoc/jsdoc.js -c ./jsdoc.conf.json",
-    "mock_backend": "json-server ./mock_backend/db.json",
-    "small_mock_backend": "json-server ./mock_backend/10kdb.json",
     "test_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
-    "npm_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js"
+    "npm_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "ag-grid": "^16.0.1",
@@ -71,6 +59,7 @@
     "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.1",
     "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.22.0",
@@ -81,6 +70,7 @@
     "chalk": "^2.0.1",
     "chromedriver": "^2.37.0",
     "copy-webpack-plugin": "^4.4.1",
+    "coveralls": "^3.0.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
@@ -104,6 +94,7 @@
     "jsdoc": "^3.5.5",
     "json-server": "^0.12.1",
     "node-notifier": "^5.1.2",
+    "nyc": "^11.7.1",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "portfinder": "^1.0.13",
@@ -161,6 +152,18 @@
       "js",
       "json",
       "vue"
+    ]
+  },
+  "nyc": {
+    "extension": [
+      ".js",
+      ".vue"
+    ],
+    "exclude": [
+      "test",
+      "build",
+      "config",
+      "dist"
     ]
   }
 }

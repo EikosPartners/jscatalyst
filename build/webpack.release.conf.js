@@ -46,20 +46,98 @@ const webpackConfig =  {
     }
   },
   externals: {
-    vue: 'vue',
-    'plotly.js/dist/plotly': 'plotly.js',
-    d3: 'd3',
+    vue: {
+				root: "Vue",
+        commonjs: 'vue',
+				commonjs2: "vue",
+				amd: "vue"
+		},
+    'plotly.js/dist/plotly': {
+      root: 'Plotly',
+      commonjs: 'plotly.js/dist/plotly',
+      commonjs2: 'plotly.js/dist/plotly',
+      amd: 'plotly.js/dist/plotly'
+    },
+    d3: {
+      root: 'd3',
+      commonjs: 'd3',
+      commonjs2: 'd3',
+      amd: 'd3'
+    },
     chartist: 'chartist',
-    moment: 'moment',
-    jquery: 'jquery',
-    'chart.js': 'chart.js',
-    axios: 'axios',
-    'd3-horizon-chart': 'd3-horizon-chart',
-    'topojson-client': 'topojson-client',
-    vuetify: 'vuetify',
-    'vue-socket.io': 'vue-socket.io',
-    'ag-grid': 'ag-grid',
-    'ag-grid-vue': 'ag-grid-vue'
+    moment: {
+      root: 'moment',
+      commonjs: 'moment',
+      commonjs2: 'moment',
+      amd: 'moment'
+    },
+    jquery: 'jQuery',
+    'chart.js': {
+      root: 'Chart',
+      commonjs: 'chart.js',
+      commonjs2: 'chart.js',
+      amd: 'chart.js'
+    },
+    axios: {
+      root: 'Axios',
+      commonjs: 'axios',
+      commonjs2: 'axios',
+      amd: 'axios'
+    },
+    'd3-horizon-chart': {
+      root: 'd3horizonchart',
+      commonjs: 'd3-horizon-chart',
+      commonjs2: 'd3-horizon-chart',
+      amd: 'd3-horizon-chart'
+    },
+    'topojson-client': {
+      root: 'Topojson',
+      commonjs: 'topojson-client',
+      commonjs2: 'topojson-client',
+      amd: 'topojson-client'
+    },
+    vuetify: {
+      root: 'Vuetify',
+      commonjs: 'vuetify',
+      commonjs2: 'vuetify',
+      amd: 'vuetify'
+    },
+    'vue-socket.io': {
+      root: 'VueSocketio',
+      commonjs: 'vue-socket.io',
+      commonjs2: 'vue-socket.io',
+      amd: 'vue-socket.io'
+    },
+    'ag-grid': {
+      root: 'AgGrid',
+      commonjs: 'ag-grid',
+      commonjs2: 'ag-grid',
+      amd: 'ag-grid'
+    },
+    'ag-grid-vue': {
+      root: 'AgGridVue',
+      commonjs: 'ag-grid-vue',
+      commonjs2: 'ag-grid-vue',
+      amd: 'ag-grid-vue'
+    },
+    "@@/ag-grid/dist/styles/ag-grid.css": {
+      root: 'AgGridStyle',
+      commonjs: '/ag-grid/dist/styles/ag-grid.css',
+      commonjs2: '/ag-grid/dist/styles/ag-grid.css',
+      amd: '/ag-grid/dist/styles/ag-grid.css'
+    },
+    "@@/ag-grid/dist/styles/theme-material.css": {
+      root: 'AgGridTheme',
+      commonjs: '/ag-grid/dist/styles/theme-material.css',
+      commonjs2: '/ag-grid/dist/styles/theme-material.css',
+      amd: '/ag-grid/dist/styles/theme-material.css'
+    },
+    "@@/ag-grid/dist/styles/theme-dark.css": {
+      root: 'AgGridDark',
+      commonjs: '/ag-grid/dist/styles/theme-dark.css',
+      commonjs2: '/ag-grid/dist/styles/theme-dark.css',
+      amd: '/ag-grid/dist/styles/theme-dark.css'
+    }
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

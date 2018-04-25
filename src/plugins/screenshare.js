@@ -51,8 +51,8 @@ const screensharePlugin = {
       sendable.currentWrapper = realThis.$el.className
       sendable.styles = getStyles(realThis);
       sendable.props = toSend
-      sendable.theme = realThis.$store.state.colorTheme || 'blue';
-      sendable.displayTheme = realThis.$store.state.displayTheme;
+      sendable.theme = realThis.$store.state.themeMod.colorTheme || 'blue';
+      sendable.displayTheme = realThis.$store.state.themeMod.displayTheme;
       sendable.receiveChart = true
 
       realThis.$socket.emit('sendCharts', JSON.stringify(sendable))
@@ -71,8 +71,8 @@ const screensharePlugin = {
       sendable.currentWrapper = ''
       sendable.styles = [[''],['']];
       sendable.props = toSend
-      sendable.theme = this.$store.state.colorTheme || 'blue';
-      sendable.displayTheme = this.$store.state.displayTheme;
+      sendable.theme = this.$store.state.themeMod.colorTheme || 'blue';
+      sendable.displayTheme = this.$store.state.themeMod.displayTheme; 
       sendable.receiveChart = true
       this.$socket.emit('sendCharts', JSON.stringify(sendable))
     }
