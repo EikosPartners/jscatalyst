@@ -125,7 +125,7 @@ const webpackConfig =  {
       amd: 'ag-grid'
     },
     'ag-grid-vue': {
-      root: 'AgGridVue',
+      root: 'Aggridvue',
       commonjs: 'ag-grid-vue',
       commonjs2: 'ag-grid-vue',
       amd: 'ag-grid-vue'

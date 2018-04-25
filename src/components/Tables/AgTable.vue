@@ -1,8 +1,8 @@
 <template>
     <div style="width: 100%; height: 100%">
-        <ag-grid-vue style="width: 100%; height: 100%;" :class="gridTheme"
+        <vue-grid style="width: 100%; height: 100%;" :class="gridTheme"
                      :gridOptions="gridOptions">
-        </ag-grid-vue>
+        </vue-grid>
     </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
         }
     },
     components: {
-        'ag-grid-vue': AgGridVue,
+        'vue-grid': AgGridVue,
     },
     mounted(){
 

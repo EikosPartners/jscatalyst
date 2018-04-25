@@ -15,8 +15,6 @@ localVue.use(Vuex)
 // the suggested solution, involving remapping the CSS to an empty file, confuses ag-grid
 // basically ag-grid must know where ag-material is and jest doesn't wanna tell it
 
-import {AgGridVue} from "ag-grid-vue";
-
 let fakeProps = {
   gridOptions: {
     columnDefs: [
