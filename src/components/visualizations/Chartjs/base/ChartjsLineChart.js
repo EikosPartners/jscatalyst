@@ -12,15 +12,7 @@ export default {
   // Use the mixin to make chart reactive
   // This will create the chartData prop and will attach a watcher to it and will update when new data is passed
   mixins: [mixins.reactiveProp],
-  props: {
-    chartData: {
-      type: Object,
-      default: () => ({})
-    },
-    options: {
-      type: Object
-    }
-  },
+  props: ['chartData', 'options'],
   data: function() {
     return {
       internalOptions: {}

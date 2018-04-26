@@ -15,7 +15,6 @@
   import Vue from "vue";
   import { ResizeObserver } from "vue-resize";
   import PanelHeading from '@/components/universal/PanelHeading.vue';
-  import { referenceData } from "@/common/referenceData.js";
   import themeHelper from '@/common/themeHelper'
 
   /** PunchCard D3 component
@@ -114,7 +113,15 @@
     },
     methods: {
       getDay: function(day) {
-        const days = new referenceData().getDays();
+        const days = [
+            { name: 'Mon', value: 2, description: 'Monday' },
+            { name: 'Tue', value: 3, description: 'Tuesday' },
+            { name: 'Wed', value: 4, description: 'Wednesday' },
+            { name: 'Thu', value: 5, description: 'Thursday' },
+            { name: 'Fri', value: 6, description: 'Friday' },
+            { name: 'Sat', value: 7, description: 'Saturday' },
+            { name: 'Sun', value: 1, description: 'Sunday' }
+        ];
         const result = days.filter(d => {
           return d.name == day;
         });

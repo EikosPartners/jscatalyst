@@ -1,6 +1,6 @@
 {
   "name": "jscatalyst",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
@@ -14,7 +14,8 @@
     "build": "node build/build.js",
     "test_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
     "npm_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepublishOnly": "npm run test_build && npm run npm_build"
   },
   "dependencies": {
     "ag-grid": "^16.0.1",

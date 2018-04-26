@@ -136,6 +136,8 @@ describe('Chartjs Bar Component different colorTheme', () => {
            colors: mockColors
          }
       })
+      console.log(wrapper.vm.$store.state.themeMod.colorTheme);
+      console.log(wrapper.vm.theme);
     })
 
     afterEach(() => {

@@ -10,6 +10,8 @@ localVue.use(Vuex)
 global.console.error = function() {}
 
 const data = [ { "date": '2017-11-23', "value": 7 }, { "date": '2017-11-22', "value": 2 }, { "date": '2017-11-21', "value": 4 }, { "date": '2017-11-20', "value": 1 }, { "date": '2017-11-19', "value": 1 }, { "date": '2017-11-18', "value": 1 }, { "date": '2017-11-17', "value": 1 }, { "date": '2017-11-16', "value": 1 }, { "date": '2017-11-15', "value": 2 }, { "date": '2017-11-14', "value": 0 } ]
+const twoLineData = [{line1: [{ "date": '2017-11-23', "value": 7 }, { "date": '2017-11-22', "value": 2 }, { "date": '2017-11-21', "value": 4 }]}, {line2: [{ "date": '2017-11-23', "value": 3 }, { "date": '2017-11-22', "value": 4 }, { "date": '2017-11-21', "value": 8 }]}]
+
 // mock colors because the css stylesheets cannot be loaded into the test environment
 var mockBaseColors = jest.fn(() => ["#081A4E", "#092369", "#1A649F", "#2485B4", "#2DA8C9", "#5DC1D0", "#9AD5CD", "#D5E9CB"])
 var mockColors = jest.fn(() => ['#351850', '#4F1E71', '#7C388E','#A93B8D', '#BA5288', '#DD7C91', '#F38595', '#EDB7A7'])
@@ -51,6 +53,51 @@ describe('Chartjs Line Component light theme', () => {
     it('has the right prop data', () => {
       expect(wrapper.props()).toHaveProperty('dataModel')
       expect(wrapper.props().dataModel).toHaveLength(10)
+    })
+
+    it('has the right options', () => {
+      expect(wrapper.vm.options).toHaveProperty('maintainAspectRatio', false)
+      expect(wrapper.vm.options).toEqual({maintainAspectRatio: false})
+    })
+
+})
+describe('Chartjs Line Component light theme, two lines', () => {
+    let wrapper
+    beforeEach(() => {
+      store = new Vuex.Store({
+        state: {
+          themeMod: {
+            colorTheme: 'blue'
+          }
+        }
+      })
+      wrapper = mount(Component, {
+          propsData: {
+              dataModel: twoLineData
+         },
+         attachToDocument: true,
+         store,
+         localVue,
+         computed: {
+           colors: mockBaseColors
+         }
+      })
+    })
+
+    afterEach(() => {
+        wrapper.destroy()
+    })
+
+    it('it renders at all', () => {
+        expect(wrapper.contains('canvas')).toBe(true)
+        expect(wrapper.html()).toContain('<canvas')
+    })
+
+    it('has the right prop data', () => {
+      expect(wrapper.props()).toHaveProperty('dataModel')
+      expect(wrapper.props().dataModel).toHaveLength(2)
+      expect(wrapper.props().dataModel[0]).toHaveProperty('line1')
+      expect(wrapper.props().dataModel[1]).toHaveProperty('line2')
     })
 
     it('has the right options', () => {

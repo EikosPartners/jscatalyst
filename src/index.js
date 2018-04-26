@@ -1,9 +1,9 @@
-import formatTimeMixin from '@/mixins/formatTimeMixin'
-import styleTogglerMixin from '@/mixins/styleTogglerMixin'
+import FormatTimeMixin from '@/mixins/formatTimeMixin'
+import StyleTogglerMixin from '@/mixins/styleTogglerMixin'
 
-import authPlugin from '@/plugins/auth'
-import screensharePlugin from '@/plugins/screenshare'
-import themePlugin from '@/plugins/themes'
+import AuthPlugin from '@/plugins/auth'
+import ScreensharePlugin from '@/plugins/screenshare'
+import ThemePlugin from '@/plugins/themes'
 
 import ChartSender from '@/components/ChartSenderComponent.vue'
 import LoaderComponent from '@/components/LoaderComponent.vue'
@@ -66,11 +66,11 @@ import MongoDataSource from '@/components/Tables/MongoDataSource.js'
 import ViewportDataSource from '@/components/Tables/ViewportDataSource.js'
 
 const charts = {
-  formatTimeMixin,
-  styleTogglerMixin,
-  authPlugin,
-  screensharePlugin,
-  themePlugin,
+  FormatTimeMixin,
+  StyleTogglerMixin,
+  AuthPlugin,
+  ScreensharePlugin,
+  ThemePlugin,
   ChartSender,
   LoaderComponent,
   ReceiverComponent,
@@ -129,11 +129,11 @@ const charts = {
 
 export default charts
 export {
-  formatTimeMixin,
-  styleTogglerMixin,
-  authPlugin,
-  screensharePlugin,
-  themePlugin,
+  FormatTimeMixin,
+  StyleTogglerMixin,
+  AuthPlugin,
+  ScreensharePlugin,
+  ThemePlugin,
   ChartSender,
   LoaderComponent,
   ReceiverComponent,
