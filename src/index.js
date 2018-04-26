@@ -65,6 +65,8 @@ import ValidationEditorComponent from '@/components/Tables/ValidationEditorCompo
 import MongoDataSource from '@/components/Tables/MongoDataSource.js'
 import ViewportDataSource from '@/components/Tables/ViewportDataSource.js'
 
+import './assets/stylus/main.styl'
+
 const charts = {
   FormatTimeMixin,
   StyleTogglerMixin,

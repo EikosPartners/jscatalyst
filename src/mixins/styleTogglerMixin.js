@@ -6,11 +6,6 @@ const styleTogglerMixin = {
 		    var opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
 		  	this.$root.$el.className = this.$root.$el.className.replace(current, opposite)
 		  	this.$store.commit('changeDisplay', opposite.split('--')[1])
-				if(current[0] === "theme--dark") {
-					document.getElementById('logo').src="/static/img/ep-logo-black.png"
-				} else {
-					document.getElementById('logo').src="/static/img/ep-logo-yellow.png"
-				}
 	  	},
 	    chooseTheme: function(theme) {
 	    	var newTheme = theme.toLowerCase() + '-theme'

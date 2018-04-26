@@ -27,9 +27,7 @@ export default {
         this._data._chart.destroy()
         this.renderChart(this.chartData, newOptions)
         this.internalOptions = newOptions
-      } else {
-        return
-      }
+      } 
     }
   }
 }

@@ -14,9 +14,6 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-  entry: {
-    app: ['webpack-hot-middleware/client', './src/main.js']
-  },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
@@ -48,7 +45,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
-    new webpack.IgnorePlugin(/vertx/),
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
@@ -67,8 +63,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
-      },
-        {from:'windowmanager',to:'windowmanager'}
+      }
     ])
   ]
 })

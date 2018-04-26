@@ -1,5 +1,5 @@
 <span>
-  <img style='float:left' width='70' height='70' src='/ep-logo-black.png' />
+  <img style='float:left' width='70' height='70' src='static/ep-logo-black.png' />
 </span>
 
 ## JS Catalyst
@@ -92,3 +92,15 @@ Both the authentication, and theme plugin require extra options to be passed to 
   // pass in the Vuex store, Vue Router, and the base URL of your api
   Vue.use(AuthPlugin, {store, router, baseURL: 'yourApiURL'})
 ```
+
+## Contributing
+JS Catalyst is an open source project so we gladly accept help with adding new features and new components! To contribute please follow these steps,
+- Fork the JS Catalyst repo
+- Create a new branch for your feature (`git checkout -b your-new-feature`)
+- Test your new feature/component in our sandbox environment by placing it in the **App.vue** file and running **npm start**
+- **Please make sure to include tests for your component or feature**
+- Commit your changes (`git commit -am 'Add new feature/component'`)
+- Push your code to your branch on Github (`git push origin your-new-feature`)
+- Create a pull request to be reviewed by our team
+
+For guidelines on how to create a new component please see the JS Catalyst docs. Thanks for your help! 
