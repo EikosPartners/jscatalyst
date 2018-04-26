@@ -1,8 +1,7 @@
 import Component from '@/components/visualizations/Chartist/ChartistBarChart'
 import Vue from 'vue'
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
-import ChartistHelper from '@/common/chartistHelper.js'
 
 const data = [ {"x": "5/15 - 6/14", "y": 13.3},
 {"x": "6/14 - 7/14", "y": 12.08},

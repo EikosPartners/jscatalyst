@@ -97,11 +97,10 @@
           }).reverse();
 
           var compare = data[key][400][1],
-              value = data[key][0][1],
               values = [];
 
           data[key].forEach(function(d, i ) {
-              values.push(value = (d[1] - compare) / compare);
+              values.push((d[1] - compare) / compare);
           });
 
           formattedData.push({name: key, values: values})

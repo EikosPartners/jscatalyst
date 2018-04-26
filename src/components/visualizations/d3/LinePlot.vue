@@ -143,11 +143,11 @@
             .scale(xScale)
             .tickSizeInner(-height)
             .ticks(6);
-
+        var format_attribute;
         if (detected_percent) {
-          var format_attribute = d3.format("%");
+          format_attribute = d3.format("%");
         } else {
-          var format_attribute = d3.format("");
+          format_attribute = d3.format("");
         }
 
         let yValue = function(d) {
@@ -213,7 +213,7 @@
 
         var clip_id = "clip-" + this._props.propID;
 
-        var clip = svg
+        svg
           .append("clipPath")
           .attr("id", clip_id)
           .append("rect")

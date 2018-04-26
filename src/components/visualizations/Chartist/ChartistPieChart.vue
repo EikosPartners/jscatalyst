@@ -13,9 +13,7 @@
 </template>
 
 <script>
-  import Chartist from 'vue-chartist';
   import ChartistHelper from '@/common/chartistHelper';
-  import moment from 'moment';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 
   /** Pie Chart Chartist component

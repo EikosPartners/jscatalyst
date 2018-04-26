@@ -1,37 +1,4 @@
-var formatTimeMixin
-
-export default formatTimeMixin = {
-	// methods: {
-
-		// formatTime: function(option){
-	  //     let now = this.moment()
-	  //     let dateMax = this.moment().add(1, 'day')
-	  //     let dateMin
-	  //     let returnValue = []
-		// if (option === "Today") {
-	  //       dateMin = now
-	  //       returnValue = [dateMin.format('YYYY-MM-DD'), dateMax.format('YYYY-MM-DD')]
-	  //     } else if (option === "Last Week") {
-	  //       dateMin = now.subtract(1, 'week')
-	  //       returnValue = [dateMin.format('YYYY-MM-DD'), dateMax.format('YYYY-MM-DD')]
-	  //     } else if (option === "Last Month") {
-	  //       dateMin = now.subtract(1, 'month')
-	  //       returnValue = [dateMin.format('YYYY-MM-DD'), dateMax.format('YYYY-MM-DD')]
-	  //     } else if (option === "Last 3 Months") {
-	  //       dateMin = now.subtract(3, 'months')
-	  //       returnValue = [dateMin.format('YYYY-MM-DD'), dateMax.format('YYYY-MM-DD')]
-	  //     } else if (option === "Custom Range") {
-	  //       // returnValue =  // HTK
-	  //     } else if (option === "Reset") {
-		//
-	  //     }
-	  //     return returnValue
-	  //   },
-
-			// }
-
-	// 	}
-	// }
+const formatTimeMixin = {
 	data: function() {
 		return {
 			d3Time: {
@@ -94,3 +61,4 @@ export default formatTimeMixin = {
 	}
 
 };
+export default formatTimeMixin;

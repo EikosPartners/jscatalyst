@@ -85,8 +85,10 @@ There are three plugins that are included in JS Catalyst. The encapsulate all th
 Both the authentication, and theme plugin require extra options to be passed to them. They rely on having a Vuex store and the Vue Router to be present and in use in your project.
 ```js
   import { ThemePlugin, AuthPlugin } from 'jscatalyst'
+
   // pass in the Vuex store and an array of your themes
-  Vue.use(ThemePlugin, {store, ['Blue', 'Red', 'Grey']})
+  Vue.use(ThemePlugin, {store, themes: ['Blue', 'Red', 'Grey']})
+
   // pass in the Vuex store, Vue Router, and the base URL of your api
   Vue.use(AuthPlugin, {store, router, baseURL: 'yourApiURL'})
 ```

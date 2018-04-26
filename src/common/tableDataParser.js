@@ -67,7 +67,6 @@ export class tableDataParser {
                     let className = htmlObject[0].className
 
                     let parsedItem = subItem.split('class=')[1].split('-cell>')
-                    let color = parsedItem[0]
                     let answer
                     if (className === "red-cell") {
                       answer = value
@@ -76,13 +75,11 @@ export class tableDataParser {
                     } else {
                       answer = value
                     }
-                    // return {color: splitGuy[0], value: splitGuy[1].split('</')[0]}
 
                     return answer
                 } else {
 
                     return subItem
-                    // return {color: "white", value: subItem}
                 }
             })
 

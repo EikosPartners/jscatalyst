@@ -1,8 +1,6 @@
 import Component from '@/components/visualizations/d3/BarChart.vue'
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
-import { createRenderer } from 'vue-server-renderer'
-import Vue from 'vue'
 const propData = [{"x": "5/15 - 6/14", "y": 13.3}, {"x": "6/14 - 7/14", "y": 12.08}, {"x": "7/14 - 8/13", "y": 14.62}, {"x": "8/13 - 9/12", "y": 17.57}, {"x": "9/12 - 10/12", "y": 14.35} ]
 
 describe('BarChart', () => {
@@ -95,30 +93,3 @@ describe('BarChart, draw SVG', ()=>{
 
 
 })
-
-// describe('BarChart, snapshot', ()=>{
-//     let wrapper
-
-//     beforeEach(() => {
-//         wrapper = mount(Component, {
-//             propsData: {
-//                 dataModel: propData,
-//                 propID: 'foobar'
-//            },
-//            attachToDocument: true
-//         })
-//     })
-
-//     it('matches snapshot', ()=>{
-//         let renderer = createRenderer()
-//         return Vue.nextTick()
-//             .then(function(){
-//                 renderer.renderToString(wrapper.vm, (err, str) => {
-//                   if (err) throw new Error(err)
-//                   expect(str).toMatchSnapshot()
-//                 })
-//             })
-
-//     })
-
-// })

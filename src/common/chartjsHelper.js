@@ -33,7 +33,7 @@ export default class ChartjsHelper {
     // loop over the data to separate out the label for x axis
     // and the datapoint value
     var labels = [];
-
+    var dataset = [];
     // If dataModel is an array of data for only one line
     if (Object.keys(data[0]).indexOf('value') !== -1) {
       data.sort((a,b) => {
@@ -51,10 +51,9 @@ export default class ChartjsHelper {
         lineData.data.push(el.value)
       })
       // put the single line's data into an array so it can be used by chartjs
-      var dataset = [lineData]
+      dataset = [lineData]
     } else {
       // If dataModel is an array of objects, each corresponding to a line
-      var dataset = [];
       data.forEach((el, ind) => {
         var key = Object.keys(el)[0];
         // The key of the line data object will be its label

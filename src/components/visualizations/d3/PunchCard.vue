@@ -12,7 +12,6 @@
   import moment from "moment";
   // import "moment-duration-format";
 
-  import Vue from "vue";
   import { ResizeObserver } from "vue-resize";
   import PanelHeading from '@/components/universal/PanelHeading.vue';
   import themeHelper from '@/common/themeHelper'
@@ -166,7 +165,6 @@
         var xLabelHeight = 30;
         var yLabelWidth = 50;
         var borderWidth = 1;
-        var duration = 500;
         var width = 500;
         var height = 181;
         // var width =
@@ -275,8 +273,8 @@
           return f(d);
         };
 
-        //draw boxes for sums
-        var yAxisBorder = chart
+        //yAxis Border
+        chart
           .append("rect")
           .attr("x", yLabelWidth)
           .attr("y", xLabelHeight + 2 * maxR)
@@ -286,8 +284,8 @@
           .attr("fill", "transparent")
           .attr("shape-rendering", "crispEdges")
           .attr("class", "punch-border");
-
-        var xAxisBorder = chart
+        //xAxis Border
+        chart
           .append("rect")
           .attr("x", yLabelWidth + 2 * maxR)
           .attr("y", xLabelHeight)
@@ -316,7 +314,7 @@
           });
 
         //creating the elements that will hold and represent our data
-        var dots = rows.selectAll("circle")
+        rows.selectAll("circle")
           .data(function(d) {
             return d.hour_volumes;
           })
@@ -426,7 +424,7 @@
           .attr("height", maxR * 2);
 
         //creates labels for the x axis (hour)
-        var xLabels = chart.selectAll(".xLabel")
+        chart.selectAll(".xLabel")
           .data(labelsX)
         //styling for the labels
           .enter()
@@ -466,7 +464,7 @@
           .style("fill-opacity", 1);
 
         //append sums to rows
-        var sumsYAxis = chart.selectAll(".sums-y")
+        chart.selectAll(".sums-y")
           .data(sumsY)
           .enter()
           .append("circle")
@@ -735,7 +733,7 @@
           .style("text-anchor", "start");
 
         //draw in-chart light axes separating squares
-        var vert = chart.selectAll(".vert")
+        chart.selectAll(".vert")
           .data(labelsX)
           .enter()
           .append("line")
@@ -756,7 +754,7 @@
             return i ? 0.5 : 0;
           });
 
-        var horiz = chart.selectAll(".horiz")
+        chart.selectAll(".horiz")
           .data(data, function(d) {
             return d.day_of_week;
           })
@@ -779,8 +777,8 @@
             return i ? 0.5 : 0;
           });
 
-
-        var outerBorderBottom = chart
+        // outer Border Bottom
+        chart
           .append("line")
           .attr("x1", yLabelWidth)
           .attr("y1", height - 20 + 2 * maxR)
@@ -790,7 +788,8 @@
           .attr("shape-rendering", "crispEdges")
           .attr('class', 'punch-border');
 
-        var outerBorderRight = chart
+        // outer border right
+        chart
           .append("line")
           .attr("x1", width + 2 * maxR)
           .attr("y1", xLabelHeight)

@@ -10,7 +10,6 @@
   import * as d3 from 'd3';
   import $ from "jquery";
   import * as moment from "moment";
-  import Vue from "vue";
   import { ResizeObserver } from "vue-resize";
   import formatTimeMixin from '@/mixins/formatTimeMixin.js'
   import PanelHeading from '@/components/universal/PanelHeading.vue';

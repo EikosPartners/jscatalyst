@@ -9,7 +9,6 @@
 <script>
   import * as d3 from "d3";
   import $ from "jquery";
-  import Vue from 'vue';
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 
@@ -166,7 +165,6 @@
             .each(function(data, i) {
               var width = x.bandwidth(),
                   duration = 0,
-                  domain = [min, max],
                   whiskers = iqr(2),
                   quartiles = boxQuartiles,
                   tickFormat = null;
@@ -174,9 +172,7 @@
           	  var d = data[1].sort(d3.ascending);
 
                 var g = d3.select(this),
-                    n = d.length,
-                    plotMin = d[0],
-                    plotMax = d[n - 1];
+                    n = d.length;
 
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = d.quartiles = quartiles(d);
@@ -260,7 +256,7 @@
 
 
                 // Compute the tick format.
-                var format = tickFormat || x1.tickFormat(8);
+                var format = x1.tickFormat(8);
 
                 // Update box ticks.
                 var boxTick = g.selectAll("text.box")

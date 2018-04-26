@@ -1,7 +1,5 @@
 import Component from '@/components/visualizations/d3/PieChart.vue'
-import { ResizeObserver } from 'vue-resize';
 import { mount, createLocalVue } from '@vue/test-utils'
-import Vue from 'vue'
 import Vuex from 'vuex'
 const propData = [{label: 'test 1', value: 10}, {label: 'test 7', value: 30}, {label: 'test 2', value: 20}, {label: 'test 3', value: 10}, {label: 'test 4', value: 10}, {label: 'test 5', value: 10}, {label: 'test 6', value: 10}]
 

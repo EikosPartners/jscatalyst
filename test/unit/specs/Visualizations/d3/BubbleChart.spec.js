@@ -1,7 +1,5 @@
-import Vue from 'vue'
 import Component from '@/components/visualizations/d3/BubbleChart.vue'
-import { shallow, mount } from '@vue/test-utils'
-import { createRenderer } from 'vue-server-renderer'
+import { mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 const propDataModel = [{"description_words": "","escalated_med": 0.25,"duration_med": 945,"category_3": "all","created": "2017-11-30","category_2": "all","category_1": "all","volume": 4,"agent": "Agent_9","pk": 10836}, {"description_words": "","escalated_med": 0.5,"duration_med": 917,"category_3": "all","created": "2017-11-30","category_2": "all","category_1": "all","volume": 2,"agent": "Agent_8","pk": 10835}, {"description_words": "","escalated_med": 0.875,"duration_med": 807.5,"category_3": "all","created": "2017-11-30","category_2": "all","category_1": "all","volume": 8,"agent": "Agent_7","pk": 10834}]
 

@@ -1,8 +1,5 @@
-import Vue from 'vue'
-import { shallow, mount, createLocalVue } from '@vue/test-utils'
-import { createRenderer } from 'vue-server-renderer'
+import { shallow, createLocalVue } from '@vue/test-utils'
 import Component from '@/components/Tables/AgTable.vue'
-import axios from 'axios'
 import Vuex from 'vuex'
 const localVue = createLocalVue();
 localVue.use(Vuex)

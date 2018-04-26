@@ -1,6 +1,5 @@
 import Component from '@/components/visualizations/d3/BulletChart.vue'
-import { shallow, mount } from '@vue/test-utils'
-import { createRenderer } from 'vue-server-renderer'
+import { mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 const propData = [
   {"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"measures":[220,270],"markers":[250]},

@@ -1,5 +1,5 @@
 import Component from '@/components/visualizations/d3/LinePlot.vue'
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import { ResizeObserver } from 'vue-resize';
 const propData = [{"id": 2922, "dashboard_metric": "Ticket Volume", "object_id": 1, "date": "2017-06-01", "value": 120, "period": 604800, "time": null, "object_type": 9}, {"id": 2952, "dashboard_metric": "Ticket Volume", "object_id": 1, "date": "2017-06-01", "value": 21, "period": 2592000, "time": null, "object_type": 9}, {"id": 2938, "dashboard_metric": "Ticket Volume", "object_id": 1, "date": "2017-04-01", "value": 193, "period": 604800, "time": null, "object_type": 9}, {"id": 2581, "dashboard_metric": "Ticket Volume", "object_id": 1, "date": "2017-01-01", "value": 313, "period": 86400, "time": null, "object_type": 9}]

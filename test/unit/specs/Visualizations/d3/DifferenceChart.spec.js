@@ -1,6 +1,5 @@
 import Component from '@/components/visualizations/d3/DifferenceChart.vue'
-import { shallow, mount } from '@vue/test-utils'
-import { createRenderer } from 'vue-server-renderer'
+import { mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 const propData = [
   {"date": "2017-01-01", "expected": 100, "actual": 50},

@@ -28,7 +28,7 @@ export default {
         } else if (this.filePath && this.filePath.includes("visualizations") && this.filePath.includes("Plotly")) {
           return () => import('./visualizations/Plotly/' + fileName)
         } else {
-
+          return
         }
         // HTK need to deal with other locations
     }

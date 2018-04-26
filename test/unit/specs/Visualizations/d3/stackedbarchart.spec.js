@@ -1,8 +1,6 @@
 import Component from '@/components/visualizations/d3/StackedBarChart.vue'
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
-import { createRenderer } from 'vue-server-renderer'
-import Vue from 'vue'
 const propData = [{"month":"Jan", "A":20, "B": 5,  "C": 10}, {"month":"Feb", "A":25, "B": 10, "C": 20}, {"month":"March", "A":2, "B": 7, "C": 18}]
 
 describe('StackedBarChart', () => {

@@ -12,8 +12,6 @@
 </template>
 
 <script>
-  import Chartist from 'vue-chartist';
-  import moment from 'moment';
   import ChartistHelper from '@/common/chartistHelper';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 

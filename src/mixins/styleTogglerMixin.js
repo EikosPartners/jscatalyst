@@ -1,11 +1,8 @@
-var styleTogglerMixin
-
-export default styleTogglerMixin = {
+const styleTogglerMixin = {
 
 	methods: {
 		toggleDark: function() {
 		    var current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
-			var classes = this.$root.$el.className.slice().split(' ').filter(el => !el.includes('-theme'))
 		    var opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
 		  	this.$root.$el.className = this.$root.$el.className.replace(current, opposite)
 		  	this.$store.commit('changeDisplay', opposite.split('--')[1])
@@ -36,3 +33,4 @@ export default styleTogglerMixin = {
 		}
 	}
 }
+export default styleTogglerMixin;

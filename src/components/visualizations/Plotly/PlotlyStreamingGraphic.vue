@@ -97,7 +97,7 @@ export default {
         Plotly.extendTraces(localThis.propID, {
           y: [[rand()]]
         }, [0])
-
+        cnt++;
         if(cnt === 100) clearInterval(interval);
       }, 300);
     }

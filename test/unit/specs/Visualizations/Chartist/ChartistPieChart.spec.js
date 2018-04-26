@@ -1,8 +1,7 @@
 import Component from '@/components/visualizations/Chartist/ChartistPieChart'
 import Vue from 'vue'
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
-import ChartistHelper from '@/common/chartistHelper.js'
 
 const data = [ {"value": 24,"label": "Bubble"}, {"value": 22,"label": "Bar"}, {"value": 20,"label": "Line"}, {"value": 15,"label": "Scatter Plot"}, {"value": 30,"label": "Pie"}, {"value": 10,"label": "Area"}]
 

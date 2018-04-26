@@ -11,7 +11,6 @@
   import * as d3 from 'd3';
   import moment from 'moment'
   import formatTimeMixin from '@/mixins/formatTimeMixin.js'
-  import Vue from 'vue'
   import { ResizeObserver } from 'vue-resize'
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 

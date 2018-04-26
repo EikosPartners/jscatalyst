@@ -6,11 +6,7 @@ const npmCfg = require('../package.json')
 const vueLoaderConfig = require('./vue-loader.conf')
 const utils = require('./utils')
 const config = require('../config')
-const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
 
 var banner = [
   npmCfg.name + ' v' + npmCfg.version,

@@ -1,7 +1,5 @@
 import Component from '@/components/visualizations/d3/WorldMap.vue'
-import { shallow, mount, createLocalVue } from '@vue/test-utils'
-import { createRenderer } from 'vue-server-renderer'
-import { ResizeObserver } from 'vue-resize';
+import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex';
 import 'isomorphic-fetch'
 const propData = [ {"name":"Afghanistan","alpha-3":"AFG","id":"004","value":0.02},{"name":"Åland Islands","alpha-3":"ALA","id":"248","value":0.02},{"name":"Albania","alpha-3":"ALB","id":"008","value":0.02},{"name":"Algeria","alpha-3":"DZA","id":"012","value":0.06} ]

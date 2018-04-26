@@ -1,5 +1,5 @@
 import Component from '@/components/visualizations/Chartjs/base/ChartjsScatterChart'
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import Vue from 'vue'
 import ChartjsHelper from '@/common/chartjsHelper.js'

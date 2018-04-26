@@ -9,7 +9,6 @@
 <script>
   import * as d3 from 'd3';
   import $ from 'jquery';
-  import Vue from 'vue';
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 

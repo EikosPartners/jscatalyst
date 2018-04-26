@@ -1,7 +1,5 @@
 import Component from '@/components/visualizations/d3/USMap.vue'
-import { shallow, mount, createLocalVue } from '@vue/test-utils'
-import { createRenderer } from 'vue-server-renderer'
-import { ResizeObserver } from 'vue-resize';
+import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import 'isomorphic-fetch'
 const countyPropData = [ {"id":"01001","value":0.097}, {"id":"01003","value":0.091}, {"id":"01005","value":0.134}, {"id":"01007","value":0.121}, {"id":"01009","value":0.099}, {"id":"01011","value":0.164}, {"id":"01013","value":0.167}, {"id":"01015","value":0.108} ]

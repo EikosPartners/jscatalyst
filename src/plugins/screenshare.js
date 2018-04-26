@@ -8,10 +8,7 @@ const screensharePlugin = {
         // if they are LoaderComponents then we want to get the child of that component which is the actual chart
         child._name === '<LoaderComponent>' ? child = child.$children[0] : null;
         let childName = child._name.replace(/(<|>)/g, ''),
-          filePath,
-          props,
           returnObj = {chartName: childName},
-          localThis = this,
           height = child.$el.offsetHeight
 
         // If it is a button then get hte inner text so that it can be added back to it in the loader component
@@ -72,7 +69,7 @@ const screensharePlugin = {
       sendable.styles = [[''],['']];
       sendable.props = toSend
       sendable.theme = this.$store.state.themeMod.colorTheme || 'blue';
-      sendable.displayTheme = this.$store.state.themeMod.displayTheme; 
+      sendable.displayTheme = this.$store.state.themeMod.displayTheme;
       sendable.receiveChart = true
       this.$socket.emit('sendCharts', JSON.stringify(sendable))
     }
@@ -99,8 +96,7 @@ const screensharePlugin = {
     // method for receiving charts. cannot directly use a sockets function because any component
     // connected to websockets would receive the dashboard
     function receiveCharts(msg) {
-      let localThis = this,
-        tempProps;
+      let tempProps;
       let newMsg = JSON.parse(msg)
 
       // store the received themes in an object that will then be passed to the receiver component

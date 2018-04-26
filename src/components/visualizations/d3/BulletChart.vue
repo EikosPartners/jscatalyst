@@ -9,8 +9,6 @@
 <script>
   import * as d3 from 'd3';
   import $ from 'jquery'
-  import * as moment from 'moment'
-  import Vue from 'vue';
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 
@@ -107,12 +105,8 @@
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
           // renders each individual bullet chart for each object in the data array
           .each(function(d, i) {
-            // if reverse is true the chart is right aligned
-            var reverse = false,
                 // duration controls the intial load animation
-                duration = 0,
-                // can be used to set the tick format of the charts
-                tickFormat = null;
+            var duration = 0;
 
             var ranges = d.ranges.slice().sort(d3.descending),
                 markers = d.markers.slice().sort(d3.descending),
@@ -125,7 +119,7 @@
             // Compute the new x-scale.
             var x1 = d3.scaleLinear()
                 .domain([xMin, Math.max(ranges[0], markers[0], measures[0])])
-                .range(reverse ? [width, 0] : [0, width]);
+                .range([0, width]);
 
             // Derive width-scales from the x-scales.
             var w1 = function(d) {
@@ -140,7 +134,7 @@
                 .attr("class", function(d, i) { return "range s" + i; })
                 .attr("width", w1)
                 .attr("height", height)
-                .attr("x", reverse ? x1 : 0)
+                .attr("x",  0)
 
 
             // Update the measure rects.
@@ -151,7 +145,7 @@
                 .attr("class", function(d, i) { return "measure s" + i; })
                 .attr("width", w1)
                 .attr("height", height / 3)
-                .attr("x", reverse ? x1 : 0)
+                .attr("x", 0)
                 .attr("y", height / 3)
 
 
@@ -167,7 +161,7 @@
                 .attr("y2", height * 5 / 6)
 
             // Compute the tick format.
-            var format = tickFormat || x1.tickFormat(8);
+            var format = x1.tickFormat(8);
 
             // Update the tick groups.
             var tick = g.selectAll("g.tick")

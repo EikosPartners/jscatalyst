@@ -1,5 +1,5 @@
 import Component from '@/components/visualizations/Chartjs/ChartjsLineChartComp'
-import { shallow, mount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import { createRenderer } from 'vue-server-renderer'
 import Vue from 'vue'
 import Vuex from 'vuex'

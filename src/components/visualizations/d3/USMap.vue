@@ -107,8 +107,7 @@
 
         var element = $(selection_string);
 
-        var margin = {top: 20, right: 20, bottom: 30, left: 50},
-          width = element.width(),
+        var width = element.width(),
           height = element.height();
 
         var color = d3.scaleThreshold()

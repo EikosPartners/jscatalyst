@@ -8,8 +8,6 @@
 
 <script>
 import Plotly from 'plotly.js/dist/plotly';
-import $ from "jquery";
-import Vue from 'vue';
 import { ResizeObserver } from 'vue-resize';
 import PanelHeading from '@/components/universal/PanelHeading.vue';
 import themeHelper from '@/common/themeHelper.js'

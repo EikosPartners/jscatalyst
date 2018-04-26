@@ -55,7 +55,7 @@ export default class PlotlyHelper {
     var categories = data.map(el => el.category)
     var seen = {}
     var categoryData = {}
-    categories = categories.filter(function(item) {
+    categories.filter(function(item) {
         return seen.hasOwnProperty(item) ? false : (seen[item] = true);
     }).forEach(category => categoryData[category] = {x: [], y: [], labels: []})
 
@@ -88,7 +88,7 @@ export default class PlotlyHelper {
     var charts = data.map(el => el.chart)
     var seen = {};
     var chartData = {}
-    var charts = charts.filter(function(item) {
+    charts.filter(function(item) {
         return seen.hasOwnProperty(item) ? false : (seen[item] = true);
     }).forEach(chart => chartData[chart] = {labels: [], values: []})
 

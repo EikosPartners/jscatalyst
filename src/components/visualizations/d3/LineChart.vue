@@ -156,7 +156,7 @@
                   .style("opacity", 0);
               let component = this
               var clip_id = "clip-" + selection_string;
-              var clip = svg.append("clipPath")
+              svg.append("clipPath")
                   .attr("id", clip_id)
                   .append("rect")
                   .attr("x", clip_orig_x)

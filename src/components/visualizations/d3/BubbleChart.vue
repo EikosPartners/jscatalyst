@@ -11,7 +11,6 @@
 	import $ from 'jquery'
 	import * as moment from 'moment'
 	// import 'moment-duration-format'
-	import Vue from 'vue';
 	import { ResizeObserver } from 'vue-resize';
 	import PanelHeading from '@/components/universal/PanelHeading.vue';
 
@@ -127,9 +126,6 @@ export default {
 		zValue: function(d) {
 			return d.value;
 		},
-		wValue: function(d) {
-			return d.label;
-		},
 		/**
 		* @function drawTopPlotX - function that draws the box chart
 		* called in mounted
@@ -145,7 +141,6 @@ export default {
 			var xValue = this.xValue;
 			var yValue = this.yValue;
 			var zValue = this.zValue;
-			var wValue = this.wValue;
 			var element = $(selection_string);
 			var margin = this.margin;
 			var elementWidth = element.width()
@@ -166,12 +161,6 @@ export default {
 			if ($(containerIdSvg) != null) {
 				$(containerIdSvg).remove();
 			}
-
-				var svg,
-					category = this.currentCategories.join(' '),
-					containerId = "#" + this._props.propID,
-					containerIdSvg = containerId + " svg",
-					containerIdG = containerIdSvg + " g";
 
 			var xScale = d3.scaleLinear()
 				.range([0, width]),
@@ -214,8 +203,7 @@ export default {
 			}
 			var color = d3.scaleOrdinal(d3.schemePaired);
 
-			var tooltip = d3
-				.select("body")
+			d3.select("body")
 				.append("div")
 				.attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
 				.style("opacity", 0);
@@ -284,16 +272,6 @@ export default {
 			        .attr("y", 0)
 			        .style("text-anchor", "middle")
 			        .text("Category: " + category + ", Overall value: " + d3.sum(data, function(d) { return d.value; }) + ", Agents: "+ data.length);
-
-			} else if (this.type === 'agentPanel') {
-				svg.append("text")
-					.attr("class", "plot-title")
-					.attr("x", width / 2)
-					.attr("y", -3)
-					.style("text-anchor", "middle")
-					.text("Category: " + category + ", Overall value: " + d3.sum(data, function(d) {
-						return d.value;
-					}));
 			} else {
 				svg.append("text")
 					.attr("class", "plot-title")

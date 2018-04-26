@@ -10,7 +10,6 @@
 
   import * as d3 from 'd3';
   import $ from "jquery";
-  import Vue from 'vue';
   import { ResizeObserver } from 'vue-resize';
   import formatTimeMixin from '@/mixins/formatTimeMixin.js';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
@@ -124,8 +123,8 @@
       drawStackedBarChart: function (
         data = this.dataModel,
         id = this._props.propID,
-        yAxis = this._props.yaxisLabel,
-        xAxis = this._props.xaxisLabel
+        yAxisLabel = this._props.yaxisLabel,
+        xAxisLabel = this._props.xaxisLabel
 
       ) {
         var timeKey;
@@ -209,19 +208,23 @@
           svg.append("g")
             .attr("class", "y axis-stacked")
             .call(yAxis)
+            .append('text')
+              .text(function(d) {return yAxisLabel});
 
           svg.append("g")
             .attr("class", "x axis-stacked")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .append('text')
+              .text(function(d) {return xAxisLabel});
 
           var layer = svg.selectAll(".stack")
             .data(layers)
             .enter().append("g")
             .attr("class", function (d, i) {return 'stack' + i;})
             // .style("fill", function (d, i) {return colors[i];});
-
-             var rect = layer.selectAll("rect")
+            //create the stacks
+            layer.selectAll("rect")
               .data(function (d) {return d;})
               .enter()
               .append("rect")

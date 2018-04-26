@@ -1,8 +1,7 @@
 import Component from '@/components/visualizations/d3/HorizonChart.vue'
-import { shallow, mount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import AAPL from '@/assets/mocks/stockData/AAPL.json'
 const propData = {stockData: AAPL}
-import Vue from 'vue'
 import Vuex from 'vuex'
 
 const localVue = createLocalVue();

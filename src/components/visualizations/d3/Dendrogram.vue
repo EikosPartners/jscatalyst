@@ -9,7 +9,6 @@
 <script>
   import * as d3 from 'd3';
   import $ from "jquery";
-  import Vue from 'vue';
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
 
@@ -135,9 +134,9 @@
         cluster(root)
 
         //draws a path for each link in the links array
-        var link = svg.selectAll(".link")
+        svg.selectAll(".link")
             // pass the root nodes descendants to create the links
-            .data(root.descendants().slice(1))
+          .data(root.descendants().slice(1))
           .enter().append("path")
             .attr("class", "link")
             // function for drawing curve lines between the points

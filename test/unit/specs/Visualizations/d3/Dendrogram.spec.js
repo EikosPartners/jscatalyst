@@ -1,7 +1,5 @@
-import Vue from 'vue'
 import Component from '@/components/visualizations/d3/Dendrogram.vue'
-import * as d3 from "d3";
-import { shallow, mount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 const propData = [{"children":[{"children":[{"children":[],"name":"f"},{"children":[{"children":[],"name":"b"},{"children":[{"children":[{"children":[],"name":"c"},{"children":[],"name":"d"}],"name":"c-d"},{"children":[{"children":[],"name":"a"},{"children":[],"name":"e"}],"name":"a-e"}],"name":"a-c-d-e"}],"name":"a-b-c-d-e"}],"name":"a-b-c-d-e-f"}],"name":"Root1"}]
 

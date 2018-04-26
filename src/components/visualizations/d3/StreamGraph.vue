@@ -195,8 +195,6 @@
               var invertedx = x.invert(mousex);
               // change the js date into a moment that matches a date in dataModel
               var date = moment(invertedx).format(localThis.dateFormat)
-              // data for that stream
-              var selected = d;
               // key is the label of the stream
               var key = d['key']
               // get value of stream at that date
