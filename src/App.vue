@@ -4,7 +4,7 @@
 
     <div class='sandbox'>
       <div class="description">
-        <h1 style='text-align:center'>Test New Components Here!</h1>
+        <h1 style='text-align:center;'>Test New Components Here!</h1>
         <p>
             This page should be used to test new components that will be added to the JS Catalyst repo. The sections below have sizes of 300px, 500px, and 700px in order to test how the new chart looks and performs in varios environments. Please comment out the bar examples below and import your new component. Place one in each of the test divs. Please also check to make sure the chart is responsive by resizing the window. Theming is built into this sandbox environment so please also make sure that your component responds to changes in light/dark themes and in color theme changes. If you need more information on how to do this please check the JS Catalyst docs or contact one of the main developers on the JS Catalyst repo. Thanks for contributing!!
         </p>
@@ -39,7 +39,7 @@
 
 <script>
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
-import Toolbar from '@/components/universal/Toolbar.vue'
+import Toolbar from '@/sandbox/Toolbar.vue'
 
 export default {
   name: 'app',
@@ -71,17 +71,17 @@ export default {
     grid-column: 2/12;
   }
   .test1 {
-    border: solid 1px black;
+    border: solid 1px;
     height: 300px;
     grid-column: 2/12;
   }
   .test2 {
-    border: solid 1px black;
+    border: solid 1px;
     height: 500px;
     grid-column: 2/12;
   }
   .test3 {
-    border: solid 1px black;
+    border: solid 1px;
     height: 700px;
     grid-column: 2/12;
   }

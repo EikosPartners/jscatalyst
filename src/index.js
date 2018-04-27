@@ -35,9 +35,9 @@ import D3GanttChart from '@/components/visualizations/d3/GanttChart.vue'
 import D3HeatMap from '@/components/visualizations/d3/HeatMap.vue'
 import D3Histogram from '@/components/visualizations/d3/Histogram.vue'
 import D3HorizonChart from '@/components/visualizations/d3/HorizonChart.vue'
-import D3AreaChart from '@/components/visualizations/d3/LineChart.vue'
+import D3LineChart from '@/components/visualizations/d3/LineChart.vue'
 import D3ZoomableLineChart from '@/components/visualizations/d3/LineChartZoomable.vue'
-import D3LineChart from '@/components/visualizations/d3/LinePlot.vue'
+import D3LinePlot from '@/components/visualizations/d3/LinePlot.vue'
 import D3PieChart from '@/components/visualizations/d3/PieChart.vue'
 import D3PunchCard from '@/components/visualizations/d3/PunchCard.vue'
 import D3ScatterPlot from '@/components/visualizations/d3/Scatterplot.vue'
@@ -96,9 +96,9 @@ const charts = {
   D3HeatMap,
   D3Histogram,
   D3HorizonChart,
-  D3AreaChart,
-  D3ZoomableLineChart,
   D3LineChart,
+  D3ZoomableLineChart,
+  D3LinePlot,
   D3PieChart,
   D3PunchCard,
   D3ScatterPlot,
@@ -159,9 +159,9 @@ export {
   D3HeatMap,
   D3Histogram,
   D3HorizonChart,
-  D3AreaChart,
-  D3ZoomableLineChart,
   D3LineChart,
+  D3ZoomableLineChart,
+  D3LinePlot,
   D3PieChart,
   D3PunchCard,
   D3ScatterPlot,

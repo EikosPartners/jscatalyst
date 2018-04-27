@@ -36,24 +36,24 @@ To use any of the charts or components in the package just import them and place
 <template>
   <div class='example-page'>
     <div class="chart">
-      <area-chart
-        :dataModel='areaChartData'
-        propID='example-area-chart'
+      <line-chart
+        :dataModel='lineChartData'
+        propID='example-line-chart'
         metric='Last Sale Price'
-        header='Example Area Chart'
-      ></area-chart>
+        title='Example Line Chart'
+      ></line-chart>
     </div>
   </div>
 </template>
 
 
 <script>
-  import { D3AreaChart } from 'jscatalyst'
+  import { D3LineChart } from 'jscatalyst'
 
   export default {
     data: function() {
       return {
-        areaChartData: [
+        lineChartData: [
           {"date": "2017-1-1", "value": 2},
           {"date": "2017-4-1", "value": 5},
           {"date": "2017-2-1", "value": 1},
@@ -63,19 +63,19 @@ To use any of the charts or components in the package just import them and place
       }
     },
     components: {
-      'area-chart': D3AreaChart
+      'line-chart': D3LineChart
     }
   }
 </script>
 
 <style>
-  .chart-1 {
+  .chart {
     height: 400px;
   }
 </style>
 ```
 ## Using Plugins
-There are three plugins that are included in JS Catalyst. The encapsulate all the logic needed to add theming, screen-sharing, and authentication to your project. To use any of these plugins, import them in your main.js file and call Vue.use(). Some
+There are three plugins that are included in JS Catalyst. The encapsulate all the logic needed to add theming, screen-sharing, and authentication to your project. To use any of these plugins, import them in your main.js file and call Vue.use().
 
 ```js
   import { ScreensharePlugin } from 'jscatalyst'
@@ -103,4 +103,4 @@ JS Catalyst is an open source project so we gladly accept help with adding new f
 - Push your code to your branch on Github (`git push origin your-new-feature`)
 - Create a pull request to be reviewed by our team
 
-For guidelines on how to create a new component please see the JS Catalyst docs. Thanks for your help! 
+For guidelines on how to create a new component please see the JS Catalyst docs. Thanks for your help!

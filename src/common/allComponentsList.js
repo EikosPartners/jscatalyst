@@ -20,7 +20,6 @@ export default {
           { text: 'Line Plot', value: 'LinePlot' },
           { text: 'Pie Chart', value: 'PieChart' },
           { text: 'Punch Card', value: 'PunchCard' },
-          // { text: 'Sankey Diagram', value: 'SankeyDiagram' },
           { text: 'Scatterplot', value: 'Scatterplot' },
           { text: 'Stacked Bar Chart', value: 'StackedBarChart' },
           { text: 'Stream Graph', value: 'StreamGraph' },
