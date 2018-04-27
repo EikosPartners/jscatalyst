@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App.vue'
-import '../dist/jscatalyst.min.css'
+import './assets/stylus/main.styl'
 import Vuetify from 'vuetify'
 import '../node_modules/vuetify/dist/vuetify.min.css'
 import { store } from './sandbox/store.js'
