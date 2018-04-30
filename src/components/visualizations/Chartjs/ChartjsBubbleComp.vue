@@ -31,6 +31,7 @@
   *
   */
   export default {
+    name: 'ChartjsBubbleChart',
     components: {
       'chartjs-bubble-chart': ChartjsBubbleChart,
       'panel-heading': PanelHeading

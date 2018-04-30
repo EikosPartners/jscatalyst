@@ -33,6 +33,7 @@
   */
 
   export default {
+    name: 'ChartistLineChart',
     components: {
       'panel-heading': PanelHeading
     },

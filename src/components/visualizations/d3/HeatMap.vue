@@ -30,6 +30,7 @@
 	*/
 
 	export default {
+		name: 'D3HeatMap',
 		components: {
 	    'resize-observer': ResizeObserver,
 	    'panel-heading': PanelHeading

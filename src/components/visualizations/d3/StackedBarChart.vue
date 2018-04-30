@@ -34,6 +34,7 @@
   */
 
   export default {
+    name: 'D3StackedBarChart',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

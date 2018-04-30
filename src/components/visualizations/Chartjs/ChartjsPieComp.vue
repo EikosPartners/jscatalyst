@@ -31,6 +31,7 @@
   *
   */
   export default {
+    name: 'ChartjsPieChart',
     components: {
       'chartjs-pie-chart': ChartjsPieChart,
       'panel-heading': PanelHeading

@@ -30,6 +30,7 @@
   */
 
   export default {
+    name: 'D3BoxPlot',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

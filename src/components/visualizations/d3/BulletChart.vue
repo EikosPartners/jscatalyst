@@ -29,6 +29,7 @@
   */
 
   export default {
+    name: 'D3BulletChart',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

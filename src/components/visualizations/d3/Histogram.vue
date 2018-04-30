@@ -28,6 +28,7 @@
   */
 
   export default {
+    name: 'D3Histogram',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

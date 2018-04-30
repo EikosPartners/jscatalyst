@@ -31,6 +31,7 @@
   *
   */
   export default {
+    name: 'ChartjsScatterChart',
     components: {
       'chartjs-scatter-chart': ChartjsScatterChart,
       'panel-heading': PanelHeading

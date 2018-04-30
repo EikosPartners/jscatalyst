@@ -29,6 +29,7 @@ import themeHelper from '@/common/themeHelper.js'
 */
 
 export default {
+  name: 'PlotlyScatterPlot',
   /**
    * The data for this component can be customized; it currently contains:
    * @typedef {Array} dataModel

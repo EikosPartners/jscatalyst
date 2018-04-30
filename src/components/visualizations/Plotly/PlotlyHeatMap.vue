@@ -27,6 +27,7 @@ import themeHelper from '@/common/themeHelper.js'
 */
 
 export default {
+  name: 'PlotlyHeatMap',
   props: {
     dataModel: {
       type: Array,

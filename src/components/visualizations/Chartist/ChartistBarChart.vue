@@ -31,6 +31,7 @@
   */
 
   export default {
+    name:'ChartistBarChart',
     components: {
       'panel-heading': PanelHeading
     },

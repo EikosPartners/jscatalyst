@@ -36,6 +36,7 @@
   */
 
   export default {
+    name: 'D3PunchCard',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

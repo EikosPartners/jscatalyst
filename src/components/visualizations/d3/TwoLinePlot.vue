@@ -38,6 +38,7 @@
   */
 
   export default {
+    name: 'D3TwoLinePlot',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

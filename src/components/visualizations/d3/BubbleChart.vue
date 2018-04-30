@@ -32,6 +32,7 @@
   */
 
 export default {
+	name: 'D3BubbleChart',
 	components: {
     'resize-observer': ResizeObserver,
     'panel-heading': PanelHeading

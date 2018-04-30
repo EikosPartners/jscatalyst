@@ -27,6 +27,7 @@
   */
 
   export default {
+    name: 'D3Dendrogram',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

@@ -32,6 +32,7 @@
   */
 
   export default {
+    name: 'ChartistPieChart',
     components: {
       'panel-heading': PanelHeading
     },

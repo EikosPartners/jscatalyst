@@ -12,7 +12,7 @@
     </template>
     <template v-else>
       <v-select
-        :items="charts()"
+        :items="chartList"
         v-model='shareableChart'
         label="Select Single Chart to Share"
         single-line
@@ -29,8 +29,17 @@
 
 <script>
   export default {
+    name: 'ChartSender',
     props: ['components'],
-    screenshare: true
+    screenshare: true,
+    data: function() {
+      return {
+        chartList: []
+      }
+    },
+    mounted() {
+      this.chartList = this.charts()
+    }
   }
 </script>
 

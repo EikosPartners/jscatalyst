@@ -31,6 +31,7 @@
   *
   */
   export default {
+    name: 'ChartjsPolarChart',
     components: {
       'chartjs-polar-chart': ChartjsPolarChart,
       'panel-heading': PanelHeading

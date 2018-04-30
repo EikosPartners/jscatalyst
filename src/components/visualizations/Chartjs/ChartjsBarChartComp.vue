@@ -32,6 +32,7 @@
   */
 
   export default {
+    name: 'ChartjsBarChart',
     components: {
       'chartjs-bar-chart': ChartjsBarChart,
       'panel-heading': PanelHeading

@@ -1,11 +1,13 @@
 <template>
-  <div :class="[wrapperClass, 'receiver']">
+  <div class="receiver">
     <chart-sender v-if='componentArray.length' :components='components'></chart-sender>
-    <template v-for="(item, index) in componentArray">
-      <div :class="componentArray[index].class" :style="{height: ( componentArray[index].height + 'px' )}" :key="index">
-        <loader-component v-bind="item"/>
-      </div>
-    </template>
+    <div :class='wrapperClass'>
+      <template v-for="(item, index) in componentArray">
+        <div :class="componentArray[index].class" :style="{height: ( componentArray[index].height + 'px' )}" :key="index">
+          <loader-component v-bind="item"/>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -15,6 +17,7 @@
   import ChartSender from '@/components/ChartSenderComponent.vue'
 
   export default {
+    name: 'ReceiverComponent',
     mixins: [styleTogglerMixin],
     screenshare: 'receiverComp',
     components: {

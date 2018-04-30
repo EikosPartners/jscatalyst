@@ -28,6 +28,7 @@ import themeHelper from '@/common/themeHelper.js'
 */
 
 export default {
+  name: 'PlotlyDonutChart',
   props: {
     /**
      * The data for this component consists of chart, value, and label keys. If you would like to draw multiple donuts in one chart specify different chart values and the data points will be grouped accordingly.

@@ -31,6 +31,7 @@
   *
   */
   export default {
+    name: 'ChartjsRadarChart',
     components: {
       'chartjs-radar-chart': ChartjsRadarChart,
       'panel-heading': PanelHeading

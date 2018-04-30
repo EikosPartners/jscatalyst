@@ -29,6 +29,7 @@ import themeHelper from '@/common/themeHelper.js'
 */
 
 export default {
+  name: 'PlotlyBarGraph',
   props: {
     /**
      * The data for this consists of an x key, which is the x-axis value for that point, and any key after that is a bar to be drawn on the graph with its value as the data for that bar (ex. 'myBar': 4) it currently contains:

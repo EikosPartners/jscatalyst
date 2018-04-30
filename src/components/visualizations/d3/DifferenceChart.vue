@@ -35,6 +35,7 @@
   */
 
   export default {
+    name: 'D3DifferenceChart',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

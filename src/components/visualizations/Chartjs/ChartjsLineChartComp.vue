@@ -31,6 +31,7 @@
   *
   */
   export default {
+    name: 'ChartjsLineChart',
     components: {
       'chartjs-line-chart': ChartjsLineChart,
       'panel-heading': PanelHeading

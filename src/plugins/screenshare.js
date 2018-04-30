@@ -6,8 +6,9 @@ const screensharePlugin = {
       let toSend = components.map(child=>{
         // if someone receives a dashboard all the components on the page will be actually be LoaderComponents
         // if they are LoaderComponents then we want to get the child of that component which is the actual chart
-        child._name === '<LoaderComponent>' ? child = child.$children[0] : null;
-        let childName = child._name.replace(/(<|>)/g, ''),
+        child.$options.name === 'LoaderComponent' ? child = child.$children[0] : null;
+        if (child.$options.name === 'ReceiverComponent') return {};
+        let childName = child.$options.name,
           returnObj = {chartName: childName},
           height = child.$el.offsetHeight
 
@@ -22,7 +23,7 @@ const screensharePlugin = {
         returnObj.props = adjustProps
 
         return returnObj
-      })
+      }).filter(comp => comp.chartName)
       return toSend;
     }
 
@@ -57,10 +58,10 @@ const screensharePlugin = {
 
     function submit(){
       var realThis;
-      this._name === '<ChartSender>' ? realThis = this.$parent : realThis = this;
+      this.$options.name === 'ChartSender' ? realThis = this.$parent : realThis = this;
       // If the dashboard was received all components are loader components. In order to get the correct shareableChart find the select and find the value of it's v-model
       let chartName = this.shareableChart,
-        chartsToShare = realThis.$children.filter((item, index, arr)=>{return item._name === '<LoaderComponent>' ? item.$children[0]._name === `<${chartName}>` : item._name === `<${chartName}>` }),
+        chartsToShare = realThis.$children.filter((item, index, arr)=>{return item.$options.name === 'LoaderComponent' ? item.$children[0].$options.name === `${chartName}` : item.$options.name === `${chartName}` }),
         sendable = {dataSource: realThis.currentData};
       var toSend = createSendableComponents(chartsToShare)
 
@@ -76,21 +77,21 @@ const screensharePlugin = {
 
     function charts(){
       var realThis;
-      this._name === '<ChartSender>' ? realThis = this.$parent : realThis = this;
+      this.$options.name === 'ChartSender' ? realThis = this.$parent : realThis = this;
       let initialNames;
       if (Object.keys(realThis.$options.components).includes('loader-component')) {
-        initialNames = realThis.$children.slice(1).map(comp => comp.$children[0]._name).filter(item=>{return !item.includes('panel')})
+        initialNames = realThis.$children.slice(1).map(comp => comp.$children[0].$options.name).filter(item=>{return !item.includes('panel')})
       } else {
-        initialNames = Object.keys(realThis.$options.components).filter(item=>{return !item.includes('panel') && !item.includes('chart-sender')})
+        initialNames = realThis.$children.map(comp => comp.$options.name).filter(name => name !== 'ChartSender')
       }
       // kebab-case to CamelCase
-        let newNames = initialNames.map(splitFirst=>{
-          var splitName = splitFirst.split('-')
-          return splitName.map(splitSecond=> {
-            return splitSecond[0].toUpperCase() + splitSecond.slice(1)
-          }).join('')
-      })
-    return newNames
+      //   let newNames = initialNames.map(splitFirst=>{
+      //     var splitName = splitFirst.split('-')
+      //     return splitName.map(splitSecond=> {
+      //       return splitSecond[0].toUpperCase() + splitSecond.slice(1)
+      //     }).join('')
+      // })
+    return initialNames;
     }
 
     // method for receiving charts. cannot directly use a sockets function because any component

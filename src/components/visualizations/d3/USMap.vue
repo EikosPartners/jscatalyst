@@ -33,6 +33,7 @@
   */
 
   export default {
+    name: 'D3USMap',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

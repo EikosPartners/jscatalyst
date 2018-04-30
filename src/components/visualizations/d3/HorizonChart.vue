@@ -30,6 +30,7 @@
   */
 
   export default {
+    name: 'D3HorizonChart',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

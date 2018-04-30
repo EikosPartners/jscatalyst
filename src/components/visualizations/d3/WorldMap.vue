@@ -31,6 +31,7 @@
   */
 
   export default {
+    name: 'D3WorldMap',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

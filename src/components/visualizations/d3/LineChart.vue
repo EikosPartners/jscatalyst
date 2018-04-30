@@ -29,6 +29,7 @@
   *
   */
   export default {
+    name: 'D3LineChart',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading

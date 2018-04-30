@@ -27,6 +27,7 @@ import themeHelper from '@/common/themeHelper.js'
 */
 
 export default {
+  name: 'PlotlySurfacePlot',
   props: {
     dataModel: {
       type: Array,

@@ -32,6 +32,7 @@
   */
 
   export default {
+    name: 'ChartjsBarLineChart',
     components: {
       'chartjs-bar-line': ChartjsBarLineMixed,
       'panel-heading': PanelHeading

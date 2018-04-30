@@ -29,6 +29,7 @@ import themeHelper from '@/common/themeHelper.js'
 */
 
 export default {
+  name: 'PlotlyBubbleChart',
   props: {
     /**
      * The data for this component can be customized; it currently contains:

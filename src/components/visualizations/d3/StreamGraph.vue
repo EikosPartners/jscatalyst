@@ -33,6 +33,7 @@
   */
 
   export default {
+    name: 'D3StreamGraph',
     components: {
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
