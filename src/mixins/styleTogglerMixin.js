@@ -23,7 +23,7 @@ const styleTogglerMixin = {
 		      var style = Array.from(el).filter(rule => rule.selectorText ===`.${theme}`)
 		      style.length ? themeStyles = style[0].cssText : null;
 		    })
-		    var colors = themeStyles.split(': ').slice(1).map(hex => hex.slice(0,7))
+		    var colors = themeStyles.split(':').slice(1).map(hex => hex.slice(0,7))
 		    return colors
 		}
 	}
