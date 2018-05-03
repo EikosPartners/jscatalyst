@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import charts from '@/index.js'
+
     let filterProps = ["dataModel"];
 
     export default {
@@ -30,36 +32,29 @@
 
             },
             computedView() {
-                let localThis = this;
                 if (this.currentView) {
-                    return () => import('./visualizations/d3/' + localThis.currentView + '.vue')
+                    return charts[this.currentView]
                 }
             }
         },
         watch: {
             computedView: function (data) {
-                let localThis = this;
-                
                 this.$options.components[this.currentView] = data;
+                let comp = data
+                let props = {};
+                let propNames = Object.keys(comp.props);
 
-                // Create a copy of the component so we can get its properties.
-                this.$options.components[this.currentView]()
-                    .then ( (comp) => {
-                        let props = {};
-                        let propNames = Object.keys(comp.default.props);
+                // Filter out dataModel and other props not to be updated.
+                let filteredNames = propNames.filter( (prop) => {
+                    return !filterProps.includes(prop);
+                });
 
-                        // Filter out dataModel and other props not to be updated.
-                        let filteredNames = propNames.filter( (prop) => {
-                            return !filterProps.includes(prop);
-                        });
+                filteredNames.forEach(name => {
+                    props[name] = comp.props[name].default;
+                });
 
-                        filteredNames.forEach(name => {
-                            props[name] = comp.default.props[name].default;
-                        });
+                this.$emit('UIBuilderProps', props, this.compRowIdx, this.compColIdx);
 
-                        // Emit that properties were found.
-                        this.$emit('UIBuilderProps', props, localThis.compRowIdx, localThis.compColIdx);
-                    });
             }
         }
     }

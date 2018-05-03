@@ -10,3 +10,6 @@ script:
   - npm run test
 
 after_success: npm run coverage
+
+notifications:
+    slack: eikospartners:0sQgJB5dH7j3cRYtdzhuSqQR

@@ -13,7 +13,7 @@
             </div>
         </section>
         <section class="uib-grid-wrapper">
-            <div v-if="rows.length > 0" v-for="(UIRow, rowIdx) in rows" :key="rowIdx" 
+            <div v-if="rows.length > 0" v-for="(UIRow, rowIdx) in rows" :key="rowIdx"
                 @mouseover="showColumnControls(rowIdx)"
                 @mouseout="hideColumnControls(rowIdx)">
                 <div class="column-controls" :id="'column-controls-' + rowIdx">
@@ -59,7 +59,12 @@
                             </v-select>
                         </div>
                         <div class="control-item">
+                          <template v-if='endpoints'>
+                            <v-select name="dataSource" :items='endpoints' autocomplete label="Endpoint" v-model="currentDataSource"></v-select>
+                          </template>
+                          <template v-else>
                             <v-text-field name="dataSource" label="Endpoint" v-model="currentDataSource"></v-text-field>
+                          </template>
                         </div>
                     </div>
                     <div v-if="currentCompProps" class="properties">
@@ -84,6 +89,7 @@
     import DynamicComponent from './DynamicComponent';
     import axios from 'axios';
     import allComponentsList from '../common/allComponentsList';
+    import charts from '@/index.js'
 
     let filterProps = ["dataModel"];
 
@@ -94,7 +100,7 @@
                  * Each row is an object with property cols.
                  */
                 rows: [],
-                options: allComponentsList.d3,
+                options: allComponentsList,
                 showModal: false,
                 currentComponent: "",
                 currentRowIdx: -1,
@@ -102,7 +108,12 @@
                 currentDataSource: "",
                 currentCompProps: {},
                 editing: false
-            }            
+            }
+        },
+        props: {
+          endpoints: {
+            type: Array
+          }
         },
         methods: {
             addRow () {
@@ -137,7 +148,7 @@
                         Object.keys(this.currentCompProps).forEach( prop => {
                             col.dataModel[prop] = this.currentCompProps[prop];
                         });
-                        
+
                         this.close();
                     });
                 }
@@ -149,8 +160,9 @@
                         .then( (response) => {
                             cb(null, response.data);
                         })
-                        .catch( (err) => {return () => import('./visualizations/d3/' + localThis.currentView + '.vue')
-                            cb(err, null);
+                        .catch( (err) => {
+                            console.log(err);
+                            cb(null, { dataModel: []});
                         });
                 } else {
                     cb(null, { dataModel: []});
@@ -166,11 +178,6 @@
                 Object.keys(props).forEach(propName => {
                     col.dataModel[propName] = props[propName]
                 });
-            },
-            loadComponent (name) {
-                if (name) {
-                    return () => import('./visualizations/d3/' + name + '.vue')
-                }  
             },
             showColumnControls (rowIdx) {
                 let controls = document.querySelector('#column-controls-' + rowIdx);
@@ -205,7 +212,7 @@
                         this.editing = true;
                         this.currentDataSource = cell.dataSource;
                         this.currentComponent = cell.component;
-                        
+
                         let props = Object.keys(cell.dataModel).filter( (prop) => {
                             if (!filterProps.includes(prop)) {
                                 return cell.dataModel[prop];
@@ -230,7 +237,7 @@
         },
         watch: {
             currentComponent (data) {
-                if (data === "" || data === undefined) { return; } 
+                if (data === "" || data === undefined) { return; }
 
                 // We don't need to load the component's properties if the cell is being edited.
                 if (this.editing) {
@@ -238,25 +245,20 @@
                     return;
                 }
 
-                let comp = this.loadComponent(data);
-                let localThis = this;
+                let comp = charts[data]
+                let props = {};
+                let propNames = Object.keys(comp.props);
 
-                comp()
-                    .then( (component) => {
-                        let props = {};
-                        let propNames = Object.keys(component.default.props);
+                // Filter out dataModel and other props not to be updated.
+                let filteredNames = propNames.filter( (prop) => {
+                    return !filterProps.includes(prop);
+                });
 
-                        // Filter out dataModel and other props not to be updated.
-                        let filteredNames = propNames.filter( (prop) => {
-                            return !filterProps.includes(prop);
-                        });
+                filteredNames.forEach(name => {
+                    props[name] = comp.props[name].default;
+                });
 
-                        filteredNames.forEach(name => {
-                            props[name] = component.default.props[name].default;
-                        });
-
-                        localThis.currentCompProps = props;
-                    });
+                this.currentCompProps = props;
             }
         },
         components: {

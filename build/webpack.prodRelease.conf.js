@@ -76,6 +76,12 @@ const webpackConfig =  {
       commonjs2: 'moment',
       amd: 'moment'
     },
+    'moment-duration-format': {
+      root: 'moment-duration-format',
+      commonjs: 'moment-duration-format',
+      commonjs2: 'moment-duration-format',
+      amd: 'moment-duration-format'
+    },
     jquery: {
       root: 'jquery',
       commonjs: 'jquery',
