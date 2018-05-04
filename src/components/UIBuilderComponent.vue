@@ -1,11 +1,5 @@
 <template>
     <v-container>
-        <section class="description mb-5">
-            <h1 class="display-1 mt-5">UI Builder</h1>
-            <blockquote class="mt-3">
-                In laoreet convallis porttitor. Donec vel lacus magna. Suspendisse eu elementum orci. Ut felis ante, lacinia vel placerat eu, cursus ut ante. Aenean eleifend dolor vulputate, interdum lectus a, tristique lorem. Nullam ut felis finibus, consequat sapien nec, consequat quam. In auctor neque felis, at interdum nulla efficitur ut. Integer ultrices ligula at augue sollicitudin, id sollicitudin ligula laoreet. Nullam id massa id arcu venenatis bibendum.
-            </blockquote>
-        </section>
         <section>
             <div class="add-row">
                 <v-btn @click="reset()">Reset</v-btn>
