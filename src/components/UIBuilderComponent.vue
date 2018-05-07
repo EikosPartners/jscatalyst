@@ -7,6 +7,9 @@
             </div>
         </section>
         <section class="uib-grid-wrapper">
+            <div v-if="rows.length == 0" class="empty-state">
+                <p> Click Add Row to start!</p>
+            </div>
             <div v-if="rows.length > 0" v-for="(UIRow, rowIdx) in rows" :key="rowIdx"
                 @mouseover="showColumnControls(rowIdx)"
                 @mouseout="hideColumnControls(rowIdx)">
@@ -19,8 +22,8 @@
                         @mouseout="hideComponentControls(rowIdx, colIdx)">
                         <div class="component-controls" :id="'comp-controls-' + rowIdx + '-' + colIdx">
                             <v-btn @click="show(rowIdx, colIdx)">
-                                <span v-if="col.component">Edit</span>
-                                <span v-else>Add</span>
+                                <span v-if="col.component">Edit Component</span>
+                                <span v-else>Add Component</span>
                             </v-btn>
                         </div>
                         <div>
@@ -37,7 +40,6 @@
                 </div>
             </div>
         </section>
-
         <v-dialog v-model="showModal" persistent max-width="1000px">
             <v-card>
                 <v-card-title>
@@ -53,12 +55,7 @@
                             </v-select>
                         </div>
                         <div class="control-item">
-                          <template v-if='endpoints'>
-                            <v-select name="dataSource" :items='endpoints' autocomplete label="Endpoint" v-model="currentDataSource"></v-select>
-                          </template>
-                          <template v-else>
                             <v-text-field name="dataSource" label="Endpoint" v-model="currentDataSource"></v-text-field>
-                          </template>
                         </div>
                     </div>
                     <div v-if="currentCompProps" class="properties">
@@ -69,24 +66,19 @@
                 </v-card-text>
                 <v-card-actions>
                     <div class="control-item">
-                        <v-btn @click="load(currentRowIdx, currentColIdx)">Load</v-btn>
-                        <v-btn @click="close()">Close</v-btn>
+                        <v-btn @click="load(currentRowIdx, currentColIdx)">Load Component</v-btn>
+                        <v-btn @click="close()">Cancel</v-btn>
                     </div>
                 </v-card-actions>
             </v-card>
         </v-dialog>
-
     </v-container>
 </template>
-
 <script>
     import DynamicComponent from './DynamicComponent';
     import axios from 'axios';
     import allComponentsList from '../common/allComponentsList';
-    import charts from '@/index.js'
-
     let filterProps = ["dataModel"];
-
     export default {
         data () {
             return {
@@ -105,9 +97,9 @@
             }
         },
         props: {
-          endpoints: {
-            type: Array
-          }
+            endpoints: {
+                type: Array
+            }
         },
         methods: {
             addRow () {
@@ -125,24 +117,20 @@
             load (rowIdx, colIdx) {
                 if (rowIdx < this.rows.length && colIdx < this.rows[rowIdx].cols.length) {
                     let col = this.rows[rowIdx].cols[colIdx];
-
                     this.getDataForComponent(this.currentDataSource, (err, data) => {
                         if (err) {
                             console.error(err);
                             this.close();
                             return;
                         }
-
                         col.dataModel.dataModel = data.dataModel;
                         col.dataSource = this.currentDataSource;
-
                         // Give column its component.
                         col.component = this.currentComponent;
                         // Add user defined props to the column.
                         Object.keys(this.currentCompProps).forEach( prop => {
                             col.dataModel[prop] = this.currentCompProps[prop];
                         });
-
                         this.close();
                     });
                 }
@@ -155,8 +143,7 @@
                             cb(null, response.data);
                         })
                         .catch( (err) => {
-                            console.log(err);
-                            cb(null, { dataModel: []});
+                            cb(err, null);
                         });
                 } else {
                     cb(null, { dataModel: []});
@@ -167,11 +154,15 @@
                 let col = this.rows[rowIdx].cols[colIdx];
                 col.propsReceived = true;
                 col.props = props;
-
                 // Add the new properties to the dataModel.
                 Object.keys(props).forEach(propName => {
                     col.dataModel[propName] = props[propName]
                 });
+            },
+            loadComponent (name) {
+                if (name) {
+                    return () => import('./visualizations/d3/' + name + '.vue')
+                }
             },
             showColumnControls (rowIdx) {
                 let controls = document.querySelector('#column-controls-' + rowIdx);
@@ -196,34 +187,28 @@
                 if (rowIdx < this.rows.length && colIdx < this.rows[rowIdx].cols.length) {
                     this.currentRowIdx = rowIdx;
                     this.currentColIdx = colIdx;
-
                     // Check to see if the cell already has a component.
                     // If so, the modal will be for editing rather than adding.
                     let cell = this.rows[rowIdx].cols[colIdx];
-
                     if (cell.component) {
                         // Set the editing flag to not trigger the watch callback for this.currentComponent.
                         this.editing = true;
                         this.currentDataSource = cell.dataSource;
                         this.currentComponent = cell.component;
-
                         let props = Object.keys(cell.dataModel).filter( (prop) => {
                             if (!filterProps.includes(prop)) {
                                 return cell.dataModel[prop];
                             }
                         });
-
                         props.forEach( (name) => {
                             this.currentCompProps[name] = cell.dataModel[name];
                         });
                     }
-
                     this.showModal = true;
                 }
             },
             close () {
                 this.showModal = false;
-
                 this.currentCompProps = {};
                 this.currentDataSource = "";
                 this.currentComponent = "";
@@ -232,27 +217,26 @@
         watch: {
             currentComponent (data) {
                 if (data === "" || data === undefined) { return; }
-
                 // We don't need to load the component's properties if the cell is being edited.
                 if (this.editing) {
                     this.editing = false;
                     return;
                 }
-
-                let comp = charts[data]
-                let props = {};
-                let propNames = Object.keys(comp.props);
-
-                // Filter out dataModel and other props not to be updated.
-                let filteredNames = propNames.filter( (prop) => {
-                    return !filterProps.includes(prop);
-                });
-
-                filteredNames.forEach(name => {
-                    props[name] = comp.props[name].default;
-                });
-
-                this.currentCompProps = props;
+                let comp = this.loadComponent(data);
+                let localThis = this;
+                comp()
+                    .then( (component) => {
+                        let props = {};
+                        let propNames = Object.keys(component.default.props);
+                        // Filter out dataModel and other props not to be updated.
+                        let filteredNames = propNames.filter( (prop) => {
+                            return !filterProps.includes(prop);
+                        });
+                        filteredNames.forEach(name => {
+                            props[name] = component.default.props[name].default;
+                        });
+                        localThis.currentCompProps = props;
+                    });
             }
         },
         components: {
@@ -260,57 +244,56 @@
         }
 }
 </script>
-
 <style scoped>
     .comp-prop {
         margin-right: 15px;
     }
-
     .controls-modal {
         background-color: white;
         padding: 20px;
     }
-
     .controls {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-column-gap: 10%;
     }
-
     .properties {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-
     .add-row {
         text-align: right;
         margin-bottom: 20px;
     }
-
     .column-controls {
         text-align: right;
         display: none;
     }
-
     .component-controls {
         float: right;
         display: none;
     }
-
     .uib-grid-wrapper {
         border: solid 1px red;
     }
-
     .uib-row {
         border: solid 1px black;
         margin: 2px;
-
         display: grid;
         grid-template-rows: 1fr;
     }
-
     .uib-col {
         border: solid 1px orange;
         margin: 2px;
+    }
+    .empty-state {
+        height: 400px;
+        background-color: lightgray;
+    }
+    .empty-state p {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 400px;
+        font-size: 22px;
     }
 </style>
