@@ -1,6 +1,6 @@
 {
   "name": "jscatalyst",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
@@ -28,7 +28,7 @@
     "chartist": "^0.11.0",
     "chartkick": "^2.3.3",
     "compression": "^1.7.2",
-    "d3": "^4.13.0",
+    "d3": "^5.3.0",
     "d3-horizon-chart": "0.0.6",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
