@@ -222,6 +222,7 @@
                     this.editing = false;
                     return;
                 }
+                data = data.replace('D3', '');
                 let comp = this.loadComponent(data);
                 let localThis = this;
                 comp()
