@@ -3,7 +3,7 @@
         <section>
             <div class="add-row">
                 <v-btn @click="reset()">Reset</v-btn>
-                <v-btn @click="addRow()" >Add Row</v-btn>
+                <v-btn @click="addRow()">Add Row</v-btn>
             </div>
         </section>
         <section class="uib-grid-wrapper">
@@ -15,6 +15,7 @@
                 @mouseout="hideColumnControls(rowIdx)">
                 <div class="column-controls" :id="'column-controls-' + rowIdx">
                     <v-btn @click="addColumn(rowIdx)">Add Column</v-btn>
+                    <v-btn @click="removeRow(rowIdx)">Remove Row</v-btn>
                 </div>
                 <div class="uib-row" :style="{ 'grid-template-columns': 'repeat(' + UIRow.cols.length + ', 1fr)'}">
                     <div v-for="(col, colIdx) in UIRow.cols" :key="colIdx" class="uib-col"
@@ -25,8 +26,8 @@
                                 <span v-if="col.component">Edit Component</span>
                                 <span v-else>Add Component</span>
                             </v-btn>
-                            <v-btn @click="remove(rowIdx, colIdx)">
-                                Remove
+                            <v-btn @click="removeColumn(rowIdx, colIdx)">
+                                Remove Component
                             </v-btn>
                         </div>
                         <div>
@@ -230,9 +231,14 @@
                     this.showModal = true;
                 }
             },
-            remove (rowIdx, colIdx) {
+            removeColumn (rowIdx, colIdx) {
                 if (rowIdx < this.rows.length && colIdx < this.rows[rowIdx].cols.length) {
                     this.rows[rowIdx].cols.splice(colIdx, 1);
+                }
+            },
+            removeRow (rowIdx) {
+                if (rowIdx < this.rows.length) {
+                    this.rows.splice(rowIdx, 1);
                 }
             },
             close () {
