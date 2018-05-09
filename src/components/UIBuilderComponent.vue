@@ -25,8 +25,14 @@
                                 <span v-if="col.component">Edit Component</span>
                                 <span v-else>Add Component</span>
                             </v-btn>
+                            <v-btn @click="remove(rowIdx, colIdx)">
+                                Remove
+                            </v-btn>
                         </div>
                         <div>
+                            <div v-if="!col.component" class="empty-state">
+                                <p> Click Add Component to start!</p>
+                            </div>
                             <div>
                                 <dynamic-component
                                     :currentView="col.component"
@@ -55,7 +61,13 @@
                             </v-select>
                         </div>
                         <div class="control-item">
-                            <v-text-field name="dataSource" label="Endpoint" v-model="currentDataSource"></v-text-field>
+                            <!-- <v-text-field name="dataSource" label="Endpoint" v-model="currentDataSource">
+                            </v-text-field> -->
+                            <v-select :items="endpoints" v-model="currentDataSource" label="Endpoint" auto>
+                                <option v-for="opt in endpoints" :value="opt">
+                                    {{ opt }}
+                                </option>
+                            </v-select>
                         </div>
                     </div>
                     <div v-if="currentCompProps" class="properties">
@@ -98,7 +110,14 @@
         },
         props: {
             endpoints: {
-                type: Array
+                type: Array,
+                default: () => {
+                    return [
+                        "http://localhost:9000/data/barchart",
+                        "http://localhost:9000/data/piechart",
+                        "http://localhost:9000/data/linechart"
+                    ];
+                }
             }
         },
         methods: {
@@ -161,22 +180,26 @@
             },
             loadComponent (name) {
                 if (name) {
-                    return () => import('./visualizations/d3/' + name + '.vue')
+                    return () => import('@/components/visualizations/d3/' + name + '.vue')
                 }
             },
             showColumnControls (rowIdx) {
+                return;
                 let controls = document.querySelector('#column-controls-' + rowIdx);
                 controls.style.display = "block";
             },
             hideColumnControls (rowIdx) {
+                return;
                 let controls = document.querySelector('#column-controls-' + rowIdx);
                 controls.style.display = "none"
             },
             showComponentControls(rowIdx, colIdx) {
+                return;
                 let controls = document.querySelector('#comp-controls-' + rowIdx + '-' + colIdx);
                 controls.style.display = "block";
             },
             hideComponentControls(rowIdx, colIdx) {
+                return;
                 let controls = document.querySelector('#comp-controls-' + rowIdx + '-' + colIdx);
                 controls.style.display = "none"
             },
@@ -205,6 +228,11 @@
                         });
                     }
                     this.showModal = true;
+                }
+            },
+            remove (rowIdx, colIdx) {
+                if (rowIdx < this.rows.length && colIdx < this.rows[rowIdx].cols.length) {
+                    this.rows[rowIdx].cols.splice(colIdx, 1);
                 }
             },
             close () {
@@ -268,28 +296,26 @@
     }
     .column-controls {
         text-align: right;
-        display: none;
     }
     .component-controls {
         float: right;
-        display: none;
     }
     .uib-grid-wrapper {
-        border: solid 1px red;
+        /* border: solid 1px red; */
     }
     .uib-row {
-        border: solid 1px black;
+        /* border: solid 1px black;  */
         margin: 2px;
         display: grid;
         grid-template-rows: 1fr;
     }
     .uib-col {
-        border: solid 1px orange;
+        /* border: solid 1px orange; */
         margin: 2px;
     }
     .empty-state {
-        height: 400px;
-        background-color: lightgray;
+        min-height: 400px;
+        /* background-color: lightgray; */
     }
     .empty-state p {
         text-align: center;
