@@ -10,7 +10,7 @@
   import * as d3 from 'd3';
   import $ from "jquery";
   import moment from "moment";
-  // import "moment-duration-format";
+  import "moment-duration-format";
 
   import { ResizeObserver } from "vue-resize";
   import PanelHeading from '@/components/universal/PanelHeading.vue';
