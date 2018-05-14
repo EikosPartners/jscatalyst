@@ -4,6 +4,7 @@
             <div class="add-row">
                 <v-btn @click="reset()">Reset</v-btn>
                 <v-btn @click="addRow()">Add Row</v-btn>
+                <v-btn @click="save()">Export</v-btn>
             </div>
         </section>
         <section class="uib-grid-wrapper">
@@ -246,6 +247,12 @@
                 this.currentCompProps = {};
                 this.currentDataSource = "";
                 this.currentComponent = "";
+            },
+            // Method to save the current configuration.
+            // Emits a 'uib-save' event for parent to handle.
+            save () {
+                // Emits the current rows to the handler.
+                this.$emit('uibsave', this.rows);
             }
         },
         watch: {
