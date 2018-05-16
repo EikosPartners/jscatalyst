@@ -8,6 +8,7 @@
         single-line
         bottom
         append-icon='trending_up'
+        style="width: 50%;"
       ></v-select>
     </template>
     <template v-else>
@@ -18,9 +19,10 @@
         single-line
         bottom
         append-icon='trending_up'
+        style="width: 50%;"
       ></v-select>
     </template>
-    <div>
+    <div style="display: inline;">
       <v-btn color="primary" @click="submit">Share Chart</v-btn>
       <v-btn color="primary" @click="shareAll">Share Dashboard</v-btn>
     </div>

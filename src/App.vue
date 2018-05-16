@@ -19,10 +19,11 @@
 
       <div class="test2">
         <!-- Place Component here -->
-        <bar-chart
+        <!-- <bar-chart
           propID='bar2'
           :dataModel='barData'
-        ></bar-chart>
+        ></bar-chart> -->
+        <chart-sender></chart-sender>
       </div>
 
       <div class="test3">
@@ -40,12 +41,14 @@
 <script>
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
 import Toolbar from '@/sandbox/Toolbar.vue'
+import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
 
 export default {
   name: 'app',
   components: {
     'bar-chart': BarChart,
-    'tool-bar': Toolbar
+    'tool-bar': Toolbar,
+    'chart-sender': ChartSenderComponent
   },
   data: function() {
     return {
