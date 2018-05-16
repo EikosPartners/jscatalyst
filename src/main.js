@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.config.performance = true
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {themes: {info: 'blue'}})
 Vue.use(ThemePlugin, {store, themes: ['Blue', 'Pink', 'Green', 'Brown', 'Red', 'Grey']})
 
 window.Vue = new Vue({
