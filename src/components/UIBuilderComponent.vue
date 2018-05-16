@@ -4,6 +4,7 @@
             <div class="add-row">
                 <v-btn @click="reset()">Reset</v-btn>
                 <v-btn @click="addRow()">Add Row</v-btn>
+                <v-btn @click="showSaveModal = true">Export</v-btn>
             </div>
         </section>
         <section class="uib-grid-wrapper">
@@ -85,6 +86,22 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <v-dialog v-model="showSaveModal" persistent max-width="1000px">
+            <v-card>
+                <v-card-title>
+                    Save Configuration
+                </v-card-title>
+                <v-card-text>
+                    <div>
+                        <v-text-field v-model="configName" label="Configuration Name"></v-text-field>
+                    </div>
+                    <div>
+                        <v-btn @click="save()">Save</v-btn>
+                        <v-btn @click="closeSaveModal()">Cancel</v-btn>
+                    </div>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
     </v-container>
 </template>
 <script>
@@ -101,12 +118,14 @@
                 rows: [],
                 options: allComponentsList,
                 showModal: false,
+                showSaveModal: false,
                 currentComponent: "",
                 currentRowIdx: -1,
                 currentColIdx: -1,
                 currentDataSource: "",
                 currentCompProps: {},
-                editing: false
+                editing: false,
+                configName: ""
             }
         },
         props: {
@@ -246,6 +265,23 @@
                 this.currentCompProps = {};
                 this.currentDataSource = "";
                 this.currentComponent = "";
+            },
+            // Method to save the current configuration.
+            // Emits a 'uib-save' event for parent to handle.
+            save () {
+                // Emits the current rows to the handler.
+                let config = {
+                    rows: this.rows,
+                    id: new Date().getTime(),
+                    name: this.configName
+                };
+
+                this.$emit('uibsave', config);
+                this.closeSaveModal();
+            },
+            closeSaveModal () {
+                this.configName = "";
+                this.showSaveModal = false;
             }
         },
         watch: {

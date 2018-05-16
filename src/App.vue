@@ -4,6 +4,9 @@
 
     <div class='sandbox'>
       <div class="description">
+        <v-alert type="info" :value="true">
+          This alert demonstrates the Vuetify Theming addition to the color theme plugin!
+        </v-alert>
         <h1 style='text-align:center;'>Test New Components Here!</h1>
         <p>
             This page should be used to test new components that will be added to the JS Catalyst repo. The sections below have sizes of 300px, 500px, and 700px in order to test how the new chart looks and performs in varios environments. Please comment out the bar examples below and import your new component. Place one in each of the test divs. Please also check to make sure the chart is responsive by resizing the window. Theming is built into this sandbox environment so please also make sure that your component responds to changes in light/dark themes and in color theme changes. If you need more information on how to do this please check the JS Catalyst docs or contact one of the main developers on the JS Catalyst repo. Thanks for contributing!!
@@ -87,5 +90,13 @@ export default {
     border: solid 1px;
     height: 700px;
     grid-column: 2/12;
+  }
+
+  .theme--light .alert.info {
+    color: black !important;
+  }
+
+  .theme--dark .alert.info {
+    color: white;
   }
 </style>
