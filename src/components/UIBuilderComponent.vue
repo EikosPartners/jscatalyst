@@ -126,8 +126,7 @@
                 currentDataSource: "",
                 currentCompProps: {},
                 editing: false,
-                configName: "",
-                importedConfig: []
+                configName: ""
             }
         },
         props: {
