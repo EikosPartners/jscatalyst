@@ -321,7 +321,11 @@
             },
             importedConfig (data) {
                 if (data) {
-                    this.rows = data;
+                    this.rows.splice(0, this.rows.length);
+
+                    data.forEach( (row) => {
+                        this.rows.push(row);
+                    });
                 }
             }
         },
