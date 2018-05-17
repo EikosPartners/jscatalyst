@@ -5,6 +5,7 @@
                 <v-btn @click="reset()">Reset</v-btn>
                 <v-btn @click="addRow()">Add Row</v-btn>
                 <v-btn @click="showSaveModal = true">Export</v-btn>
+                <v-btn @click="importConfig">Import</v-btn>
             </div>
         </section>
         <section class="uib-grid-wrapper">
@@ -125,7 +126,8 @@
                 currentDataSource: "",
                 currentCompProps: {},
                 editing: false,
-                configName: ""
+                configName: "",
+                importedConfig: {}
             }
         },
         props: {
@@ -279,6 +281,9 @@
                 this.$emit('uibsave', config);
                 this.closeSaveModal();
             },
+            importConfig () {
+                this.$emit('uibimport');
+            },
             closeSaveModal () {
                 this.configName = "";
                 this.showSaveModal = false;
@@ -308,6 +313,11 @@
                         });
                         localThis.currentCompProps = props;
                     });
+            },
+            importedConfig (data) {
+                if (data) {
+                    this.rows = data;
+                }
             }
         },
         components: {
