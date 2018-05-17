@@ -127,7 +127,7 @@
                 currentCompProps: {},
                 editing: false,
                 configName: "",
-                importedConfig: {}
+                importedConfig: []
             }
         },
         props: {
@@ -139,6 +139,12 @@
                         "http://localhost:9000/data/piechart",
                         "http://localhost:9000/data/linechart"
                     ];
+                }
+            },
+            importedConfig: {
+                type: Array,
+                default: () => {
+                    return []
                 }
             }
         },
