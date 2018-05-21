@@ -28,6 +28,14 @@ import charts from '@/index.js'
             receivedData: function(){
                  let receivedData = {}
                  Object.keys(this.dataModel || []).forEach(item=>{ receivedData[item] = this.dataModel[item] })
+
+                 if (!receivedData.propID) {
+                     receivedData.propID = "uib-comp";
+                 }
+
+                 // Add a timestamp to the prop id so that the same component can be rendered multiple times.
+                 receivedData.propID += '-' + new Date().getTime();
+
                  return receivedData
 
             },
