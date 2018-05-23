@@ -26,7 +26,7 @@ const styleTogglerMixin = {
 		    classes = classes.join(' ')
 		    this.$root.$el.className = classes
 		    this.$store.commit('changeColor', newTheme.split('-')[0])
-				this.$store.commit('changeColorArray', this.themeColorArray(newTheme))
+			this.$store.commit('changeColorArray', this.themeColorArray(newTheme))
 
 	    },
 		themeColorArray: function(theme) {
@@ -36,12 +36,17 @@ const styleTogglerMixin = {
 		      var style = Array.from(el).filter(rule => rule.selectorText ===`.${theme}`)
 		      style.length ? themeStyles = style[0].cssText : null;
 		    })
-		    var colors = themeStyles.split(':').slice(1).map(hex => hex.slice(0,8).trim())
-		    console.log(colors)
-		    var vuetifyLightColor = themeStyles.split('--vuetify-light: ')[1].split(';')[0]
-		    console.log(vuetifyLightColor)
-		    var vuetifyDarkColor = themeStyles.split('--vuetify-dark: ')[1].split(';')[0]
-		    console.log(vuetifyDarkColor)
+		   var colors = themeStyles.split(':').slice(1).map(function (hex) {
+				console.log('hex', hex.split(';')[0].trim())
+				return hex.split(';')[0].trim();
+			});
+			console.log(colors);
+      		var colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))
+
+			var vuetifyLightColor = colorsArray.filter(item=> item[0]=== '--vuetify-light')[0][1].trim()
+			console.log(vuetifyLightColor);
+			var vuetifyDarkColor = colorsArray.filter(item=> item[0]=== '--vuetify-dark')[0][1].trim()
+			console.log(vuetifyDarkColor);
 
 		    if (this.$store.state.themeMod.displayTheme === 'light') {
 		   		this.$vuetify.theme.info = vuetifyLightColor

@@ -5,6 +5,7 @@
         clipped-left
         fixed
         style="z-index:5;"
+        color="info"
       >
         <!-- DROP A LOGO HERE -->
         <template v-if="displayTheme === 'light'">
