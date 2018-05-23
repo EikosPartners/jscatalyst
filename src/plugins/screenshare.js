@@ -34,9 +34,14 @@ const screensharePlugin = {
         .filter(item => { return item[0] ? item[0].conditionText : null }).filter(list => list[0].cssText.includes(`.${currentWrapper}`))
 
       // map over the selected style objects (for both @supports queries) and take out all of its style rules
-      style = Array.from(Array.from(style[0])).map(supports=> {
-        return supports.cssText
-      })
+      var CSS = window.CSS.supports('display:grid')
+
+      if (CSS = true) {
+        style = Array.from(style[0]).filter(item=> !item.conditionText.includes('not'))[0].cssText
+      } else {
+        style = Array.from(style[0]).filter(item=> item.conditionText.includes('not'))[0].cssText
+      }
+
       return style
     }
 
