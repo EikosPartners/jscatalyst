@@ -25,6 +25,27 @@ To use it directly in the browser please use the unpkg link. This will automatic
 <script src="https://unpkg.com/jscatalyst/dist/jscatalyst.min.css"></script>
 ```
 
+## Generator
+JSCatalyst has a Yeoman generator to make getting started a breeze.
+Install `yo` and the generator package `generator-jscatalyst`.
+```
+npm install -g yo
+npm install -g generator-jscatalyst
+```
+
+Make a new directory and cd into it.
+
+```
+mkdir myproject && cd myproject
+```
+
+Run the generator
+
+```
+yo jscatalyst
+```
+
+
 ## Using Charts
 In your main.js file where your app is created please make sure to import the minified css for JS Catalyst.
 ```js
