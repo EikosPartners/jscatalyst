@@ -129,8 +129,11 @@
 
       ) {
         var timeKey;
+        let localThis = this
         Object.keys(data[0]).includes('month') ? timeKey = 'month' : timeKey = 'date';
         var keys = Object.keys(data[0]).filter(el => el !== timeKey)
+
+
 
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + id;
@@ -237,6 +240,7 @@
 
               //tooltips
               .on("mouseover", function(d) {
+                localThis.$emit('jsc_mouseover', d)
                 // find the amount by subtracting the two values in array
                 var difference = d[1] - d[0];
                 tooltip.transition()
@@ -247,12 +251,14 @@
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
                   })
-                  .on("mouseout", function(d) {
-                      tooltip.transition()
-                          .duration(300)
-                          .style("opacity", 0);
-                  });
-
+              .on("mouseout", function(d) {
+                  tooltip.transition()
+                      .duration(300)
+                      .style("opacity", 0);
+              })
+              .on("click", function(d){
+                localThis.$emit("jsc_click", d)
+              })
               // Draw legend
               var legend = svg.selectAll(".legend")
                 .data(colors)
