@@ -96,7 +96,7 @@
         data = this._props.dataModel,
         id =  this._props.propID,
       ) {
-
+        let localThis = this;
         let selection_string = "#" + id;
         if ($(selection_string + ' svg') != null) {
           $(selection_string + ' svg').remove();
@@ -157,7 +157,13 @@
 
         node.append("circle")
             .attr("class", "dot")
-            .attr("r", 4.5);
+            .attr("r", 4.5)
+            .on('mouseover', function(d) {
+              localThis.$emit('jsc_mouseover', d);
+            })
+            .on('click', function(d) {
+              localThis.$emit('jsc_click', d);
+            });
 
         //text for each node
         node.append("text")

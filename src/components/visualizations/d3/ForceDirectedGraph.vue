@@ -97,7 +97,7 @@ export default {
       data = this._props.dataModel,
       id = this._props.propID
     ) {
-
+      let localThis = this;
       let selection_string = "#" + id;
       if ($(selection_string + " svg") != null) {
         $(selection_string + " svg").remove();
@@ -132,6 +132,12 @@ export default {
           .enter().append("circle")
             .attr("r", 8)
             .attr("fill", function(d) { return color(d.group); })
+            .on('click', function (d) {
+              localThis.$emit('jsc_click', d);
+            })
+            .on('mouseover', function (d) {
+              localThis.$emit('jsc_mousover', d);
+            })
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
