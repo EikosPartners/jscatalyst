@@ -261,6 +261,9 @@ export default {
                 .transition()
                 .duration(300)
                 .style("opacity", 0);
+            }).
+            on("click", function (d) {
+              localThis.$emit('jsc_click', d);
             });
         }
     }

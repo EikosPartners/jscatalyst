@@ -323,6 +323,8 @@ export default {
 				.transition()
 				.duration(50)
 				.style("opacity", 1);
+
+			this.$emit('jsc_mouseover', d);
 		},
 		mouseOutBubble: function(d) {
 			var tooltip = d3.select(`.${this.propID}_tooltip`);

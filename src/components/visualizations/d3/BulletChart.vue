@@ -102,6 +102,14 @@
           .attr("class", "bullet")
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
+          .on('mouseenter', function (d) {
+            localThis.$emit('jsc_mouseover', d);
+
+            d3.event.stopPropagation();
+          })
+          .on('click', function (d) {
+            localThis.$emit('jsc_click', d);
+          })
         .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
           // renders each individual bullet chart for each object in the data array
@@ -199,7 +207,7 @@
                 return "translate(" + x(d) + ",0)";
               };
             }
-          });
+          })
 
         // add all the titles to the bullet charts
         var title = svg.append("g")
@@ -213,6 +221,13 @@
             .attr("class", "subtitle")
             .attr("dy", "1em")
             .text(function(d) { return d.subtitle; });
+
+        // d3.selectAll('.bullet')
+        //   .on('mouseover', function (d) {
+        //     localThis.$emit('jsc_mouseover', d);
+
+        //     d3.event.stopPropogation();
+        //   });
       },
 
       /**

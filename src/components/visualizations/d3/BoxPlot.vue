@@ -131,7 +131,8 @@
       		if (rowMin < min) min = rowMin;
       	});
 
-      	// var chart = this.drawChart(data, min, max, iqr(1.5), height)
+        // var chart = this.drawChart(data, min, max, iqr(1.5), height)
+        let localThis = this;
 
       	var svg = d3.select(selection_string).append("svg")
       		.attr("width", width + margin.left + margin.right)
@@ -294,7 +295,13 @@
                 d3.quantile(d, .75)
               ];
             }
-        })
+          })
+          .on("mouseover", function (d) {
+            localThis.$emit('jsc_mouseover', d);
+          })
+          .on("click", function (d) {
+            localThis.$emit('jsc_click', d);
+          });
 
       	// add a title
       	svg.append("text")
