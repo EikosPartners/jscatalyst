@@ -128,6 +128,7 @@ export default {
         return x;
       }
     ) {
+        let localThis = this;
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + id;
         if ($(selection_string + " svg") != null) {
@@ -227,6 +228,7 @@ export default {
             .attr("width", x.bandwidth()-x.paddingInner())
             .style("fill", "var(--fifth)")
             .on("mouseover", function(d) {
+              localThis.$emit('jsc_mouseover', d);
               var yval = mouseover_callback(d.y);
               tooltip
                 .transition()
