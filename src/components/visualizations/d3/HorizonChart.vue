@@ -121,6 +121,12 @@
                     .colors(localThis.colors)
                     .title(d.name)
                     .call(this, d.values);
+            })
+            .on('mouseover', function (d) {
+              localThis.$emit('jsc_mouseover', d);
+            })
+            .on('click', function (d) {
+              localThis.$emit('jsc_click', d);
             });
       },
       /**

@@ -272,6 +272,8 @@
               .duration(50)
               .style("fill", "black")
               .attr("opacity", 1);
+
+            localThis.$emit('jsc_mouseover', d);
           })
           .on("mouseout", function(d) {
             tooltip
@@ -283,6 +285,9 @@
               .transition()
               .duration(50)
               .attr("opacity", 0);
+          })
+          .on("click", function (d) {
+            localThis.$emit('jsc_click', d);
           });
 
         svg

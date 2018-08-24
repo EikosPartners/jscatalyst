@@ -101,6 +101,7 @@
       * called in mounted
       */
       drawHistogram: function() {
+        let localThis = this;
 
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
@@ -196,12 +197,17 @@
             )
             .style("left", d3.event.pageX + "px")
             .style("top", d3.event.pageY + "px");
+          
+          localThis.$emit('jsc_mouseover', d);
         })
-          .on("mouseout", function(d) {
-            tooltip.transition()
-              .duration(300)
-              .style("opacity", 0);
-          });
+        .on("mouseout", function(d) {
+          tooltip.transition()
+            .duration(300)
+            .style("opacity", 0);
+        })
+        .on("click", function (d) {
+          localThis.$emit('jsc_click', d);
+        });
 
       }
     }
