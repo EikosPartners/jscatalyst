@@ -182,6 +182,7 @@
         svg.selectAll(".layer")
             .attr("opacity", 1)
             .on("mouseover", function(d, i) {
+              localThis.$emit("jsc_mouseover", d)
               svg.selectAll(".layer").transition()
               .duration(250)
               .attr("opacity", function(d, j) {
@@ -220,7 +221,9 @@
             })
             .on('click', function(d) {
               console.log(d['key'] + ' was clicked');
+              localThis.$emit("jsc_click", d)
             })
+            
 
         function stackMax(layer) {
           return d3.max(layer, function(d) { return d[1]; });

@@ -307,6 +307,7 @@
           .attr("fill", "steelblue")
           .attr("opacity", 0)
           .on("mouseover", function(d) {
+            localThis.$emit("jsc_mouseover", d)
             tooltip
               .transition()
               .duration(100)
@@ -339,6 +340,9 @@
               .transition()
               .duration(50)
               .attr("opacity", 0);
+          })
+          .on("click", (d)=>{
+            localThis.$emit("jsc_click", d)
           });
 
         svg
@@ -353,6 +357,7 @@
           .attr("fill", "#222222")
           .attr("opacity", 0)
           .on("mouseover", function(d) {
+            localThis.$emit("jsc_mouseover", d)
             tooltip
               .transition()
               .duration(100)
@@ -385,6 +390,9 @@
               .transition()
               .duration(50)
               .attr("opacity", 0);
+          })
+          .on("click", (d)=>{
+            localThis.$emit("jsc_click", d)
           });
 
         svg
