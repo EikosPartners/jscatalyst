@@ -185,21 +185,7 @@
                   .attr("d", area)
                   .attr("clip-path", "url(#" + clip_id + ")")
                   .attr("opacity", 0.5)
-                  .on("mouseover", function (d) {
-                    var x = d3.mouse(this)[0],
-                        x0 = xScale.invert(x),
-                        i = bisectDate(d, x0, 1),
-                        data = data[i];
-                        
-                    localThis.$emit('jsc_mousover2', data);
-                  })
-                  .on("click", function (d) {
-                    var x = d3.mouse(this)[0],
-                        x0 = xScale.invert(x),
-                        i = bisectDate(d, x0, 1),
-                        data = data[i];
-                    localThis.$emit('jsc_click', data);
-                  })
+                  
               svg.append("path")
                   .datum(data)
                   .attr("class", "line")

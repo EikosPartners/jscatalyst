@@ -136,7 +136,7 @@ export default {
               localThis.$emit('jsc_click', d);
             })
             .on('mouseover', function (d) {
-              localThis.$emit('jsc_mousover', d);
+              localThis.$emit('jsc_mouseover', d);
             })
             .call(d3.drag()
                 .on("start", dragstarted)

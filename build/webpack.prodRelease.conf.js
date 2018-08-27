@@ -198,7 +198,6 @@ const webpackConfig =  {
     )
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
     new webpack.BannerPlugin(banner),
     new webpack.IgnorePlugin(/vertx/),
     new webpack.IgnorePlugin(/SankeyDiagram/),

@@ -251,7 +251,7 @@
                 .style("left", d3.event.pageX + 5 + "px")
                 .style("top", d3.event.pageY - 28 + "px");
 
-              localThis.$emit('jsc_mousover', d);
+              localThis.$emit('jsc_mouseover', d);
             })
             .on("mouseout", function(d) {
               tooltip.transition()
