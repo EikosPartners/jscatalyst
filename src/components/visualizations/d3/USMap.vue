@@ -205,6 +205,7 @@
               feature: us.objects.states
             }
           }
+          let localThis = this
 
           svg.append("g")
               .attr("class", attributes['class1'])
@@ -224,11 +225,16 @@
                   )
                   .style("left", d3.event.pageX + 5 + "px")
                   .style("top", d3.event.pageY - 28 + "px");
+                localThis.$emit("jsc_mouseover", selected)
               })
               .on("mouseout", function(d) {
                 tooltip.transition()
                   .duration(300)
                   .style("opacity", 0);
+              })
+              .on('click', (d)=>{
+                var selected = data.find(el => parseInt(el.id) === parseInt(d.id))
+                localThis.$emit("jsc_click", d)
               });
 
           svg.append("path")
