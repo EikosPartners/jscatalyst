@@ -98,7 +98,8 @@
 			* @function draw - function that draws the graphic
 			*/
       draw: function(allData) {
-
+        let localThis = this;
+        
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
         if ($(selection_string + " svg") != null) {
@@ -218,12 +219,25 @@
         svg.append("path")
             .attr("class", 'area above')
             .attr("clip-path", "url(#clip-above)")
-            .attr("d", area.y0(function(d) { return y(d["expected"]); }));
+            .attr("d", area.y0(function(d) { return y(d["expected"]); }))
+            .on("mouseover", function (d) {
+              localThis.$emit('jsc_mouseover', d);
+            })
+            .on("click", function (d) {
+              localThis.$emit('jsc_click', d);
+            });
+
 
         svg.append("path")
             .attr("class", 'area below')
             .attr("clip-path", "url(#clip-below)")
-            .attr("d", area);
+            .attr("d", area)
+            .on("mouseover", function (d) {
+              localThis.$emit('jsc_mouseover', d);
+            })
+            .on("click", function (d) {
+              localThis.$emit('jsc_click', d);
+            });
 
         svg.append("path")
             .attr("class", "difference-line")
@@ -245,7 +259,6 @@
             .attr("class", "difference-chart-metric")
             .text(this.metric);
 
-        var localThis = this;
         svg
           .selectAll(".dot")
           .data(data)

@@ -94,6 +94,8 @@
               if ( dataArray === undefined ) return;
               if ( dataArray.length === 0 ) return;
 
+              let localThis = this;
+
               d3.selectAll(`.${this.propID}_tooltip`).remove()
               if ($(selection_string + ' svg') != null) {
                   $(selection_string + ' svg').remove();
@@ -183,6 +185,21 @@
                   .attr("d", area)
                   .attr("clip-path", "url(#" + clip_id + ")")
                   .attr("opacity", 0.5)
+                  .on("mouseover", function (d) {
+                    var x = d3.mouse(this)[0],
+                        x0 = xScale.invert(x),
+                        i = bisectDate(d, x0, 1),
+                        data = data[i];
+                        
+                    localThis.$emit('jsc_mousover2', data);
+                  })
+                  .on("click", function (d) {
+                    var x = d3.mouse(this)[0],
+                        x0 = xScale.invert(x),
+                        i = bisectDate(d, x0, 1),
+                        data = data[i];
+                    localThis.$emit('jsc_click', data);
+                  })
               svg.append("path")
                   .datum(data)
                   .attr("class", "line")
@@ -230,7 +247,8 @@
                   tooltip.transition()
                       .duration(100)
                       .style("opacity", 1);
-              }).on("mouseout", function() {
+              })
+              .on("mouseout", function() {
                   if (dot_mtd) {
                       dot_mtd.remove();
                       vertical_bar.remove();
@@ -238,6 +256,20 @@
                           .duration(500)
                           .style("opacity", 0);
                   }
+              })
+              .on("mouseover", function () {
+                  var x = d3.mouse(this)[0],
+                      x0 = xScale.invert(x),
+                      i = bisectDate(data, x0, 1),
+                      d = data[i];
+                  localThis.$emit('jsc_mouseover', d);
+              })
+              .on("click", function () {
+                var x = d3.mouse(this)[0],
+                      x0 = xScale.invert(x),
+                      i = bisectDate(data, x0, 1),
+                      d = data[i];
+                  localThis.$emit('jsc_click', d);
               });
           },
           draw: function() {
