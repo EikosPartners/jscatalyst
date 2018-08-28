@@ -92,6 +92,12 @@
           $(selection_string + " > svg").remove();
         }
 
+        var tooltip = d3
+          .select("body")
+          .append("div")
+          .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
+          .style("opacity", 0);
+
         var element = $(selection_string);
         var margin = { top: 20, right: 30, bottom: 60, left: 50 },
             width = element.width() - margin.left - margin.right,
@@ -335,7 +341,31 @@
           .on("mouseover", function (d) {
             let data = computeBoxValues(d);
 
+            tooltip
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+            
+            tooltip
+              .html(
+                `Label: ${data.label} <br/>
+                 Min: ${data.min} <br/>
+                 Q1: ${data.quartile1} <br/>
+                 Median: ${data.median} <br/>
+                 Q3: ${data.quartile3} <br/>
+                 Max: ${data.max} <br/>
+                `
+              )
+              .style("left", d3.event.pageX + "px")
+              .style("top", d3.event.pageY + "px");
+
             localThis.$emit('jsc_mouseover', data);
+          })
+          .on("mouseout", function (d) {
+            tooltip
+              .transition()
+              .duration(100)
+              .style("opacity", 0);
           })
           .on("click", function (d) {
             let data = computeBoxValues(d);
