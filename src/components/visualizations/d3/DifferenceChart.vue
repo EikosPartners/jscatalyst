@@ -220,24 +220,12 @@
             .attr("class", 'area above')
             .attr("clip-path", "url(#clip-above)")
             .attr("d", area.y0(function(d) { return y(d["expected"]); }))
-            .on("mouseover", function (d) {
-              localThis.$emit('jsc_mouseover', d);
-            })
-            .on("click", function (d) {
-              localThis.$emit('jsc_click', d);
-            });
 
 
         svg.append("path")
             .attr("class", 'area below')
             .attr("clip-path", "url(#clip-below)")
             .attr("d", area)
-            .on("mouseover", function (d) {
-              localThis.$emit('jsc_mouseover', d);
-            })
-            .on("click", function (d) {
-              localThis.$emit('jsc_click', d);
-            });
 
         svg.append("path")
             .attr("class", "difference-line")
@@ -268,7 +256,7 @@
           .attr("r", 5)
           .attr("cx", function(d){return x(d.date)})
           .attr("cy", function(d){return y(d.actual)})
-          .attr("opacity", 0)
+          .attr("opacity", 1)
           .on("mouseover", function(d) {
             tooltip.transition()
               .duration(100)
@@ -285,17 +273,22 @@
                 .duration(50)
                 .style("fill", 'steelblue')
                 .attr("opacity", 1);
+
+            localThis.$emit('jsc_mouseover', d);
           })
-            .on("mouseout", function(d) {
-              tooltip.transition()
-                .duration(300)
-                .style("opacity", 0);
-                d3
-                  .select(this)
-                  .transition()
-                  .duration(50)
-                  .attr("opacity", 0);
-            });
+          .on("mouseout", function(d) {
+            tooltip.transition()
+              .duration(300)
+              .style("opacity", 0);
+              d3
+                .select(this)
+                .transition()
+                .duration(50)
+                .style("fill", 'black');
+          })
+          .on("click", function (d) {
+            localThis.$emit('jsc_click', d);
+          });
       },
       /**
       * @function resizeSVG - redraws the SVG on window resize
