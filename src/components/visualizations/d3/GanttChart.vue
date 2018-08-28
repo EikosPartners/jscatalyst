@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="gantt-container">
       <panel-heading v-if='title' :headerText='title'></panel-heading>
   	  <resize-observer @notify="resizeSVG" />
       <div :id="propID" style="height:100%"/>
@@ -272,6 +272,10 @@
 .chart {
 	font-family: Arial, sans-serif;
 	font-size: 12px;
+}
+
+.gantt-container {
+  height: 100%;
 }
 
 .bar {
