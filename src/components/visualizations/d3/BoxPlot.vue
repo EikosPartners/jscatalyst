@@ -92,6 +92,12 @@
           $(selection_string + " > svg").remove();
         }
 
+        var tooltip = d3
+          .select("body")
+          .append("div")
+          .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
+          .style("opacity", 0);
+
         var element = $(selection_string);
         var margin = { top: 20, right: 30, bottom: 60, left: 50 },
             width = element.width() - margin.left - margin.right,
@@ -131,7 +137,8 @@
       		if (rowMin < min) min = rowMin;
       	});
 
-      	// var chart = this.drawChart(data, min, max, iqr(1.5), height)
+        // var chart = this.drawChart(data, min, max, iqr(1.5), height)
+        let localThis = this;
 
       	var svg = d3.select(selection_string).append("svg")
       		.attr("width", width + margin.left + margin.right)
@@ -157,6 +164,42 @@
 
       	var yAxis = d3.axisLeft()
           .scale(y);
+
+        /** 
+         * @param d : Array -> [label, values]
+         *              label is the label of the box being drawn
+         *              values is the range of values for the box
+         * @return Returns an object with min, max, quartile1, median, and quartile3
+         */
+        let computeBoxValues = function (d) {
+          let ret = {};
+
+          if (!d || d.length <= 0 || d[1].length <= 0){
+            return ret;
+          }
+
+          let data = d[1];
+          ret.values = data;
+          ret.label = d[0];
+
+          // Ensure data is sorted.
+          data.sort( (a,b) => { return a - b });
+
+          ret.min = data[0];
+          ret.max = data[data.length - 1];
+
+          let midpoint = Math.floor( (data.length - 1) / 2);
+          let q1midpoint = (midpoint - 1) / 2;
+          q1midpoint = data.length % 2 === 0 ? Math.round(q1midpoint) : Math.floor(q1midpoint);
+
+          let q3midpoint = Math.floor( ( (data.length - midpoint)) / 2) + midpoint;
+
+          ret.median = data[midpoint];
+          ret.quartile1 = data[q1midpoint];
+          ret.quartile3 = data[q3midpoint];
+
+          return ret;
+        }
 
       	// draw the boxplots
       	svg.selectAll(".box")
@@ -294,7 +337,41 @@
                 d3.quantile(d, .75)
               ];
             }
-        })
+          })
+          .on("mouseover", function (d) {
+            let data = computeBoxValues(d);
+
+            tooltip
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+            
+            tooltip
+              .html(
+                `Label: ${data.label} <br/>
+                 Min: ${data.min} <br/>
+                 Q1: ${data.quartile1} <br/>
+                 Median: ${data.median} <br/>
+                 Q3: ${data.quartile3} <br/>
+                 Max: ${data.max} <br/>
+                `
+              )
+              .style("left", d3.event.pageX + "px")
+              .style("top", d3.event.pageY + "px");
+
+            localThis.$emit('jsc_mouseover', data);
+          })
+          .on("mouseout", function (d) {
+            tooltip
+              .transition()
+              .duration(100)
+              .style("opacity", 0);
+          })
+          .on("click", function (d) {
+            let data = computeBoxValues(d);
+
+            localThis.$emit('jsc_click', data);
+          });
 
       	// add a title
       	svg.append("text")

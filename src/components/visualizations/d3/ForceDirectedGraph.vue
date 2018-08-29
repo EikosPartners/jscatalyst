@@ -97,26 +97,26 @@ export default {
       data = this._props.dataModel,
       id = this._props.propID
     ) {
+        let localThis = this;
+        let selection_string = "#" + id;
+        if ($(selection_string + " svg") != null) {
+          $(selection_string + " svg").remove();
+        }
 
-      let selection_string = "#" + id;
-      if ($(selection_string + " svg") != null) {
-        $(selection_string + " svg").remove();
-      }
+        var element = $(selection_string);
+        var width = element.width(),
+        height = element.height();
 
-      var element = $(selection_string);
-      var width = element.width(),
-       height = element.height();
+        var svg = d3.select(".forcedirected").append("svg")
+        .attr("width", width)
+        .attr("height", height)
 
-      var svg = d3.select(".forcedirected").append("svg")
-      .attr("width", width)
-      .attr("height", height)
+        var color = d3.scaleOrdinal(d3.schemePaired);
 
-      var color = d3.scaleOrdinal(d3.schemePaired);
-
-      var simulation = d3.forceSimulation()
-      .force("link", d3.forceLink().id(function(d) { return d.id; }))
-      .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(width / 2, height / 2));
+        var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.id; }))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width / 2, height / 2));
 
         var link = svg.append("g")
           .attr("class", "links")
@@ -125,6 +125,11 @@ export default {
           .enter().append("line")
           .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
+        var tooltip = d3.select("body")
+          .append("div")
+          .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
+          .style("opacity", 0);
+
         var node = svg.append("g")
             .attr("class", "nodes")
           .selectAll("circle")
@@ -132,6 +137,27 @@ export default {
           .enter().append("circle")
             .attr("r", 8)
             .attr("fill", function(d) { return color(d.group); })
+            .on('click', function (d) {
+              localThis.$emit('jsc_click', d);
+            })
+            .on('mouseover', function (d) {
+              tooltip.transition()
+                .duration(100)
+                .style("opacity", 1);
+
+              tooltip
+                .html(`ID: ${d.id} <br/> Group: ${d.group} <br/> Index: ${d.index}`)
+                .style("left", d3.event.pageX + "px")
+                .style("top", d3.event.pageY + "px")
+
+              localThis.$emit('jsc_mouseover', d);
+            })
+            .on('mouseout', function (d) {
+              tooltip
+                .transition()
+                .duration(300)
+                .style("opacity", 0);
+            })
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)

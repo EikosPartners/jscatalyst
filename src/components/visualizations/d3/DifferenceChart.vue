@@ -68,7 +68,7 @@
       },
       keys: {
         type: Array,
-        default: ()=> (["Expected", "Actual"])
+        default: ()=> (["expected", "actual"])
       },
       title: {
         type: String
@@ -98,7 +98,8 @@
 			* @function draw - function that draws the graphic
 			*/
       draw: function(allData) {
-
+        let localThis = this;
+        
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
         if ($(selection_string + " svg") != null) {
@@ -168,13 +169,13 @@
         var line = d3.area()
             .curve(d3.curveCardinal)
             .x(function(d) { return x(d.date); })
-            .y(function(d) { return y(d["actual"]); });
+            .y(function(d) { return y(d[localThis.keys[1]]); });
 
         // create area between lines
         var area = d3.area()
             .curve(d3.curveCardinal)
             .x(function(d) { return x(d.date); })
-            .y1(function(d) { return y(d["actual"]); });
+            .y1(function(d) { return y(d[localThis.keys[1]]); });
 
 
         var tooltip = d3.select("body")
@@ -195,8 +196,8 @@
 
         // find min and max values for y axis
         y.domain([
-          d3.min(data, function(d) { return Math.min(d["actual"], d["expected"]); }),
-          d3.max(data, function(d) { return Math.max(d["actual"], d["expected"]); })
+          d3.min(data, function(d) { return Math.min(d[localThis.keys[1]], d[localThis.keys[0]]); }),
+          d3.max(data, function(d) { return Math.max(d[localThis.keys[1]], d[localThis.keys[0]]); })
         ]);
 
         svg.datum(data);
@@ -218,12 +219,13 @@
         svg.append("path")
             .attr("class", 'area above')
             .attr("clip-path", "url(#clip-above)")
-            .attr("d", area.y0(function(d) { return y(d["expected"]); }));
+            .attr("d", area.y0(function(d) { return y(d[localThis.keys[0]]); }))
+
 
         svg.append("path")
             .attr("class", 'area below')
             .attr("clip-path", "url(#clip-below)")
-            .attr("d", area);
+            .attr("d", area)
 
         svg.append("path")
             .attr("class", "difference-line")
@@ -245,7 +247,6 @@
             .attr("class", "difference-chart-metric")
             .text(this.metric);
 
-        var localThis = this;
         svg
           .selectAll(".dot")
           .data(data)
@@ -254,15 +255,15 @@
           .attr("class", "dot")
           .attr("r", 5)
           .attr("cx", function(d){return x(d.date)})
-          .attr("cy", function(d){return y(d.actual)})
-          .attr("opacity", 0)
+          .attr("cy", function(d){return y(d[localThis.keys[1]])})
+          .attr("opacity", 1)
           .on("mouseover", function(d) {
             tooltip.transition()
               .duration(100)
               .style("opacity", 1);
             tooltip
               .html(
-                'Date: ' + moment(d.date).format('MMMM Do YYYY') + '<br/>' + localThis.keys[0] + ': ' + d.expected + '<br/>' + localThis.keys[1] + ': ' + d.actual
+                'Date: ' + moment(d.date).format('MMMM Do YYYY') + '<br/>' + localThis.keys[0] + ': ' + d[localThis.keys[0]] + '<br/>' + localThis.keys[1] + ': ' + d[localThis.keys[1]]
               )
               .style("left", d3.event.pageX + "px")
               .style("top", d3.event.pageY + "px");
@@ -272,17 +273,22 @@
                 .duration(50)
                 .style("fill", 'steelblue')
                 .attr("opacity", 1);
+
+            localThis.$emit('jsc_mouseover', d);
           })
-            .on("mouseout", function(d) {
-              tooltip.transition()
-                .duration(300)
-                .style("opacity", 0);
-                d3
-                  .select(this)
-                  .transition()
-                  .duration(50)
-                  .attr("opacity", 0);
-            });
+          .on("mouseout", function(d) {
+            tooltip.transition()
+              .duration(300)
+              .style("opacity", 0);
+              d3
+                .select(this)
+                .transition()
+                .duration(50)
+                .style("fill", 'black');
+          })
+          .on("click", function (d) {
+            localThis.$emit('jsc_click', d);
+          });
       },
       /**
       * @function resizeSVG - redraws the SVG on window resize

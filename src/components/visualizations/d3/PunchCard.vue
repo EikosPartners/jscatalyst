@@ -339,8 +339,8 @@
 
         //adds labels
         var dotLabels = rows.selectAll(".dot-label").data(function(d) {
-          return d.hour_volumes.map(function(v) {
-            return [v, d.day_of_week];
+          return d.hour_volumes.map(function(v, idx) {
+            return [v, d.day_of_week, idx];
           });
         })
           .enter()
@@ -362,6 +362,9 @@
               .duration(100)
               .style("opacity", 1);
           })
+          .on('mouseenter', function (d) {
+            localThis.$emit('jsc_mouseover', d);
+          })
           .on("mouseout", function(d) {
             var selection = d3.select(this);
             selection.style("cursor", "default");
@@ -380,6 +383,8 @@
                 localThis.onClick("point", localThis.getDay(d[1]), i);
               }
             }
+
+            localThis.$emit('jsc_click', d);
           });
 
 

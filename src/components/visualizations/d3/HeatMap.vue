@@ -294,7 +294,8 @@
 	            .transition()
 	            .duration(300)
 	            .style("opacity", 0);
-	        });
+	        })
+					.on('click', component.click);
 	    },
 	    numberWithCommas: function(x) {
 	      x = x.toString();
@@ -324,7 +325,16 @@
 	        .transition()
 	        .duration(50)
 	        .style("opacity", 1);
+
+				this.$emit('jsc_mouseover', item[0]);
 	    },
+			click: function (d) {
+				let item = this.dataModel.filter( function (item) {
+					return item.date == d;
+				});
+
+				this.$emit('jsc_click', item[0]);
+			},
 	    monthPath: function(t0) {
 	      let day = d3.timeFormat("%w");
 	      let week = d3.timeFormat("%U");

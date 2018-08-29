@@ -68,7 +68,7 @@
       * @function draw - function that draws the graphic
       */
   		draw: function(){
-
+        let localThis = this
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
         if ($(selection_string + " svg") != null) {
@@ -124,8 +124,13 @@
             .attr("d", arc)
             .attr('class', 'segment')
             .style("fill", function(d) { return color((d.children ? d : d.parent).data.name); })
-            .on("click", click)
+            .on("click", function(d){
+              click(d)
+              localThis.$emit("jsc_click", d)
+              
+            })
             .on("mouseover", function(d) {
+              localThis.$emit("jsc_mouseover", d)
               tooltip.transition()
                 .duration(100)
                 .style("opacity", 1);

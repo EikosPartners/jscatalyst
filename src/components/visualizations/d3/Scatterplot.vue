@@ -100,7 +100,7 @@
         data = this._props.dataModel,
         id = this._props.propID
       ) {
-
+        let localThis = this;
         let selection_string = "#" + id;
         if ($(selection_string + " svg") != null) {
           $(selection_string + " svg").remove();
@@ -185,19 +185,24 @@
 
             //tooltips
         .on("mouseover", function(d) {
-         tooltip.transition()
-              .duration(100)
-          .style("opacity", 1);
+          tooltip.transition()
+            .duration(100)
+            .style("opacity", 1);
                 tooltip.html(d.Value1 + "<br/> (" + xValue(d)
-                + ", " + yValue(d) + ")")
-              .style("left", (d3.event.pageX + 5) + "px")
-              .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
-                tooltip.transition()
-                    .duration(300)
-                    .style("opacity", 0);
-            });
+              + ", " + yValue(d) + ")")
+            .style("left", (d3.event.pageX + 5) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+
+            localThis.$emit('jsc_mouseover', d);
+          })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                  .duration(300)
+                  .style("opacity", 0);
+          })
+          .on("click", function (d) {
+            localThis.$emit('jsc_click', d);
+          });
 
           // draw legend
          var legend = svg.selectAll(".legend")

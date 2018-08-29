@@ -79,6 +79,8 @@
       * @function draw - function that draws the graphic
       */
       draw: function() {
+        let localThis = this
+
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
         if ($(selection_string + " svg") != null) {
@@ -127,7 +129,6 @@
             .style("opacity", 0);
 
         var data = this.dataModel;
-
         d3.json("https://unpkg.com/world-atlas@1.1.4/world/50m.json").then((world) => {
 
           var valueById = {};
@@ -153,12 +154,17 @@
                   )
                   .style("left", d3.event.pageX + 5 + "px")
                   .style("top", d3.event.pageY - 28 + "px");
+                localThis.$emit("jsc_mouseover", selected)
               })
               .on("mouseout", function(d) {
                 tooltip.transition()
                   .duration(300)
                   .style("opacity", 0);
-              });
+              })
+              .on("click", (d)=>{
+                var selected = data.find(el => parseInt(el.id) === parseInt(d.id))
+                localThis.$emit("jsc_click", selected)
+              })
 
 
           svg.insert("path", ".graticule")

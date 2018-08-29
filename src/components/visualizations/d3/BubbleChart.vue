@@ -323,6 +323,8 @@ export default {
 				.transition()
 				.duration(50)
 				.style("opacity", 1);
+
+			this.$emit('jsc_mouseover', d);
 		},
 		mouseOutBubble: function(d) {
 			var tooltip = d3.select(`.${this.propID}_tooltip`);
@@ -337,10 +339,8 @@ export default {
 			if (click_cats.indexOf('NULL') < 0) {
 				d3.select(".d3_visuals_tooltip").transition().style('opacity', 0);
 			}
-			// Make sure we propogate the click out of the chart
-			if ( this.bubbleSelected !== undefined ) {
-				this.bubbleSelected(d)
-			}
+
+			this.$emit('jsc_click', d);
 		},
 		agentClickedOnBubble: function(d) {
 			var tooltip = d3.select(".d3_visuals_tooltip");

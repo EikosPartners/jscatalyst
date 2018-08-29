@@ -1,6 +1,10 @@
 {
   "name": "jscatalyst",
-  "version": "1.1.27",
+<<<<<<< HEAD
+  "version": "1.1.20",
+=======
+  "version": "1.1.19",
+>>>>>>> 6f77224c7bd3da783a77ae6fa384d07fb7fef5de
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
@@ -14,8 +18,8 @@
     "start": "npm run dev",
     "test": "nyc jest",
     "build": "node build/build.js",
-    "test_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
-    "npm_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
+    "test_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
+    "npm_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepublishOnly": "npm run test_build && npm run npm_build"
   },
@@ -28,7 +32,6 @@
     "chartist": "^0.11.0",
     "chartkick": "^2.3.3",
     "compression": "^1.7.2",
-    "cross-env": "^5.2.0",
     "d3": "^5.3.0",
     "d3-horizon-chart": "0.0.6",
     "isomorphic-fetch": "^2.2.1",
