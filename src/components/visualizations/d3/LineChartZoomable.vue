@@ -19,6 +19,8 @@
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
   * @param {string} metric - value
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   * @param {string} dateFormat - default: 'YYYY-MM-DD'
   *
   * @example
@@ -60,6 +62,12 @@
       dateFormat: {
         type: String,
         default: 'YYYY-MM-DD'
+      },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
+        type: String
       },
       title: {
         type: String
@@ -185,7 +193,8 @@
 
         var focus = svg.append("g")
             .attr("class", "focus")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .style("margin-bottom", "20px")
 
         var context = svg.append("g")
             .attr("class", "context")
@@ -202,15 +211,32 @@
               .datum(data)
               .attr("class", "area zoom")
               .attr("d", area);
+        
 
           focus.append("g")
               .attr("class", "axis axis--x")
               .attr("transform", "translate(0," + height + ")")
-              .call(xAxis);
+              .call(xAxis)
+              .append("text")
+              .attr("x", ( width / 2 ))
+              .attr("y", 10)
+              .attr("dy", ".71em")
+              .style("text-anchor", "middle")
+              .attr("font-size", "16px")
+              .text(this.xAxisLabel);
+
 
           focus.append("g")
               .attr("class", "axis axis--y")
-              .call(yAxis);
+              .call(yAxis)
+              .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -margin.left)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .attr("font-size", "16px")
+              .text(this.yAxisLabel);
+
 
           context.append("path")
               .datum(data)

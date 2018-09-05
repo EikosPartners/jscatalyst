@@ -22,6 +22,9 @@
   * @param {string} propID - the ID for the component
   * @param {string} metric1 - the name for first set of data you are measuring
   * @param {string} metric2 - the name for the second set of data you are measuring
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
+  * @param {string} yAxis2Label - label for the 2nd y-axis
   * @param {string} dateFormat - 'YYYY-MM-DD'
   *
   * @example
@@ -70,6 +73,15 @@
       metric2: {
         type: String,
         default: ""
+      },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
+        type: String
+      },
+      yAxis2Label: {
+        type: String
       },
       dateFormat: {
         type: String,
@@ -241,22 +253,28 @@
           .append("g")
           .attr("class", "x axis xaxis axis-two-plot")
           .attr("transform", "translate(0," + height + ")")
-          .call(xAxis);
+          .call(xAxis)
+          .append("text")
+          .attr("x", (width / 2))
+          .attr("y", 10)
+          .attr("dy", ".71em")
+          .style("text-anchor", "middle")
+          .attr("font-size", "16px")
+          .text(this.xAxisLabel);
 
         svg
           .append("g")
           .attr("class", "y axis axis-two-plot")
           .style("fill", "black")
           .call(yAxis)
-          .append("foreignObject")
+          .append("text")
           .attr("class", "metric-label-two-plot")
           .attr("transform", "rotate(-90)")
-          .attr("y", 6)
-          .attr("x", -height)
           .attr("width", height)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text(metric);
+          .style("font-size", "16px")
+          .text(this.yAxisLabel);
 
         svg
           .append("g")
@@ -269,7 +287,7 @@
           .attr("dy", "-.71em")
           .style("text-anchor", "end")
           .style("font-size", "16px")
-          .text(metric2);
+          .text(this.yAxis2Label);
 
         var displayTheme = this.displayTheme
         svg

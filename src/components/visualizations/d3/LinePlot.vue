@@ -20,6 +20,8 @@
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
   * @param {string} metric - what you are measuring
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   * @param {string} color - color of the chart
   * @param {string} dateFormat - default: 'YYYY-MM-DD'
   *
@@ -58,6 +60,12 @@
       metric: {
         type: String,
         default: ""
+      },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
+        type: String
       },
       color: {
         type: String,
@@ -193,24 +201,27 @@
           .attr("transform", "translate(0," + height + ")")
           .style('fill', 'black')
           .style("font-size", "14px")
-          .call(xAxis);
+          .call(xAxis)
+          .append("text")
+          .attr("x", (width / 2))
+          .attr("y", 10)
+          .attr("dy", ".71em")
+          .style("text-anchor", "middle")
+          .attr("font-size", "16px")
+          .text(this.xAxisLabel)
 
         svg
           .append("g")
           .attr("class", "y axis axis-line-plot")
           .style("fill", "black")
           .call(yAxis)
-          .append("foreignObject")
+          .append("text")
           .attr("transform", "rotate(-90)")
-          .attr("y", 6)
-          .attr("x", -height)
-          .attr("width", height)
+          .attr("y", -margin.left)
           .attr("dy", ".71em")
-          .html(
-            "<div class=metric-label>" +
-              metric +
-              "</div>"
-          );
+          .style("text-anchor", "end")
+          .attr("font-size", "16px")
+          .text(this.yAxisLabel);
 
         var clip_id = "clip-" + this._props.propID;
 

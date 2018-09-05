@@ -20,6 +20,8 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   * @param {string} dateFormat - 'MM/YYYY'
   *
   * @example
@@ -60,6 +62,12 @@
       propID: {
         type: String,
         default: 'container-streamgraph'
+      },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
+        type: String
       },
       dateFormat: {
         type: String,
@@ -159,11 +167,24 @@
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -margin.left)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .attr("font-size", "16px")
+            .text(this.yAxisLabel);
 
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .append("text")
+            .attr("x", (width / 2))
+            .attr("y", 30)
+            .style("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .text(this.xAxisLabel);
 
         svg.selectAll("streams")
           .data(layers)

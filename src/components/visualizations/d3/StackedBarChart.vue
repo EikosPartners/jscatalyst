@@ -19,8 +19,8 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
-  * @param {string} xaxisLabel - label for x-axis
-  * @param {string} yaxisLabel - label for y-axis
+  * @param {string} xAxisLabel - label for x-axis
+  * @param {string} yAxisLabel - label for y-axis
   * @param {string} dateFormat - Momentjs format of the date in the dataModel
   *
   * @example
@@ -55,11 +55,11 @@
         type: Array,
         default: ()=>{return [{"month":"January", "A":20, "B": 5,  "C": 10}]}
       },
-      xaxisLabel: {
+      xAxisLabel: {
     		 type: String,
     		 default: ''
       },
-      yaxisLabel: {
+      yAxisLabel: {
     		 type: String,
     		 default: ''
   	  },
@@ -98,8 +98,8 @@
   		this.dataModel.length !== 0 ? this.drawStackedBarChart(
         this._props.dataModel,
         this._props.propID,
-        this._props.yaxisLabel,
-        this._props.xaxisLabel
+        this._props.yAxisLabel,
+        this._props.xAxisLabel
       ) : null
   	},
     destroyed() {
@@ -124,8 +124,8 @@
       drawStackedBarChart: function (
         data = this.dataModel,
         id = this._props.propID,
-        yAxisLabel = this._props.yaxisLabel,
-        xAxisLabel = this._props.xaxisLabel
+        yAxisLabel = this._props.yAxisLabel,
+        xAxisLabel = this._props.xAxisLabel
 
       ) {
         var timeKey;
@@ -210,17 +210,28 @@
           //append x and y axises
 
           svg.append("g")
-            .attr("class", "y axis-stacked")
+            .attr("class", "y axis axis-stacked")
             .call(yAxis)
             .append('text')
-              .text(function(d) {return yAxisLabel});
+              .attr("transform", "rotate(-90)")
+              .attr("y", 6)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .attr("font-size", "16px")
+              .text(this.yAxisLabel);
 
           svg.append("g")
-            .attr("class", "x axis-stacked")
+            .attr("class", "x axis axis-stacked")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
-            .append('text')
-              .text(function(d) {return xAxisLabel});
+            .append("text")
+              .attr("x", (width / 2))
+              .attr("y", 10)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .attr("font-size", "16px")
+              .style("text-color", 'black')
+              .text(this.xAxisLabel);
 
           var layer = svg.selectAll(".stack")
             .data(layers)

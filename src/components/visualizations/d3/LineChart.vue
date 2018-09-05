@@ -17,6 +17,8 @@
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
   * @param {string} dateFormat - default: 'YYYY-MM-DD'
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   * @param {string} alertText - name of the data being displayed ('Incident', etc.)
   *
   * @example
@@ -54,9 +56,11 @@
         type: String,
         default: 'YYYY-MM-DD'
       },
-      alertText: {
-        type: String,
-        default: "Incidents Volume",
+      xAxisLabel: {
+          type: String
+      },
+      yAxisLabel: {
+          type: String
       },
       title: {
         type: String
@@ -166,10 +170,19 @@
                   .attr("y", clip_orig_y)
                   .attr("width", width)
                   .attr("height", height);
+
               svg.append("g")
-                  .attr("class", "x axis xaxis")
-                  .attr("transform", "translate(0," + height + ")")
-                  .call(xAxis);
+                .attr("class", "x axis xaxis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .append("text")
+                .attr("x", ( width / 2 ) - margin.left)
+                .attr("y", 10)
+                .attr("dy", ".71em")
+                .style("text-anchor", "middle")
+                .attr("font-size", "16px")
+                .text(this.xAxisLabel); 
+
               svg.append("g")
                   .attr("class", "y axis")
                   .call(yAxis)
@@ -178,7 +191,10 @@
                   .attr("y", 6)
                   .attr("dy", ".71em")
                   .style("text-anchor", "end")
-                  .text(component.alertText);
+                  .attr("font-size", "16px")
+                  .text(this.yAxisLabel);
+            
+
               svg.append("path")
                   .datum(data)
                   .attr("class", "area")
