@@ -315,6 +315,8 @@ export default {
 				.style("text-anchor", "end")
 				.text(this.yAxisLabel);
 
+/*
+DLG: this is not needed should be the responsibility of the user of the component to title the plot
 
 			if (this.type === 'agent' ) {
 			    svg.append("text")
@@ -333,6 +335,7 @@ export default {
 						return d.value;
 					}));
 			}
+*/
 
 		let mouseOver = this.mouseOverBubble
 		if ( this.type.includes('agent')) {mouseOver = this.agentMouseOverBubble}
