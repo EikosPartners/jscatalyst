@@ -20,6 +20,7 @@
   * @param {string} propID - the ID for the component
   * @param {string} xaxisvalue - label for x-axis, optional
   * @param {string} yaxisvalue - label for y-axis, optional
+  * @param {Number} xAxisAngle - the angle at which to rotate the x-axis labels
   *
   * @example
   * usage on a page:
@@ -63,6 +64,10 @@ export default {
     },
     title: {
       type: String
+    },
+    xAxisAngle: {
+        type: Number,
+        default: 0
     }
   },
   data: function() {
@@ -196,6 +201,16 @@ export default {
           .attr("y", 30)
           .style("text-anchor", "end")
           .text(xaxisvalue);
+        
+        let text = chart.selectAll("text");
+
+        if (this.xAxisAngle != 0) {
+            text
+                .attr("transform", `rotate(${this.xAxisAngle})`)
+                .style("text-anchor", "middle")
+                .attr("y", 45);
+        }
+          
 
         chart
           .append("g")
