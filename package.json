@@ -44,6 +44,7 @@
     "vue-chartist": "^2.1.2",
     "vue-chartjs": "^3.2.1",
     "vue-chartkick": "^0.2.1",
+    "vue-color": "^2.6.0",
     "vue-resize": "^0.4.3",
     "vue-server-renderer": "^2.5.13",
     "vue-socket.io": "^2.1.1-a",
