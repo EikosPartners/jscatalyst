@@ -24,17 +24,17 @@
 
                 <v-card-text>
                     <v-layout row>
-                    <v-text-field placeholder="Enter theme name..." v-model="newThemeName"></v-text-field>
+                        <v-text-field placeholder="Enter theme name..." v-model="newThemeName"></v-text-field>
                     </v-layout>
                     <v-layout row wrap>
-                    <v-flex>
-                    Choose a primary color:
-                    <color-picker v-model="newPrimaryColor"></color-picker>
-                    </v-flex>
-                    <v-flex>
-                    Choose an accent color:
-                    <color-picker v-model="newAccentColor"></color-picker>
-                    </v-flex>
+                        <v-flex>
+                            Choose a primary color:
+                            <color-picker v-model="newPrimaryColor"></color-picker>
+                        </v-flex>
+                        <v-flex>
+                            Choose an accent color:
+                            <color-picker v-model="newAccentColor"></color-picker>
+                        </v-flex>
                     </v-layout>
                 </v-card-text>
 
@@ -85,6 +85,10 @@
                 this.showColorPicker = true;
             },
             saveTheme() {
+                // Filter the theme name for any special characters or spaces.
+                this.newThemeName = this.newThemeName.replace(/[^a-zA-Z ]/g, "")
+                this.newThemeName = this.newThemeName.replace(/\s+/g, '-');
+
                 let payload = {
                     primary: this.newPrimaryColor.hex,
                     accent: this.newAccentColor.hex,
