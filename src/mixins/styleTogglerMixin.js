@@ -44,26 +44,18 @@ const styleTogglerMixin = {
 				return hex.split(';')[0].trim();
 			});
 
-			// If colors is empty, we've got a user defined theme.
-			if (colors.length === 0) {
-				let theme = this.$store.getters.getCustomTheme;
-				for (let i = 0; i < 4; i++) {
-					colorsArray.push(theme.primary);
-					colorsArray.push(theme.accent);
-				}
-			} else {
-				colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))	
-				var vuetifyLightColor = colorsArray.filter(item=> item[0]=== '--vuetify-light')[0][1].trim()
-				console.log(vuetifyLightColor);
-				var vuetifyDarkColor = colorsArray.filter(item=> item[0]=== '--vuetify-dark')[0][1].trim()
-				console.log(vuetifyDarkColor);
+			colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))	
+			var vuetifyLightColor = colorsArray.filter(item=> item[0]=== '--vuetify-light')[0][1].trim()
+			console.log(vuetifyLightColor);
+			var vuetifyDarkColor = colorsArray.filter(item=> item[0]=== '--vuetify-dark')[0][1].trim()
+			console.log(vuetifyDarkColor);
 
-				if (this.$store.state.themeMod.displayTheme === 'light') {
-					this.$vuetify.theme.info = vuetifyLightColor
-				} else {
-					this.$vuetify.theme.info = vuetifyDarkColor
-				}
+			if (this.$store.state.themeMod.displayTheme === 'light') {
+				this.$vuetify.theme.info = vuetifyLightColor
+			} else {
+				this.$vuetify.theme.info = vuetifyDarkColor
 			}
+				
 			return colors
 		}
 	}
