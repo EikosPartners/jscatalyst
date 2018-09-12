@@ -5,7 +5,7 @@
                 <v-icon>arrow_drop_down</v-icon>
             </v-btn>
             <v-list>
-                <v-list-tile v-for="item in themes" :key="item" @click="chooseTheme(item)">
+                <v-list-tile v-for="item in themes" :key="item" @click="changeTheme(item)">
                 <v-list-tile-title>{{ item }}</v-list-tile-title>
                     <v-icon :color="item.toLowerCase()">brightness_1</v-icon>
                 </v-list-tile>
@@ -84,6 +84,10 @@
             addColor () {
                 this.showColorPicker = true;
             },
+            changeTheme (newTheme) {
+                this.chooseTheme(newTheme);
+                this.$emit('jsc_theme_change', newTheme);
+            },
             saveTheme() {
                 // Filter the theme name for any special characters or spaces.
                 this.newThemeName = this.newThemeName.replace(/[^a-zA-Z ]/g, "")
@@ -117,7 +121,7 @@
                 style.appendChild(document.createTextNode(themeCSS));
                 document.head.appendChild(style);
 
-                this.chooseTheme(this.newThemeName);
+                this.changeTheme(this.newThemeName);
 
                 this.showColorPicker = false;
                 this.newPrimaryColor = {};
