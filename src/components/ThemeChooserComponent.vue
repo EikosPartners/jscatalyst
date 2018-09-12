@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-menu offset-y open-on-hover max-height="400px">
+        <v-menu offset-y open-on-hover>
             <v-btn flat slot="activator" class="navBtn">Themes
                 <v-icon>arrow_drop_down</v-icon>
             </v-btn>
@@ -84,9 +84,12 @@
             addColor () {
                 this.showColorPicker = true;
             },
-            changeTheme (newTheme) {
+            changeTheme (newTheme, themeColors) {
                 this.chooseTheme(newTheme);
-                this.$emit('jsc_theme_change', newTheme);
+                this.$emit('jsc_theme_change', {
+                    name: newTheme,
+                    colors: themeColors
+                });
             },
             saveTheme() {
                 // Filter the theme name for any special characters or spaces.
@@ -112,16 +115,23 @@
                         --seventh: ${this.newPrimaryColor.hex};
                         --eighth: ${this.newAccentColor.hex};
 
-                        --vuetify-light: ${this.newPrimaryColor};
-                        --vuetify-dark: ${this.newAccentColor};
+                        --vuetify-light: ${this.newPrimaryColor.hex};
+                        --vuetify-dark: ${this.newAccentColor.hex};
                     }
                 `
+
+                let themeColors = [];
+                for (let i = 0; i < 4; i++) {
+                    themeColors.push(this.newPrimaryColor.hex);
+                    themeColors.push(this.newAccentColor.hex);
+                }
+
                 let style = document.createElement("style");
                 style.type = "text/css";
                 style.appendChild(document.createTextNode(themeCSS));
                 document.head.appendChild(style);
 
-                this.changeTheme(this.newThemeName);
+                this.changeTheme(this.newThemeName, themeColors);
 
                 this.showColorPicker = false;
                 this.newPrimaryColor = {};
