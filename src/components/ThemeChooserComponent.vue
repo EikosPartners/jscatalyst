@@ -7,7 +7,7 @@
             <v-list>
                 <v-list-tile v-for="item in themes" :key="item" @click="changeTheme(item)">
                 <v-list-tile-title>{{ item }}</v-list-tile-title>
-                    <v-icon :color="item.toLowerCase()">brightness_1</v-icon>
+                    <v-icon color="getColorForItem(item)">brightness_1</v-icon>
                 </v-list-tile>
                 <v-list-tile @click="addColor()">
                 <v-list-tile-title>New</v-list-tile-title>
@@ -91,6 +91,15 @@
                     colors: themeColors
                 });
             },
+            getColorForItem (item) {
+                let color = this.getCustomTheme(item);
+
+                if (color && color.length > 0) {
+                    return color[0].primary
+                } else {
+                    return item.toLowerCase();
+                }
+            },
             saveTheme() {
                 // Filter the theme name for any special characters or spaces.
                 this.newThemeName = this.newThemeName.replace(/[^a-zA-Z ]/g, "")
@@ -99,7 +108,8 @@
                 let payload = {
                     primary: this.newPrimaryColor.hex,
                     accent: this.newAccentColor.hex,
-                    name: this.newThemeName
+                    name: this.newThemeName,
+                    isCustom: true
                 };
 
                 this.$store.commit("saveCustomTheme", payload)

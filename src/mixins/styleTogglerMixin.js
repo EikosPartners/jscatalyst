@@ -57,6 +57,9 @@ const styleTogglerMixin = {
 			}
 				
 			return colors
+		},
+		getCustomTheme: function (themeName) {
+			return this.$store.state.themeMod.customThemes.filter( el => el.name === themeName);
 		}
 	}
 }
