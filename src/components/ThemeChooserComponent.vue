@@ -7,7 +7,7 @@
             <v-list>
                 <v-list-tile v-for="item in themes" :key="item" @click="changeTheme(item)">
                 <v-list-tile-title>{{ item }}</v-list-tile-title>
-                    <v-icon color="getColorForItem(item)">brightness_1</v-icon>
+                    <v-icon :color="getColorForItem(item)" :style="{color: getColorForItem(item)}">brightness_1</v-icon>
                 </v-list-tile>
                 <v-list-tile @click="addColor()">
                 <v-list-tile-title>New</v-list-tile-title>
@@ -95,7 +95,7 @@
                 let color = this.getCustomTheme(item);
 
                 if (color && color.length > 0) {
-                    return color[0].primary
+                    return color[0].primary + " !important"
                 } else {
                     return item.toLowerCase();
                 }
