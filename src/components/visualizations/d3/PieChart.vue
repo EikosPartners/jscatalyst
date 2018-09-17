@@ -65,7 +65,8 @@
     },
     data: function() {
       return {
-        savedColors: {}
+        savedColors: {},
+        total: 0
       }
     },
     watch: {
