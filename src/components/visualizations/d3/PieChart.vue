@@ -218,12 +218,12 @@
             .attr("fill", function (d, i) {
                 var length = colors.length
                 var color;
-
-              if (localThis.savedColors[d.label]){
-                color = localThis.savedColors[d.label]
+                console.log(localThis.savedColors)
+              if (localThis.savedColors[d.data.label]){
+                color = localThis.savedColors[d.data.label]
               } else {
                 i >= length ? color = colors[i-length] : color = colors[i];
-                localThis.savedColors[d.label] = color
+                localThis.savedColors[d.data.label] = color
 
               }
               return color;
