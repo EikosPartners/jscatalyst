@@ -188,10 +188,12 @@
           .attr("fill", function (d, i) {
             var length = colors.length
             var color;
-            if (localThis.savedColors[d.label]){
-              color = localThis.savedColors[d.label]
+            if (localThis.savedColors[d.data.label]){
+              color = localThis.savedColors[d.data.label]
             } else {
               i >= length ? color = colors[i-length] : color = colors[i]; 
+              localThis.savedColors[d.data.label] = color
+
             }
             return color;
           })
@@ -219,11 +221,11 @@
                 var length = colors.length
                 var color;
                 console.log(localThis.savedColors)
-              if (localThis.savedColors[d.data.label]){
-                color = localThis.savedColors[d.data.label]
+              if (localThis.savedColors[d.label]){
+                color = localThis.savedColors[d.label]
               } else {
                 i >= length ? color = colors[i-length] : color = colors[i];
-                localThis.savedColors[d.data.label] = color
+                localThis.savedColors[d.label] = color
 
               }
               return color;
