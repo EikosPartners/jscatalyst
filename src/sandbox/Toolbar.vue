@@ -40,19 +40,7 @@
           </v-tooltip>
 
           <!-- <v-btn small flat @click.stop="aboutModal = true" class="navBtn">About</v-btn> -->
-
-          <v-menu offset-y open-on-hover max-height="400px">
-            <v-btn flat slot="activator" class="navBtn">Themes
-              <v-icon>arrow_drop_down</v-icon>
-            </v-btn>
-            <v-list>
-              <v-list-tile v-for="item in themes" :key="item" @click="chooseTheme(item)">
-                <v-list-tile-title>{{ item }}</v-list-tile-title>
-                  <v-icon :color="item.toLowerCase()">brightness_1</v-icon>
-              </v-list-tile>
-            </v-list>
-          </v-menu>
-
+          <theme-chooser></theme-chooser>
         </v-toolbar-items>
 
         <!-- Collapsed nav menu for mobile -->
@@ -63,15 +51,7 @@
             </v-btn>
             <span>Toggle light/dark</span>
           </v-tooltip>
-          <v-menu max-height="400px">
-            <v-icon slot="activator">menu</v-icon>
-            <v-list>
-              <v-list-tile v-for="item in themes" :key="item" @click="chooseTheme(item)">
-                <v-list-tile-title>{{ item }}</v-list-tile-title>
-                  <v-icon :color="item.toLowerCase()">brightness_1</v-icon>
-              </v-list-tile>
-            </v-list>
-          </v-menu>
+          <theme-chooser></theme-chooser>
         </v-toolbar-items>
 
       </v-toolbar>
@@ -83,47 +63,31 @@
           <v-icon small id="onHoverBtn" style="float:right; margin-right:0px; margin-top: 6px;" @click.stop="closeModal">close</v-icon>
       </div>
     </v-card-title>
-
-
   </div>
 </template>
 
 <script>
-
-import styleTogglerMixin from '@/mixins/styleTogglerMixin.js'
+  import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue';
+  import styleTogglerMixin from '@/mixins/styleTogglerMixin.js';
 
   export default {
+    components: {
+      'theme-chooser': ThemeChooserComponent
+    },
+    mixins: [styleTogglerMixin],
     props: [
 
     ],
-    mixins: [styleTogglerMixin],
-    data: function () {
-      return {
-        themes: [],
-      }
-    },
-    mounted() {
-      this.themes = this.allThemes
-      if (this.$store.state.themeMod) this.chooseTheme(this.colorTheme);
-    },
-    computed: {
-      colorTheme: function() {
-        if(this.$store.state.themeMod) return this.$store.state.themeMod.colorTheme;
-        return 'blue'
-      },
-      displayTheme: function() {
-        if (this.$store.state.themeMod) return this.$store.state.themeMod.displayTheme;
-        return 'light'
-      },
-      allThemes: function() {
-        if (this.$store.state.themeMod) return this.$store.state.themeMod.allThemes;
-        return ['Blue']
-      }
-    },
     methods: {
       refreshScreen: function(){
         location.reload();
       }
+    },
+    computed: {
+      displayTheme: function() {
+          if (this.$store.state.themeMod) return this.$store.state.themeMod.displayTheme;
+          return 'light'
+      },
     }
   }
 </script>
@@ -167,4 +131,5 @@ import styleTogglerMixin from '@/mixins/styleTogglerMixin.js'
       font-family: 'Roboto';
       font-weight: normal;
   }
+
 </style>

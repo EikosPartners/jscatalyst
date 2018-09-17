@@ -12,7 +12,8 @@ const themes = {
         colorTheme: 'blue',
         displayTheme: 'light',
         allThemes: themes,
-        themeColors: []
+        themeColors: [],
+        customThemes: []
       },
       mutations: {
         changeColor: function(state, payload) {
@@ -26,6 +27,15 @@ const themes = {
         },
         changeColorArray: function(state, payload) {
           state.themeColors = payload
+        },
+        saveCustomTheme: function (state, payload) {
+          state.allThemes = [...state.allThemes, payload.name]
+          state.customThemes = [...state.customThemes, payload]
+        }
+      },
+      getters: {
+        getCustomTheme: function (state, getters) {
+          return state.customThemes.filter( (theme) => { return theme.name.toLowerCase() === state.colorTheme })[0];
         }
       }
     })

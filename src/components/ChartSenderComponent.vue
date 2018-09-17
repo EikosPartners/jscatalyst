@@ -40,7 +40,6 @@
       }
     },
     mounted() {
-      debugger
       this.chartList = this.charts()
     }
   }

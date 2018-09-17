@@ -20,6 +20,8 @@
   * @param {string} propID - the ID for the component
   * @param {string} xaxisvalue - label for x-axis, optional
   * @param {string} yaxisvalue - label for y-axis, optional
+  * @param {string} title - The title of the chart
+  * @param {Number} xAxisAngle - the angle at which to rotate the x-axis labels, either 45 or 90 degrees
   *
   * @example
   * usage on a page:
@@ -63,6 +65,10 @@ export default {
     },
     title: {
       type: String
+    },
+    xAxisAngle: {
+        type: Number,
+        default: 0
     }
   },
   data: function() {
@@ -136,9 +142,16 @@ export default {
         }
 
         var element = $(selection_string);
-        var margin = { top: 20, right: 30, bottom: 40, left: 40 },
-          width = element.width() - margin.left - margin.right,
+        var margin = { top: 20, right: 30, bottom: 40, left: 40 };
+
+        let width = element.width() - margin.left - margin.right,
           height = element.height() - margin.top - margin.bottom;
+
+        // If there is a title, account for the height of the panel heading.
+        // Height can be found in the PanelHeading.vue file
+        if (this.title) {
+          height -= 40;
+        }
 
         var x = d3.scaleBand()
           .range([0, width])
@@ -194,8 +207,30 @@ export default {
           .attr("class", "label")
           .attr("x", width / 2 + margin.right)
           .attr("y", 30)
-          .style("text-anchor", "end")
+          .style("text-anchor", "middle")
           .text(xaxisvalue);
+        
+        let text = chart.selectAll("text");
+
+        if (this.xAxisAngle > 0) {
+            text
+                .attr("transform", `rotate(${this.xAxisAngle})`)
+                .style("text-anchor", "middle")
+
+            let dimensions = text.node().getBBox();
+
+            if (this.xAxisAngle === 45) {
+              text.attr("x", 15)
+                  .attr("y", dimensions.height * 2);
+            }
+
+            if (this.xAxisAngle === 90) {
+              text.attr("x", dimensions.width - 10)
+                  .attr("y", 0);
+            }
+            
+        }
+          
 
         chart
           .append("g")

@@ -10,6 +10,7 @@ import LoaderComponent from '@/components/LoaderComponent.vue'
 import ReceiverComponent from '@/components/ReceiverComponent.vue'
 import DynamicComponent from '@/components/DynamicComponent.vue'
 import UIBuilderComponent from '@/components/UIBuilderComponent.vue'
+import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
 
 import ChartistBarChart from '@/components/visualizations/Chartist/ChartistBarChart.vue'
 import ChartistLineChart from '@/components/visualizations/Chartist/ChartistLineChart.vue'
@@ -64,6 +65,7 @@ import NumericEditorComponent from '@/components/Tables/NumericEditorComponent.j
 import ValidationEditorComponent from '@/components/Tables/ValidationEditorComponent.js'
 import MongoDataSource from '@/components/Tables/MongoDataSource.js'
 import ViewportDataSource from '@/components/Tables/ViewportDataSource.js'
+
 
 import './assets/stylus/main.styl'
 
@@ -141,6 +143,7 @@ export {
   ReceiverComponent,
   DynamicComponent,
   UIBuilderComponent,
+  ThemeChooserComponent,
   PlotlyAreaChart,
   PlotlyBarGraph,
   PlotlyBubbleChart,

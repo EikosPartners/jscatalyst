@@ -18,6 +18,8 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   *
   * @example
   * usage on a page:
@@ -52,6 +54,12 @@
     		 default: 'scatterplot'
   	  },
       title: {
+        type: String
+      },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
         type: String
       }
     },
@@ -156,10 +164,11 @@
             .call(xAxis)
           .append("text")
             .attr("class", "label")
-            .attr("x", width)
+            .attr("x", (width / 2))
             .attr("y", -6)
             .style("text-anchor", "end")
-            .text("x-axis label");
+            .attr("font-size", "16px")
+            .text(this.xAxisLabel);
 
         // y-axis
          svg.append("g")
@@ -171,7 +180,8 @@
              .attr("y", 6)
              .attr("dy", ".71em")
              .style("text-anchor", "end")
-             .text("y-axis label");
+             .attr("font-size", "16px")
+             .text(this.yAxisLabel);
 
           // draw dots
          svg.selectAll(".dot")

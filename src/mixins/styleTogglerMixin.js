@@ -1,3 +1,5 @@
+import { mapGetters } from "vuex";
+
 function hex2rgb(hex) {
   return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
 }
@@ -26,35 +28,38 @@ const styleTogglerMixin = {
 		    classes = classes.join(' ')
 		    this.$root.$el.className = classes
 		    this.$store.commit('changeColor', newTheme.split('-')[0])
-			this.$store.commit('changeColorArray', this.themeColorArray(newTheme))
-
+				this.$store.commit('changeColorArray', this.themeColorArray(newTheme))
 	    },
 		themeColorArray: function(theme) {
 			var styleSheets = Array.from(document.getElementsByTagName("STYLE")).map(el => el.sheet.cssRules).filter(el => el.length)
-		    var themeStyles
-		    styleSheets.forEach(el => {
-		      var style = Array.from(el).filter(rule => rule.selectorText ===`.${theme}`)
-		      style.length ? themeStyles = style[0].cssText : null;
-		    })
-		   var colors = themeStyles.split(':').slice(1).map(function (hex) {
+			var themeStyles, colorsArray = [];
+			
+			styleSheets.forEach(el => {
+				var style = Array.from(el).filter(rule => rule.selectorText ===`.${theme}`)
+				style.length ? themeStyles = style[0].cssText : null;
+			})
+
+			var colors = (themeStyles || "").split(':').slice(1).map(function (hex) {
 				console.log('hex', hex.split(';')[0].trim())
 				return hex.split(';')[0].trim();
 			});
-			console.log(colors);
-      		var colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))
 
+			colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))	
 			var vuetifyLightColor = colorsArray.filter(item=> item[0]=== '--vuetify-light')[0][1].trim()
 			console.log(vuetifyLightColor);
 			var vuetifyDarkColor = colorsArray.filter(item=> item[0]=== '--vuetify-dark')[0][1].trim()
 			console.log(vuetifyDarkColor);
 
-		    if (this.$store.state.themeMod.displayTheme === 'light') {
-		   		this.$vuetify.theme.info = vuetifyLightColor
-		    } else {
-		   		this.$vuetify.theme.info = vuetifyDarkColor
-		    }
-
-		    return colors
+			if (this.$store.state.themeMod.displayTheme === 'light') {
+				this.$vuetify.theme.info = vuetifyLightColor
+			} else {
+				this.$vuetify.theme.info = vuetifyDarkColor
+			}
+				
+			return colors
+		},
+		getCustomTheme: function (themeName) {
+			return this.$store.state.themeMod.customThemes.filter( el => el.name === themeName);
 		}
 	}
 }

@@ -19,6 +19,8 @@
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
   * @param {string} metric - value
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   * @param {string} dateFormat - default: 'YYYY-MM-DD'
   *
   * @example
@@ -61,6 +63,12 @@
         type: String,
         default: 'YYYY-MM-DD'
       },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
+        type: String
+      },
       title: {
         type: String
       }
@@ -94,7 +102,7 @@
         }
 
         var element = $(selection_string);
-
+        let localThis = this;
 
         var margin = {top: 20, right: 20, bottom: 120, left: 40},
             margin2 = {top: 390, right: 20, bottom: 40, left: 40},
@@ -119,10 +127,36 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+        var tooltip = d3.select("body")
+            .append("div")
+            .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
+            .style("opacity", 0);
+
         var x = d3.scaleTime().range([0, width]),
             x2 = d3.scaleTime().range([0, width]),
             y = d3.scaleLinear().range([height, 0]),
             y2 = d3.scaleLinear().range([height2, 0]);
+        console.log(height, width, margin);
+          
+        var xValue = function(d) { return d.date; },
+            xMap = function(d) {
+              // Account for margins because of attaching to outer rect.
+              let xval = x(xValue(d)) + margin.left; 
+
+              // If the dot shouldn't be shown because zoomed in, make sure its
+              // off the screen.
+              if (xval < margin.left) {
+                xval = -100000000;
+              }
+
+              return xval;
+            };
+        
+        var yValue = function(d) { return d.value; };
+        var yMap = function(d) { 
+          // Account for margins because of attaching to outer rect.
+          return y(yValue(d)) + margin.top; 
+        };
 
         var xAxis = d3.axisBottom(x),
             xAxis2 = d3.axisBottom(x2),
@@ -159,7 +193,8 @@
 
         var focus = svg.append("g")
             .attr("class", "focus")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .style("margin-bottom", "20px")
 
         var context = svg.append("g")
             .attr("class", "context")
@@ -176,15 +211,32 @@
               .datum(data)
               .attr("class", "area zoom")
               .attr("d", area);
+        
 
           focus.append("g")
               .attr("class", "axis axis--x")
               .attr("transform", "translate(0," + height + ")")
-              .call(xAxis);
+              .call(xAxis)
+              .append("text")
+              .attr("x", ( width / 2 ))
+              .attr("y", 10)
+              .attr("dy", ".71em")
+              .style("text-anchor", "middle")
+              .attr("font-size", "16px")
+              .text(this.xAxisLabel);
+
 
           focus.append("g")
               .attr("class", "axis axis--y")
-              .call(yAxis);
+              .call(yAxis)
+              .append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -margin.left)
+              .attr("dy", ".71em")
+              .style("text-anchor", "end")
+              .attr("font-size", "16px")
+              .text(this.yAxisLabel);
+
 
           context.append("path")
               .datum(data)
@@ -212,7 +264,36 @@
               .attr("height", height)
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
               .call(zoom);
-
+          
+          svg.selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("class", "dot")
+            .attr("r", 5)
+            .attr("cx", xMap)
+            .attr("cy", yMap)
+            .style("z-index", 1000)
+            .attr("fill", "steelblue")
+            .on("mouseover", function (d) {
+              tooltip
+                .html(`Date: ${d.date} <br/> Value: ${d.value}`)
+                .style("left", d3.event.pageX + "px")
+                .style("top", d3.event.pageY + "px")
+                .transition()
+                .duration(100)
+                .style("opacity", 1);
+              localThis.$emit('jsc_mouseover', d);
+            })
+            .on("mouseout", function (d) {
+              tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 0);
+            })
+            .on("click", function (d) {
+              localThis.$emit('jsc_click', d);
+            })
 
         function brushed() {
           if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
@@ -232,6 +313,10 @@
           focus.select(".area").attr("d", area);
           focus.select(".axis--x").call(xAxis);
           context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
+
+          svg.selectAll('.dot')
+            .attr("cx", xMap)
+            .attr("cy", yMap)
         }
 
       },

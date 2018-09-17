@@ -17,8 +17,8 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
-  * @param {string} metric - label for x-axis, optional
-  * @param {string} yLabel - label for y-axis, optional
+  * @param {string} xAxisLabel - label for x-axis, optional
+  * @param {string} yAxisLabel - label for y-axis, optional
   *
   * @example
   * usage on a page:
@@ -49,11 +49,11 @@
         type: String,
         default: 'container-boxplot'
       },
-      metric: {
+      xAxisLabel: {
         type: String,
         default: 'Revenue in $'
       },
-      yLabel: {
+      yAxisLabel: {
         type: String,
         default: 'Revenue'
       },
@@ -373,15 +373,6 @@
             localThis.$emit('jsc_click', data);
           });
 
-      	// add a title
-      	svg.append("text")
-              .attr("x", (width / 2))
-              .attr("y", 0 + (margin.top / 2))
-              .attr("text-anchor", "middle")
-              .style("font-size", "18px")
-              //.style("text-decoration", "underline")
-              .text(this.yLabel);
-
       	 // draw y axis
       	svg.append("g")
             .attr("class", "y axis")
@@ -393,7 +384,7 @@
         		  .style("text-anchor", "end")
         		  .style("font-size", "16px")
               .style('text-color', 'black')
-        		  .text(this.metric);
+        		  .text(this.yAxisLabel);
 
       	// draw x axis
       	svg.append("g")
@@ -406,7 +397,7 @@
       		    .attr("dy", ".71em")
               .style("text-anchor", "middle")
       		    .style("font-size", "16px")
-              .text("Year");
+              .text(this.xAxisLabel);
 
         // Returns a function to compute the interquartile range.
         function iqr(k) {

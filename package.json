@@ -1,6 +1,6 @@
 {
   "name": "jscatalyst",
-  "version": "1.1.27",
+  "version": "1.1.37",
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
@@ -44,6 +44,7 @@
     "vue-chartist": "^2.1.2",
     "vue-chartjs": "^3.2.1",
     "vue-chartkick": "^0.2.1",
+    "vue-color": "^2.6.0",
     "vue-resize": "^0.4.3",
     "vue-server-renderer": "^2.5.13",
     "vue-socket.io": "^2.1.1-a",

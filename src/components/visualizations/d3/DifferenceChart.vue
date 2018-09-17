@@ -19,7 +19,8 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
-  * @param {string} metric - y-axis label
+  * @param {string} yAxisLabel - y-axis label
+  * @param {string} xAxisLabel - x-axis label
   * @param {string} dateFormat - 'YYYY-MM-DD'
   * @param {Array} keys - overwrite what the displayed labels will be for the data, instead of expected and actual
   *
@@ -28,7 +29,7 @@
   * <difference-chart
   *   :dataModel="differenceChartData"
   *   propID="container-differencechart"
-  *   metric="Volume"
+  *   yAxisLabel="Volume"
   *   dateFormat="YYYY-DD-MM"
   * ></difference-chart>
   *
@@ -59,7 +60,10 @@
         type: String,
         default: 'container-differencechart'
       },
-      metric: {
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
         type: String
       },
       dateFormat: {
@@ -234,7 +238,15 @@
         svg.append("g")
             .attr("class", "x axis x-axis-label")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .append("text")
+            .attr("x", (width / 2))
+            .attr("y", 10)
+            .attr("dy", ".71em")
+            .style("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .style('text-color', 'black')
+        		.text(this.xAxisLabel);
 
         svg.append("g")
             .attr("class", "y axis y-axis-label")
@@ -244,8 +256,8 @@
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .attr("class", "difference-chart-metric")
-            .text(this.metric);
+            .attr("font-size", "16px")
+            .text(this.yAxisLabel);
 
         svg
           .selectAll(".dot")

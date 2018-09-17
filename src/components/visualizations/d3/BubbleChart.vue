@@ -12,6 +12,7 @@
 	import * as moment from 'moment'
 	import 'moment-duration-format'
 	import { ResizeObserver } from 'vue-resize';
+	import formatTimeMixin from '@/mixins/formatTimeMixin.js';
 	import PanelHeading from '@/components/universal/PanelHeading.vue';
 
 	/** Bubble Chart D3 component
@@ -19,6 +20,10 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
+  * @param {string} dateFormat - default: 'YYYY-MM-DD'
+  * @param {boolean} isDate - true/false for whether x-axis will be date values
   *
   * @example
   * usage on a page:
@@ -34,9 +39,10 @@
 export default {
 	name: 'D3BubbleChart',
 	components: {
-    'resize-observer': ResizeObserver,
-    'panel-heading': PanelHeading
-  },
+    	'resize-observer': ResizeObserver,
+    	'panel-heading': PanelHeading
+  	},
+  	mixins: [formatTimeMixin],
 	props: {
 		type: {
 			type: String,
@@ -51,9 +57,9 @@ export default {
 			default: "bubble-chart"
 		},
 		currentCategories: {
-      type: Array,
-      default: ()=>{return  ["all", "all", "all"]}
-    },
+			type: Array,
+			default: ()=>{return  ["all", "all", "all"]}
+		},
 		xAxisLabel: {
 			type: String,
 			default: "Duration"
@@ -64,11 +70,19 @@ export default {
 		},
 		isTime: {
 			type: Boolean,
-			default: true
+			default: false
 		},
-    title: {
-      type: String
-    }
+		title: {
+			type: String
+		},
+		dateFormat: {
+			type: String,
+			default: 'YYYY-MM-DD'
+		},
+		isDate: {
+			type: Boolean,
+			default: false
+		}
 	},
 	data: function() {
 		return {
@@ -151,6 +165,7 @@ export default {
 			var ternaryHeight = elementHeight > 0 ? elementHeight : 400
 			var height = ternaryHeight - margin.top - margin.bottom;
 			//retrieving globals
+			
 
 			var svg,
 				category = this.currentCategories.join(' '),
@@ -163,18 +178,39 @@ export default {
 				$(containerIdSvg).remove();
 			}
 
-			var xScale = d3.scaleLinear()
-				.range([0, width]),
-				xMap = function(d) {
+			const formatDate = d3.timeParse(this.d3Time[this.dateFormat]);
+
+			var xScale;
+
+			if (this.isDate) {
+				xScale = d3.scaleTime().range([0, width]);
+			} else {
+				xScale = d3.scaleLinear().range([0, width]);
+			}
+
+			data = data.map(function (d) {
+				if (d.mapped) { return d; }
+				d.x = formatDate(d.x);
+				d.mapped = true;
+				return d;
+			});
+			
+
+			var xMap = function(d) {
 					return xScale(xValue(d));
 				},
 				xAxis = d3.axisBottom()
 					.scale(xScale)
 					.tickSizeInner(-height)
 					.ticks(6)
-					.tickFormat(function(d) {
+				
+				if (this.isDate) {
+					xAxis.tickFormat(d3.timeFormat(this.d3Time[this.dateFormat]));
+				} else {
+					xAxis.tickFormat(function(d) {
 						return localThis.isTime ? pretty_duration(60*d) : d;
 					});
+				}
 
 			var yScale = d3.scaleLinear()
 					.range([height, 0]),
@@ -219,9 +255,23 @@ export default {
 			var xMax = d3.max(data, xValue);
 			var yMin = d3.min(data, yValue);
 			var yMax = d3.max(data, yValue);
+
+			// Determine padding for x-axis if it's dates.
+			if (this.isDate) {
+				let min = xScale(xMin);
+				let max = xScale(xMax);
+
+				xMin = xScale.invert(min - (min * .001));
+				xMax = xScale.invert((max * .001) + max);
+			} else {
+				xMin = xMin - (xMin / 2);
+				xMax = xMax + (xMax / 4);
+			}
+
+
 			// Subtract half the min value from min and add one fourth
 			// of the max to the max so that the bubbles never go outside of the graph
-			xScale.domain([xMin - xMin/2, xMax + xMax/4]);
+			xScale.domain([xMin, xMax]);
 			yScale.domain([yMin - yMin/2, yMax + yMax/4]);
 			svg = d3.select(containerId)
 				.append("svg")
@@ -265,6 +315,8 @@ export default {
 				.style("text-anchor", "end")
 				.text(this.yAxisLabel);
 
+/*
+DLG: this is not needed should be the responsibility of the user of the component to title the plot
 
 			if (this.type === 'agent' ) {
 			    svg.append("text")
@@ -283,6 +335,7 @@ export default {
 						return d.value;
 					}));
 			}
+*/
 
 		let mouseOver = this.mouseOverBubble
 		if ( this.type.includes('agent')) {mouseOver = this.agentMouseOverBubble}

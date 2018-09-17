@@ -18,6 +18,8 @@
   *
   * @param {Array} dataModel - the dataModel for the component
   * @param {string} propID - the ID for the component
+  * @param {string} xAxisLabel - x-axis label
+  * @param {string} yAxisLabel - y-axis label
   *
   * @example
   * usage on a page:
@@ -47,6 +49,12 @@
         default: 'container-histogram'
       },
       title: {
+        type: String
+      },
+      xAxisLabel: {
+        type: String
+      },
+      yAxisLabel: {
         type: String
       }
     },
@@ -173,11 +181,25 @@
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .append("text")
+            .attr("x", (width / 2))
+            .attr("y", 10)
+            .attr("dy", ".71em")
+            .style("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .text(this.xAxisLabel);
 
         svg.append("g")
             .attr("class", "y axis")
-            .call(yAxis);
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .attr("font-size", "16px")
+            .text(this.yAxisLabel);
 
         var tooltip = d3
           .select("body")
@@ -199,6 +221,7 @@
             .style("top", d3.event.pageY + "px");
           
           localThis.$emit('jsc_mouseover', d);
+          console.log(d);
         })
         .on("mouseout", function(d) {
           tooltip.transition()
