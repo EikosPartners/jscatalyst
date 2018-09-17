@@ -39,7 +39,7 @@
                 </v-card-text>
 
                 <v-card-actions>
-                    <v-btn color="success" @click="saveTheme()">Save Theme</v-btn>
+                    <v-btn color="success" @click="saveTheme(true)">Save Theme</v-btn>
                     <v-btn color="error" @click="showColorPicker = !showColorPicker">Cancel</v-btn>
                 </v-card-actions>
             </v-card>
@@ -51,9 +51,30 @@
     import styleTogglerMixin from '@/mixins/styleTogglerMixin.js'
     import { Chrome } from 'vue-color';
 
+    /** ThemeChooserComponent
+     * 
+     * @param {Array} customThemes - an array of custom themes to populate the component with
+     * 
+     * @example 
+     * <theme-chooser :customThemes="myCustomThemes"></theme-chooser>
+     */
     export default {
         components: {
             'color-picker': Chrome
+        },
+        props: {
+            /**
+             * The custom themes should be sent as objects with the following
+             * 
+             * @typedef {Array} customThemes
+             * @property {string} name - the name of the theme
+             * @property {string} primary - the hex string for the primary color
+             * @property {string} accent - the hex string for the accent color
+             */
+            customThemes: {
+                type: Array,
+                default: () => { return []; }
+            }
         },
         mixins: [styleTogglerMixin],
         data () {
@@ -66,6 +87,9 @@
         },
         mounted() {
             if (this.$store.state.themeMod) this.chooseTheme(this.colorTheme);
+
+            // Add the customThemes. 
+            this.setCustomThemes();
         },
         computed: {
             colorTheme: function() {
@@ -91,6 +115,49 @@
                     colors: themeColors
                 });
             },
+            setCustomThemes () {
+                if (this.customThemes.length > 0) {
+                    let localThis = this;
+                    this.customThemes.forEach( theme => {
+                        // Filter the theme name for any special characters or spaces.
+                        theme.name = theme.name.replace(/[^a-zA-Z ]/g, "")
+                        theme.name = theme.name.replace(/\s+/g, '-');
+
+                        let payload = { 
+                            primary: theme.primary,
+                            accent: theme.accent,
+                            name: theme.name,
+                            isCustom: true
+                        };
+
+                        localThis.$store.commit("saveCustomTheme", payload);
+
+                        localThis.addStyleTag(theme);
+                    });
+                }
+            },
+            addStyleTag (theme) {
+                let themeCSS = `
+                    .${theme.name.toLowerCase()}-theme { 
+                        --first: ${theme.primary};
+                        --second: ${theme.accent};
+                        --third: ${theme.primary};
+                        --fourth: ${theme.accent};
+                        --fifth: ${theme.primary};
+                        --sixth: ${theme.accent};
+                        --seventh: ${theme.primary};
+                        --eighth: ${theme.accent};
+
+                        --vuetify-light: ${theme.primary};
+                        --vuetify-dark: ${theme.accent};
+                    }
+                `
+
+                let style = document.createElement("style");
+                style.type = "text/css";
+                style.appendChild(document.createTextNode(themeCSS));
+                document.head.appendChild(style);
+            },
             getColorForItem (item) {
                 let color = this.getCustomTheme(item);
 
@@ -114,32 +181,13 @@
 
                 this.$store.commit("saveCustomTheme", payload)
 
-                let themeCSS = `
-                    .${this.newThemeName.toLowerCase()}-theme { 
-                        --first: ${this.newPrimaryColor.hex};
-                        --second: ${this.newAccentColor.hex};
-                        --third: ${this.newPrimaryColor.hex};
-                        --fourth: ${this.newAccentColor.hex};
-                        --fifth: ${this.newPrimaryColor.hex};
-                        --sixth: ${this.newAccentColor.hex};
-                        --seventh: ${this.newPrimaryColor.hex};
-                        --eighth: ${this.newAccentColor.hex};
-
-                        --vuetify-light: ${this.newPrimaryColor.hex};
-                        --vuetify-dark: ${this.newAccentColor.hex};
-                    }
-                `
+                this.addStyleTag(payload);
 
                 let themeColors = [];
                 for (let i = 0; i < 4; i++) {
                     themeColors.push(this.newPrimaryColor.hex);
                     themeColors.push(this.newAccentColor.hex);
                 }
-
-                let style = document.createElement("style");
-                style.type = "text/css";
-                style.appendChild(document.createTextNode(themeCSS));
-                document.head.appendChild(style);
 
                 this.changeTheme(this.newThemeName, themeColors);
 
