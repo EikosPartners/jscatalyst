@@ -106,13 +106,20 @@ export default {
 				console.log(err)
 			}
 			return data
+		},
+		themeColors() {
+			return this.$store.state.themeMod.themeColors
 		}
 	},
 	watch: {
 		zooming: function(data) {
 			console.log(data)
 		},
+		themeColors(data){
+			this.drawTopPlotX(this.dataModel)
+		},
 		dataModel: function(data) {
+			// debugger
 			if ( this.internalData.length === 0) {
 				this.updateGraph = false
 			} else {
@@ -129,8 +136,8 @@ export default {
 		this.processedData ? this.drawTopPlotX(this.processedData) : null;
 	},
 	destroyed() {
-    d3.selectAll(`.${this.propID}_tooltip`).remove()
-  },
+	    d3.selectAll(`.${this.propID}_tooltip`).remove()
+	},
 	methods: {
 		xValue: function(d) {
 			return d.x;
@@ -165,7 +172,7 @@ export default {
 			var ternaryHeight = elementHeight > 0 ? elementHeight : 400
 			var height = ternaryHeight - margin.top - margin.bottom;
 			//retrieving globals
-			
+			var colors = this.themeColors
 
 			var svg,
 				category = this.currentCategories.join(' '),
@@ -238,7 +245,7 @@ export default {
 			var cValue = function(d) {
 				return d.label
 			}
-			var color = d3.scaleOrdinal(d3.schemePaired);
+			var color = d3.scaleOrdinal(colors);
 
 			d3.select("body")
 				.append("div")
