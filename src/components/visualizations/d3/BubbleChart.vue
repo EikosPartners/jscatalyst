@@ -243,9 +243,14 @@ export default {
 				zMap = function(d) { return zScale(Math.sqrt(zValue(d))); }
 
 			var cValue = function(d) {
-				return d.label
+				return d.value
 			}
-			var color = d3.scaleOrdinal(colors);
+
+			var valMin = d3.min(data, zValue);
+			var valMax = d3.max(data, zValue);
+
+			debugger
+			var color = d3.scaleQuantize().range(colors).domain([valMin, valMax]);
 
 			d3.select("body")
 				.append("div")
