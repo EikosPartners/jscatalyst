@@ -26,20 +26,21 @@
                     <v-layout row>
                         <v-text-field placeholder="Enter theme name..." v-model="newThemeName"></v-text-field>
                     </v-layout>
-                    <v-layout row wrap>
-                        <v-flex>
+                    <v-layout row wrap class="picker-container">
+                        <div>
                             Choose a primary color:
                             <color-picker v-model="newPrimaryColor"></color-picker>
-                        </v-flex>
-                        <v-flex>
+                        </div>
+                        <div>
                             Choose an accent color:
                             <color-picker v-model="newAccentColor"></color-picker>
-                        </v-flex>
+                        </div>
+                        
                     </v-layout>
                 </v-card-text>
 
-                <v-card-actions>
-                    <v-btn color="success" @click="saveTheme(true)">Save Theme</v-btn>
+                <v-card-actions class="btns-box">
+                    <v-btn color="success" @click="saveTheme(true)">Save</v-btn>
                     <v-btn color="error" @click="showColorPicker = !showColorPicker">Cancel</v-btn>
                 </v-card-actions>
             </v-card>
@@ -201,12 +202,17 @@
 </script>
 
 <style>
-.picker-container { 
-    display: flex;
+  .picker-container { 
+    justify-content: space-evenly;
   }
 
   .picker {
     flex-grow: 1;
     margin-left: 5%;
+  }
+
+  .btns-box {
+    justify-content: flex-end;
+    padding-right: 16px;
   }
 </style>
