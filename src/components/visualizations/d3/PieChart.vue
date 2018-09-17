@@ -66,7 +66,8 @@
     data: function() {
       return {
         savedColors: {},
-        total: 0
+        total: 0,
+        savedColorTheme: ''
       }
     },
     watch: {
@@ -74,7 +75,10 @@
         console.log('dataModelUpdated', data)
         this.drawPieChart()
       },
-      colors: function() {
+      colors: function(data) {
+        if (!Object.values(this.savedColors).includes(data[0])) { 
+          this.savedColors = {}
+        }
         this.drawPieChart()
       }
     },
@@ -184,7 +188,11 @@
           .attr("fill", function (d, i) {
             var length = colors.length
             var color;
-            i >= length ? color = colors[i-length] : color = colors[i];
+            if (localThis.savedColors[d.label]){
+              color = localThis.savedColors[d.label]
+            } else {
+              i >= length ? color = colors[i-length] : color = colors[i]; 
+            }
             return color;
           })
           .attr("d", arc);
