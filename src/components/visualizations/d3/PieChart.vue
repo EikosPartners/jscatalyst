@@ -65,11 +65,12 @@
     },
     data: function() {
       return {
-        total: 0
+        savedColors: {}
       }
     },
     watch: {
-      dataModel: function() {
+      dataModel: function(data) {
+        console.log('dataModelUpdated', data)
         this.drawPieChart()
       },
       colors: function() {
@@ -191,6 +192,7 @@
         // if the width is less than 800px then the legend won't be added
         // to the SVG the user is still able to hover or click on the pie
         // secion to see the label and value of the section
+        // let localThis = this;
         if(width > 800) {
           var legend = svg.selectAll(".legend")
             .data(this.dataModel)
@@ -205,10 +207,18 @@
             .attr("width", 20)
             .attr("height", 20)
             .attr("fill", function (d, i) {
-              var length = colors.length
-              var color;
-              i >= length ? color = colors[i-length] : color = colors[i];
+                var length = colors.length
+                var color;
+
+              if (localThis.savedColors[d.label]){
+                color = localThis.savedColors[d.label]
+              } else {
+                i >= length ? color = colors[i-length] : color = colors[i];
+                localThis.savedColors[d.label] = color
+
+              }
               return color;
+
             })
             .attr("d", arc);
 

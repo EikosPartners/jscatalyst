@@ -15,41 +15,42 @@
 
       <div class="test1">
         <!-- Place Component here -->
-        <bar-chart
-          :dataModel='barData'
-        ></bar-chart>
+        <pie-chart
+          :dataModel='pieData'
+        ></pie-chart>
       </div>
 
-      <div class="test2">
-        <!-- Place Component here -->
+<!--       <div class="test2">
+ -->        <!-- Place Component here -->
         <!-- <bar-chart
           propID='bar2'
           :dataModel='barData'
         ></bar-chart> -->
-        <chart-sender></chart-sender>
+<!--         <chart-sender></chart-sender>
       </div>
-
-      <div class="test3">
-        <!-- Place Component here -->
-        <bar-chart
+ -->
+<!--       <div class="test3">
+ -->        <!-- Place Component here -->
+<!--         <bar-chart
           propID='bar3'
           :dataModel='barData'
         ></bar-chart>
       </div>
-
+ -->
     </div>
   </v-app>
 </template>
 
 <script>
-import BarChart from '@/components/visualizations/d3/BarChart.vue'
+import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/sandbox/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
+// import PieData from '@/assets/mocks/d3/pieChartMock.js'
 
 export default {
   name: 'app',
   components: {
-    'bar-chart': BarChart,
+    'pie-chart': PieChart,
     'tool-bar': Toolbar,
     'chart-sender': ChartSenderComponent
   },
@@ -61,7 +62,8 @@ export default {
         {"x": "7/14 - 8/13", "y": 14.62},
         {"x": "8/13 - 9/12", "y": 17.57},
         {"x": "9/12 - 10/12", "y": 14.35}
-      ]
+      ],
+      pieData: [{"label":"Cambridge","value":55},{"label":"Gloves","value":48},{"label":"Auto","value":45},{"label":"Planner","value":50},{"label":"Granite","value":55},{"label":"Canterbury","value":54},{"label":"Architect","value":48},{"label":"Markets","value":46},{"label":"Cotton","value":52},{"label":"Agent","value":47}]
     }
   }
 }
@@ -78,7 +80,7 @@ export default {
   }
   .test1 {
     border: solid 1px;
-    height: 300px;
+    height: 600px;
     grid-column: 2/12;
   }
   .test2 {
