@@ -20,7 +20,7 @@
   * @param {string} propID - the ID for the component
   * @param {string} xaxisvalue - label for x-axis, optional
   * @param {string} yaxisvalue - label for y-axis, optional
-  * @param {Number} xAxisAngle - the angle at which to rotate the x-axis labels
+  * @param {Number} xAxisAngle - the angle at which to rotate the x-axis labels, either 45 or 90 degrees
   *
   * @example
   * usage on a page:
@@ -199,16 +199,28 @@ export default {
           .attr("class", "label")
           .attr("x", width / 2 + margin.right)
           .attr("y", 30)
-          .style("text-anchor", "end")
+          .style("text-anchor", "middle")
           .text(xaxisvalue);
         
         let text = chart.selectAll("text");
 
-        if (this.xAxisAngle != 0) {
+        if (this.xAxisAngle > 0) {
             text
                 .attr("transform", `rotate(${this.xAxisAngle})`)
                 .style("text-anchor", "middle")
-                .attr("y", 45);
+
+            let dimensions = text.node().getBBox();
+
+            if (this.xAxisAngle === 45) {
+              text.attr("x", 15)
+                  .attr("y", dimensions.height * 2);
+            }
+
+            if (this.xAxisAngle === 90) {
+              text.attr("x", dimensions.width - 10)
+                  .attr("y", 0);
+            }
+            
         }
           
 
