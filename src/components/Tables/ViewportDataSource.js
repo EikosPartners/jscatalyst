@@ -8,7 +8,6 @@ export default function ViewportDatasource(mockServer) {
 // gets called by the grid, tells us what rows the grid is displaying, so time for
 // us to tell the server to give us the rows for that displayed range
 ViewportDatasource.prototype.setViewportRange = function (firstRow, lastRow) {
-    console.log('setViewportRange: ' + firstRow + ' to ' + lastRow);
     this.mockServer.setViewportRange(this.connectionId, firstRow, lastRow);
 };
 
@@ -127,7 +126,6 @@ ViewportDatasource.prototype.onRowCountChanged = function (event) {
 //     pageStrings = "_start=" + params.request.startRow + "&_end=" + params.request.endRow
 //     newURI = newURI + "?" + filterStrings + "&" + sortString + "&" + pageStrings
       
-//     console.log(newURI)
 //     axios.get(newURI).then(item=>{
 //         data = item.data
 //         rowCount = item.headers['x-total-count']

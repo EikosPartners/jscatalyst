@@ -61,7 +61,6 @@ export default {
   },
   watch: {
 		dataModel: function(data) {
-			// console.log('BarChart dataModel changed')
 			if (this.internalData.length === 0) {
 				this.update = false
 			} else {

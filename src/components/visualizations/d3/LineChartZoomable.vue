@@ -136,7 +136,6 @@
             x2 = d3.scaleTime().range([0, width]),
             y = d3.scaleLinear().range([height, 0]),
             y2 = d3.scaleLinear().range([height2, 0]);
-        console.log(height, width, margin);
           
         var xValue = function(d) { return d.date; },
             xMap = function(d) {

@@ -133,17 +133,13 @@
           return a.date - b.date
         })
 
-        // console.log(data)
-
         var x = d3.scaleTime()
             .range([0, width]);
 
-            // console.log(data)
 
             var ticks = data.slice().map(function (d) {
               return d.date;
             })
-            // console.log(ticks)
 
             if (ticks.length > 365) {
               ticks = ticks.filter(function(t, i) { return i % 120 === 0; })

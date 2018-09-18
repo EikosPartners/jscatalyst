@@ -15,9 +15,9 @@
 
       <div class="test1">
         <!-- Place Component here -->
-        <bubble-chart
-          :dataModel='bubbleData'
-        ></bubble-chart>
+        <pie-chart
+          :dataModel='pieData'
+        ></pie-chart>
       </div>
 
 <!--       <div class="test2">
@@ -42,14 +42,14 @@
 </template>
 
 <script>
-import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
+import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/sandbox/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
 
 export default {
   name: 'app',
   components: {
-    'bubble-chart': BubbleChart,
+    'pie-chart': PieChart,
     'tool-bar': Toolbar,
     'chart-sender': ChartSenderComponent
   },

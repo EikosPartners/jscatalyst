@@ -40,15 +40,12 @@ const styleTogglerMixin = {
 			})
 
 			var colors = (themeStyles || "").split(':').slice(1).map(function (hex) {
-				console.log('hex', hex.split(';')[0].trim())
 				return hex.split(';')[0].trim();
 			});
 
 			colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))	
 			var vuetifyLightColor = colorsArray.filter(item=> item[0]=== '--vuetify-light')[0][1].trim()
-			console.log(vuetifyLightColor);
 			var vuetifyDarkColor = colorsArray.filter(item=> item[0]=== '--vuetify-dark')[0][1].trim()
-			console.log(vuetifyDarkColor);
 
 			if (this.$store.state.themeMod.displayTheme === 'light') {
 				this.$vuetify.theme.info = vuetifyLightColor
