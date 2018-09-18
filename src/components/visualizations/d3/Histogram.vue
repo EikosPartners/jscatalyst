@@ -12,6 +12,7 @@
   import $ from 'jquery';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
   import themeHelper from '@/common/themeHelper'
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Histogram D3 component
   * @module Histogram
@@ -20,6 +21,10 @@
   * @param {string} propID - the ID for the component
   * @param {string} xAxisLabel - x-axis label
   * @param {string} yAxisLabel - y-axis label
+  * 
+  * The data for this component can be customized; it currently contains:
+  * @typedef {Object} dataModel
+  * @property {Array} - array of numbers
   *
   * @example
   * usage on a page:
@@ -35,27 +40,11 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
+    mixins: [basePropsMixin],
     props: {
-      /**
-       * The data for this component can be customized; it currently contains:
-       * @typedef {Object} dataModel
-       * @property {Array} - array of numbers
-       */
-      dataModel: {
-        type: Array
-      },
       propID: {
         type: String,
         default: 'container-histogram'
-      },
-      title: {
-        type: String
-      },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
       }
     },
     watch: {

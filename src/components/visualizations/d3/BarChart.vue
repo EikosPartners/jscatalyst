@@ -12,6 +12,7 @@
   import Vue from 'vue';
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Bar Chart D3 component
   * @module Bar chart
@@ -22,6 +23,12 @@
   * @param {string} yaxisvalue - label for y-axis, optional
   * @param {string} title - The title of the chart
   * @param {Number} xAxisAngle - the angle at which to rotate the x-axis labels, either 45 or 90 degrees
+  *
+  * 
+  * The data for this component can be customized; it currently contains:
+  * @typedef {Array} dataModel
+  * @property {string} date - date string on x-axis ("5/15 - 6/14")
+  * @property {Number} value - y-axis value
   *
   * @example
   * usage on a page:
@@ -40,31 +47,11 @@ export default {
     'resize-observer': ResizeObserver,
     'panel-heading': PanelHeading
   },
+  mixins: [basePropsMixin],
   props: {
-    /**
-     * The data for this component can be customized; it currently contains:
-     * @typedef {Array} dataModel
-     * @property {string} date - date string on x-axis ("5/15 - 6/14")
-     * @property {Number} value - y-axis value
-     */
-    dataModel: {
-      type: Array,
-      default: ()=>{return []}
-    },
-    xaxisLabel: {
-      type: String,
-      default: ""
-    },
-    yaxisLabel: {
-      type: String,
-      default: ""
-    },
     propID: {
       type: String,
       default: "container-barchart"
-    },
-    title: {
-      type: String
     },
     xAxisAngle: {
         type: Number,
@@ -128,8 +115,8 @@ export default {
     drawBarPlot: function(
       data = this.dataModel,
       id =  this._props.propID,
-      yaxisvalue = this._props.yaxisLabel,
-      xaxisvalue = this._props.xaxisLabel,
+      yaxisvalue = this._props.yAxisLabel,
+      xaxisvalue = this._props.xAxisLabel,
       mouseover_callback = function(x) {
         return x;
       }

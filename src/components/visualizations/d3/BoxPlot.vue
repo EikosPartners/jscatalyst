@@ -11,6 +11,7 @@
   import $ from "jquery";
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Box Plot D3 component
   * @module Box Plot
@@ -20,6 +21,10 @@
   * @param {string} xAxisLabel - label for x-axis, optional
   * @param {string} yAxisLabel - label for y-axis, optional
   *
+  * The data for this component can be customized; it currently contains:
+  * @typedef {Array} dataModel
+  * @property {string} value - time ("Q1") with the value for that time
+  * 
   * @example
   * usage on a page:
   * <box-plot
@@ -35,30 +40,11 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
+    mixins: [basePropsMixin],
     props: {
-      /**
-       * The data for this component can be customized; it currently contains:
-       * @typedef {Array} dataModel
-       * @property {string} value - time ("Q1") with the value for that time
-       */
-      dataModel: {
-        type: Array,
-        default: () => ([])
-      },
       propID: {
         type: String,
         default: 'container-boxplot'
-      },
-      xAxisLabel: {
-        type: String,
-        default: 'Revenue in $'
-      },
-      yAxisLabel: {
-        type: String,
-        default: 'Revenue'
-      },
-      title: {
-        type: String
       }
     },
     data: function() {

@@ -12,6 +12,7 @@
   import { ResizeObserver } from 'vue-resize';
   import formatTimeMixin from '@/mixins/formatTimeMixin.js';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Line Chart Zoomable D3 component
   * @module Line Chart
@@ -39,7 +40,7 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
-    mixins: [formatTimeMixin],
+    mixins: [formatTimeMixin, basePropsMixin],
     props: {
       /**
        * The data for this component can be customized; it currently contains:
@@ -62,15 +63,6 @@
       dateFormat: {
         type: String,
         default: 'YYYY-MM-DD'
-      },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
-      },
-      title: {
-        type: String
       }
     },
     data: function(){

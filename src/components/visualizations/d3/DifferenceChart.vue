@@ -13,6 +13,7 @@
   import formatTimeMixin from '@/mixins/formatTimeMixin.js'
   import { ResizeObserver } from 'vue-resize'
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Difference Chart D3 component
   * @module Difference Chart
@@ -23,7 +24,7 @@
   * @param {string} xAxisLabel - x-axis label
   * @param {string} dateFormat - 'YYYY-MM-DD'
   * @param {Array} keys - overwrite what the displayed labels will be for the data, instead of expected and actual
-  *
+  * 
   * @example
   * usage on a page:
   * <difference-chart
@@ -41,7 +42,7 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
-    mixins: [formatTimeMixin],
+    mixins: [formatTimeMixin, basePropsMixin],
     props: {
 
       /**
@@ -60,12 +61,6 @@
         type: String,
         default: 'container-differencechart'
       },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
-      },
       dateFormat: {
         type: String,
         default: 'YYYY-MM-DD'
@@ -73,9 +68,6 @@
       keys: {
         type: Array,
         default: ()=> (["expected", "actual"])
-      },
-      title: {
-        type: String
       }
     },
     data: function(){

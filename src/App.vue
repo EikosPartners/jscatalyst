@@ -13,7 +13,7 @@
         </p>
       </div>
 
-      <div class="test1">
+     <div class="test1">
         <!-- Place Component here -->
         <pie-chart
           :dataModel='pieData'
@@ -30,19 +30,23 @@
 <!--         <chart-sender></chart-sender>
       </div>
  -->
-<!--       <div class="test3">
- -->        <!-- Place Component here -->
-<!--         <bar-chart
+      <div class="test3">
+      <!-- Place Component here -->
+        <bar-chart
           propID='bar3'
           :dataModel='barData'
+          :xAxisLabel='"X MOFO"'
         ></bar-chart>
       </div>
- -->
+
     </div>
   </v-app>
 </template>
 
 <script>
+import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
+import BarChart from '@/components/visualizations/d3/BarChart.vue'
+
 import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/sandbox/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
@@ -52,7 +56,8 @@ export default {
   components: {
     'pie-chart': PieChart,
     'tool-bar': Toolbar,
-    'chart-sender': ChartSenderComponent
+    'chart-sender': ChartSenderComponent,
+    'bar-chart': BarChart
   },
   data: function() {
     return {

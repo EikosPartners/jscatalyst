@@ -1,10 +1,10 @@
 {
   "name": "jscatalyst",
 <<<<<<< HEAD
-  "version": "1.1.20",
+  "version": "1.1.45",
 =======
-  "version": "1.1.19",
->>>>>>> 6f77224c7bd3da783a77ae6fa384d07fb7fef5de
+  "version": "1.1.47",
+>>>>>>> 7beaa696470726c9a8f868daf87ca43bf43f4a3a
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
@@ -18,8 +18,8 @@
     "start": "npm run dev",
     "test": "nyc jest",
     "build": "node build/build.js",
-    "test_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
-    "npm_build": "NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
+    "test_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
+    "npm_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepublishOnly": "npm run test_build && npm run npm_build"
   },
@@ -32,6 +32,7 @@
     "chartist": "^0.11.0",
     "chartkick": "^2.3.3",
     "compression": "^1.7.2",
+    "cross-env": "^5.2.0",
     "d3": "^5.3.0",
     "d3-horizon-chart": "0.0.6",
     "isomorphic-fetch": "^2.2.1",
@@ -47,6 +48,7 @@
     "vue-chartist": "^2.1.2",
     "vue-chartjs": "^3.2.1",
     "vue-chartkick": "^0.2.1",
+    "vue-color": "^2.6.0",
     "vue-resize": "^0.4.3",
     "vue-server-renderer": "^2.5.13",
     "vue-socket.io": "^2.1.1-a",

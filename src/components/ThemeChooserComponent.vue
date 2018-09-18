@@ -113,11 +113,20 @@
             addColor () {
                 this.showColorPicker = true;
             },
-            changeTheme (newTheme, themeColors) {
+            changeTheme (newTheme, themeColors, isCustom) {
                 this.chooseTheme(newTheme);
+                
+                // if isCustom is not supplied, check the store to see if its a custom theme or not
+                if (isCustom === undefined) {
+                     let theme = this.getCustomTheme(newTheme);
+
+                     isCustom = theme.length > 0 ? true : false;
+                }
+
                 this.$emit('jsc_theme_change', {
                     name: newTheme,
-                    colors: themeColors
+                    colors: themeColors,
+                    isCustom
                 });
             },
             setCustomThemes () {
