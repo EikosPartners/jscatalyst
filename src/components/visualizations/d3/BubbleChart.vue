@@ -248,6 +248,7 @@ export default {
 			var valMin = d3.min(data, zValue);
 			var valMax = d3.max(data, zValue);
 
+			
 			var color = d3.scaleQuantize().range(colors).domain([valMin, valMax]);
 
 			d3.select("body")
