@@ -14,6 +14,7 @@
 	import { ResizeObserver } from 'vue-resize';
 	import formatTimeMixin from '@/mixins/formatTimeMixin.js';
 	import PanelHeading from '@/components/universal/PanelHeading.vue';
+	import basePropsMixin from '@/mixins/basePropsMixin.js';
 
 	/** Bubble Chart D3 component
   * @module Bubble Chart
@@ -42,15 +43,11 @@ export default {
     	'resize-observer': ResizeObserver,
     	'panel-heading': PanelHeading
   	},
-  	mixins: [formatTimeMixin],
+  	mixins: [formatTimeMixin, basePropsMixin],
 	props: {
 		type: {
 			type: String,
 			default: 'category'
-		},
-		dataModel: {
-			type: Array,
-			default: () => ([{}, {}])
 		},
 		propID: {
 			type: String,
@@ -60,20 +57,9 @@ export default {
 			type: Array,
 			default: ()=>{return  ["all", "all", "all"]}
 		},
-		xAxisLabel: {
-			type: String,
-			default: "Duration"
-		},
-		yAxisLabel: {
-			type: String,
-			default: "Escalation"
-		},
 		isTime: {
 			type: Boolean,
 			default: false
-		},
-		title: {
-			type: String
 		},
 		dateFormat: {
 			type: String,

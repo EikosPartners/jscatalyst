@@ -13,12 +13,12 @@
         </p>
       </div>
 
-      <div class="test1">
+      <!-- <div class="test1"> -->
         <!-- Place Component here -->
-        <bubble-chart
+        <!-- <bubble-chart
           :dataModel='bubbleData'
         ></bubble-chart>
-      </div>
+      </div> -->
 
 <!--       <div class="test2">
  -->        <!-- Place Component here -->
@@ -29,20 +29,23 @@
 <!--         <chart-sender></chart-sender>
       </div>
  -->
-<!--       <div class="test3">
- -->        <!-- Place Component here -->
-<!--         <bar-chart
+      <div class="test3">
+      <!-- Place Component here -->
+        <bar-chart
           propID='bar3'
           :dataModel='barData'
+          :xAxisLabel='"X MOFO"'
         ></bar-chart>
       </div>
- -->
+
     </div>
   </v-app>
 </template>
 
 <script>
 import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
+import BarChart from '@/components/visualizations/d3/BarChart.vue'
+
 import Toolbar from '@/sandbox/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
 
@@ -51,7 +54,8 @@ export default {
   components: {
     'bubble-chart': BubbleChart,
     'tool-bar': Toolbar,
-    'chart-sender': ChartSenderComponent
+    'chart-sender': ChartSenderComponent,
+    'bar-chart': BarChart
   },
   data: function() {
     return {
