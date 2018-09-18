@@ -25,7 +25,6 @@ MyDatasource.prototype.getRows = function(params) {
     pageStrings = "_start=" + params.request.startRow + "&_end=" + params.request.endRow
     newURI = newURI + "?" + filterStrings + "&" + sortString + "&" + pageStrings
       
-    console.log(newURI)
     axios.get(newURI).then(item=>{
         data = item.data
         params.successCallback(item.data, -1)

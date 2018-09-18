@@ -89,7 +89,7 @@ export default {
 				return d3.descending(x.value, y.value);
 			});
 			} catch (err) {
-				console.log(err)
+				console.error(err)
 			}
 			return data
 		},
@@ -99,7 +99,6 @@ export default {
 	},
 	watch: {
 		zooming: function(data) {
-			console.log(data)
 		},
 		themeColors(data){
 			this.drawTopPlotX(this.dataModel)
@@ -235,7 +234,7 @@ export default {
 			var valMin = d3.min(data, zValue);
 			var valMax = d3.max(data, zValue);
 
-			debugger
+			
 			var color = d3.scaleQuantize().range(colors).domain([valMin, valMax]);
 
 			d3.select("body")

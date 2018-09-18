@@ -69,7 +69,6 @@
       }
     },
     mounted: function() {
-      // console.log(this.dataModel)
       this.drawDendrogram(
         this._props.dataModel,
         this._props.propID

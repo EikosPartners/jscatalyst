@@ -19,7 +19,7 @@
   * @param {string} dateFormat - default: 'YYYY-MM-DD'
   * @param {string} xAxisLabel - x-axis label
   * @param {string} yAxisLabel - y-axis label
-  * @param {string} alertText - name of the data being displayed ('Incident', etc.)
+  * @param {string} title - name of the data being displayed ('Incident', etc.)
   *
   * @example
   * usage on a page:
@@ -243,7 +243,7 @@
                       .attr("cy", yMap(d))
                       .attr("fill", "blue");
                   var formattedDate = xValue(d).toString().split(" ").slice(0, 4).join(" ")
-                  tooltip.html("Date: " + "<b>" + formattedDate + "</b>" + "<br>" + component.alertText + ": <b>" + yValue(d) + "</b>")
+                  tooltip.html("Date: " + "<b>" + formattedDate + "</b>" + "<br>" + component.yAxisLabel + ": <b>" + yValue(d) + "</b>")
                       .style("left", (d3.event.pageX + 5) + "px")
                       .style("top", (d3.event.pageY - 28) + "px");
                   tooltip.transition()

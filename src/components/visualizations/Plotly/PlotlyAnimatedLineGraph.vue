@@ -33,7 +33,6 @@ export default {
     };
   },
   created: function() {
-    // console.log(this.dataModel)
   },
   mounted: function() {
     this.drawAnimatedLineGraph()

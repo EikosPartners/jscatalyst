@@ -13,12 +13,12 @@
         </p>
       </div>
 
-      <!-- <div class="test1"> -->
+     <div class="test1">
         <!-- Place Component here -->
-        <!-- <bubble-chart
-          :dataModel='bubbleData'
-        ></bubble-chart>
-      </div> -->
+        <pie-chart
+          :dataModel='pieData'
+        ></pie-chart>
+      </div>
 
 <!--       <div class="test2">
  -->        <!-- Place Component here -->
@@ -46,13 +46,14 @@
 import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
 
+import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/sandbox/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
 
 export default {
   name: 'app',
   components: {
-    'bubble-chart': BubbleChart,
+    'pie-chart': PieChart,
     'tool-bar': Toolbar,
     'chart-sender': ChartSenderComponent,
     'bar-chart': BarChart
