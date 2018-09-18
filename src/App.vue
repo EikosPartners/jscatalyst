@@ -20,8 +20,7 @@
         ></pie-chart>
       </div>
 
-<!--       <v-btn @click="testButton"> Test Button </v-btn>
- -->
+<!--       <v-btn @click="testButton"> Test Button </v-btn> -->
 <!--       <div class="test2">
  -->        <!-- Place Component here -->
         <!-- <bar-chart
@@ -77,7 +76,12 @@ export default {
 
     }
 
-  }
+  }, 
+  // computed: {
+  //   themeColors(){
+  //     return this.$store.state.themeMod.themeColors
+  //   }
+  // }
 }
 </script>
 

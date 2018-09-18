@@ -5,7 +5,7 @@ const themes = {
          throw new Error("Please provide vuex store.");
     }
     if (!themes) {
-        themes = ["Blue", "Pink"]
+        themes = ['Blue', 'Pink', 'Green', 'Brown', 'Red', 'Grey', 'Yellow']
     }
     if (!custom) {
       custom = false

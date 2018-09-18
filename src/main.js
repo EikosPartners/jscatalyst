@@ -14,7 +14,7 @@ Vue.config.devtools = true
 Vue.config.performance = true
 
 Vue.use(Vuetify)
-Vue.use(ThemePlugin, {store, themes: ['Blue', 'Pink', 'Green', 'Brown', 'Red', 'Grey'], custom: true})
+Vue.use(ThemePlugin, {store, custom: true})
 Vue.use(ScreensharePlugin)
 
 window.Vue = new Vue({
