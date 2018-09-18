@@ -14,6 +14,7 @@
   import formatTimeMixin from '@/mixins/formatTimeMixin.js';
   import PanelHeading from '@/components/universal/PanelHeading.vue'
   import themeHelper from '@/common/themeHelper'
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** StreamGraph D3 component
   * @module Stream Graph
@@ -24,6 +25,15 @@
   * @param {string} yAxisLabel - y-axis label
   * @param {string} dateFormat - 'MM/YYYY'
   *
+  * The data for this component can be customized; it currently contains:
+  * @typedef {Array} dataModel
+  * @property {string} month - month for x axis value OR use date
+  * @property {string} date - date for x-axis value OR use month
+  * @property {string} A - y-axis value
+  * @property {string} B - y-axis value
+  * @property {string} C - y-axis value
+  * you can specify as many values as you need.
+  * 
   * @example
   * usage on a page:
   * <stream-graph
@@ -43,38 +53,15 @@
     computed: {
       ...themeHelper
     },
-    mixins: [formatTimeMixin],
+    mixins: [formatTimeMixin, basePropsMixin],
     props: {
-      /**
-       * The data for this component can be customized; it currently contains:
-       * @typedef {Array} dataModel
-       * @property {string} month - month for x axis value OR use date
-       * @property {string} date - date for x-axis value OR use month
-       * @property {string} A - y-axis value
-       * @property {string} B - y-axis value
-       * @property {string} C - y-axis value
-       * you can specify as many values as you need.
-       */
-      dataModel: {
-        type: Array,
-        default: () => ([])
-      },
       propID: {
         type: String,
         default: 'container-streamgraph'
       },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
-      },
       dateFormat: {
         type: String,
         default: 'MM/YYYY'
-      },
-      title: {
-        type: String
       }
     },
     data: function() {

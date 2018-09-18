@@ -13,6 +13,7 @@
   import { ResizeObserver } from "vue-resize";
   import formatTimeMixin from '@/mixins/formatTimeMixin.js';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Two Line Plot D3 component
   * @module Two Line Plot
@@ -46,7 +47,7 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
-    mixins: [formatTimeMixin],
+    mixins: [formatTimeMixin, basePropsMixin],
     props: {
       /**
        * The data for this component can be customized; it currently contains:
@@ -74,21 +75,12 @@
         type: String,
         default: ""
       },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
-      },
       yAxis2Label: {
         type: String
       },
       dateFormat: {
         type: String,
         default: 'YYYY-MM-DD'
-      },
-      title: {
-        type: String
       }
     },
     data: function() {

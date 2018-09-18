@@ -13,6 +13,7 @@
   import { ResizeObserver } from 'vue-resize';
   import formatTimeMixin from '@/mixins/formatTimeMixin.js';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Stacked Bar Chart D3 component
   * @module Stacked Bar Chart
@@ -39,7 +40,7 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
-    mixins: [formatTimeMixin],
+    mixins: [formatTimeMixin, basePropsMixin],
     props: {
       /**
        * The data for this component can be customized; it currently contains:
@@ -55,14 +56,6 @@
         type: Array,
         default: ()=>{return [{"month":"January", "A":20, "B": 5,  "C": 10}]}
       },
-      xAxisLabel: {
-    		 type: String,
-    		 default: ''
-      },
-      yAxisLabel: {
-    		 type: String,
-    		 default: ''
-  	  },
       propID: {
     		 type: String,
     		 default: 'stackedBarChart'
@@ -70,9 +63,6 @@
       dateFormat: {
         type: String,
         default: 'MMMM'
-      },
-      title: {
-        type: String
       }
     },
     data: function() {

@@ -23,7 +23,8 @@ const basePropsMixin = {
             default: "y"
         },
         title: {
-            type: "String"
+            type: String,
+            default: ""
         }
     }
 }

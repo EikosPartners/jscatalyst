@@ -12,6 +12,7 @@
   import $ from "jquery";
   import { ResizeObserver } from 'vue-resize';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Scatterplot D3 component
   * @module Scatterplot
@@ -36,6 +37,7 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
+    mixins: [basePropsMixin],
     props: {
       /**
        * The data for this component can be customized; it currently contains:
@@ -52,16 +54,7 @@
       propID: {
     		 type: String,
     		 default: 'scatterplot'
-  	  },
-      title: {
-        type: String
-      },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
-      }
+  	  }
     },
     data: function() {
         return {
@@ -164,8 +157,8 @@
           .append("text")
             .attr("class", "label")
             .attr("x", (width / 2))
-            .attr("y", -6)
-            .style("text-anchor", "end")
+            .attr("y", 30)
+            .style("text-anchor", "middle")
             .attr("font-size", "16px")
             .text(this.xAxisLabel);
 

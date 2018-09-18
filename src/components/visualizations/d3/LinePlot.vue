@@ -13,6 +13,7 @@
   import { ResizeObserver } from 'vue-resize';
   import formatTimeMixin from '@/mixins/formatTimeMixin.js';
   import PanelHeading from '@/components/universal/PanelHeading.vue';
+  import basePropsMixin from '@/mixins/basePropsMixin.js';
 
   /** Line Plot D3 component
   * @module Line Plot
@@ -41,7 +42,7 @@
       'resize-observer': ResizeObserver,
       'panel-heading': PanelHeading
     },
-    mixins: [formatTimeMixin],
+    mixins: [formatTimeMixin, basePropsMixin],
     props: {
       /**
        * The data for this component can be customized; it currently contains:
@@ -61,12 +62,6 @@
         type: String,
         default: ""
       },
-      xAxisLabel: {
-        type: String
-      },
-      yAxisLabel: {
-        type: String
-      },
       color: {
         type: String,
         default: "black"
@@ -74,9 +69,6 @@
       dateFormat: {
         type: String,
         default: 'YYYY-MM-DD'
-      },
-      title: {
-        type: String
       }
     },
     data: function() {

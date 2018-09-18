@@ -45,6 +45,10 @@ export default {
   	},
   	mixins: [formatTimeMixin, basePropsMixin],
 	props: {
+		dataModel: {
+			type: Array,
+			default: () => { return [{}, {}] }
+		},
 		type: {
 			type: String,
 			default: 'category'
