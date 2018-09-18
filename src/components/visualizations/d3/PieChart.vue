@@ -1,8 +1,8 @@
 <template>
-    <div style="height:100%; width:100%" >
+    <div :style="{paddingTop: title ? '.05%' : '0'}" style="height:100%; width:100%" >
       <panel-heading v-if='title' :headerText='title'></panel-heading>
   	  <resize-observer @notify="resizeSVG" />
-      <div :id="propID" style="height:100%; width:100%"class="piechart-wrapper"/>
+      <div :id="propID" style="width:100%" :style="{height: title ? '95%' : '100%'}" class="piechart-wrapper"/>
     </div>
 </template>
 

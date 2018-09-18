@@ -16,6 +16,7 @@
      <div class="test1">
         <!-- Place Component here -->
         <pie-chart
+          :title="testTitle"
           :dataModel='pieData'
         ></pie-chart>
       </div>
@@ -61,6 +62,7 @@ export default {
   },
   data: function() {
     return {
+      testTitle: "Hello World",
       barData: [
         {"x": "5/15 - 6/14", "y": 13.3},
         {"x": "6/14 - 7/14", "y": 12.08},
