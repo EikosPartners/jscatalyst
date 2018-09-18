@@ -20,6 +20,8 @@
         ></pie-chart>
       </div>
 
+<!--       <v-btn @click="testButton"> Test Button </v-btn>
+ -->
 <!--       <div class="test2">
  -->        <!-- Place Component here -->
         <!-- <bar-chart
@@ -68,6 +70,13 @@ export default {
     }
   },
   mounted(){
+  },
+  methods: {
+    testButton(){
+      // this.$store.commit('toggleAllowCustom')
+
+    }
+
   }
 }
 </script>

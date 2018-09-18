@@ -9,9 +9,9 @@
                 <v-list-tile-title>{{ item }}</v-list-tile-title>
                     <v-icon :color="getColorForItem(item)" :style="{color: getColorForItem(item)}">brightness_1</v-icon>
                 </v-list-tile>
-                <v-list-tile @click="addColor()">
-                <v-list-tile-title>New</v-list-tile-title>
-                <v-icon>add</v-icon>
+                    <v-list-tile v-if="allowCustom" @click="addColor()">
+                    <v-list-tile-title>New</v-list-tile-title>
+                    <v-icon>add</v-icon>
                 </v-list-tile>
             </v-list>
         </v-menu>
@@ -51,6 +51,7 @@
 <script>
     import styleTogglerMixin from '@/mixins/styleTogglerMixin.js'
     import { Chrome } from 'vue-color';
+    import {mapState} from 'vuex'
 
     /** ThemeChooserComponent
      * 
@@ -93,6 +94,9 @@
             this.setCustomThemes();
         },
         computed: {
+            ...mapState({
+                allowCustom: state => state.themeMod.customEnabled
+            }),
             colorTheme: function() {
                 if(this.$store.state.themeMod) return this.$store.state.themeMod.colorTheme;
                 return 'blue'

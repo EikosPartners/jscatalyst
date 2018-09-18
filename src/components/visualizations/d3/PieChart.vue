@@ -274,16 +274,6 @@
               return localThis.dataModel[i].label
             });
 
-            // legend.on('mouseover', function(d){
-            //   let local = localThis
-            //   let currentLabel = d.label
-            //   let arcs = 
-            //   d3.selectAll('g.slice path').data([currentLabel], function(dt){
-            //      if (dt.data && dt.data.label == currentLabel) {
-            //       return dt
-            //      }
-            //   }).attr('fill','green')
-            // })
 
             legend.on('mouseover', function(d){
               let local = localThis
@@ -295,10 +285,6 @@
                 if (df.label === currentLabel) {
                   let currentFill = this.attributes.fill.value
                    currentFill = hex2rgb(currentFill)
-                  // if (currentFill.includes('#')){
-                  // } else {
-                  //   currentFill = currentFill.slice(0, currentFill.length -2).slice(4).split(', ')
-                  // }
                   let darker = currentFill.map(item=>{
                     return parseInt(item) * .75
                   })

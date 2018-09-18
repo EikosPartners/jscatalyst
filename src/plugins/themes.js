@@ -1,11 +1,14 @@
 const themes = {
   install(Vue, options) {
-    let {store, themes} = options
+    let {store, themes, custom} = options
     if (!store) {
          throw new Error("Please provide vuex store.");
     }
     if (!themes) {
-         throw new Error("Please provide themes.");
+        themes = ["Blue", "Pink"]
+    }
+    if (!custom) {
+      custom = false
     }
     store.registerModule('themeMod', {
       state: {
@@ -13,7 +16,8 @@ const themes = {
         displayTheme: 'light',
         allThemes: themes,
         themeColors: [],
-        customThemes: []
+        customThemes: [],
+        customEnabled: custom
       },
       mutations: {
         changeColor: function(state, payload) {
@@ -31,6 +35,9 @@ const themes = {
         saveCustomTheme: function (state, payload) {
           state.allThemes = [...state.allThemes, payload.name]
           state.customThemes = [...state.customThemes, payload]
+        },
+        toggleAllowCustom: function(state, payload){
+          state.customEnabled = !state.customEnabled
         }
       },
       getters: {
@@ -39,8 +46,7 @@ const themes = {
         }
       }
     })
-
-  }
+  },
 }
 
 export default themes;
