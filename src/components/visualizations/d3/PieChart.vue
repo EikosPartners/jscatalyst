@@ -72,7 +72,6 @@
     },
     watch: {
       dataModel: function(data) {
-        console.log('dataModelUpdated', data)
         this.drawPieChart()
       },
       colors: function(data) {
@@ -112,6 +111,9 @@
         if ($(selection_string + " svg") != null) {
           $(selection_string + " svg").remove();
         }
+        function hex2rgb(hex) {
+          return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
+        }
 
         var localThis = this
         var element = $(selection_string);
@@ -123,7 +125,11 @@
 
         var svg = d3.select(selection_string)
           .append("svg")
-          .data([this.dataModel])
+          .data([this.dataModel], function(d){
+            if (d){
+              return d.label
+            }
+          })
           .attr("width", width)
           .attr("height", height)
           .append("g")
@@ -159,6 +165,23 @@
         // add tooltip on mouseover of slice
         arcs.on("mouseover", function(d) {
           // calculate the percent of total for the slice
+          d3.select(this).selectAll('path').
+            attr('fill', function(dt){
+    
+                let currentFill = this.attributes.fill.value
+             currentFill = hex2rgb(currentFill)
+            // if (currentFill.includes('#')){
+            // } else {
+            //   currentFill = currentFill.slice(0, currentFill.length -2).slice(4).split(', ')
+            // }
+            let darker = currentFill.map(item=>{
+              return parseInt(item) * .75
+            })
+            return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`
+
+
+            })
+
           var percent = Math.round(d.data.value / localThis.total * 100)
           tooltip.transition()
             .duration(100)
@@ -176,6 +199,13 @@
             tooltip.transition()
               .duration(300)
               .style("opacity", 0);
+
+          d3.select(this).selectAll('path').
+            attr('fill', function(dt){
+              let label = dt.data ? dt.data.label : dt.label
+              return localThis.savedColors[label]
+
+            })
           })
           .on("click", function (d) {
             localThis.$emit('jsc_click', d);
@@ -206,7 +236,9 @@
         // let localThis = this;
         if(width > 800) {
           var legend = svg.selectAll(".legend")
-            .data(this.dataModel)
+            .data(this.dataModel, function(d){
+              return d.label
+            })
             .enter()
             .append("g")
             .attr("class", "legend")
@@ -220,7 +252,6 @@
             .attr("fill", function (d, i) {
                 var length = colors.length
                 var color;
-                console.log(localThis.savedColors)
               if (localThis.savedColors[d.label]){
                 color = localThis.savedColors[d.label]
               } else {
@@ -242,6 +273,53 @@
             .text(function(d, i) {
               return localThis.dataModel[i].label
             });
+
+            // legend.on('mouseover', function(d){
+            //   let local = localThis
+            //   let currentLabel = d.label
+            //   let arcs = 
+            //   d3.selectAll('g.slice path').data([currentLabel], function(dt){
+            //      if (dt.data && dt.data.label == currentLabel) {
+            //       return dt
+            //      }
+            //   }).attr('fill','green')
+            // })
+
+            legend.on('mouseover', function(d){
+              let local = localThis
+              let currentLabel = d.label
+              d3.selectAll('g.slice path').data([d], function(dt){
+                  return dt.data ? dt.data.label : dt.label
+              })
+              .attr('fill', function(df){
+                if (df.label === currentLabel) {
+                  let currentFill = this.attributes.fill.value
+                   currentFill = hex2rgb(currentFill)
+                  // if (currentFill.includes('#')){
+                  // } else {
+                  //   currentFill = currentFill.slice(0, currentFill.length -2).slice(4).split(', ')
+                  // }
+                  let darker = currentFill.map(item=>{
+                    return parseInt(item) * .75
+                  })
+                  return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`
+                } else {
+                  return 
+                }
+              })
+            });
+
+
+            legend.on('mouseout', function(d){
+              let local = localThis
+              let currentLabel = d.label
+              d3.selectAll('g.slice path').data([d], function(dt){
+                  return dt.data ? dt.data.label : dt.label
+              })
+              .attr('fill', function(df){
+                return localThis.savedColors[df.label]
+              })
+            })
         }
       }
     }
