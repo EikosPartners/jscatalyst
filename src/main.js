@@ -14,7 +14,20 @@ Vue.config.devtools = true
 Vue.config.performance = true
 
 Vue.use(Vuetify)
-Vue.use(ThemePlugin, {store, custom: true})
+Vue.use(ThemePlugin, {store, customThemes: [{name: 'Brian', themeColors:  {
+        first: '#F57F17', 
+        second: '#FFB300', 
+        third: '#FFD740', 
+        fourth: '#FFEB3B', 
+        fifth: '#FFFF20', 
+        sixth: '#FFEE58', 
+        seventh: '#FFF176', 
+        eighth: '#FFE57F', 
+        vuetifyLight: '#FFD600', 
+        vuetifyDark: '#FFC107'
+    } }
+
+	], custom: true})
 Vue.use(ScreensharePlugin)
 
 window.Vue = new Vue({
