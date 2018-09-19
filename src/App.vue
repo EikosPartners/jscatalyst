@@ -36,7 +36,6 @@
         <bar-chart
           propID='bar3'
           :dataModel='barData'
-          :xAxisLabel='"X MOFO"'
         ></bar-chart>
       </div>
 

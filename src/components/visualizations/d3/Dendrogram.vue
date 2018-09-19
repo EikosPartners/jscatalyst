@@ -110,6 +110,12 @@
         var width = element.width(),
          height = element.height();
 
+        
+        // Account for panel heading height if title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
          //cluster layout to organize data into a tree structure
         var cluster = d3.cluster()
             .size([height, width - 160]);
@@ -123,6 +129,7 @@
             .attr("width", width)
             .attr("height", height)
             .attr('class', 'dendrogram')
+            .style("padding-left", "10px")
             .append("g")
             .attr("transform", "translate(40,0)");
             // debugger

@@ -162,6 +162,11 @@
         var timeDomainEnd = timeDomain[1];
         var x, y, xAxis, yAxis;
 
+        // Account for panel heading height if title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var keyFunction = function(d) {
           return d.startDate + d.taskName + d.endDate;
         };

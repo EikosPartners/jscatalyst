@@ -114,6 +114,11 @@
             width = element.width() - margin.left - margin.right,
             height = element.height()   - margin.top - margin.bottom;
 
+        // Account for panel heading height if the title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var x = d3.scaleLinear()
             .domain([0, 100])
             .range([0, width]);

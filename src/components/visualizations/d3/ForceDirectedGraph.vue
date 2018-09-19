@@ -106,6 +106,11 @@ export default {
         var width = element.width(),
         height = element.height();
 
+        // Account for the panel heading height if the title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var svg = d3.select(".forcedirected").append("svg")
         .attr("width", width)
         .attr("height", height)

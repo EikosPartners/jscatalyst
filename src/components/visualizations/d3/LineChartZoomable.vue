@@ -102,6 +102,11 @@
             height = element.height() - margin.top - margin.bottom,
             height2 = element.height() - height - margin.top - margin2.bottom - 20;
 
+        // Account for panel heading height if the title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var parseDate = d3.timeParse(this.d3Time[this.dateFormat]);
         var data = [];
         this.dataModel.forEach(el => data.push(Object.assign({}, el)))
@@ -116,8 +121,7 @@
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .append("g");
 
         var tooltip = d3.select("body")
             .append("div")

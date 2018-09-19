@@ -111,6 +111,11 @@
           width = element.width() - margin.left - margin.right,
           height = element.height() - margin.top - margin.bottom;
 
+        // Account for the panel heading height if the title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         // var parseDate = d3.timeParse(this.d3Time[this.dateFormat])
         const formatDate = d3.timeParse(this.d3Time[this.dateFormat]);
 

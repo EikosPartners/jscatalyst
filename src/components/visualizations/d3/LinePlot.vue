@@ -133,6 +133,11 @@
           width = $(element).width() - margin.left - margin.right,
           height = $(element).height() - margin.top - margin.bottom;
 
+        // Account for panel heading height if the title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var xValue = function(d) {
             return d.date;
           },
@@ -196,7 +201,7 @@
           .call(xAxis)
           .append("text")
           .attr("x", (width / 2))
-          .attr("y", 10)
+          .attr("y", 15)
           .attr("dy", ".71em")
           .style("text-anchor", "middle")
           .attr("font-size", "16px")

@@ -115,6 +115,11 @@
           width = element.width() - margin.left - margin.right,
           height = element.height() - margin.top - margin.bottom;
 
+        // Account for panel heading height if title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         //make tooltips
         var tooltip = d3.select("body")
           .append("div")

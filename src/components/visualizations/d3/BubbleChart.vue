@@ -163,6 +163,11 @@ export default {
 			//retrieving globals
 			var colors = this.themeColors
 
+			// Account for panel heading height if title exists.
+			if (this.title) {
+				height -= 40;
+			}
+
 			var svg,
 				category = this.currentCategories.join(' '),
 				containerId = "#" + this._props.propID,
@@ -180,16 +185,15 @@ export default {
 
 			if (this.isDate) {
 				xScale = d3.scaleTime().range([0, width]);
+				data = data.map(function (d) {
+					if (d.mapped) { return d; }
+					d.x = formatDate(d.x);
+					d.mapped = true;
+					return d;
+				});
 			} else {
 				xScale = d3.scaleLinear().range([0, width]);
 			}
-
-			data = data.map(function (d) {
-				if (d.mapped) { return d; }
-				d.x = formatDate(d.x);
-				d.mapped = true;
-				return d;
-			});
 			
 
 			var xMap = function(d) {

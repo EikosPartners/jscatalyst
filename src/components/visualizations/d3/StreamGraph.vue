@@ -114,6 +114,11 @@
           width = element.width() - margin.left - margin.right,
           height = element.height() - margin.top - margin.bottom;
 
+        // Account for the panel heading height if it exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var stack = d3.stack().keys(keys).offset(d3.stackOffsetWiggle),
             layers = stack(data);
 
@@ -122,7 +127,7 @@
               .attr("width", width + margin.left + margin.right)
               .attr("height", height + margin.top + margin.bottom)
               .append("g")
-              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+              .attr("transform", "translate(" + ( (margin.right + margin.left) / 2) + "," + margin.top + ")");
 
         var x = d3.scaleTime()
             .domain([parseDate(data[0][timeKey]), parseDate(data[data.length-1][timeKey])])

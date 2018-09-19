@@ -64,7 +64,7 @@
       }
     },
     mounted() {
-      // this.draw()
+      this.draw()
     },
     destroyed() {
       d3.selectAll(`.${this.propID}_tooltip`).remove()
@@ -90,8 +90,13 @@
         var element = $(selection_string);
 
         var margin = {top: 20, right: 20, bottom: 0, left: 50},
-          width = element.width() - margin.right -margin.left,
+          width = element.width(),
           height = element.height() - margin.top - margin.bottom;
+
+        // Account for panel-heading height if the title exists.
+        if (this.title) {
+          height -= 40;
+        }
 
           var color = d3.scaleThreshold()
               .domain(this.colorDomain)

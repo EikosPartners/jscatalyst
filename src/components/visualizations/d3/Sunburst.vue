@@ -78,7 +78,12 @@
         var element = $(selection_string);
 
   			var	width = element.width()
-  			var	height = element.height()
+        var	height = element.height()
+        
+        // Account for panel heading height if it exists.
+        if (this.title) {
+          height -= 40;
+        }
 
   			if ( height === undefined || height === 0 ) height = width/4
 

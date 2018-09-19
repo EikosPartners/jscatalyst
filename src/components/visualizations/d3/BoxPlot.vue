@@ -91,6 +91,11 @@
         var min = Infinity,
             max = -Infinity;
 
+        // Account for panel heading height if title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         // using an array of arrays with
         // data[n][2]
         // where n = number of columns in the csv file

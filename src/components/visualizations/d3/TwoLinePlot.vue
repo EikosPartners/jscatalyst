@@ -169,6 +169,11 @@
           width = $(selection_string).width() - margin.left - margin.right,
           height = $(selection_string).height() - margin.top - margin.bottom;
 
+        // Account for panel heading height if title exists.
+        if (this.title) {
+          height -= 40;
+        }
+
         var xValue = function(d) {
             return d.date;
           },
@@ -234,7 +239,7 @@
           .attr("width", width + margin.left + margin.right)
           .attr("height", height + margin.top + margin.bottom)
           .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+          .attr("transform", "translate(" + ( (margin.left + margin.right) / 2) + "," + margin.top + ")");
 
         var tooltip = d3.select("body")
           .append("div")

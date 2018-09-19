@@ -116,6 +116,12 @@
               var margin = { top: 20, right: 20, bottom: 30, left: 50 };
               var width = element.width() - margin.left - margin.right;
               var height = element.height() - margin.top - margin.bottom;
+
+              // Account for panel heading height if title exists.
+              if (this.title) {
+                  height -= 40;
+              }
+
               var xValue = function(d) { return d.date; };
               var xScale = d3.scaleTime().range([0, width]);
               var xMap = function(d) { return xScale(xValue(d)); };
@@ -149,7 +155,7 @@
                   .attr("width", width + margin.left + margin.right)
                   .attr("height", height + margin.top + margin.bottom)
                   .append("g")
-                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                  .attr("transform", "translate(" + ((margin.left + margin.right) / 2) + "," + margin.top + ")");
               var tooltip = d3.select("body")
                   .append("div")
                   .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
