@@ -72,7 +72,7 @@
             }
         },
         mounted() {
-            // if (this.$store.state.themeMod) this.chooseTheme(this.colorTheme);
+            if (this.$store.state.themeMod) this.chooseTheme(this.colorTheme);
 
         },
         computed: {
@@ -128,6 +128,7 @@
                 // Filter the theme name for any special characters or spaces.
                 this.newThemeName = this.newThemeName.replace(/[^a-zA-Z ]/g, "")
                 this.newThemeName = this.newThemeName.replace(/\s+/g, '-');
+                this.newThemeName = this.newThemeName.toLowerCase()
                 let payload = {
                     themeColors: {
                         first: this.newPrimaryColor.hex,
