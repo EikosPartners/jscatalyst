@@ -6,58 +6,51 @@ function hex2rgb(hex) {
 
 
 const styleTogglerMixin = {
+methods: {
+    toggleDark: function() {
+        var current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
+        var opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
+        this.$root.$el.className = this.$root.$el.className.replace(current, opposite)
+        this.$store.commit('changeDisplay', opposite.split('--')[1])
 
-	methods: {
-		toggleDark: function() {
-		    var current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
-		    var opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
-		  	this.$root.$el.className = this.$root.$el.className.replace(current, opposite)
-		  	this.$store.commit('changeDisplay', opposite.split('--')[1])
+        if (opposite === 'theme--dark') {
+          this.$vuetify.theme.info = this.$store.getters.themeColors.vuetifyDark
+        } else if (opposite === 'theme--light')  {
+          this.$vuetify.theme.info = this.$store.getters.themeColors.vuetifyLight
+        }
 
-		  	if (opposite === 'theme--dark') {
-		  		this.$vuetify.theme.info = this.$store.state.themeMod.themeColors[9]
-		  	} else if (opposite === 'theme--light')  {
-		  		this.$vuetify.theme.info = this.$store.state.themeMod.themeColors[8]
-		  	}
+      },
+      chooseTheme: function(theme) {
+        this.$store.commit('changeColor', theme)
+        let themeColors = this.$store.getters.themeColors
+        let themeCSS = `
+                    .current-theme { 
+                        --first: ${themeColors.first};
+                        --second: ${themeColors.second};
+                        --third: ${themeColors.third};
+                        --fourth: ${themeColors.fourth};
+                        --fifth: ${themeColors.fifth};
+                        --sixth: ${themeColors.sixth};
+                        --seventh: ${themeColors.seventh};
+                        --eighth: ${themeColors.eighth};
 
-	  	},
-	    chooseTheme: function(theme) {
-	    	var newTheme = theme.toLowerCase() + '-theme'
-		    var classes = this.$root.$el.className.slice().split(' ').filter(el => !el.includes('-theme'))
-		    classes.push(newTheme)
-		    classes = classes.join(' ')
-		    this.$root.$el.className = classes
-		    this.$store.commit('changeColor', newTheme.split('-')[0])
-				this.$store.commit('changeColorArray', this.themeColorArray(newTheme))
-	    },
-		themeColorArray: function(theme) {
-			var styleSheets = Array.from(document.getElementsByTagName("STYLE")).map(el => el.sheet.cssRules).filter(el => el.length)
-			var themeStyles, colorsArray = [];
-			
-			styleSheets.forEach(el => {
-				var style = Array.from(el).filter(rule => rule.selectorText ===`.${theme}`)
-				style.length ? themeStyles = style[0].cssText : null;
-			})
+                        --vuetify-light: ${themeColors.vuetifyLight};
+                        --vuetify-dark: ${themeColors.vuetifyDark};
+                    }
+                `
 
-			var colors = (themeStyles || "").split(':').slice(1).map(function (hex) {
-				return hex.split(';')[0].trim();
-			});
 
-			colorsArray = themeStyles.split('{')[1].split('; ').map(item=> item.split(':'))	
-			var vuetifyLightColor = colorsArray.filter(item=> item[0]=== '--vuetify-light')[0][1].trim()
-			var vuetifyDarkColor = colorsArray.filter(item=> item[0]=== '--vuetify-dark')[0][1].trim()
+      if (this.$store.state.themeMod.displayTheme === 'light') {
+        this.$vuetify.theme.info = themeColors.vuetifyLight
+      } else {
+        this.$vuetify.theme.info = themeColors.vuetifyDark
+      }
+        document.querySelectorAll('style#current-theme')[0].innerText = themeCSS
 
-			if (this.$store.state.themeMod.displayTheme === 'light') {
-				this.$vuetify.theme.info = vuetifyLightColor
-			} else {
-				this.$vuetify.theme.info = vuetifyDarkColor
-			}
-				
-			return colors
-		},
-		getCustomTheme: function (themeName) {
-			return this.$store.state.themeMod.customThemes.filter( el => el.name === themeName);
-		}
-	}
+      }
+  }
+
+	
+		// 
 }
 export default styleTogglerMixin;

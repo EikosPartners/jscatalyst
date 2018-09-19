@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app" class='blue-theme'>
+  <v-app id="app" class='current-theme'>
     <tool-bar></tool-bar>
 
     <div class='sandbox'>
@@ -13,14 +13,15 @@
         </p>
       </div>
 
-     <div class="test1">
+<!--      <div class="test1">
+ -->    
         <!-- Place Component here -->
-        <pie-chart
+     <!--    <pie-chart
           :title="testTitle"
           :dataModel='pieData'
-        ></pie-chart>
-      </div>
-
+        ></pie-chart> -->
+<!--       </div>
+ -->
 <!--       <v-btn @click="testButton"> Test Button </v-btn> -->
 <!--       <div class="test2">
  -->        <!-- Place Component here -->

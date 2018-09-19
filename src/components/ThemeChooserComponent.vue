@@ -5,8 +5,8 @@
                 <v-icon>arrow_drop_down</v-icon>
             </v-btn>
             <v-list>
-                <v-list-tile v-for="item in themes" :key="item" @click="changeTheme(item)">
-                <v-list-tile-title>{{ item }}</v-list-tile-title>
+                <v-list-tile v-for="item in themes" :key="item.name" @click="changeTheme(item.name)">
+                <v-list-tile-title>{{ item.name | dropCap }}</v-list-tile-title>
                     <v-icon :color="getColorForItem(item)" :style="{color: getColorForItem(item)}">brightness_1</v-icon>
                 </v-list-tile>
                     <v-list-tile v-if="allowCustom" @click="addColor()">
@@ -95,7 +95,7 @@
         },
         computed: {
             ...mapState({
-                allowCustom: state => state.themeMod.customEnabled
+                allowCustom: state => state.themeMod.customEnabled,
             }),
             colorTheme: function() {
                 if(this.$store.state.themeMod) return this.$store.state.themeMod.colorTheme;
@@ -109,6 +109,11 @@
                 return this.allThemes;
             }
         },
+        filters: {
+            dropCap(item){
+                return item.slice(0, 1).toUpperCase() + item.slice(1)
+            }
+        },
         methods: {
             addColor () {
                 this.showColorPicker = true;
@@ -118,16 +123,17 @@
                 
                 // if isCustom is not supplied, check the store to see if its a custom theme or not
                 if (isCustom === undefined) {
-                     let theme = this.getCustomTheme(newTheme);
+                     let theme = 'blue'
+                     // this.getCustomTheme(newTheme);
 
                      isCustom = theme.length > 0 ? true : false;
                 }
 
-                this.$emit('jsc_theme_change', {
-                    name: newTheme,
-                    colors: themeColors,
-                    isCustom
-                });
+                // this.$emit('jsc_theme_change', {
+                //     name: newTheme,
+                //     colors: themeColors,
+                //     isCustom
+                // });
             },
             setCustomThemes () {
                 if (this.customThemes.length > 0) {
@@ -173,13 +179,17 @@
                 document.head.appendChild(style);
             },
             getColorForItem (item) {
-                let color = this.getCustomTheme(item);
+                return this.themes.filter(theme=>{
+                    return theme.name === item.name
+                })[0].themeColors.fifth
+                
+                // first;
 
-                if (color && color.length > 0) {
-                    return color[0].primary + " !important"
-                } else {
-                    return item.toLowerCase();
-                }
+                // if (color && color.length > 0) {
+                //     return color[0].primary + " !important"
+                // } else {
+                //     return item.toLowerCase();
+                // }
             },
             saveTheme() {
                 // Filter the theme name for any special characters or spaces.
