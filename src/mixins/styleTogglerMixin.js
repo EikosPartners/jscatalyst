@@ -46,7 +46,6 @@ methods: {
         this.$vuetify.theme.info = themeColors.vuetifyDark
       }
         document.querySelectorAll('style#current-theme')[0].innerText = themeCSS
-
       }
   }
 

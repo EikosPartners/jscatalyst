@@ -29,8 +29,6 @@ const themes = {
 
     let initialTheme = themes[0]
 
-    
-
     let themeCSS = `
                     .current-theme { 
                         --first: ${initialTheme.themeColors.first};
@@ -75,9 +73,6 @@ const themes = {
         }
       },
       getters: {
-        // getCustomTheme: function (state, getters) {
-        //   return getters.customThemes.filter( (theme) => { return theme.name.toLowerCase() === state.colorTheme })[0];
-        // },
         themeColors: function (state, getters) {
           let currentTheme = state.allThemes.filter(theme=>{ return theme.name.toLowerCase() === state.colorTheme }) [0] || {}
           return currentTheme.themeColors 
@@ -85,7 +80,7 @@ const themes = {
         customThemes: function (state, getters) {
           return state.allThemes.filter(theme=>{return theme.isCustom == true})
         }
-      }
+      },
     })
   },
 
