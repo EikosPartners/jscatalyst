@@ -1,6 +1,15 @@
 import defaultThemes from './themeObjects.js'
 
 const themes = {
+  /*
+  installtion options
+    store - provide the store so the module can be registered 
+    defaultThemeOptions - if the user would like to use a subset of the seven initially provided themes
+      array of names a la ['blue', 'Pink', 'yEllow'] 
+    custom - boolean to determine if the themeChooser will allow creating themes from the UI
+    customThemes - if the user wants to provide an initial custom theme 
+      array of objects each object like {name: 'Custom Theme', themeColors: {first: , second:, ...etc }}
+  */
   install(Vue, options) {
     let {store, defaultThemeOptions, custom, customThemes} = options
     let themes
@@ -51,6 +60,7 @@ const themes = {
       style.appendChild(document.createTextNode(themeCSS));
       document.head.appendChild(style);
 
+
     store.registerModule('themeMod', {
       state: {
         colorTheme: initialTheme.name,
@@ -82,8 +92,8 @@ const themes = {
         }
       },
     })
-  },
-
+  } 
+  
 }
 
 export default themes;

@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app" class='current-theme'>
+  <v-app id="app">
     <tool-bar></tool-bar>
 
     <div class='sandbox'>

@@ -6,6 +6,7 @@ function hex2rgb(hex) {
 
 
 const styleTogglerMixin = {
+
 methods: {
     toggleDark: function() {
         var current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
@@ -47,6 +48,9 @@ methods: {
       }
         document.querySelectorAll('style#current-theme')[0].innerText = themeCSS
       }
+  },
+  mounted(){
+  	  this.$root.$el.classList.add('current-theme')
   }
 
 	
