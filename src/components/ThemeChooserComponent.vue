@@ -50,6 +50,7 @@
 
 <script>
     import styleTogglerMixin from '@/mixins/styleTogglerMixin.js'
+        import chroma from 'chroma-js';
     import { Chrome } from 'vue-color';
     import {mapState} from 'vuex'
 
@@ -66,9 +67,28 @@
         data () {
             return {
                 showColorPicker: false,
-                newPrimaryColor: {},
-                newAccentColor: {},
-                newThemeName: ""
+                newPrimaryColor: {
+                  hsl: { "h": 1.5788509971217104, "s": 0, "l": 0, "a": 1},
+                  hex: "#000000",
+                  hex8: "#000000FF",
+                  rgba: { "r": 0, "g": 0, "b": 0, "a": 1},
+                  hsv: { "h": 1.5788509971217104, "s": 0, "v": 0, "a": 1},
+                  oldHue: 1.5788509971217104,
+                  source: "hex",
+                  a: 1
+                },
+                newAccentColor: {
+                  hsl: { "h": 0.789280941611842, "s": 0, "l": 1, "a": 1 },
+                  hex: "#FFFFFF",
+                  hex8: "#FFFFFFFF",
+                  rgba: { "r": 255, "g": 255, "b": 255, "a": 1 },
+                  hsv: { "h": 0.789280941611842, "s": 0, "v": 1, "a": 1 },
+                  oldHue: 0.789280941611842,
+                  source: "hex",
+                  a: 1
+                },
+                newThemeName: "",
+                
             }
         },
         mounted() {
@@ -119,32 +139,59 @@
             },
            
             getColorForItem (item) {
+                // var filteredThemes = this.themes.filter(theme=>{
+                //     return theme.name === item.name
+                // })
+                // return filteredThemes ? filteredThemes[0].themeColors.fifth : "#000"
                 return this.themes.filter(theme=>{
                     return theme.name === item.name
                 })[0].themeColors.fifth
-                
             },
             saveTheme() {
                 // Filter the theme name for any special characters or spaces.
                 this.newThemeName = this.newThemeName.replace(/[^a-zA-Z ]/g, "")
                 this.newThemeName = this.newThemeName.replace(/\s+/g, '-');
                 this.newThemeName = this.newThemeName.toLowerCase()
+                
+
+                let firstColor, lastColor
+
+                if (this.newPrimaryColor.hsl.l > this.newAccentColor.hsl.l) {
+                    firstColor = this.newAccentColor
+                    lastColor = this.newPrimaryColor
+                } else {
+                    firstColor = this.newPrimaryColor
+                    lastColor = this.newAccentColor
+                }
+                // console.log(firstColor.hex)
+                // console.log(lastColor.hex)
+                
+                var f = chroma.scale([firstColor.hex, lastColor.hex])
+                
+                var second = f((1/7))
+                var third = f((2/7))
+                var fourth = f((3/7))
+                var fifth = f((4/7))
+                var sixth = f((5/7))
+                var seventh = f((6/7))
+                
                 let payload = {
                     themeColors: {
-                        first: this.newPrimaryColor.hex,
-                        second: this.newAccentColor.hex,
-                        third: this.newPrimaryColor.hex,
-                        fourth: this.newAccentColor.hex,
-                        fifth: this.newPrimaryColor.hex,
-                        sixth: this.newAccentColor.hex,
-                        seventh: this.newPrimaryColor.hex,
-                        eighth: this.newAccentColor.hex,
-                        vuetifyLight: this.newPrimaryColor.hex,
-                        vuetifyDark: this.newAccentColor.hex
+                        first: firstColor.hex,
+                        second: second.hex(),
+                        third: third.hex(),
+                        fourth: fourth.hex(),
+                        fifth: fifth.hex(),
+                        sixth: sixth.hex(),
+                        seventh: seventh.hex(),
+                        eighth: lastColor.hex,
+                        vuetifyLight: lastColor.hex,
+                        vuetifyDark: firstColor.hex
                     },
                     name: this.newThemeName,
                     isCustom: true
                 };
+                debugger
                 this.$store.commit("saveCustomTheme", payload)
                 this.chooseTheme(payload.name)
 

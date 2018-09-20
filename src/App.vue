@@ -13,15 +13,15 @@
         </p>
       </div>
 
-<!--      <div class="test1">
- -->    
+     <div class="test1">
+    
         <!-- Place Component here -->
-     <!--    <pie-chart
+        <pie-chart
           :title="testTitle"
           :dataModel='pieData'
-        ></pie-chart> -->
-<!--       </div>
- -->
+        ></pie-chart>
+      </div>
+
 <!--       <v-btn @click="testButton"> Test Button </v-btn> -->
 <!--       <div class="test2">
  -->        <!-- Place Component here -->
@@ -32,6 +32,9 @@
 <!--         <chart-sender></chart-sender>
       </div>
  -->
+
+           <theme-chooser></theme-chooser>
+
       <div class="test3">
       <!-- Place Component here -->
         <bar-chart
@@ -47,6 +50,7 @@
 <script>
 import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
+import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
 
 import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/sandbox/Toolbar.vue'
@@ -58,7 +62,8 @@ export default {
     'pie-chart': PieChart,
     'tool-bar': Toolbar,
     'chart-sender': ChartSenderComponent,
-    'bar-chart': BarChart
+    'bar-chart': BarChart,
+    'theme-chooser': ThemeChooserComponent
   },
   data: function() {
     return {
