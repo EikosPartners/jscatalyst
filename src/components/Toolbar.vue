@@ -25,13 +25,13 @@
             </v-btn>
             <span>Toggle light/dark</span>
           </v-tooltip>
-          <v-tooltip bottom>
+          <!-- <v-tooltip bottom>
             <v-btn icon @click.stop="toggleLightDark" slot="activator">
-              <!-- share function when available: @click="shareURL" -->
+              share function when available: @click="shareURL" 
               <v-icon class="">share</v-icon>
             </v-btn>
             <span>Share</span>
-          </v-tooltip>
+          </v-tooltip> --> 
           <v-tooltip bottom>
             <v-btn icon @click.stop="refreshScreen" slot="activator">
               <v-icon>refresh</v-icon>
