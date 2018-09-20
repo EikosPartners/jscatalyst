@@ -16,10 +16,10 @@
      <div class="test1">
     
         <!-- Place Component here -->
-        <pie-chart
+        <bubble-chart
           :title="testTitle"
-          :dataModel='pieData'
-        ></pie-chart>
+          :dataModel='bubbleData'
+        ></bubble-chart>
       </div>
 
 <!--       <v-btn @click="testButton"> Test Button </v-btn> -->
@@ -33,13 +33,17 @@
       </div>
  -->
 
-           <theme-chooser></theme-chooser>
+      <div class="theme--light">
+        I'm a div
+      </div>
+
 
       <div class="test3">
       <!-- Place Component here -->
         <bar-chart
           propID='bar3'
           :dataModel='barData'
+          :xAxisAngle="-40"
         ></bar-chart>
       </div>
 
@@ -63,10 +67,12 @@ export default {
     'tool-bar': Toolbar,
     'chart-sender': ChartSenderComponent,
     'bar-chart': BarChart,
+    'bubble-chart': BubbleChart,
     'theme-chooser': ThemeChooserComponent
   },
   data: function() {
     return {
+      angle: 0,
       testTitle: "Hello World",
       barData: [
         {"x": "5/15 - 6/14", "y": 13.3},

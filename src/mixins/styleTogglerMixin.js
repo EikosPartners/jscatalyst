@@ -13,7 +13,11 @@ methods: {
         var opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
         this.$root.$el.className = this.$root.$el.className.replace(current, opposite)
         this.$store.commit('changeDisplay', opposite.split('--')[1])
-
+        let otherElements = document.querySelectorAll('.' + current)
+        Array.from(otherElements).forEach(element=>{
+          element.classList.remove(current)
+          element.classList.add(opposite)
+        })
         if (opposite === 'theme--dark') {
           this.$vuetify.theme.info = this.$store.getters.themeColors.vuetifyDark
         } else if (opposite === 'theme--light')  {
