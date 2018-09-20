@@ -6,7 +6,7 @@
             </v-btn>
             <v-list>
                 <v-list-tile v-for="item in themes" :key="item.name" @click="changeTheme(item.name, item.themeColors, item.isCustom)">
-                <v-list-tile-title>{{ item.name | dropCap }}</v-list-tile-title>
+                <v-list-tile-title class="theme-item" :class="{ selected: item.name.toLowerCase() === colorTheme}" >{{ item.name | dropCap }}</v-list-tile-title>
                     <v-icon :color="getColorForItem(item)" :style="{color: getColorForItem(item)}">brightness_1</v-icon>
                 </v-list-tile>
                     <v-list-tile v-if="allowCustom" @click="addColor()">
@@ -176,5 +176,18 @@
   .btns-box {
     justify-content: flex-end;
     padding-right: 16px;
+  }
+
+  .theme-item:before {
+      display: inline-block;
+      content: '';
+      height: 0.75rem;
+      width: 0.75rem;
+      margin-right: 5px;
+  }
+
+  .theme-item.selected:before {
+      border-radius: 1em;
+      background-color: red;
   }
 </style>
