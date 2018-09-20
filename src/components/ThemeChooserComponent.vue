@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <v-menu offset-y open-on-hover>
+    <div >
+        <v-menu offset-y open-on-hover style="height: 100%">
             <v-btn flat slot="activator" class="navBtn">Themes
                 <v-icon>arrow_drop_down</v-icon>
             </v-btn>
