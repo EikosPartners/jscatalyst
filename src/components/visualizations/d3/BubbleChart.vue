@@ -98,7 +98,9 @@ export default {
 			return data
 		},
 		themeColors() {
-			return this.$store.state.themeMod.themeColors
+			let colors = this.$store.getters.themeColors || {};
+
+			return Object.values(colors).slice(0, 8);
 		}
 	},
 	watch: {

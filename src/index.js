@@ -11,6 +11,7 @@ import ReceiverComponent from '@/components/ReceiverComponent.vue'
 import DynamicComponent from '@/components/DynamicComponent.vue'
 import UIBuilderComponent from '@/components/UIBuilderComponent.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
+import Toolbar from '@/components/Toolbar.vue'
 
 import ChartistBarChart from '@/components/visualizations/Chartist/ChartistBarChart.vue'
 import ChartistLineChart from '@/components/visualizations/Chartist/ChartistLineChart.vue'
@@ -144,6 +145,7 @@ export {
   DynamicComponent,
   UIBuilderComponent,
   ThemeChooserComponent,
+  Toolbar,
   PlotlyAreaChart,
   PlotlyBarGraph,
   PlotlyBubbleChart,

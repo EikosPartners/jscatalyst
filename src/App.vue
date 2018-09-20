@@ -53,7 +53,7 @@ import BarChart from '@/components/visualizations/d3/BarChart.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
 
 import PieChart from '@/components/visualizations/d3/PieChart.vue'
-import Toolbar from '@/sandbox/Toolbar.vue'
+import Toolbar from '@/components/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
 
 export default {

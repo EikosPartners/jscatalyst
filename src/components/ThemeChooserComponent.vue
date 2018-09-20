@@ -5,8 +5,8 @@
                 <v-icon>arrow_drop_down</v-icon>
             </v-btn>
             <v-list>
-                <v-list-tile v-for="item in themes" :key="item.name" @click="changeTheme(item.name)">
-                <v-list-tile-title>{{ item.name | dropCap }}</v-list-tile-title>
+                <v-list-tile v-for="item in themes" :key="item.name" @click="changeTheme(item.name, item.themeColors, item.isCustom)">
+                <v-list-tile-title class="theme-item" :class="{ selected: item.name.toLowerCase() === colorTheme}" >{{ item.name | dropCap }}</v-list-tile-title>
                     <v-icon :color="getColorForItem(item)" :style="{color: getColorForItem(item)}">brightness_1</v-icon>
                 </v-list-tile>
                     <v-list-tile v-if="allowCustom" @click="addColor()">
@@ -125,15 +125,20 @@
                 
                 // if isCustom is not supplied, check the store to see if its a custom theme or not
                 if (isCustom === undefined) {
-                     let theme = 'blue'
-                     // this.getCustomTheme(newTheme);
+                    let themes = this.$store.getters.customThemes;
+                    isCustom = false;
 
-                     isCustom = theme.length > 0 ? true : false;
+                    themes.some( (theme) => {
+                        if (theme.name === newTheme) { 
+                            return isCustom = true;
+                        }
+                    })
+                    
                 }
 
                 this.$emit('jsc_theme_change', {
                     name: newTheme,
-                    colors: themeColors,
+                    themeColors,
                     isCustom
                 });
             },
@@ -193,7 +198,7 @@
                 };
                 debugger
                 this.$store.commit("saveCustomTheme", payload)
-                this.chooseTheme(payload.name)
+                this.changeTheme(payload.name, payload.themeColors, true);
 
 
                 this.showColorPicker = false;
@@ -218,5 +223,18 @@
   .btns-box {
     justify-content: flex-end;
     padding-right: 16px;
+  }
+
+  .theme-item:before {
+      display: inline-block;
+      content: '';
+      height: 0.75rem;
+      width: 0.75rem;
+      margin-right: 5px;
+  }
+
+  .theme-item.selected:before {
+      border-radius: 1em;
+      background-color: red;
   }
 </style>
