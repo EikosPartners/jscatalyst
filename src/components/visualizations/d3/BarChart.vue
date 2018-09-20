@@ -129,8 +129,10 @@ export default {
         }
 
         var element = $(selection_string);
-        var margin = { top: 20, right: 30, bottom: 40, left: 40 };
-
+        var margin = { top: 20, right: 30, bottom: 15, left: 40 };
+        if (this.xAxisAngle > 0) {
+          margin.bottom += (this.xAxisAngle / 2)
+        }
         let width = element.width() - margin.left - margin.right,
           height = element.height() - margin.top - margin.bottom;
 
@@ -146,7 +148,7 @@ export default {
           .paddingOuter(.2);
 
         var y = d3.scaleLinear()
-          .range([height, 0]);
+          .range([height - margin.bottom, 0]);
 
         var xAxis = d3.axisBottom()
           .scale(x)
@@ -188,7 +190,7 @@ export default {
         chart
           .append("g")
           .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
+          .attr("transform", "translate(0," +  (height - margin. bottom) + ")")
           .call(xAxis)
           .append("text")
           .attr("class", "label")
@@ -201,7 +203,7 @@ export default {
 
         if (this.xAxisAngle > 0) {
             text
-                .attr("transform", `rotate(${this.xAxisAngle})`)
+                .attr("transform", `rotate(${this.xAxisAngle}) translate(0, ${margin.top})`)
                 .style("text-anchor", "middle")
 
             let dimensions = text.node().getBBox();
@@ -245,7 +247,7 @@ export default {
               return y(d.y);
             })
             .attr("height", function(d) {
-              return height - y(d.y);
+              return height - y(d.y) - margin.bottom;
             })
             .attr("width", x.bandwidth()-x.paddingInner())
             .style("fill", "var(--fifth)")
