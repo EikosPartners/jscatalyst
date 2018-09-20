@@ -9,24 +9,24 @@
       >
         <!-- DROP A LOGO HERE -->
         <template v-if="displayTheme === 'light'">
-          <img class="responsive-img" id="logo" src="/static/ep-logo-black.png" style="cursor: pointer;" title="Home" alt="Back To Homepage">
+          <img class="responsive-img" id="logo" :src="logoLight" style="cursor: pointer;" title="Home" alt="Back To Homepage">
         </template>
         <template v-else>
-          <img class="responsive-img" id="logo" src="/static/ep-logo-yellow.png" style="cursor: pointer;" title="Home" alt="Back To Homepage">
+          <img class="responsive-img" id="logo" :src="logoDark" style="cursor: pointer;" title="Home" alt="Back To Homepage">
         </template>
-        <h1 id="headerText">JS Catalyst</h1>
+        <h1 id="headerText">{{ title }}</h1>
         <v-spacer></v-spacer>
 
         <!-- Full nav menu for larger screens -->
         <v-toolbar-items class="hidden-md-and-down">
           <v-tooltip bottom>
-            <v-btn icon @click="toggleDark" slot="activator">
+            <v-btn icon @click="toggleLightDark" slot="activator">
               <v-icon class="">lightbulb_outline</v-icon>
             </v-btn>
             <span>Toggle light/dark</span>
           </v-tooltip>
           <v-tooltip bottom>
-            <v-btn icon @click.stop="" slot="activator">
+            <v-btn icon @click.stop="toggleLightDark" slot="activator">
               <!-- share function when available: @click="shareURL" -->
               <v-icon class="">share</v-icon>
             </v-btn>
@@ -40,18 +40,18 @@
           </v-tooltip>
 
           <!-- <v-btn small flat @click.stop="aboutModal = true" class="navBtn">About</v-btn> -->
-          <theme-chooser></theme-chooser>
+          <theme-chooser @jsc_theme_change="bubbleUp"></theme-chooser>
         </v-toolbar-items>
 
         <!-- Collapsed nav menu for mobile -->
         <v-toolbar-items class="hidden-lg-and-up">
           <v-tooltip bottom>
-            <v-btn icon @click="toggleDark" slot="activator">
+            <v-btn icon @click="toggleLightDark" slot="activator">
               <v-icon class="">lightbulb_outline</v-icon>
             </v-btn>
             <span>Toggle light/dark</span>
           </v-tooltip>
-          <theme-chooser></theme-chooser>
+          <theme-chooser @jsc_theme_change="bubbleUp"></theme-chooser>
         </v-toolbar-items>
 
       </v-toolbar>
@@ -70,17 +70,49 @@
   import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue';
   import styleTogglerMixin from '@/mixins/styleTogglerMixin.js';
 
+  /**
+   * Toolbar Component
+   * 
+   * @module Toolbar
+   * 
+   * @param {String} title - the title of the toolbar
+   * @param {String} logoLight - the URL for the image to use as the logo during light theme
+   * @param {String} logoDark - the URL for the image to use as the logo during dark theme
+   * 
+   * @event jsc_ld_change - Emits a string with either 'light' or 'dark' when that changes
+   * @event jsc_theme_change - Emits an object that describes the current theme
+   * 
+   */
   export default {
     components: {
       'theme-chooser': ThemeChooserComponent
     },
     mixins: [styleTogglerMixin],
-    props: [
-
-    ],
+    props: {
+      title: {
+        type: String,
+        default: "JS Catalyst"
+      },
+      logoLight: {
+        type: String,
+        default: "/static/ep-logo-black.png"
+      },
+      logoDark: {
+        type: String,
+        default: "/static/ep-logo-yellow.png"
+      }
+    },
     methods: {
       refreshScreen: function(){
         location.reload();
+      },
+      toggleLightDark: function () {
+        this.toggleDark();
+
+        this.$emit('jsc_ld_change', this.displayTheme);
+      },
+      bubbleUp: function (theme) {
+        this.$emit('jsc_theme_change', theme);
       }
     },
     computed: {
