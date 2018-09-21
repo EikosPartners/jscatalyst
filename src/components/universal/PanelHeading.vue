@@ -1,6 +1,6 @@
 <template>
-  <span :id="propID">
-    <div :class=" {'panel-heading': !collapsed, 'collapsedBar': collapsed}">
+  <span :id="propID" >
+    <div :class=" {'panel-heading': !collapsed, 'collapsedBar': collapsed}" :style="{backgroundColor: displayTheme == 'light' ? colors[8] : colors[0], color: displayTheme == 'light' ? colors[0] : colors[8]}">
 
     <span v-if="collapsed">
       <v-tooltip right allow-overflow>
@@ -35,6 +35,7 @@
 
 <script>
 import moment from 'moment'
+import themeHelper from '@/common/themeHelper'
 
 export default {
     data: function(){
@@ -97,6 +98,7 @@ export default {
       }
     },
     computed: {
+      ...themeHelper,
       collapsedTooltip: function(){
         if (this.headerText === "Interval Selector") {
           let useableStart = moment(this.tooltipInfo.start_date)
@@ -112,6 +114,7 @@ export default {
         }
 
       },
+
 
     }
 }
@@ -132,7 +135,7 @@ export default {
     height: 40px;
     font-size: 20px;
     padding: 6px 10px 5px 10px;
-    background-color: #e2e2e2;
+/*    background-color: #e2e2e2;*/
     border-radius: 4px;
     /*cursor: pointer;*/
     /*margin-right:20px;*/
