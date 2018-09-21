@@ -160,7 +160,6 @@
   #headerText{
       padding-left: 10px;
       font-size: 28px;
-      font-family: 'Roboto';
       font-weight: normal;
   }
 
