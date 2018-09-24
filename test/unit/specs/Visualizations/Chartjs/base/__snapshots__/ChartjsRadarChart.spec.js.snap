@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Chartjs Radar chart, snapshot matches snapshot 1`] = `
-<div>
-    <canvas id="radar-chart" width="400" height="400"></canvas>
-</div>
-`;

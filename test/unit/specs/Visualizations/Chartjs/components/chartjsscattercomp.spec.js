@@ -158,33 +158,33 @@ describe('Chartjs Scatter Component different colorTheme', () => {
 
 })
 
-describe('Chartjs Scatter Comp, snapshot', ()=>{
-    let wrapper
+// describe('Chartjs Scatter Comp, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(Component, {
-          propsData: {
-              dataModel: data
-         },
-         attachToDocument: true,
-         store,
-         localVue,
-         computed: {
-           colors: mockBaseColors
-         }
-        })
-    })
+//     beforeEach(() => {
+//         wrapper = mount(Component, {
+//           propsData: {
+//               dataModel: data
+//          },
+//          attachToDocument: true,
+//          store,
+//          localVue,
+//          computed: {
+//            colors: mockBaseColors
+//          }
+//         })
+//     })
 
-    it('matches snapshot', () => {
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', () => {
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })

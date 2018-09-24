@@ -41,28 +41,28 @@ describe('Chartist Bar', () => {
 
 })
 
-describe('Chartist Bar chart, snapshot', ()=>{
-    let wrapper
+// describe('Chartist Bar chart, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(Component, {
-            propsData: {
-                dataModel: data
-           },
-           attachToDocument: true
-        })
-    })
+//     beforeEach(() => {
+//         wrapper = mount(Component, {
+//             propsData: {
+//                 dataModel: data
+//            },
+//            attachToDocument: true
+//         })
+//     })
 
-    it('matches snapshot', () => {
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', () => {
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })

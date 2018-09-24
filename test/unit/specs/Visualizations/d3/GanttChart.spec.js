@@ -82,29 +82,29 @@ describe('drawGantt works', ()=>{
 
 })
 
-describe('GanttChart, snapshot', ()=>{
-    let wrapper
+// describe('GanttChart, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(Component, {
-            propsData: {
-                dataModel: propData,
-                propID: 'foobar'
-           },
-           attachToDocument: true
-        })
-    })
+//     beforeEach(() => {
+//         wrapper = mount(Component, {
+//             propsData: {
+//                 dataModel: propData,
+//                 propID: 'foobar'
+//            },
+//            attachToDocument: true
+//         })
+//     })
 
-    it('matches snapshot', () => {
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', () => {
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })

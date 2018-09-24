@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`GanttChart, snapshot matches snapshot 1`] = `
-<div class="gantt-container">
-    <!---->
-    <div tabindex="-1" class="resize-observer" data-v-b329ee4c></div>
-    <div id="foobar" style="height:100%;"></div>
-</div>
-`;

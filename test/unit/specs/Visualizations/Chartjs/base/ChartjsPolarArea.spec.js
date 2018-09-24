@@ -74,28 +74,28 @@ describe('Chartjs Polar Chart, changing options', () => {
 
 })
 
-describe('Chartjs Polar area, snapshot', ()=>{
-    let wrapper
+// describe('Chartjs Polar area, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(Component, {
-            propsData: {
-                chartData: props
-           },
-           attachToDocument: true
-        })
-    })
+//     beforeEach(() => {
+//         wrapper = mount(Component, {
+//             propsData: {
+//                 chartData: props
+//            },
+//            attachToDocument: true
+//         })
+//     })
 
-    it('matches snapshot', () => {
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', () => {
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })

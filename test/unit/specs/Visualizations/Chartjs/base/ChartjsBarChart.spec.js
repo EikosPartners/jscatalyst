@@ -80,28 +80,28 @@ describe('Chartjs Bar Chart, changing options', () => {
 
 })
 
-describe('Chartjs Bar chart, snapshot', ()=>{
-    let wrapper
+// describe('Chartjs Bar chart, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(Component, {
-            propsData: {
-                chartData: props
-           },
-           attachToDocument: true
-        })
-    })
+//     beforeEach(() => {
+//         wrapper = mount(Component, {
+//             propsData: {
+//                 chartData: props
+//            },
+//            attachToDocument: true
+//         })
+//     })
 
-    it('matches snapshot', () => {
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', () => {
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })

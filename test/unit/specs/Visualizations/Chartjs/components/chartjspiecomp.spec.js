@@ -16,7 +16,7 @@ var mockColors = jest.fn(() => ['#351850', '#4F1E71', '#7C388E','#A93B8D', '#BA5
 
 var store;
 
-describe('Chartjs Pie Component light theme', () => {
+describe( 'Chartjs Pie Component light theme', () => {
     let wrapper
     beforeEach(() => {
       store = new Vuex.Store({
@@ -155,33 +155,33 @@ describe('Chartjs Pie Component different colorTheme', () => {
 
 })
 
-describe('Chartjs Pie Comp, snapshot', ()=>{
-    let wrapper
+// describe('Chartjs Pie Comp, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-        wrapper = mount(Component, {
-          propsData: {
-              dataModel: data
-         },
-         attachToDocument: true,
-         store,
-         localVue,
-         computed: {
-           colors: mockBaseColors
-         }
-        })
-    })
+//     beforeEach(() => {
+//         wrapper = mount(Component, {
+//           propsData: {
+//               dataModel: data
+//          },
+//          attachToDocument: true,
+//          store,
+//          localVue,
+//          computed: {
+//            colors: mockBaseColors
+//          }
+//         })
+//     })
 
-    it('matches snapshot', () => {
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', () => {
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })

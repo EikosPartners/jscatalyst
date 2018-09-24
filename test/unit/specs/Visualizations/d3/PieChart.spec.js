@@ -44,8 +44,7 @@ describe('Pie Chart', () => {
     })
 
     it('has the right prop data', () => {
-      console.log(wrapper.props())
-      // expect(wrapper.props('dataModel')).toBeUndefined()
+      expect(wrapper.props().dataModel).toBeUndefined()
     })
 
 })

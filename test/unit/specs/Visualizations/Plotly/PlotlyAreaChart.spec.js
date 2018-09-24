@@ -111,39 +111,39 @@ describe('Plotly Area Chart, draw SVG', ()=>{
 })
 
 
-describe('Plotly Area Chart, snapshot', ()=>{
-    let wrapper
+// describe('Plotly Area Chart, snapshot', ()=>{
+//     let wrapper
 
-    beforeEach(() => {
-      store = new Vuex.Store({
-        state: {
-          colorTheme: 'blue'
-        }
-      })
-      wrapper = mount(Component, {
-          propsData: {
-              dataModel: data,
-              propID: 'foobar'
-         },
-         attachToDocument: true,
-         store,
-         localVue,
-         computed: {
-           colors: mockBaseColors
-         }
-      })
-    })
+//     beforeEach(() => {
+//       store = new Vuex.Store({
+//         state: {
+//           colorTheme: 'blue'
+//         }
+//       })
+//       wrapper = mount(Component, {
+//           propsData: {
+//               dataModel: data,
+//               propID: 'foobar'
+//          },
+//          attachToDocument: true,
+//          store,
+//          localVue,
+//          computed: {
+//            colors: mockBaseColors
+//          }
+//       })
+//     })
 
-    it('matches snapshot', ()=>{
-        let renderer = createRenderer()
-        return Vue.nextTick()
-            .then(function(){
-                renderer.renderToString(wrapper.vm, (err, str) => {
-                  if (err) throw new Error(err)
-                  expect(str).toMatchSnapshot()
-                })
-            })
+//     it('matches snapshot', ()=>{
+//         let renderer = createRenderer()
+//         return Vue.nextTick()
+//             .then(function(){
+//                 renderer.renderToString(wrapper.vm, (err, str) => {
+//                   if (err) throw new Error(err)
+//                   expect(str).toMatchSnapshot()
+//                 })
+//             })
 
-    })
+//     })
 
-})
+// })
