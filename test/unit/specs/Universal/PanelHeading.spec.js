@@ -27,7 +27,6 @@ describe('PanelHeading', () => {
           },
           store, localVue
         })
-        console.log(wrapper)
     })
 
     it('renders with correct props', () => {

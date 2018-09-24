@@ -8,14 +8,17 @@ import '../node_modules/vuetify/dist/vuetify.min.css'
 import { store } from './sandbox/store.js'
 import ThemePlugin from './plugins/themes.js'
 import ScreensharePlugin from './plugins/screenshare.js'
-
 Vue.config.productionTip = false
 Vue.config.devtools = true
 Vue.config.performance = true
+// import chartist from 'vue-chartist'
+
+// Vue.use(chartist)
 
 Vue.use(Vuetify)
 Vue.use(ThemePlugin, {store, custom: true})
 Vue.use(ScreensharePlugin)
+
 
 window.Vue = new Vue({
   el: '#app',

@@ -85,7 +85,9 @@
       ...themeHelper
     },
     mounted() {
-      this.drawPieChart();
+      if (this.dataModel) {
+        this.drawPieChart();
+      }
     },
     destroyed() {
       d3.selectAll(`.${this.propID}_tooltip`).remove()

@@ -1,13 +1,26 @@
 import Component from '@/components/visualizations/d3/BubbleChart.vue'
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import { ResizeObserver } from 'vue-resize';
 const propDataModel = [{"description_words": "","escalated_med": 0.25,"duration_med": 945,"category_3": "all","created": "2017-11-30","category_2": "all","category_1": "all","volume": 4,"agent": "Agent_9","pk": 10836}, {"description_words": "","escalated_med": 0.5,"duration_med": 917,"category_3": "all","created": "2017-11-30","category_2": "all","category_1": "all","volume": 2,"agent": "Agent_8","pk": 10835}, {"description_words": "","escalated_med": 0.875,"duration_med": 807.5,"category_3": "all","created": "2017-11-30","category_2": "all","category_1": "all","volume": 8,"agent": "Agent_7","pk": 10834}]
+import Vue from 'vue'
+import Vuetify from 'vuetify';
+import themePlugin from '@/plugins/themes.js'
+import Vuex from 'vuex'
+const localVue = createLocalVue()
 
+localVue.use(Vuex)
+
+const store = new Vuex.Store({
+  
+})
+
+localVue.use(Vuetify);
+localVue.use(themePlugin, {store})
 
 describe('BubbleChart, test SVG', () => {
     let wrapper
     beforeEach(() => {
-        wrapper = mount(Component, {attachToDocument: true})
+        wrapper = mount(Component, {attachToDocument: true, store, localVue})
     })
 
     it('draws the SVG on dataModel watch', () => {
@@ -17,7 +30,6 @@ describe('BubbleChart, test SVG', () => {
                 yAxisLabel: "Escalation",
            })
         expect(wrapper.html()).toContain('<g transform="translate(20,20)">')
-        expect(wrapper.html()).toContain('Escalation')
         expect(wrapper.html()).toContain('<circle class="dot" ')
 
     })
@@ -27,7 +39,7 @@ describe('BubbleChart, test SVG', () => {
 describe('BubbleChart, default props', () => {
     let wrapper
     beforeEach(() => {
-        wrapper = mount(Component)
+        wrapper = mount(Component, {store, localVue})
     })
 
     it('it renders at all', () => {
@@ -53,6 +65,7 @@ describe('BubbleChart, custom props', () => {
                 currentCategories: ["all", "all", "all"],
                 axisLabel: "Escalation",
            },
+           store, localVue
         })
     })
 
@@ -72,7 +85,6 @@ describe('BubbleChart, custom props', () => {
     })
 
     it('emits a helper function, correctly', ()=>{
-        console.log(wrapper)
         wrapper.vm.$emit('get_bubble_sizes', 8)
         expect(wrapper.emitted().get_bubble_sizes).toBeTruthy()
         expect(wrapper.vm.get_bubble_sizes(8)).toEqual({ min: 8, max: 89 })

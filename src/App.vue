@@ -16,10 +16,10 @@
      <div class="test1">
     
         <!-- Place Component here -->
-        <bubble-chart
+        <chartist-pie
           :title="testTitle"
           :dataModel='bubbleData'
-        ></bubble-chart>
+        ></chartist-pie>
       </div>
 
 <!--       <v-btn @click="testButton"> Test Button </v-btn> -->
@@ -55,6 +55,7 @@
 import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
+import ChartistPieChart from '@/components/visualizations/chartist/ChartistPieChart.vue'
 
 import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/components/Toolbar.vue'
@@ -68,7 +69,8 @@ export default {
     'chart-sender': ChartSenderComponent,
     'bar-chart': BarChart,
     'bubble-chart': BubbleChart,
-    'theme-chooser': ThemeChooserComponent
+    'theme-chooser': ThemeChooserComponent,
+    'chartist-pie': ChartistPieChart
   },
   data: function() {
     return {
