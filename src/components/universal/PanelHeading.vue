@@ -1,6 +1,6 @@
 <template>
   <span :id="propID" >
-    <div :class=" {'panel-heading': !collapsed, 'collapsedBar': collapsed}" :style="{backgroundColor: displayTheme == 'light' ? colors[8] : colors[0], color: displayTheme == 'light' ? colors[0] : colors[8]}">
+    <div :class=" {'panel-heading': !collapsed, 'collapsedBar': collapsed}" :style="{backgroundColor: displayTheme == 'light' ? themeColors.vuetifyLight : themeColors.vuetifyDark, color: displayTheme == 'light' ? 'black' : 'white'}">
 
     <span v-if="collapsed">
       <v-tooltip right allow-overflow>
@@ -36,6 +36,7 @@
 <script>
 import moment from 'moment'
 import themeHelper from '@/common/themeHelper'
+import {mapGetters} from 'vuex'
 
 export default {
     data: function(){
@@ -99,6 +100,7 @@ export default {
     },
     computed: {
       ...themeHelper,
+      ...mapGetters(['themeColors']),
       collapsedTooltip: function(){
         if (this.headerText === "Interval Selector") {
           let useableStart = moment(this.tooltipInfo.start_date)
