@@ -72,6 +72,7 @@ describe('BubbleChart, custom props', () => {
     })
 
     it('emits a helper function, correctly', ()=>{
+        console.log(wrapper)
         wrapper.vm.$emit('get_bubble_sizes', 8)
         expect(wrapper.emitted().get_bubble_sizes).toBeTruthy()
         expect(wrapper.vm.get_bubble_sizes(8)).toEqual({ min: 8, max: 89 })

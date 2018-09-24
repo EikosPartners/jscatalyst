@@ -69,7 +69,7 @@ describe('StackedBarChart, draw SVG', ()=>{
     })
 
     it('renders the SVG components', ()=>{
-        expect(wrapper.html()).toContain('<g class="x axis-stacked"')
+        expect(wrapper.html()).toContain('axis-stacked"')
         expect(wrapper.html()).toContain('<g class="tick"')
         expect(wrapper.html()).toContain('<rect class="stackedBar"')
     })

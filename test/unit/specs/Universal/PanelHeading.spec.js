@@ -1,8 +1,19 @@
 import Component from '@/components/universal/PanelHeading.vue'
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Vue from 'vue'
 import Vuetify from 'vuetify';
-Vue.use(Vuetify);
+import themePlugin from '@/plugins/themes.js'
+import Vuex from 'vuex'
+const localVue = createLocalVue()
+
+localVue.use(Vuex)
+
+const store = new Vuex.Store({
+  
+})
+
+localVue.use(Vuetify);
+localVue.use(themePlugin, {store})
 
 describe('PanelHeading', () => {
     let wrapper;
@@ -11,10 +22,12 @@ describe('PanelHeading', () => {
         wrapper = mount(Component, {
           propsData: {
             headerText:'Example Header',
-            dataModel: null,
+            titleText: null,
             propID: 'panelheading'
-          }
+          },
+          store, localVue
         })
+        console.log(wrapper)
     })
 
     it('renders with correct props', () => {
