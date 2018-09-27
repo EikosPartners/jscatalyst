@@ -37,14 +37,15 @@
 	  },
 	  props: {
 			/**
-			 * The data for this component can be customized; it currently contains:
+			 * The data for this component can be customized. It currently contains: 
 			 * @typedef {Array} dataModel
-			 * @property {string} date - date string
-			 * @property {string} volume - the number of incidents on a particular day
+			 * @property {string|number} x - the value for the x-axis
+			 * @property {string|number} y - the value for the y-axis
+			 * @property {number} magnitude - the value to determine the color/intensity of the data point
 			 */
 	    dataModel: {
 	      type: Array,
-	      default: ()=>{return[{"date": "2017-11-30","volume": 2},{"date": "2017-11-29","volume": 0},{"date": "2017-11-30","volume": 0},{"date": "2017-11-28","volume": 1}]}
+	      default: ()=>{return[{"x": "2017-11-30","magnitude": 2},{"x": "2017-11-29","magnitude": 0},{"x": "2017-11-30","magnitude": 0},{"x": "2017-11-28","magnitude": 1}]}
 	    },
 	    propID: {
 	      type: String,
@@ -52,11 +53,21 @@
 	    },
 			alertText: {
 				type: String,
-				default: "Incident"
+				default: "Magnitude"
 			},
 	    title: {
 	      type: String
-	    }
+			},
+			/**
+			 * Specifies which type of data the x values will be 
+			 * Possible values are 
+			 * "calendar" - date time string
+			 * "other" - any number, string, etc.
+			 */
+			dataType: {
+				type: String,
+				default: "calendar"
+			}
 	  },
 		data: function() {
 	    return {
@@ -93,7 +104,7 @@
 	    draw: function(data, selection_string) {
 			  let component = this
 	      var width = 900,
-	        height = 105,
+	        height = 150,
 	        cellSize = 13; // cell size
 	      let week_days = [ ,"Mon", ,"Wed", ,"Fri"];
 	      let month = [
@@ -117,31 +128,49 @@
 	        format = d3.timeFormat("%Y-%m-%d");
 	      let parseDate = d3.timeParse("%Y-%m-%d");
 
-	      let min_year = 9999;
-	      let max_year = 0;
+	      let min_value = 9999;
+				let max_value = 0;
 
-	      if ( data !== undefined && data.length > 0) {
+				let x_elems, y_elems;
+
+				// calendar, get the range of years to display
+	      if ( data !== undefined && data.length > 0 && this.dataType === 'calendar') {
 	        data.forEach(function(datum) {
-	          let date_year = parseDate(datum.date).getFullYear();
-	          min_year = date_year < min_year ? date_year : min_year;
-	          max_year = date_year > max_year ? date_year : max_year;
-	        })
-	      }
+	          let date_year = parseDate(datum.x).getFullYear();
+	          min_value = date_year < min_value ? date_year : min_value;
+	          max_value = date_year > max_value ? date_year : max_value;
+					});
+
+					x_elems = month;
+					y_elems = week_days;
+				} else {
+					// Get the range if not calendar.
+					x_elems = d3.set(data.map( function (item) { return item.x })).values();
+					y_elems = d3.set(data.map( function (item) { return item.y })).values();
+				}
 
 				d3.selectAll(`.${this.propID}_tooltip`).remove()
         if ($(selection_string + " svg") != null) {
           $(selection_string + " svg").remove();
-        }
+				}
+
+				let xScale = d3.scaleBand()
+											.domain(x_elems)
+											.range([0, x_elems.length * cellSize]);
+
+				let yScale = d3.scaleBand()
+											.domain(y_elems)
+											.range([0, y_elems.length * cellSize]);
 
 	      var svg = d3
 	        .select(selection_string)
 	        .selectAll("svg")
-	        .data(d3.range(min_year, max_year + 1))
+	        .data(this.dataType === 'calendar' ? d3.range(min_value, max_value + 1) : [0])
 	        .enter()
 	        .append("svg")
 	        .attr("width", "100%")
 	        .attr("data-height", "0.5678")
-	        .attr("viewBox", "0 0 900 105")
+	        .attr("viewBox", "0 0 900 300")
 	        .attr("preserveAspectRatio", "xMaxYMax meet")
 	        // http://tutorials.jenkov.com/svg/svg-viewport-view-box.html
 	        // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
@@ -151,11 +180,7 @@
 	        .append("g")
 	        .attr(
 	          "transform",
-	          "translate(" +
-	            (width - cellSize * 53) / 2 +
-	            "," +
-	            (height - cellSize * 7 - 1) +
-	            ")"
+	          "translate(100,100)"
 	        );
 
 	      svg
@@ -163,13 +188,8 @@
 	        .attr("transform", "translate(-38," + cellSize * 3.5 + ")rotate(-90)")
 	        .style("text-anchor", "middle")
 	        .text(function(d) {
-	          return d;
+						if (this.dataType === "calendar") { return d; }
 	        });
-
-				var maxColor = this.colors[4]
-				var color = d3.scaleLinear()
-	        .range(['#ebedf0', maxColor])
-	        .domain([0, 1]);
 
 	      let tooltip = d3
 	        .select("body")
@@ -177,7 +197,8 @@
 	        .attr("class", `d3_visuals_tooltip ${this.propID}_tooltip`)
 	        .style("opacity", 0);
 
-	      for (var i = 0; i < 7; i++) {
+				// "y" axis values
+	      for (var i = 0; i < y_elems.length; i++) {
 	        svg
 	          .append("text")
 						.style("font-size", "12px")
@@ -185,14 +206,19 @@
 	          .style("text-anchor", "end")
 	          .attr("dy", "-.25em")
 	          .text(function(d) {
-	            return week_days[i];
+	            return y_elems[i];
 	          });
 	      }
 
+				// "magnitudes"
 	      var rect = svg
 	        .selectAll(".day")
 	        .data(function(d) {
-	          return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+						if (localThis.dataType === 'calendar') {
+							return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+						} else {
+							return data;
+						}
 	        })
 	        .enter()
 	        .append("rect")
@@ -201,38 +227,57 @@
 					.style("font-size", "12px")
 	        .attr("width", cellSize)
 	        .attr("height", cellSize)
-	        .attr("x", function(d) {
-	          return week(d) * cellSize;
+	        .attr("x", function(d, i) {
+						if (localThis.dataType === 'calendar') { 
+							return week(d) * cellSize;
+						} else {
+							//return xScale(d.x)
+							return xScale(d.x);
+						}
 	        })
-	        .attr("y", function(d) {
-	          return day(d) * cellSize;
+	        .attr("y", function(d, i) {
+						if (localThis.dataType === 'calendar') {
+							return day(d) * cellSize;
+						} else {
+							return yScale(d.y);
+						} 
 	        })
-	        .attr("fill", '#D3D3D3')
-	        .datum(format);
+					.attr("fill", '#D3D3D3')
+				
+				if (this.dataType === 'calendar') {
+					rect.datum(format);
+				}
 
+				// "x" axis values
 	      var legend = svg
 	        .selectAll(".legend")
-	        .data(month)
+	        .data(x_elems)
 	        .enter()
 	        .append("g")
 	        .attr("class", "legend")
 	        .attr("transform", function(d, i) {
-	          return "translate(" + ((i + 1) *55 + 8) + ",0)";
-	        });
-
-
-
-	      legend
+						if (localThis.dataType === 'calendar') {
+							return "translate(" + ((i + 1) * 53) + ",0)";
+						} else {
+							return "translate(" + (i * cellSize) + ",0)";
+						}
+	          
+	        })
 	        .append("text")
 	        .attr("class", function(d, i) {
-	          return month[i];
+	          return x_elems[i];
 	        })
 	        .style("text-anchor", "end")
 	        .attr("dy", "-.25em")
 					.style("font-size", "12px")
 	        .text(function(d, i) {
-	          return month[i];
-	        });
+	          return x_elems[i];
+					})
+
+					
+				if (localThis.dataType === 'other') {
+					legend.attr("transform", "rotate(65)");
+				}
 
 	      svg
 	        .selectAll(".month")
@@ -249,26 +294,44 @@
 
 	      // data
 	      var count_Max = d3.max(data, function(d) {
-	        return d.volume;
-	      });
+						return d.magnitude;
+				});
+				
+				var maxColor = this.colors[7]
+				var color = d3.scaleLinear()
+	        .range([localThis.colors[6], localThis.colors[0]])
+					.domain([0, count_Max]);
+				
 
 	      var ndata = d3
 	        .nest()
 	        .key(function(d) {
-	          return d.date;
+						return d.x
 	        })
 	        .rollup(function(d) {
-	          return Math.sqrt(d[0].volume / count_Max);
+	          return d[0].magnitude;
 	        })
 	        .map(data);
+				
+				console.log(ndata);
 
+				// Filling in the boxes with data.
 	      rect
 	        .filter(function(d) {
-	          return ('$'+d in ndata) && (ndata['$'+d] != 0);
+						if (localThis.dataType === 'calendar') {
+							return ('$'+d in ndata) && (ndata['$'+d] != 0);
+						} else {
+							return ('$'+d.x in ndata) && (ndata['$'+d] != 0);
+						}
 	        })
 					.attr("class", "hasData")
 	        .attr("fill", function(d) {
-	          return color(ndata['$'+d]);
+						if (localThis.dataType === 'calendar') {
+							return color(ndata['$'+d]);
+						} else {
+							return color(d.magnitude);
+						}
+	          
 	        })
 					.attr('stroke', '#666')
 	        .attr("data-title", function(d) {
@@ -288,7 +351,11 @@
 	            .transition()
 	            .duration(100)
 	            .attr("fill", function(d) {
-	              return color(ndata['$'+d]);
+	              if (localThis.dataType === 'calendar') {
+									return color(ndata['$'+d]);
+								} else {
+									return color(d.magnitude);
+								}
 	            });
 	          tooltip
 	            .transition()
@@ -306,12 +373,16 @@
 
 	    mouseOver: function(tooltip, d) {
 				var localThis = this;
+				if (typeof d === 'string') {
+					d = { x: d }
+				}
+				
 	      let item = this.dataModel.filter(function(item) {
-	        return item.date == d;
+						return item.x === d.x && item.y === d.y
 	      });
 
 	      tooltip
-	        .html(localThis.alertText + ": " + "<b>" + item[0].volume + "</b>" + "<br>Date: " + "<b>" + d + "</b>")
+	        .html(localThis.alertText + ": " + "<b>" + item[0].magnitude + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>Y: " + "<b>" + d.y + "</b>")
 	        .style("left", d3.event.pageX + 5 + "px")
 	        .style("top", d3.event.pageY - 28 + "px");
 
@@ -330,7 +401,7 @@
 	    },
 			click: function (d) {
 				let item = this.dataModel.filter( function (item) {
-					return item.date == d;
+					return item.x == d.x && item.y === d.y;
 				});
 
 				this.$emit('jsc_click', item[0]);

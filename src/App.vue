@@ -13,14 +13,15 @@
         </p>
       </div>
 
-     <div class="test1">
+     <!-- <div class="test1">
+     </div> -->
     
         <!-- Place Component here -->
-        <chartist-pie
+        <!-- <chartist-pie
           :title="testTitle"
           :dataModel='bubbleData'
         ></chartist-pie>
-      </div>
+      </div> -->
 
 <!--       <v-btn @click="testButton"> Test Button </v-btn> -->
 <!--       <div class="test2">
@@ -40,11 +41,10 @@
 
       <div class="test3">
       <!-- Place Component here -->
-        <bar-chart
-          propID='bar3'
-          :dataModel='barData'
-          :xAxisAngle="-40"
-        ></bar-chart>
+        <heatmap
+          :dataModel="heatData"
+          :dataType="'other'"
+        ></heatmap>
       </div>
 
     </div>
@@ -56,6 +56,8 @@ import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
 import ChartistPieChart from '@/components/visualizations/chartist/ChartistPieChart.vue'
+import HeatMap from '@/components/visualizations/d3/HeatMap.vue';
+import heatData from '@/assets/mocks/d3/heatmapMock.json';
 
 import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/components/Toolbar.vue'
@@ -70,7 +72,8 @@ export default {
     'bar-chart': BarChart,
     'bubble-chart': BubbleChart,
     'theme-chooser': ThemeChooserComponent,
-    'chartist-pie': ChartistPieChart
+    'chartist-pie': ChartistPieChart,
+    'heatmap': HeatMap
   },
   data: function() {
     return {
@@ -83,6 +86,7 @@ export default {
         {"x": "8/13 - 9/12", "y": 17.57},
         {"x": "9/12 - 10/12", "y": 14.35}
       ],
+      heatData,
       pieData: [{"label":"Cambridge","value":55},{"label":"Gloves","value":48},{"label":"Auto","value":45},{"label":"Planner","value":50},{"label":"Granite","value":55},{"label":"Canterbury","value":54},{"label":"Architect","value":48},{"label":"Markets","value":46},{"label":"Cotton","value":52},{"label":"Agent","value":47}
       ],
       bubbleData: [ {mapped: true, x: 2.1333333333333333, y: 83.3333333333333, value: 6, "label": "tier_1_cat_9" }, {mapped: true, x: 2.5833333333333335, y: 50, value: 2, label: "tier_1_cat_8" }, {mapped: true, x: 1.9333333333333333, y: 80, value: 5, label: "tier_1_cat_7" }, {mapped: true, x: 0.75, y: 28.571428571428598, value: 7, label: "tier_1_cat_6" }, {mapped: true, x: 0.8166666666666667, y: 50, value: 8, label: "tier_1_cat_5" }, {mapped: true, x: 1.9666666666666666, y: 55.5555555555556, value: 9, label: "tier_1_cat_4" }, {mapped: true, x: 1.2333333333333334, y: 57.142857142857096, value: 7, label: "tier_1_cat_3" }, {mapped: true, x: 1.0166666666666666, y: 66.6666666666667, value: 6, label: "tier_1_cat_2" }, {mapped: true, x: 1.4666666666666666, y: 60, value: 5, label: "tier_1_cat_10" }, {mapped: true, x: 1.2333333333333334, y: 25, value: 8, label: "tier_1_cat_1" }]

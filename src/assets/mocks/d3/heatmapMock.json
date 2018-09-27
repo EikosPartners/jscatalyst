@@ -1,1102 +1,222 @@
 [
-  {
-    "date": "2017-11-30",
-    "volume": 2
-  },
-  {
-    "date": "2017-11-29",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-30",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-28",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-27",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-26",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-25",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-24",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-25",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-23",
-    "volume": 7
-  },
-  {
-    "date": "2017-11-22",
-    "volume": 2
-  },
-  {
-    "date": "2017-11-21",
-    "volume": 4
-  },
-  {
-    "date": "2017-11-20",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-19",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-18",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-17",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-16",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-15",
-    "volume": 2
-  },
-  {
-    "date": "2017-11-14",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-15",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-13",
-    "volume": 2
-  },
-  {
-    "date": "2017-11-12",
-    "volume": 2
-  },
-  {
-    "date": "2017-11-11",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-12",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-10",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-09",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-08",
-    "volume": 3
-  },
-  {
-    "date": "2017-11-06",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-07",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-08",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-05",
-    "volume": 3
-  },
-  {
-    "date": "2017-11-04",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-05",
-    "volume": 0
-  },
-  {
-    "date": "2017-11-03",
-    "volume": 1
-  },
-  {
-    "date": "2017-11-02",
-    "volume": 3
-  },
-  {
-    "date": "2017-11-01",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-31",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-30",
-    "volume": 2
-  },
-  {
-    "date": "2017-10-29",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-26",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-27",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-29",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-25",
-    "volume": 2
-  },
-  {
-    "date": "2017-10-24",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-23",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-21",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-22",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-23",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-20",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-18",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-19",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-20",
-    "volume": 0
-  },
-  {
-    "date": "2017-10-17",
-    "volume": 2
-  },
-  {
-    "date": "2017-10-16",
-    "volume": 2
-  },
-  {
-    "date": "2017-10-15",
-    "volume": 2
-  },
-  {
-    "date": "2017-10-14",
-    "volume": 1
-  },
-  {
-    "date": "2017-10-13",
-    "volume": 1
-  },
-  {
-    "date": "2017-08-10",
-    "volume": 3
-  },
-  {
-    "date": "2017-08-09",
-    "volume": 1
-  },
-  {
-    "date": "2017-08-08",
-    "volume": 1
-  },
-  {
-    "date": "2017-08-07",
-    "volume": 2
-  },
-  {
-    "date": "2017-08-06",
-    "volume": 2
-  },
-  {
-    "date": "2017-08-05",
-    "volume": 3
-  },
-  {
-    "date": "2017-08-04",
-    "volume": 1
-  },
-  {
-    "date": "2017-08-03",
-    "volume": 1
-  },
-  {
-    "date": "2017-08-02",
-    "volume": 1
-  },
-  {
-    "date": "2017-08-01",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-31",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-30",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-29",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-27",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-29",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-26",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-25",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-24",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-23",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-22",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-21",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-20",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-19",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-18",
-    "volume": 3
-  },
-  {
-    "date": "2017-07-17",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-16",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-17",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-15",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-14",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-13",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-12",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-11",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-10",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-09",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-08",
-    "volume": 3
-  },
-  {
-    "date": "2017-07-07",
-    "volume": 4
-  },
-  {
-    "date": "2017-07-05",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-06",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-07",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-04",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-03",
-    "volume": 1
-  },
-  {
-    "date": "2017-07-02",
-    "volume": 2
-  },
-  {
-    "date": "2017-07-01",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-30",
-    "volume": 0
-  },
-  {
-    "date": "2017-07-01",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-29",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-28",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-27",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-26",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-25",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-26",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-24",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-22",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-23",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-24",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-21",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-20",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-19",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-18",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-19",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-17",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-16",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-17",
-    "volume": 0
-  },
-  {
-    "date": "2017-06-15",
-    "volume": 4
-  },
-  {
-    "date": "2017-06-14",
-    "volume": 5
-  },
-  {
-    "date": "2017-06-13",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-12",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-11",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-10",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-09",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-08",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-07",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-06",
-    "volume": 1
-  },
-  {
-    "date": "2017-06-05",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-04",
-    "volume": 3
-  },
-  {
-    "date": "2017-06-03",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-02",
-    "volume": 2
-  },
-  {
-    "date": "2017-06-01",
-    "volume": 3
-  },
-  {
-    "date": "2017-05-31",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-30",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-31",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-29",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-29",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-27",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-26",
-    "volume": 2
-  },
-  {
-    "date": "2017-05-25",
-    "volume": 3
-  },
-  {
-    "date": "2017-05-24",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-23",
-    "volume": 2
-  },
-  {
-    "date": "2017-05-22",
-    "volume": 2
-  },
-  {
-    "date": "2017-05-21",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-22",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-20",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-19",
-    "volume": 3
-  },
-  {
-    "date": "2017-05-17",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-18",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-19",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-16",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-15",
-    "volume": 4
-  },
-  {
-    "date": "2017-05-14",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-15",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-13",
-    "volume": 2
-  },
-  {
-    "date": "2017-05-12",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-11",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-10",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-09",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-10",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-08",
-    "volume": 2
-  },
-  {
-    "date": "2017-05-07",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-08",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-06",
-    "volume": 1
-  },
-  {
-    "date": "2017-05-03",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-04",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-05",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-06",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-02",
-    "volume": 2
-  },
-  {
-    "date": "2017-05-01",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-29",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-30",
-    "volume": 0
-  },
-  {
-    "date": "2017-05-01",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-27",
-    "volume": 5
-  },
-  {
-    "date": "2017-04-26",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-25",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-26",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-24",
-    "volume": 3
-  },
-  {
-    "date": "2017-04-22",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-23",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-24",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-21",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-20",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-19",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-18",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-17",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-16",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-17",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-15",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-14",
-    "volume": 3
-  },
-  {
-    "date": "2017-04-13",
-    "volume": 3
-  },
-  {
-    "date": "2017-04-12",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-11",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-10",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-09",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-08",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-07",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-06",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-05",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-04",
-    "volume": 2
-  },
-  {
-    "date": "2017-04-03",
-    "volume": 1
-  },
-  {
-    "date": "2017-04-02",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-03",
-    "volume": 0
-  },
-  {
-    "date": "2017-04-01",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-31",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-30",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-29",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-29",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-27",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-26",
-    "volume": 3
-  },
-  {
-    "date": "2017-03-25",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-26",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-24",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-23",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-22",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-19",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-20",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-21",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-22",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-18",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-17",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-16",
-    "volume": 3
-  },
-  {
-    "date": "2017-03-15",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-14",
-    "volume": 3
-  },
-  {
-    "date": "2017-03-13",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-12",
-    "volume": 3
-  },
-  {
-    "date": "2017-03-11",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-10",
-    "volume": 3
-  },
-  {
-    "date": "2017-03-09",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-08",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-07",
-    "volume": 1
-  },
-  {
-    "date": "2017-03-06",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-05",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-06",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-04",
-    "volume": 5
-  },
-  {
-    "date": "2017-03-03",
-    "volume": 2
-  },
-  {
-    "date": "2017-03-02",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-03",
-    "volume": 0
-  },
-  {
-    "date": "2017-03-01",
-    "volume": 2
-  },
-  {
-    "date": "2017-02-28",
-    "volume": 2
-  },
-  {
-    "date": "2017-02-27",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-28",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-26",
-    "volume": 6
-  },
-  {
-    "date": "2017-02-25",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-26",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-24",
-    "volume": 4
-  },
-  {
-    "date": "2017-02-23",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-24",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-22",
-    "volume": 1
-  },
-  {
-    "date": "2017-02-21",
-    "volume": 1
-  },
-  {
-    "date": "2017-02-20",
-    "volume": 1
-  },
-  {
-    "date": "2017-02-19",
-    "volume": 2
-  },
-  {
-    "date": "2017-02-18",
-    "volume": 1
-  },
-  {
-    "date": "2017-02-17",
-    "volume": 1
-  },
-  {
-    "date": "2017-02-16",
-    "volume": 1
-  },
-  {
-    "date": "2017-02-15",
-    "volume": 2
-  },
-  {
-    "date": "2017-02-14",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-15",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-13",
-    "volume": 2
-  },
-  {
-    "date": "2017-02-12",
-    "volume": 5
-  },
-  {
-    "date": "2017-02-11",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-12",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-10",
-    "volume": 2
-  },
-  {
-    "date": "2017-02-09",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-10",
-    "volume": 0
-  },
-  {
-    "date": "2017-02-08",
-    "volume": 1
-  }
-]
+  { "y": "France", "x": "Apricot", "magnitude": 2.3129545439964723 }
+  ,
+  { "y": "France", "x": "Avocado", "magnitude": 3.1610140317890965 }
+  ,
+  { "y": "France", "x": "Lemon", "magnitude": 0.9075695440623942 }
+  ,
+  { "y": "France", "x": "Date", "magnitude": 1.1296454803177811 }
+  ,
+  { "y": "France", "x": "Strawberry", "magnitude": 0 }
+  ,
+  { "y": "France", "x": "Mandarin", "magnitude": 2.6193568568512493 }
+  ,
+  { "y": "France", "x": "Chestnut", "magnitude": 0.08748279136251946 }
+  ,
+  { "y": "France", "x": "Nuts", "magnitude": 2.943858242639327 }
+  ,
+  { "y": "France", "x": "Olive", "magnitude": 1.3356914547843943 }
+  ,
+  { "y": "France", "x": "Mirabelle", "magnitude": 0.31390905400247027 }
+  ,
+  { "y": "France", "x": "Orange", "magnitude": 0.5709024568447734 }
+  ,
+  { "y": "France", "x": "Fig", "magnitude": 0.8689875977541086 }
+  ,
+  { "y": "France", "x": "Raisin", "magnitude": 0 }
+  ,
+  { "y": "France", "x": "Pear", "magnitude": 0 }
+  ,
+  { "y": "France", "x": "Potato", "magnitude": 0 }
+  ,
+  { "y": "France", "x": "Khaki", "magnitude": 0 }
+  ,
+  { "y": "France", "x": "Kiwi", "magnitude": 6.026783469350332 }
+  ,
+  { "y": "France", "x": "Pumpkin", "magnitude": 0.5472217416389179 }
+  ,
+  { "y": "France", "x": "Mango", "magnitude": 0 }
+  ,
+  { "y": "France", "x": "Cherry", "magnitude": 1.9472375734686518 }
+  ,
+  { "y": "Italy", "x": "Apricot", "magnitude": 2.250335336990016 }
+  ,
+  { "y": "Italy", "x": "Avocado", "magnitude": 1.4472931892677967 }
+  ,
+  { "y": "Italy", "x": "Lemon", "magnitude": 1.7163168911863054 }
+  ,
+  { "y": "Italy", "x": "Date", "magnitude": 0.6222770814456479 }
+  ,
+  { "y": "Italy", "x": "Strawberry", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Mandarin", "magnitude": 1.9378611429750559 }
+  ,
+  { "y": "Italy", "x": "Goyave", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Chestnut", "magnitude": 0.35446193006796944 }
+  ,
+  { "y": "Italy", "x": "Nuts", "magnitude": 0.37199215156032084 }
+  ,
+  { "y": "Italy", "x": "Olive", "magnitude": 1.05979039016384 }
+  ,
+  { "y": "Italy", "x": "Orange", "magnitude": 1.9087621718437413 }
+  ,
+  { "y": "Italy", "x": "Fig", "magnitude": 4.632439392448328 }
+  ,
+  { "y": "Italy", "x": "Raisin", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Pear", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Potato", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Khaki", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Banana", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Blackcurrant", "magnitude": 0 }
+  ,
+  { "y": "Italy", "x": "Kiwi", "magnitude": 1.673923311217576 }
+  ,
+  { "y": "Italy", "x": "Pumpkin", "magnitude": 0.8029920360319587 }
+  ,
+  { "y": "Italy", "x": "Cherry", "magnitude": 1.9453249240219272 }
+  ,
+  { "y": "Germany", "x": "Apricot", "magnitude": 0.24786564820472912 }
+  ,
+  { "y": "Germany", "x": "Avocado", "magnitude": 1.13545847239482 }
+  ,
+  { "y": "Germany", "x": "Lemon", "magnitude": 0.6388067539810734 }
+  ,
+  { "y": "Germany", "x": "Date", "magnitude": 1.626323182055196 }
+  ,
+  { "y": "Germany", "x": "Strawberry", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Mandarin", "magnitude": 0.4239980281990543 }
+  ,
+  { "y": "Germany", "x": "Chestnut", "magnitude": 1.4341389749588975 }
+  ,
+  { "y": "Germany", "x": "Nuts", "magnitude": 0.7392983316104583 }
+  ,
+  { "y": "Germany", "x": "Olive", "magnitude": 1.6630071601899028 }
+  ,
+  { "y": "Germany", "x": "Mirabelle", "magnitude": 4.759329801939115 }
+  ,
+  { "y": "Germany", "x": "Orange", "magnitude": 3.718673834416696 }
+  ,
+  { "y": "Germany", "x": "Fig", "magnitude": 2.458679694479642 }
+  ,
+  { "y": "Germany", "x": "Raisin", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Pear", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Potato", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Prune", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Khaki", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Banana", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Ananas", "magnitude": 0 }
+  ,
+  { "y": "Germany", "x": "Kiwi", "magnitude": 1.3234705953824204 }
+  ,
+  { "y": "Germany", "x": "Pumpkin", "magnitude": 0.0770059996293927 }
+  ,
+  { "y": "Germany", "x": "Cherry", "magnitude": 1.7111604775075815 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Apricot",
+    "magnitude": 0.17924671480874477 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Avocado",
+    "magnitude": 0.022885648078082133 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Lemon",
+    "magnitude": 1.7152082470441878 }
+  ,
+  { "y": "United Kingdom", "x": "Date", "magnitude": 1.752070575653172 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Mandarin",
+    "magnitude": 3.4281163770331387 }
+  ,
+  { "y": "United Kingdom", "x": "Goyave", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Chestnut",
+    "magnitude": 0.19739811992921974 }
+  ,
+  { "y": "United Kingdom", "x": "Nuts", "magnitude": 1.0070422960846344 }
+  ,
+  { "y": "United Kingdom", "x": "Olive", "magnitude": 2.228287010523628 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Orange",
+    "magnitude": 0.9304979227921532 }
+  ,
+  { "y": "United Kingdom", "x": "Fig", "magnitude": 0.5953329645659061 }
+  ,
+  { "y": "United Kingdom", "x": "Cerise", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom", "x": "Raisin", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom", "x": "Potato", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom", "x": "Prune", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom", "x": "Khaki", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom", "x": "Ananas", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom", "x": "Kiwi", "magnitude": 3.9494022464067755 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Pumpkin",
+    "magnitude": 2.2009939178127476 }
+  ,
+  { "y": "United Kingdom", "x": "Mango", "magnitude": 0 }
+  ,
+  { "y": "United Kingdom",
+    "x": "Cherry",
+    "magnitude": 0.20063602688693316 }
+  ,
+  { "y": "Spain", "x": "Apricot", "magnitude": 0.9989751140631283 }
+  ,
+  { "y": "Spain", "x": "Avocado", "magnitude": 1.3798561037495776 }
+  ,
+  { "y": "Spain", "x": "Lemon", "magnitude": 4.621063369745371 }
+  ,
+  { "y": "Spain", "x": "Date", "magnitude": 2.715496746864414 }
+  ,
+  { "y": "Spain", "x": "Strawberry", "magnitude": 0 }
+  ,
+  { "y": "Spain", "x": "Mandarin", "magnitude": 4.655686656785712 }
+  ,
+  { "y": "Spain", "x": "Chestnut", "magnitude": 2.0830024325290624 }
+  ,
+  { "y": "Spain", "x": "Nuts", "magnitude": 3.8907348191368603 }
+  ,
+  { "y": "Spain", "x": "Olive", "magnitude": 0.4593907900702838 }
+  ,
+  { "y": "Spain", "x": "Mirabelle", "magnitude": 0.8657861030686699 }
+  ,
+  { "y": "Spain", "x": "Orange", "magnitude": 3.431725506748977 }
+  ,
+  { "y": "Spain", "x": "Fig", "magnitude": 6.387945884767135 }
+  ,
+  { "y": "Spain", "x": "Raisin", "magnitude": 0 }
+  ,
+  { "y": "Spain", "x": "Pear", "magnitude": 0 }
+  ,
+  { "y": "Spain", "x": "Potato", "magnitude": 0 }
+  ,
+  { "y": "Spain", "x": "Khaki", "magnitude": 0 }
+  ,
+  { "y": "Spain", "x": "Kiwi", "magnitude": 1.1520183768223036 }
+  ,
+  { "y": "Spain", "x": "Pumpkin", "magnitude": 1.9614971869756583 }
+  ,
+  { "y": "Spain", "x": "Cherry", "magnitude": 1.7489279548209826 }]
