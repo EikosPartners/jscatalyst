@@ -67,6 +67,10 @@
 			dataType: {
 				type: String,
 				default: "calendar"
+			},
+			xAxisAngle: {
+				type: Number,
+				default: 0
 			}
 	  },
 		data: function() {
@@ -259,7 +263,12 @@
 						if (localThis.dataType === 'calendar') {
 							return "translate(" + ((i + 1) * 53) + ",0)";
 						} else {
-							return "translate(" + (i * cellSize) + ",0)";
+							let size = i * cellSize;
+							if (localThis.xAxisAngle < 0 || localThis.xAxisAngle === 270) {
+								size += 13;
+							}
+
+							return "translate(" + size + ",0)";
 						}
 	          
 	        })
@@ -267,17 +276,13 @@
 	        .attr("class", function(d, i) {
 	          return x_elems[i];
 	        })
-	        .style("text-anchor", "end")
+					.style("text-anchor", `${(this.xAxisAngle < 0 || this.xAxisAngle === 270) ? 'start' : 'end'}`)
+					.attr("transform", `rotate(${this.xAxisAngle})`)
 	        .attr("dy", "-.25em")
 					.style("font-size", "12px")
 	        .text(function(d, i) {
 	          return x_elems[i];
 					})
-
-					
-				if (localThis.dataType === 'other') {
-					legend.attr("transform", "rotate(65)");
-				}
 
 	      svg
 	        .selectAll(".month")

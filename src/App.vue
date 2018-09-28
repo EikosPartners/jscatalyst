@@ -43,7 +43,7 @@
       <!-- Place Component here -->
         <heatmap
           :dataModel="heatData"
-          :dataType="'other'"
+          :dataType="'calendar'"
         ></heatmap>
       </div>
 
@@ -57,7 +57,7 @@ import BarChart from '@/components/visualizations/d3/BarChart.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
 import ChartistPieChart from '@/components/visualizations/chartist/ChartistPieChart.vue'
 import HeatMap from '@/components/visualizations/d3/HeatMap.vue';
-import heatData from '@/assets/mocks/d3/heatmapMock.json';
+import heatData from '@/assets/mocks/d3/dateHeatmapMock.json';
 
 import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/components/Toolbar.vue'
