@@ -196,7 +196,6 @@
                     name: this.newThemeName,
                     isCustom: true
                 };
-                debugger
                 this.$store.commit("saveCustomTheme", payload)
                 this.changeTheme(payload.name, payload.themeColors, true);
 

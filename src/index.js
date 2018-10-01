@@ -58,6 +58,8 @@ import PlotlyHeatMap from '@/components/visualizations/Plotly/PlotlyHeatMap.vue'
 import PlotlyScatterPlot from '@/components/visualizations/Plotly/PlotlyScatterplot.vue'
 import PlotlySurfacePlot from '@/components/visualizations/Plotly/PlotlySurfacePlot.vue'
 
+import Timeline from '@/components/visualizations/google/Timeline.vue';
+
 import AgTable from '@/components/Tables/AgTable.vue'
 import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
 import JSONDataSource from '@/components/Tables/JSONDataSource.js'
@@ -129,7 +131,8 @@ const charts = {
   NumericEditorComponent,
   ValidationEditorComponent,
   MongoDataSource,
-  ViewportDataSource
+  ViewportDataSource,
+  Timeline
 }
 
 export default charts
@@ -194,5 +197,6 @@ export {
   NumericEditorComponent,
   ValidationEditorComponent,
   MongoDataSource,
-  ViewportDataSource
+  ViewportDataSource,
+  Timeline
 }
