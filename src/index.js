@@ -13,18 +13,18 @@ import UIBuilderComponent from '@/components/UIBuilderComponent.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
 import Toolbar from '@/components/Toolbar.vue'
 
-import ChartistBarChart from '@/components/visualizations/Chartist/ChartistBarChart.vue'
-import ChartistLineChart from '@/components/visualizations/Chartist/ChartistLineChart.vue'
-import ChartistPieChart from '@/components/visualizations/Chartist/ChartistPieChart.vue'
+// import ChartistBarChart from '@/components/visualizations/Chartist/ChartistBarChart.vue'
+// import ChartistLineChart from '@/components/visualizations/Chartist/ChartistLineChart.vue'
+// import ChartistPieChart from '@/components/visualizations/Chartist/ChartistPieChart.vue'
 
-import ChartjsBarChart from '@/components/visualizations/Chartjs/ChartjsBarChartComp.vue'
-import ChartjsBarLineChart from '@/components/visualizations/Chartjs/ChartjsBarLineComp.vue'
-import ChartjsBubbleChart from '@/components/visualizations/Chartjs/ChartjsBubbleComp.vue'
-import ChartjsLineChart from '@/components/visualizations/Chartjs/ChartjsLineChartComp.vue'
-import ChartjsPieChart from '@/components/visualizations/Chartjs/ChartjsPieComp.vue'
-import ChartjsPolarChart from '@/components/visualizations/Chartjs/ChartjsPolarComp.vue'
-import ChartjsRadarChart from '@/components/visualizations/Chartjs/ChartjsRadarComp.vue'
-import ChartjsScatterChart from '@/components/visualizations/Chartjs/ChartjsScatterComp.vue'
+// import ChartjsBarChart from '@/components/visualizations/Chartjs/ChartjsBarChartComp.vue'
+// import ChartjsBarLineChart from '@/components/visualizations/Chartjs/ChartjsBarLineComp.vue'
+// import ChartjsBubbleChart from '@/components/visualizations/Chartjs/ChartjsBubbleComp.vue'
+// import ChartjsLineChart from '@/components/visualizations/Chartjs/ChartjsLineChartComp.vue'
+// import ChartjsPieChart from '@/components/visualizations/Chartjs/ChartjsPieComp.vue'
+// import ChartjsPolarChart from '@/components/visualizations/Chartjs/ChartjsPolarComp.vue'
+// import ChartjsRadarChart from '@/components/visualizations/Chartjs/ChartjsRadarComp.vue'
+// import ChartjsScatterChart from '@/components/visualizations/Chartjs/ChartjsScatterComp.vue'
 
 import D3BarChart from '@/components/visualizations/d3/BarChart.vue'
 import D3BoxPlot from '@/components/visualizations/d3/BoxPlot.vue'
@@ -50,13 +50,13 @@ import D3TwoLinePlot from '@/components/visualizations/d3/TwoLinePlot.vue'
 import D3USMap from '@/components/visualizations/d3/USMap.vue'
 import D3WorldMap from '@/components/visualizations/d3/WorldMap.vue'
 
-import PlotlyAreaChart from '@/components/visualizations/Plotly/PlotlyAreaChart.vue'
-import PlotlyBarGraph from '@/components/visualizations/Plotly/PlotlyBarGraph.vue'
-import PlotlyBubbleChart from '@/components/visualizations/Plotly/PlotlyBubbleChart.vue'
-import PlotlyDonutChart from '@/components/visualizations/Plotly/PlotlyDonutChart.vue'
-import PlotlyHeatMap from '@/components/visualizations/Plotly/PlotlyHeatMap.vue'
-import PlotlyScatterPlot from '@/components/visualizations/Plotly/PlotlyScatterplot.vue'
-import PlotlySurfacePlot from '@/components/visualizations/Plotly/PlotlySurfacePlot.vue'
+// import PlotlyAreaChart from '@/components/visualizations/Plotly/PlotlyAreaChart.vue'
+// import PlotlyBarGraph from '@/components/visualizations/Plotly/PlotlyBarGraph.vue'
+// import PlotlyBubbleChart from '@/components/visualizations/Plotly/PlotlyBubbleChart.vue'
+// import PlotlyDonutChart from '@/components/visualizations/Plotly/PlotlyDonutChart.vue'
+// import PlotlyHeatMap from '@/components/visualizations/Plotly/PlotlyHeatMap.vue'
+// import PlotlyScatterPlot from '@/components/visualizations/Plotly/PlotlyScatterplot.vue'
+// import PlotlySurfacePlot from '@/components/visualizations/Plotly/PlotlySurfacePlot.vue'
 
 import Timeline from '@/components/visualizations/google/Timeline.vue';
 
@@ -83,13 +83,13 @@ const charts = {
   ReceiverComponent,
   DynamicComponent,
   UIBuilderComponent,
-  PlotlyAreaChart,
-  PlotlyBarGraph,
-  PlotlyBubbleChart,
-  PlotlyDonutChart,
-  PlotlyHeatMap,
-  PlotlyScatterPlot,
-  PlotlySurfacePlot,
+  // PlotlyAreaChart,
+  // PlotlyBarGraph,
+  // PlotlyBubbleChart,
+  // PlotlyDonutChart,
+  // PlotlyHeatMap,
+  // PlotlyScatterPlot,
+  // PlotlySurfacePlot,
   D3BarChart,
   D3BoxPlot,
   D3BubbleChart,
@@ -113,17 +113,17 @@ const charts = {
   D3TwoLinePlot,
   D3USMap,
   D3WorldMap,
-  ChartjsBarChart,
-  ChartjsBarLineChart,
-  ChartjsBubbleChart,
-  ChartjsLineChart,
-  ChartjsPieChart,
-  ChartjsPolarChart,
-  ChartjsRadarChart,
-  ChartjsScatterChart,
-  ChartistBarChart,
-  ChartistLineChart,
-  ChartistPieChart,
+  // ChartjsBarChart,
+  // ChartjsBarLineChart,
+  // ChartjsBubbleChart,
+  // ChartjsLineChart,
+  // ChartjsPieChart,
+  // ChartjsPolarChart,
+  // ChartjsRadarChart,
+  // ChartjsScatterChart,
+  // ChartistBarChart,
+  // ChartistLineChart,
+  // ChartistPieChart,
   AgTable,
   EnterpriseDataSource,
   JSONDataSource,
@@ -149,13 +149,13 @@ export {
   UIBuilderComponent,
   ThemeChooserComponent,
   Toolbar,
-  PlotlyAreaChart,
-  PlotlyBarGraph,
-  PlotlyBubbleChart,
-  PlotlyDonutChart,
-  PlotlyHeatMap,
-  PlotlyScatterPlot,
-  PlotlySurfacePlot,
+  // PlotlyAreaChart,
+  // PlotlyBarGraph,
+  // PlotlyBubbleChart,
+  // PlotlyDonutChart,
+  // PlotlyHeatMap,
+  // PlotlyScatterPlot,
+  // PlotlySurfacePlot,
   D3BarChart,
   D3BoxPlot,
   D3BubbleChart,
@@ -179,17 +179,17 @@ export {
   D3TwoLinePlot,
   D3USMap,
   D3WorldMap,
-  ChartjsBarChart,
-  ChartjsBarLineChart,
-  ChartjsBubbleChart,
-  ChartjsLineChart,
-  ChartjsPieChart,
-  ChartjsPolarChart,
-  ChartjsRadarChart,
-  ChartjsScatterChart,
-  ChartistBarChart,
-  ChartistLineChart,
-  ChartistPieChart,
+  // ChartjsBarChart,
+  // ChartjsBarLineChart,
+  // ChartjsBubbleChart,
+  // ChartjsLineChart,
+  // ChartjsPieChart,
+  // ChartjsPolarChart,
+  // ChartjsRadarChart,
+  // ChartjsScatterChart,
+  // ChartistBarChart,
+  // ChartistLineChart,
+  // ChartistPieChart,
   AgTable,
   EnterpriseDataSource,
   JSONDataSource,
