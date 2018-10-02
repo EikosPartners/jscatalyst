@@ -11,6 +11,7 @@
     import { ResizeObserver } from 'vue-resize';
     import { GoogleCharts }  from 'google-charts';
     import basePropsMixin from '@/mixins/basePropsMixin.js';
+    import googleChartsMixin from '@/mixins/googleChartsMixin.js';
     import { mapGetters } from 'vuex'
 
 
@@ -30,12 +31,7 @@
             'panel-heading': PanelHeading,
             'resize-observer': ResizeObserver
         },
-        data: function () {
-            return {
-                timeline: {}
-            }
-        },
-        mixins: [basePropsMixin],
+        mixins: [basePropsMixin, googleChartsMixin],
         props: {
             /**
              * @typedef dataModel
@@ -59,39 +55,37 @@
         },
         mounted: function () {
             // Must load the googlecharts library before attempting to draw the timeline.
-            // Must include the timeline package for it to work.
-            GoogleCharts.load(this.draw, { 'packages': ['timeline'] });
+            this.load(['timeline']);
         },
         methods: {
             /**
              * @function draw - function to draw the timeline
              */
             draw: function () {
-                // Create the dataTable.
-                const dataTable = new GoogleCharts.api.visualization.DataTable();
-                // Options to pass to the timeline, tells it about the current theme colors.
+                // Options to pass to the timeline.
                 const timelineOpts = {
-                    colors: Object.values(this.themeColors),
                     height: this.height
                 }
+
+                this.dataTable = new GoogleCharts.api.visualization.DataTable();
                 
+                let localThis = this;
                 // Add the columns to the dataTable.
                 this.dataModel.columns.forEach( (col) => {
-                    dataTable.addColumn(col);
+                    localThis.dataTable.addColumn(col);
                 });
                 
                 // Add the rows of data to the dataTable.
-                dataTable.addRows(this.dataModel.rows);
+                this.dataTable.addRows(this.dataModel.rows);
 
-                // Create the timeline chart and attach it to the specified element.
-                this.timeline = new GoogleCharts.api.visualization.Timeline(document.querySelector('#' + this.propID));
-
-                // Draw the timeline.
-                this.timeline.draw(dataTable, timelineOpts);
+                // Draw the chart after the DataTable and options have been defined.
+                this.drawChart('Timeline', this.dataTable, '#' + this.propID, timelineOpts);
 
                 // Add event listeners for click and mouseover.
-                GoogleCharts.api.visualization.events.addListener(this.timeline, 'onmouseover', this.mouseover);
-                GoogleCharts.api.visualization.events.addListener(this.timeline, 'select', this.click);
+                this.addListenerBatch([
+                    { name: 'select', handler: this.click },
+                    { name: 'onmouseover', handler: this.mouseover }
+                ]);
             },
             /**
              * @function mouseover - function to handle mouseover event
@@ -107,22 +101,13 @@
              * @param {Object} e - the triggered event object containing the clicked row
              */
             click: function () {
-                let selection = this.timeline.getSelection();
+                let selection = this.chart.getSelection();
 
                 if (selection.length > 0) {
                     let row = this.dataModel.rows[selection[0].row];
 
                     this.$emit('jsc_click', row);
                 }
-            }
-        },
-        computed: {
-            ...mapGetters(['themeColors']),
-        },
-        watch: {
-            // Watch themeColors to redraw the timeline with the current theme's colors.
-            themeColors: function (newval, oldval) {
-                this.draw();
             }
         }
     }
