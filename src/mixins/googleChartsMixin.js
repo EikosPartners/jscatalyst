@@ -1,5 +1,5 @@
 import { GoogleCharts } from 'google-charts';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 
 /**
  * Mixin for making it easy to create a component that uses a Google Chart.
@@ -118,6 +118,15 @@ const googleChartsMixin = {
                 chartOpts.colors = Object.values(this.themeColors);
             }
 
+            // Apply the light or dark themed background colors.
+            if (!chartOpts.backgroundColor) {
+                let current = this.$store.state.themeMod.displayTheme;
+
+                if (current === 'dark') {
+                    chartOpts.backgroundColor = this.themeColors.vuetifyDark;
+                }     
+            }
+
             let elem = document.querySelector(el);
 
             this.chart = new GoogleCharts.api.visualization[chartName](elem);
@@ -126,10 +135,16 @@ const googleChartsMixin = {
     },
     // 
     computed: {
-        ...mapGetters(['themeColors'])
+        ...mapGetters(['themeColors']),
+        displayTheme: function () {
+            return this.$store.state.themeMod.displayTheme;
+        }
     },
     watch: {
         themeColors: function (newVal, oldVal) {
+            this.draw();
+        },
+        displayTheme: function (newVal, oldVal) {
             this.draw();
         }
     }

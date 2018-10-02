@@ -1,6 +1,6 @@
 {
   "name": "jscatalyst",
-  "version": "1.2.13",
+  "version": "1.2.14",
   "description": "Open source Javascript toolkit for building dashboards",
   "author": "Eikos Partners",
   "main": "dist/jscatalyst.js",
