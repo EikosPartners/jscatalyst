@@ -1,7 +1,7 @@
 <template>
     <div style="height: 100%; width: 100%;">
         <panel-heading v-if="title" :headerText="title"></panel-heading>
-        <resize-observer @notify="draw"></resize-observer>
+        <resize-observer @notify="redraw"></resize-observer>
         <div :id="propID" class="timeline"></div>
     </div>
 </template>
@@ -12,7 +12,6 @@
     import { GoogleCharts }  from 'google-charts';
     import basePropsMixin from '@/mixins/basePropsMixin.js';
     import googleChartsMixin from '@/mixins/googleChartsMixin.js';
-    import { mapGetters } from 'vuex'
 
 
     /** Timeline Google Chart Component
@@ -35,13 +34,14 @@
             /**
              * @typedef dataModel
              * @property {Array} columns - object definition of the columns, of the form { type: "", id: "" }
-             * @property {Array} rows - the rows of data to display, each row is an array where the 
-             *                          elements are in the value to display in the same order as their 
-             *                          corresponding column definitions
+             * @property {Array} rows - the rows of data to display, each row is an array where the elements
+             *                          are in the same order as their corresponding column definitions 
              */
             dataModel: {
                 type: Object,
-                default: { columns: [], rows: []}
+                default: function () {
+                    return { columns: [], rows: [] }
+                }
             },
             propID: {
                 type: String,
@@ -109,6 +109,9 @@
 
                     this.$emit('jsc_click', row);
                 }
+            },
+            redraw () {
+                this.load(['timeline']);
             }
         }
     }
