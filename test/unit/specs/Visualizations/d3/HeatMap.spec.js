@@ -1,6 +1,6 @@
 import Component from '@/components/visualizations/d3/HeatMap.vue'
 import { mount, createLocalVue } from '@vue/test-utils'
-const propData = [ { date: '2017-11-23', volume: 7 }, { date: '2017-11-22', volume: 2 }, { date: '2017-11-21', volume: 4 }, { date: '2017-11-20', volume: 1 }, { date: '2017-11-19', volume: 1 }, { date: '2017-11-18', volume: 1 }, { date: '2017-11-17', volume: 1 }, { date: '2017-11-16', volume: 1 }, { date: '2017-11-15', volume: 2 }, { date: '2017-11-14', volume: 0 } ]
+const propData = [ { date: '2017-11-23', magnitude: 7 }, { date: '2017-11-22', magnitude: 2 }, { date: '2017-11-21', magnitude: 4 }, { date: '2017-11-20', magnitude: 1 }, { date: '2017-11-19', magnitude: 1 }, { date: '2017-11-18', magnitude: 1 }, { date: '2017-11-17', magnitude: 1 }, { date: '2017-11-16', magnitude: 1 }, { date: '2017-11-15', magnitude: 2 }, { date: '2017-11-14', magnitude: 0 } ]
 import Vuex from 'vuex'
 
 const localVue = createLocalVue();
@@ -44,7 +44,8 @@ describe('HeatMap, custom props', () => {
         wrapper = mount(Component, {
             propsData: {
                 dataModel: propData,
-                propID: 'foobar'
+                propID: 'foobar',
+                dataType: 'other'
            },
            attachToDocument: true,
            localVue,
@@ -57,7 +58,7 @@ describe('HeatMap, custom props', () => {
         expect(wrapper.emitted().draw).toBeTruthy()
         expect(wrapper.html()).toContain('<svg width="100%"')
         expect(wrapper.html()).toContain('<path class="month"')
-        expect(wrapper.html()).toContain('<rect stroke-width=".5" class="day"')
+        expect(wrapper.html()).toContain('<rect stroke-width=".5"')
     })
 
     it('it renders at all', () => {

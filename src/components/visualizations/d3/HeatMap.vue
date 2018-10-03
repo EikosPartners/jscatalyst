@@ -37,7 +37,7 @@
 	  },
 	  props: {
 			/**
-			 * The data for this component can be customized. It currently contains: 
+			 * The data for this component can be customized. It currently contains:
 			 * @typedef {Array} dataModel
 			 * @property {string|number} x - the value for the x-axis
 			 * @property {string|number} y - the value for the y-axis
@@ -59,8 +59,8 @@
 	      type: String
 			},
 			/**
-			 * Specifies which type of data the x values will be 
-			 * Possible values are 
+			 * Specifies which type of data the x values will be
+			 * Possible values are
 			 * "calendar" - date time string
 			 * "other" - any number, string, etc.
 			 */
@@ -232,7 +232,7 @@
 	        .attr("width", cellSize)
 	        .attr("height", cellSize)
 	        .attr("x", function(d, i) {
-						if (localThis.dataType === 'calendar') { 
+						if (localThis.dataType === 'calendar') {
 							return week(d) * cellSize;
 						} else {
 							//return xScale(d.x)
@@ -244,10 +244,10 @@
 							return day(d) * cellSize;
 						} else {
 							return yScale(d.y);
-						} 
+						}
 	        })
 					.attr("fill", '#D3D3D3')
-				
+
 				if (this.dataType === 'calendar') {
 					rect.datum(format);
 				}
@@ -270,7 +270,7 @@
 
 							return "translate(" + size + ",0)";
 						}
-	          
+
 	        })
 	        .append("text")
 	        .attr("class", function(d, i) {
@@ -301,12 +301,12 @@
 	      var count_Max = d3.max(data, function(d) {
 						return d.magnitude;
 				});
-				
+
 				var maxColor = this.colors[7]
 				var color = d3.scaleLinear()
 	        .range([localThis.colors[6], localThis.colors[0]])
 					.domain([0, count_Max]);
-				
+
 
 	      var ndata = d3
 	        .nest()
@@ -317,8 +317,6 @@
 	          return d[0].magnitude;
 	        })
 	        .map(data);
-				
-				console.log(ndata);
 
 				// Filling in the boxes with data.
 	      rect
@@ -336,7 +334,7 @@
 						} else {
 							return color(d.magnitude);
 						}
-	          
+
 	        })
 					.attr('stroke', '#666')
 	        .attr("data-title", function(d) {
@@ -381,7 +379,7 @@
 				if (typeof d === 'string') {
 					d = { x: d }
 				}
-				
+
 	      let item = this.dataModel.filter(function(item) {
 						return item.x === d.x && item.y === d.y
 	      });
