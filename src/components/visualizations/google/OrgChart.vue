@@ -28,30 +28,9 @@
         },
         mixins: [googleChartsMixin],
         props: {
-            /** 
-             * @typedef dataModel
-             * @property {Array} columns - object definition of the columns, of the form { type: "", id: "" }
-             * @property {Array} rows - the rows of data to display, each row is an array where the elements
-             *                          are in the same order as their corresponding column definitions 
-             */
-            dataModel: {
-                type: Object,
-                default: function () {
-                    return { columns: [], rows: [] }
-                }
-            },
             propID: {
                 type: String,
                 default: 'container-orgchart'
-            },
-            config: {
-                type: Object, 
-                default: function () {
-                    return {};
-                }
-            },
-            title: {
-                type: String
             }
         },
         mounted: function () {
