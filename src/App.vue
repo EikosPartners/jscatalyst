@@ -15,7 +15,7 @@
 
      <!-- <div class="test1">
      </div> -->
-    
+
         <!-- Place Component here -->
         <!-- <chartist-pie
           :title="testTitle"
@@ -88,7 +88,7 @@ export default {
     'bar-chart': BarChart,
     'bubble-chart': BubbleChart,
     'theme-chooser': ThemeChooserComponent,
-    'chartist-pie': ChartistPieChart,
+    // 'chartist-pie': ChartistPieChart,
     'heatmap': HeatMap,
     'timeline': Timeline,
     'orgchart': OrgChart
@@ -120,7 +120,7 @@ export default {
 
     }
 
-  }, 
+  },
   // computed: {
   //   themeColors(){
   //     return this.$store.state.themeMod.themeColors
