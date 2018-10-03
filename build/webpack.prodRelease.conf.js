@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // var cssLoader = ExtractTextPlugin.extract('style-loader', 'css-loader')
 const npmCfg = require('../package.json')
 const vueLoaderConfig = require('./vue-loader.conf')
@@ -217,7 +216,7 @@ const webpackConfig =  {
       parallel: true
     }),
     // extract css into its own file
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'jscatalyst.min.css',
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
       // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
@@ -254,9 +253,9 @@ if (config.build.productionGzip) {
   )
 }
 
-// if (config.build.bundleAnalyzerReport) {
-//   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-//   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
-// }
+if (config.build.bundleAnalyzerReport) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
 
 module.exports = webpackConfig
