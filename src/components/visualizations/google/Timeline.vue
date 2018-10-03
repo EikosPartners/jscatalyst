@@ -21,8 +21,7 @@
      * @param {Array} dataModel - the dataModel for the component
      * @param {string} propID - the ID for the component
      * @param {string} title - the title of the chart
-     * @param {Number} height - the height of the timeline, default 500px
-     * 
+     * @param {Object} config - the configuration object for the timeline, see google charts API for options
      */
 
     export default {
@@ -48,9 +47,11 @@
                 type: String,
                 default: 'container-timeline'
             },
-            height: {
-                type: Number,
-                default: 500
+            config: {
+                type: Object,
+                default: function () {
+                    return {};
+                }
             }
         },
         mounted: function () {
@@ -63,8 +64,8 @@
              */
             draw: function () {
                 // Options to pass to the timeline.
-                const timelineOpts = {
-                    height: this.height
+                if (!this.config.height) {
+                    this.config.height = 500;
                 }
 
                 this.dataTable = new GoogleCharts.api.visualization.DataTable();
@@ -79,7 +80,7 @@
                 this.dataTable.addRows(this.dataModel.rows);
 
                 // Draw the chart after the DataTable and options have been defined.
-                this.drawChart('Timeline', this.dataTable, '#' + this.propID, timelineOpts);
+                this.drawChart('Timeline', this.dataTable, '#' + this.propID, this.config);
 
                 // Add event listeners for click and mouseover.
                 this.addListenerBatch([
