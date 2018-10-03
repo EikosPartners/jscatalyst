@@ -14,7 +14,36 @@ const googleChartsMixin = {
     data: function () {
         return {
             chart: {},
-            dataTable: {}
+            dataTable: {},
+            chartName: ""
+        }
+    },
+    /**
+     * @param {Array} dataModel - the dataModel for the component
+     * @param {string} title - the title of the chart
+     * @param {Object} config - the configuration object for the timeline, see google charts API for options
+     */
+    props: {
+        /** 
+         * @typedef dataModel
+         * @property {Array} columns - object definition of the columns, of the form { type: "", id: "" }
+         * @property {Array} rows - the rows of data to display, each row is an array where the elements
+         *                          are in the same order as their corresponding column definitions 
+         */
+        dataModel: {
+            type: Object,
+            default: function () {
+                return { columns: [], rows: [] }
+            }
+        },
+        config: {
+            type: Object, 
+            default: function () {
+                return {};
+            }
+        },
+        title: {
+            type: String
         }
     },
     methods: {
@@ -113,18 +142,15 @@ const googleChartsMixin = {
                 chartOpts = {};
             }
 
-            // Automatically pass the current theme colors to the chart.
-            if (!chartOpts.colors || chartOpts.colors.length === 0) {
-                chartOpts.colors = Object.values(this.themeColors);
-            }
+            chartOpts.colors = Object.values(this.themeColors);
 
-            // Apply the light or dark themed background colors.
-            if (!chartOpts.backgroundColor) {
-                let current = this.$store.state.themeMod.displayTheme;
 
-                if (current === 'dark') {
-                    chartOpts.backgroundColor = this.themeColors.vuetifyDark;
-                }     
+            let current = this.$store.state.themeMod.displayTheme;
+
+            if (current === 'dark') {
+                chartOpts.backgroundColor = this.themeColors.vuetifyDark;
+            } else {
+                chartOpts.backgroundColor = this.themeColors.vuetifyLight;
             }
 
             let elem = document.querySelector(el);
