@@ -59,6 +59,7 @@ import D3WorldMap from '@/components/visualizations/d3/WorldMap.vue'
 // import PlotlySurfacePlot from '@/components/visualizations/Plotly/PlotlySurfacePlot.vue'
 
 import Timeline from '@/components/visualizations/google/Timeline.vue';
+import OrgChart from '@/components/visualizations/google/OrgChart.vue';
 
 import AgTable from '@/components/Tables/AgTable.vue'
 import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
@@ -132,7 +133,8 @@ const charts = {
   ValidationEditorComponent,
   MongoDataSource,
   ViewportDataSource,
-  Timeline
+  Timeline,
+  OrgChart
 }
 
 export default charts
@@ -198,5 +200,6 @@ export {
   ValidationEditorComponent,
   MongoDataSource,
   ViewportDataSource,
-  Timeline
+  Timeline,
+  OrgChart
 }

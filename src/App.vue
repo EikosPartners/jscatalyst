@@ -34,8 +34,18 @@
       </div>
  -->
 
-      <div class="theme--light">
-        I'm a div
+      <div class="test2">
+        <timeline
+          :dataModel="tlData"
+          :title="'Presidents'">
+
+        </timeline>
+      </div>
+
+      <div class="test2">
+          <orgchart
+           :dataModel="orgChartData"
+           :config="{'allowHtml': true}"/>
       </div>
 
 
@@ -63,6 +73,12 @@ import PieChart from '@/components/visualizations/d3/PieChart.vue'
 import Toolbar from '@/components/Toolbar.vue'
 import ChartSenderComponent from '@/components/ChartSenderComponent.vue'
 
+import Timeline from '@/components/visualizations/google/Timeline.vue';
+import tlData from '@/assets/mocks/google/timelineMock.js';
+
+import OrgChart from '@/components/visualizations/google/OrgChart.vue';
+import orgChartData from '@/assets/mocks/google/orgChartMock.js';
+
 export default {
   name: 'app',
   components: {
@@ -73,11 +89,15 @@ export default {
     'bubble-chart': BubbleChart,
     'theme-chooser': ThemeChooserComponent,
     'chartist-pie': ChartistPieChart,
-    'heatmap': HeatMap
+    'heatmap': HeatMap,
+    'timeline': Timeline,
+    'orgchart': OrgChart
   },
   data: function() {
     return {
       angle: 0,
+      tlData: tlData,
+      orgChartData, orgChartData,
       testTitle: "Hello World",
       barData: [
         {"x": "5/15 - 6/14", "y": 13.3},
