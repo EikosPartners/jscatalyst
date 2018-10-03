@@ -113,18 +113,15 @@ const googleChartsMixin = {
                 chartOpts = {};
             }
 
-            // Automatically pass the current theme colors to the chart.
-            if (!chartOpts.colors || chartOpts.colors.length === 0) {
-                chartOpts.colors = Object.values(this.themeColors);
-            }
+            chartOpts.colors = Object.values(this.themeColors);
 
-            // Apply the light or dark themed background colors.
-            if (!chartOpts.backgroundColor) {
-                let current = this.$store.state.themeMod.displayTheme;
 
-                if (current === 'dark') {
-                    chartOpts.backgroundColor = this.themeColors.vuetifyDark;
-                }     
+            let current = this.$store.state.themeMod.displayTheme;
+
+            if (current === 'dark') {
+                chartOpts.backgroundColor = this.themeColors.vuetifyDark;
+            } else {
+                chartOpts.backgroundColor = this.themeColors.vuetifyLight;
             }
 
             let elem = document.querySelector(el);

@@ -72,6 +72,14 @@
 
                 this.dataTable.addRows(this.dataModel.rows);
 
+                if (this.displayTheme === 'dark') {
+                    this.config.nodeClass = 'jsc-org-node-dark';
+                } else {
+                    this.config.nodeClass = "jsc-org-node-light";
+                }
+
+
+
                 this.drawChart('OrgChart', this.dataTable, '#' + this.propID, this.config);
             },
             redraw () {
@@ -80,3 +88,21 @@
         }
     }
 </script>
+
+<style lang="stylus">
+    .jsc-org-node-light {
+        background-color: var(--vuetify-light);
+        border: 2px solid var(--first);
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+        color: black;
+    }
+
+    .jsc-org-node-dark {
+        background-color: var(--vuetify-dark);
+        border: 2px solid var(--seventh);
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 3px;
+        color: white;
+    }
+</style>
