@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --mode=development" ,
     "start": "npm run dev",
     "test": "nyc jest",
     "build": "node build/build.js",

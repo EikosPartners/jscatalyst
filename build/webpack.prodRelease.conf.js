@@ -8,6 +8,7 @@ const config = require('../config')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 var banner = [
   npmCfg.name + ' v' + npmCfg.version,
@@ -34,6 +35,12 @@ const webpackConfig =  {
     library: 'jscatalyst',
     libraryTarget: 'umd'
   },
+    optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -44,98 +51,98 @@ const webpackConfig =  {
       'docs': resolve('docs')
     }
   },
-  externals: {
-    vue: {
-				root: "Vue",
-        commonjs: 'vue',
-				commonjs2: "vue",
-				amd: "vue"
-		},
-    // 'plotly.js/dist/plotly': {
-    //   root: 'Plotly',
-    //   commonjs: 'plotly.js/dist/plotly',
-    //   commonjs2: 'plotly.js/dist/plotly',
-    //   amd: 'plotly.js/dist/plotly'
-    // },
-    d3: {
-      root: 'd3',
-      commonjs: 'd3',
-      commonjs2: 'd3',
-      amd: 'd3'
-    },
-    // chartist: {
-    //   root: 'Chartist',
-    //   commonjs: 'chartist',
-    //   commonjs2: 'chartist',
-    //   amd: 'chartist'
-    // },
-    moment: {
-      root: 'moment',
-      commonjs: 'moment',
-      commonjs2: 'moment',
-      amd: 'moment'
-    },
-    'moment-duration-format': {
-      root: 'moment-duration-format',
-      commonjs: 'moment-duration-format',
-      commonjs2: 'moment-duration-format',
-      amd: 'moment-duration-format'
-    },
-    jquery: {
-      root: 'jquery',
-      commonjs: 'jquery',
-      commonjs2: 'jquery',
-      amd: 'jquery'
-    },
-    // 'chart.js': {
-    //   root: 'Chart',
-    //   commonjs: 'chart.js',
-    //   commonjs2: 'chart.js',
-    //   amd: 'chart.js'
-    // },
-    axios: {
-      root: 'Axios',
-      commonjs: 'axios',
-      commonjs2: 'axios',
-      amd: 'axios'
-    },
-    'd3-horizon-chart': {
-      root: 'd3horizonchart',
-      commonjs: 'd3-horizon-chart',
-      commonjs2: 'd3-horizon-chart',
-      amd: 'd3-horizon-chart'
-    },
-    'topojson-client': {
-      root: 'Topojson',
-      commonjs: 'topojson-client',
-      commonjs2: 'topojson-client',
-      amd: 'topojson-client'
-    },
-    vuetify: {
-      root: 'Vuetify',
-      commonjs: 'vuetify',
-      commonjs2: 'vuetify',
-      amd: 'vuetify'
-    },
-    'vue-socket.io': {
-      root: 'VueSocketio',
-      commonjs: 'vue-socket.io',
-      commonjs2: 'vue-socket.io',
-      amd: 'vue-socket.io'
-    },
-    'ag-grid': {
-      root: 'AgGrid',
-      commonjs: 'ag-grid',
-      commonjs2: 'ag-grid',
-      amd: 'ag-grid'
-    },
-    'ag-grid-vue': {
-      root: 'Aggridvue',
-      commonjs: 'ag-grid-vue',
-      commonjs2: 'ag-grid-vue',
-      amd: 'ag-grid-vue'
-    }
-  },
+  // externals: {
+  //   vue: {
+	// 			root: "Vue",
+  //       commonjs: 'vue',
+	// 			commonjs2: "vue",
+	// 			amd: "vue"
+	// 	},
+  //   // 'plotly.js/dist/plotly': {
+  //   //   root: 'Plotly',
+  //   //   commonjs: 'plotly.js/dist/plotly',
+  //   //   commonjs2: 'plotly.js/dist/plotly',
+  //   //   amd: 'plotly.js/dist/plotly'
+  //   // },
+  //   d3: {
+  //     root: 'd3',
+  //     commonjs: 'd3',
+  //     commonjs2: 'd3',
+  //     amd: 'd3'
+  //   },
+  //   // chartist: {
+  //   //   root: 'Chartist',
+  //   //   commonjs: 'chartist',
+  //   //   commonjs2: 'chartist',
+  //   //   amd: 'chartist'
+  //   // },
+  //   moment: {
+  //     root: 'moment',
+  //     commonjs: 'moment',
+  //     commonjs2: 'moment',
+  //     amd: 'moment'
+  //   },
+  //   'moment-duration-format': {
+  //     root: 'moment-duration-format',
+  //     commonjs: 'moment-duration-format',
+  //     commonjs2: 'moment-duration-format',
+  //     amd: 'moment-duration-format'
+  //   },
+  //   jquery: {
+  //     root: 'jquery',
+  //     commonjs: 'jquery',
+  //     commonjs2: 'jquery',
+  //     amd: 'jquery'
+  //   },
+  //   // 'chart.js': {
+  //   //   root: 'Chart',
+  //   //   commonjs: 'chart.js',
+  //   //   commonjs2: 'chart.js',
+  //   //   amd: 'chart.js'
+  //   // },
+  //   axios: {
+  //     root: 'Axios',
+  //     commonjs: 'axios',
+  //     commonjs2: 'axios',
+  //     amd: 'axios'
+  //   },
+  //   'd3-horizon-chart': {
+  //     root: 'd3horizonchart',
+  //     commonjs: 'd3-horizon-chart',
+  //     commonjs2: 'd3-horizon-chart',
+  //     amd: 'd3-horizon-chart'
+  //   },
+  //   'topojson-client': {
+  //     root: 'Topojson',
+  //     commonjs: 'topojson-client',
+  //     commonjs2: 'topojson-client',
+  //     amd: 'topojson-client'
+  //   },
+  //   vuetify: {
+  //     root: 'Vuetify',
+  //     commonjs: 'vuetify',
+  //     commonjs2: 'vuetify',
+  //     amd: 'vuetify'
+  //   },
+  //   'vue-socket.io': {
+  //     root: 'VueSocketio',
+  //     commonjs: 'vue-socket.io',
+  //     commonjs2: 'vue-socket.io',
+  //     amd: 'vue-socket.io'
+  //   },
+  //   'ag-grid': {
+  //     root: 'AgGrid',
+  //     commonjs: 'ag-grid',
+  //     commonjs2: 'ag-grid',
+  //     amd: 'ag-grid'
+  //   },
+  //   'ag-grid-vue': {
+  //     root: 'Aggridvue',
+  //     commonjs: 'ag-grid-vue',
+  //     commonjs2: 'ag-grid-vue',
+  //     amd: 'ag-grid-vue'
+  //   }
+  // },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
@@ -179,6 +186,13 @@ const webpackConfig =  {
       //   loader: 'ify-loader'
       // },
       {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
+      },
+      {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -198,10 +212,10 @@ const webpackConfig =  {
   },
   plugins: [
     new webpack.BannerPlugin(banner),
-    new webpack.IgnorePlugin(/vertx/),
-    new webpack.IgnorePlugin(/SankeyDiagram/),
-    new webpack.IgnorePlugin(/PlotlyAnimatedLineGraph/),
-    new webpack.IgnorePlugin(/PlotlyStreamingGraphic/),
+    // new webpack.IgnorePlugin(/vertx/),
+    // new webpack.IgnorePlugin(/SankeyDiagram/),
+    // new webpack.IgnorePlugin(/PlotlyAnimatedLineGraph/),
+    // new webpack.IgnorePlugin(/PlotlyStreamingGraphic/),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
@@ -223,6 +237,8 @@ const webpackConfig =  {
       // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
       allChunks: true,
+      // loader: 'vue-style-loader'
+
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
