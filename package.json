@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "test": "nyc jest -- -u",
+    "test": "nyc jest",
     "build": "node build/build.js",
     "test_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
     "npm_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
