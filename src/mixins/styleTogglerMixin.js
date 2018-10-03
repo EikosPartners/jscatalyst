@@ -8,9 +8,15 @@ function hex2rgb(hex) {
 const styleTogglerMixin = {
 
 methods: {
-    toggleDark: function() {
-        var current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
-        var opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
+    toggleDark: function(newDarkness) {
+        let current, opposite
+        if (!newDarkness) {
+          current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
+          opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
+        } else {
+          current = 'theme--' + (newDarkness === 'light' ? 'dark' : 'light')
+          opposite = 'theme--' + newDarkness
+        }
         this.$root.$el.className = this.$root.$el.className.replace(current, opposite)
         this.$store.commit('changeDisplay', opposite.split('--')[1])
         let otherElements = document.querySelectorAll('.' + current)
@@ -29,7 +35,7 @@ methods: {
         this.$store.commit('changeColor', theme)
         let themeColors = this.$store.getters.themeColors
         let themeCSS = `
-                    .current-theme { 
+                    .current-theme {
                         --first: ${themeColors.first};
                         --second: ${themeColors.second};
                         --third: ${themeColors.third};
@@ -57,7 +63,7 @@ methods: {
   	  this.$root.$el.classList.add('current-theme')
   }
 
-	
-		// 
+
+		//
 }
 export default styleTogglerMixin;
