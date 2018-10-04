@@ -10,7 +10,7 @@ const styleTogglerMixin = {
 methods: {
     toggleDark: function(newDarkness) {
         let current, opposite
-        if (!newDarkness) {
+        if (!newDarkness || typeof newDarkness !== 'string') {
           current = Array.from(this.$root.$el.classList).filter(el => el.includes('theme--'))
           opposite = 'theme--' + (current[0].split('--')[1] === 'light' ? 'dark' : 'light');
         } else {
