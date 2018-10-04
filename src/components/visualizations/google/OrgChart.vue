@@ -48,6 +48,33 @@
                 }
 
                 this.drawChart('OrgChart');
+
+                this.addListenerBatch([
+                    { name: 'select', handler: this.click },
+                    { name: 'onmouseover', handler: this.mouseover }
+                ]);
+            },
+            /**
+             * @function mouseover - function to handle mouseover event
+             * @param {Object} e - the triggered event object containing the hovered row
+             */
+            mouseover: function (e) {
+                let row = this.dataModel.rows[e.row];
+
+                this.$emit('jsc_mouseover', row);
+            },
+            /**
+             * @function click - function to handle click event
+             */
+            click: function () {
+                let selection = this.chart.getSelection();
+                console.log(selection);
+
+                if (selection.length > 0) {
+                    let row = this.dataModel.rows[selection[0].row];
+
+                    this.$emit('jsc_click', row);
+                }
             }
         }
     }
