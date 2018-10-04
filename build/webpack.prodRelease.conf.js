@@ -52,24 +52,24 @@ const webpackConfig =  {
 				commonjs2: "vue",
 				amd: "vue"
 		},
-    'plotly.js/dist/plotly': {
-      root: 'Plotly',
-      commonjs: 'plotly.js/dist/plotly',
-      commonjs2: 'plotly.js/dist/plotly',
-      amd: 'plotly.js/dist/plotly'
-    },
+    // 'plotly.js/dist/plotly': {
+    //   root: 'Plotly',
+    //   commonjs: 'plotly.js/dist/plotly',
+    //   commonjs2: 'plotly.js/dist/plotly',
+    //   amd: 'plotly.js/dist/plotly'
+    // },
     d3: {
       root: 'd3',
       commonjs: 'd3',
       commonjs2: 'd3',
       amd: 'd3'
     },
-    chartist: {
-      root: 'Chartist',
-      commonjs: 'chartist',
-      commonjs2: 'chartist',
-      amd: 'chartist'
-    },
+    // chartist: {
+    //   root: 'Chartist',
+    //   commonjs: 'chartist',
+    //   commonjs2: 'chartist',
+    //   amd: 'chartist'
+    // },
     moment: {
       root: 'moment',
       commonjs: 'moment',
@@ -88,12 +88,12 @@ const webpackConfig =  {
       commonjs2: 'jquery',
       amd: 'jquery'
     },
-    'chart.js': {
-      root: 'Chart',
-      commonjs: 'chart.js',
-      commonjs2: 'chart.js',
-      amd: 'chart.js'
-    },
+    // 'chart.js': {
+    //   root: 'Chart',
+    //   commonjs: 'chart.js',
+    //   commonjs2: 'chart.js',
+    //   amd: 'chart.js'
+    // },
     axios: {
       root: 'Axios',
       commonjs: 'axios',

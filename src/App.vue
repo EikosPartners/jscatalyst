@@ -15,7 +15,7 @@
 
      <!-- <div class="test1">
      </div> -->
-    
+
         <!-- Place Component here -->
         <!-- <chartist-pie
           :title="testTitle"
@@ -65,7 +65,6 @@
 import BubbleChart from '@/components/visualizations/d3/BubbleChart.vue'
 import BarChart from '@/components/visualizations/d3/BarChart.vue'
 import ThemeChooserComponent from '@/components/ThemeChooserComponent.vue'
-import ChartistPieChart from '@/components/visualizations/chartist/ChartistPieChart.vue'
 import HeatMap from '@/components/visualizations/d3/HeatMap.vue';
 import heatData from '@/assets/mocks/d3/dateHeatmapMock.json';
 
@@ -88,7 +87,6 @@ export default {
     'bar-chart': BarChart,
     'bubble-chart': BubbleChart,
     'theme-chooser': ThemeChooserComponent,
-    'chartist-pie': ChartistPieChart,
     'heatmap': HeatMap,
     'timeline': Timeline,
     'orgchart': OrgChart
@@ -120,7 +118,7 @@ export default {
 
     }
 
-  }, 
+  },
   // computed: {
   //   themeColors(){
   //     return this.$store.state.themeMod.themeColors
