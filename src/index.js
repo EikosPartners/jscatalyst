@@ -61,14 +61,14 @@ import D3WorldMap from '@/components/visualizations/d3/WorldMap.vue'
 import Timeline from '@/components/visualizations/google/Timeline.vue';
 import OrgChart from '@/components/visualizations/google/OrgChart.vue';
 
-import AgTable from '@/components/Tables/AgTable.vue'
-import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
-import JSONDataSource from '@/components/Tables/JSONDataSource.js'
-import LocalDataSource from '@/components/Tables/LocalDataSource.js'
-import NumericEditorComponent from '@/components/Tables/NumericEditorComponent.js'
-import ValidationEditorComponent from '@/components/Tables/ValidationEditorComponent.js'
-import MongoDataSource from '@/components/Tables/MongoDataSource.js'
-import ViewportDataSource from '@/components/Tables/ViewportDataSource.js'
+// import AgTable from '@/components/Tables/AgTable.vue'
+// import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
+// import JSONDataSource from '@/components/Tables/JSONDataSource.js'
+// import LocalDataSource from '@/components/Tables/LocalDataSource.js'
+// import NumericEditorComponent from '@/components/Tables/NumericEditorComponent.js'
+// import ValidationEditorComponent from '@/components/Tables/ValidationEditorComponent.js'
+// import MongoDataSource from '@/components/Tables/MongoDataSource.js'
+// import ViewportDataSource from '@/components/Tables/ViewportDataSource.js'
 
 
 import './assets/stylus/main.styl'
@@ -125,14 +125,14 @@ const charts = {
   // ChartistBarChart,
   // ChartistLineChart,
   // ChartistPieChart,
-  AgTable,
-  EnterpriseDataSource,
-  JSONDataSource,
-  LocalDataSource,
-  NumericEditorComponent,
-  ValidationEditorComponent,
-  MongoDataSource,
-  ViewportDataSource,
+  // AgTable,
+  // EnterpriseDataSource,
+  // JSONDataSource,
+  // LocalDataSource,
+  // NumericEditorComponent,
+  // ValidationEditorComponent,
+  // MongoDataSource,
+  // ViewportDataSource,
   Timeline,
   OrgChart
 }
@@ -192,14 +192,14 @@ export {
   // ChartistBarChart,
   // ChartistLineChart,
   // ChartistPieChart,
-  AgTable,
-  EnterpriseDataSource,
-  JSONDataSource,
-  LocalDataSource,
-  NumericEditorComponent,
-  ValidationEditorComponent,
-  MongoDataSource,
-  ViewportDataSource,
+  // AgTable,
+  // EnterpriseDataSource,
+  // JSONDataSource,
+  // LocalDataSource,
+  // NumericEditorComponent,
+  // ValidationEditorComponent,
+  // MongoDataSource,
+  // ViewportDataSource,
   Timeline,
   OrgChart
 }

@@ -1,6 +1,6 @@
 import Component from '@/components/universal/PanelHeading.vue'
 import { mount, createLocalVue } from '@vue/test-utils'
-import Vue from 'vue'
+// import Vue from 'vue'
 import Vuetify from 'vuetify';
 import themePlugin from '@/plugins/themes.js'
 import Vuex from 'vuex'
@@ -9,7 +9,7 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 
 const store = new Vuex.Store({
-  
+
 })
 
 localVue.use(Vuetify);
