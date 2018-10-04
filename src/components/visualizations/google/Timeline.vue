@@ -91,9 +91,6 @@
 
                     this.$emit('jsc_click', row);
                 }
-            },
-            redraw () {
-                this.load(['timeline']);
             }
         }
     }

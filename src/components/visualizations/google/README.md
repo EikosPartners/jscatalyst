@@ -5,6 +5,7 @@
 3. Import/add the googleChartsMixin to your component
 4. Call this.load(packages) with the packages you need in mounted
 5. Implement a method called draw
-    * Create your DataTable by adding rows/columns or whatever your data format your chart needs
-    * Call this.drawChart(chartName, dataTable, propID, chartOptions)
+    * If you want/need to create a custom DataTable for your chart, implement
+      another method called createDataTable that returns the DataTable created
+    * Call this.drawChart("name of chart")
     * Add any event listeners via this.addListener or this.addListenerBatch

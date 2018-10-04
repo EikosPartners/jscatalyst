@@ -40,29 +40,14 @@
             /**
              * @function draw - function to draw the orgchart
              */
-            draw: function () {
-                this.dataTable = new GoogleCharts.api.visualization.DataTable(); 
-                
-                let localThis = this;
-
-                this.dataModel.columns.forEach( (col) => {
-                    localThis.dataTable.addColumn(col);
-                });
-
-                this.dataTable.addRows(this.dataModel.rows);
-
+            draw: function () {                
                 if (this.displayTheme === 'dark') {
                     this.config.nodeClass = 'jsc-org-node-dark';
                 } else {
                     this.config.nodeClass = "jsc-org-node-light";
                 }
 
-
-
-                this.drawChart('OrgChart', this.dataTable, '#' + this.propID, this.config);
-            },
-            redraw () {
-                this.load(['orgchart']);
+                this.drawChart('OrgChart');
             }
         }
     }

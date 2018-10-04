@@ -15,7 +15,8 @@ const googleChartsMixin = {
         return {
             chart: {},
             dataTable: {},
-            chartName: ""
+            chartName: "",
+            packages: []
         }
     },
     /**
@@ -61,6 +62,8 @@ const googleChartsMixin = {
          * @param {Array} packages - array of chart packages to load
          */
         load (packages) {
+            if (!this.packges || this.packages.length === 0) { this.packages = packages; }
+
             GoogleCharts.load(this.draw, { 'packages': packages });
         },
         /**
@@ -113,50 +116,65 @@ const googleChartsMixin = {
         /**
          * Function to draw the chart.
          * 
-         * @param {String} chartName - the name of the chart to draw
-         * @param {Object} dataTable - the dataTable for the chart
-         * @param {String} el - selector for the element to draw the chart in
-         * @param {Object} chartOpts - configuration object for the chart.
+         * @param {String} chartName - the name of the chart to draw.
          */
-        drawChart (chartName, dataTable, el, chartOpts) {
+        drawChart (chartName) {
             if (!chartName || chartName === "") {
                 console.error("[googleChartsMixin] must provide chartName");
                 return;
             }
 
-            if (!dataTable) {
-                console.warn("[googleChartsMixin] empty dataTable provided");
-                this.dataTable = new GoogleCharts.api.visualization.DataTable();
-            } 
+            this.chartName = chartName;
 
-            if (!this.dataTable) {
-                this.dataTable = dataTable;
-            }
+            // Create the dataTable from the dataModel.
+            this.dataTable = this.createDataTable();
 
-            if (!el || el === "") {
-                console.error("[googleChartsMixin] must provide el selection string to attach to");
-                return;
-            }
-
-            if (!chartOpts) {
-                chartOpts = {};
-            }
-
-            chartOpts.colors = Object.values(this.themeColors);
-
+            this.config.colors = Object.values(this.themeColors);
 
             let current = this.$store.state.themeMod.displayTheme;
 
             if (current === 'dark') {
-                chartOpts.backgroundColor = this.themeColors.vuetifyDark;
+                this.config.backgroundColor = this.themeColors.vuetifyDark;
             } else {
-                chartOpts.backgroundColor = this.themeColors.vuetifyLight;
+                this.config.backgroundColor = this.themeColors.vuetifyLight;
             }
 
-            let elem = document.querySelector(el);
+            // Find the element to attach the chart to.
+            let elem = document.querySelector('#' + this.propID);
 
             this.chart = new GoogleCharts.api.visualization[chartName](elem);
-            this.chart.draw(this.dataTable, chartOpts);
+            this.chart.draw(this.dataTable, this.config);
+        },
+        /**
+         * @function createDataTable
+         * 
+         * Method to create and populate the chart's datatable from the dataModel.
+         * This method can be overriden by the component. Just create a method with 
+         * the same name and have it return the dataTable and drawChart will 
+         * use that method instead. 
+         * 
+         * @return 
+         */
+        createDataTable () {
+            let dataTable = new GoogleCharts.api.visualization.DataTable();
+
+            // Add the columns to the dataTable.
+            this.dataModel.columns.forEach( (col) => {
+                dataTable.addColumn(col);
+            });
+
+            // Add the rows.
+            dataTable.addRows(this.dataModel.rows);
+
+            return dataTable;
+        },
+        /**
+         * @function redraw
+         * 
+         * Method to reload the chart when a change is required.
+         */
+        redraw () {
+            this.load(this.packages);
         }
     },
     // 

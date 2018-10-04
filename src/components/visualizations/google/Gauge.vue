@@ -53,9 +53,6 @@
                 this.dataTable.addRows(this.dataModel.rows);
 
                 this.drawChart('Gauge', this.dataTable, '#' + this.propID, this.config);
-            },
-            redraw () {
-                this.load(['gauge'])
             }
         }
     }
