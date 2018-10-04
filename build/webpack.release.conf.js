@@ -193,10 +193,6 @@ const webpackConfig =  {
   },
   plugins: [
     new webpack.BannerPlugin(banner),
-    new webpack.IgnorePlugin(/vertx/),
-    new webpack.IgnorePlugin(/SankeyDiagram/),
-    new webpack.IgnorePlugin(/PlotlyAnimatedLineGraph/),
-    new webpack.IgnorePlugin(/PlotlyStreamingGraphic/),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
