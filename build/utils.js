@@ -44,12 +44,10 @@ exports.cssLoaders = function (options) {
 
     const loaderNames = loaders.map(item=>item.loader)
 
-    // Extract CSS when that option is specified
-    // (which is the case during production build)
     if (options.extract) {
       return new MiniCssExtractPlugin({
         use: loaderNames,
-        loader: 'css-loader'
+        fallback: 'css-loader'
 
       })
     } else {

@@ -57,6 +57,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    new VueLoaderPlugin(),
+
     // copy custom static assets
     new CopyWebpackPlugin([
       {

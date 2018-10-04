@@ -9,6 +9,7 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { VueLoaderPlugin } = require('vue-loader')
 
 var banner = [
   npmCfg.name + ' v' + npmCfg.version,
@@ -185,13 +186,13 @@ const webpackConfig =  {
       //   test: /\.js$/,
       //   loader: 'ify-loader'
       // },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader"
-        ]
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader,
+      //     "css-loader"
+      //   ]
+      // },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
@@ -229,6 +230,7 @@ const webpackConfig =  {
       sourceMap: config.build.productionSourceMap,
       parallel: true
     }),
+    new VueLoaderPlugin(),
     // extract css into its own file
     new MiniCssExtractPlugin({
       filename: 'jscatalyst.min.css',
