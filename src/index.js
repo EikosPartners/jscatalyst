@@ -60,6 +60,8 @@ import D3WorldMap from '@/components/visualizations/d3/WorldMap.vue'
 
 import Timeline from '@/components/visualizations/google/Timeline.vue';
 import OrgChart from '@/components/visualizations/google/OrgChart.vue';
+import Gauge from '@/components/visualizations/google/Gauge.vue';
+import SankeyDiagram from '@/components/visualizations/google/SankeyDiagram.vue';
 
 // import AgTable from '@/components/Tables/AgTable.vue'
 // import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
@@ -134,7 +136,9 @@ const charts = {
   // MongoDataSource,
   // ViewportDataSource,
   Timeline,
-  OrgChart
+  OrgChart,
+  Gauge,
+  SankeyDiagram
 }
 
 export default charts
@@ -201,5 +205,7 @@ export {
   // MongoDataSource,
   // ViewportDataSource,
   Timeline,
-  OrgChart
+  OrgChart,
+  Gauge,
+  SankeyDiagram
 }

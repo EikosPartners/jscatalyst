@@ -9,8 +9,6 @@
 <script>
     import PanelHeading from '@/components/universal/PanelHeading.vue';
     import { ResizeObserver } from 'vue-resize';
-    import { GoogleCharts }  from 'google-charts';
-    import basePropsMixin from '@/mixins/basePropsMixin.js';
     import googleChartsMixin from '@/mixins/googleChartsMixin.js';
 
 
@@ -29,7 +27,7 @@
             'panel-heading': PanelHeading,
             'resize-observer': ResizeObserver
         },
-        mixins: [basePropsMixin, googleChartsMixin],
+        mixins: [googleChartsMixin],
         props: {
             propID: {
                 type: String,
@@ -70,7 +68,6 @@
             },
             /**
              * @function click - function to handle click event
-             * @param {Object} e - the triggered event object containing the clicked row
              */
             click: function () {
                 let selection = this.chart.getSelection();
