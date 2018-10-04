@@ -50,19 +50,8 @@
                     this.config.height = 500;
                 }
 
-                this.dataTable = new GoogleCharts.api.visualization.DataTable();
-                
-                let localThis = this;
-                // Add the columns to the dataTable.
-                this.dataModel.columns.forEach( (col) => {
-                    localThis.dataTable.addColumn(col);
-                });
-                
-                // Add the rows of data to the dataTable.
-                this.dataTable.addRows(this.dataModel.rows);
-
                 // Draw the chart after the DataTable and options have been defined.
-                this.drawChart('Timeline', this.dataTable, '#' + this.propID, this.config);
+                this.drawChart('Timeline');
 
                 // Add event listeners for click and mouseover.
                 this.addListenerBatch([

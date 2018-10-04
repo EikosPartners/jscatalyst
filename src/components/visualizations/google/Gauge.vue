@@ -42,17 +42,7 @@
              * @function draw - function to draw the gauge(s)
              */
             draw: function () {
-                this.dataTable = new GoogleCharts.api.visualization.DataTable();
-
-                let localThis = this;
-
-                this.dataModel.columns.forEach( (col) => {
-                    localThis.dataTable.addColumn(col);
-                });
-
-                this.dataTable.addRows(this.dataModel.rows);
-
-                this.drawChart('Gauge', this.dataTable, '#' + this.propID, this.config);
+                this.drawChart('Gauge');
             }
         }
     }
