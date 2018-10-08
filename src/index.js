@@ -62,6 +62,7 @@ import Timeline from '@/components/visualizations/google/Timeline.vue';
 import OrgChart from '@/components/visualizations/google/OrgChart.vue';
 import Gauge from '@/components/visualizations/google/Gauge.vue';
 import SankeyDiagram from '@/components/visualizations/google/SankeyDiagram.vue';
+import ComboChart from '@/components/visualizations/google/ComboChart.vue';
 
 // import AgTable from '@/components/Tables/AgTable.vue'
 // import EnterpriseDataSource from '@/components/Tables/EnterpriseDataSource.js'
@@ -138,7 +139,8 @@ const charts = {
   Timeline,
   OrgChart,
   Gauge,
-  SankeyDiagram
+  SankeyDiagram,
+  ComboChart
 }
 
 export default charts
@@ -207,5 +209,6 @@ export {
   Timeline,
   OrgChart,
   Gauge,
-  SankeyDiagram
+  SankeyDiagram,
+  ComboChart
 }

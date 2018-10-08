@@ -33,7 +33,9 @@
 <!--         <chart-sender></chart-sender>
       </div>
  -->
-
+      <div class="test2">
+        <combo :dataModel="comboData" :title="'Combo Chart'" :config="comboConfig"></combo>
+      </div>
       <div class="test2">
         <timeline
           :dataModel="tlData"
@@ -78,6 +80,9 @@ import tlData from '@/assets/mocks/google/timelineMock.js';
 import OrgChart from '@/components/visualizations/google/OrgChart.vue';
 import orgChartData from '@/assets/mocks/google/orgChartMock.js';
 
+import ComboChart from '@/components/visualizations/google/ComboChart.vue';
+import comboChartData from '@/assets/mocks/google/comboChartMock.js';
+
 export default {
   name: 'app',
   components: {
@@ -89,13 +94,21 @@ export default {
     'theme-chooser': ThemeChooserComponent,
     'heatmap': HeatMap,
     'timeline': Timeline,
-    'orgchart': OrgChart
+    'orgchart': OrgChart,
+    'combo': ComboChart
   },
   data: function() {
     return {
       angle: 0,
       tlData: tlData,
       orgChartData, orgChartData,
+      comboData: comboChartData,
+      comboConfig: {
+        seriesType: 'bars',
+        series: [{},{ type: 'line' },{},{},{},{type: 'area'}],
+        height: 300,
+        backgroundColor: "white"
+      },
       testTitle: "Hello World",
       barData: [
         {"x": "5/15 - 6/14", "y": 13.3},
