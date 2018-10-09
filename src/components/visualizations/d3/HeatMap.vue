@@ -382,10 +382,13 @@
 
 	      let item = this.dataModel.filter(function(item) {
 						return item.x === d.x && item.y === d.y
-	      });
-
-	      tooltip
-	        .html(localThis.alertText + ": " + "<b>" + item[0].magnitude + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>Y: " + "<b>" + d.y + "</b>")
+				});
+				
+				console.log(item);
+				let tooltipText = "Occurrences: " + "<b>" + item.length + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
+			 
+			 tooltip
+	        .html(tooltipText)
 	        .style("left", d3.event.pageX + 5 + "px")
 	        .style("top", d3.event.pageY - 28 + "px");
 
@@ -400,7 +403,7 @@
 	        .duration(50)
 	        .style("opacity", 1);
 
-				this.$emit('jsc_mouseover', item[0]);
+				this.$emit('jsc_mouseover', item);
 	    },
 			click: function (d) {
 				let localThis = this;
@@ -412,7 +415,7 @@
 					}
 				});
 
-				this.$emit('jsc_click', item[0]);
+				this.$emit('jsc_click', item);
 			},
 	    monthPath: function(t0) {
 	      let day = d3.timeFormat("%w");
