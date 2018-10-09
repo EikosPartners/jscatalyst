@@ -403,8 +403,13 @@
 				this.$emit('jsc_mouseover', item[0]);
 	    },
 			click: function (d) {
+				let localThis = this;
 				let item = this.dataModel.filter( function (item) {
-					return item.x == d.x && item.y === d.y;
+					if (localThis.dataType === 'calendar') {
+						return item.x === d;
+					} else {
+						return item.x === d.x && item.y === d.y;
+					}
 				});
 
 				this.$emit('jsc_click', item[0]);
