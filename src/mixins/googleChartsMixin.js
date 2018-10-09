@@ -128,22 +128,11 @@ const googleChartsMixin = {
 
             // Create the dataTable from the dataModel.
             this.dataTable = this.createDataTable();
-        
-            if (!this.config.colors) {
+       
+            if (!this.disableCustomThemeing) {
                 this.config.colors = Object.values(this.themeColors);
             }
-
-            if (!this.config.backgroundColor) {
-                let current = this.$store.state.themeMod.displayTheme;
-
-                if (current === 'dark') {
-                    this.config.backgroundColor = this.themeColors.vuetifyDark;
-                } else {
-                    this.config.backgroundColor = this.themeColors.vuetifyLight;
-                }
-            }
             
-
             // Find the element to attach the chart to.
             let elem = document.querySelector('#' + this.propID);
 

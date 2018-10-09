@@ -47,7 +47,14 @@
                 if (!this.config.height) {
                     this.config.height = 500;
                 }
-
+                
+                if (!this.disableCustomThemeing) {
+                    if (this.$store.state.themeMod.displayTheme === 'light') {
+                        this.config.backgroundColor = 'white';
+                    } else {
+                        this.config.backgroundColor = this.themeColors.vuetifyDark;
+                    }
+                }
                 // Draw the chart after the DataTable and options have been defined.
                 this.drawChart('Timeline');
 

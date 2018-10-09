@@ -40,6 +40,24 @@
              * @function draw - function to draw the combo chart            
              */
             draw: function () {
+                let localThis = this;
+                let themeColorsArray = Object.values(this.themeColors);
+                //Check if colors have been defined for the series yet, if not add theme colors.
+                if (localThis.config.series) {
+                    Object.keys(localThis.config.series).forEach( (s, idx) => {
+                        localThis.config.series[s].color = themeColorsArray[(idx + 1) % 7];
+                    });
+                }
+
+                if (!this.disableCustomThemeing) {
+                    if (this.$store.state.themeMod.displayTheme === 'light') {
+                        this.config.backgroundColor = 'white';
+                    } else {
+                        this.config.backgroundColor = this.themeColors.vuetifyDark;
+                    }
+                }
+               
+
                 this.drawChart('ComboChart');
 
                 this.addListenerBatch([
