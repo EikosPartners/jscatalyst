@@ -34,9 +34,6 @@
       </div>
  -->
       <div class="test2">
-        <combo :dataModel="comboData" :title="'Combo Chart'" :config="comboConfig"></combo>
-      </div>
-      <div class="test2">
         <timeline
           :dataModel="tlData"
           :title="'Presidents'">
@@ -83,6 +80,9 @@ import orgChartData from '@/assets/mocks/google/orgChartMock.js';
 import ComboChart from '@/components/visualizations/google/ComboChart.vue';
 import comboChartData from '@/assets/mocks/google/comboChartMock.js';
 
+import CandlestickChart from '@/components/visualizations/google/CandlestickChart.vue';
+import candleData from '@/assets/mocks/google/candlestickMock.js';
+
 export default {
   name: 'app',
   components: {
@@ -95,7 +95,8 @@ export default {
     'heatmap': HeatMap,
     'timeline': Timeline,
     'orgchart': OrgChart,
-    'combo': ComboChart
+    'combo': ComboChart,
+    'candle': CandlestickChart
   },
   data: function() {
     return {
@@ -103,6 +104,11 @@ export default {
       tlData: tlData,
       orgChartData, orgChartData,
       comboData: comboChartData,
+      candleData,
+      candleOpts: {
+        height: 500,
+        legend: 'none'
+      },
       comboConfig: {
         seriesType: 'bars',
         series: [{},{ type: 'line' },{},{},{},{type: 'area'}],
