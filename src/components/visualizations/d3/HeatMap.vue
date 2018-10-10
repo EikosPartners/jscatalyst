@@ -366,6 +366,9 @@
 	            .style("opacity", 0);
 	        })
 					.on('click', component.click);
+
+				// Emit ready event.
+				this.$emit('jsc_ready');
 	    },
 	    numberWithCommas: function(x) {
 	      x = x.toString();

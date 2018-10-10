@@ -272,6 +272,9 @@
                       d = data[i];
                   localThis.$emit('jsc_click', d);
               });
+
+            // Emit ready event.
+			this.$emit('jsc_ready');
           },
           draw: function() {
               this.drawd3(this.dataModel, '#' + this._props.propID)

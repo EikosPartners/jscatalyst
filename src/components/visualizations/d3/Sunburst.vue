@@ -171,7 +171,8 @@
 
         d3.select(self.frameElement).style("height", height + "px");
 
-
+        // Emit ready event.
+				this.$emit('jsc_ready');
   		},
       /**
       * @function resizeSVG - redraws the SVG on window resize

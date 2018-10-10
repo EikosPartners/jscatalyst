@@ -416,6 +416,9 @@
             return d === 0;
           })
           .remove();
+
+        // Emit ready event.
+				this.$emit('jsc_ready');
       },
       /**
       * @function draw - function that draws the graphic

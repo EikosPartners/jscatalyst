@@ -245,6 +245,9 @@
         function stackMin(layer) {
           return d3.min(layer, function(d) { return d[0]; });
         }
+
+        // Emit ready event.
+				this.$emit('jsc_ready');
       },
       /**
       * @function resizeSVG - redraws the SVG on window resize

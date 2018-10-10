@@ -309,6 +309,8 @@
               })
             })
         }
+        // Emit ready event.
+				this.$emit('jsc_ready');
       }
     }
   }

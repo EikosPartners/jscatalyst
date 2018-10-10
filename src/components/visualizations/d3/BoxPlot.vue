@@ -403,6 +403,8 @@
             return [i, j];
           };
         }
+        // Emit ready event.
+				this.$emit('jsc_ready');
       },
       /**
       * @function resizeSVG - redraws the SVG on window resize

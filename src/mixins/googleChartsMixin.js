@@ -135,8 +135,14 @@ const googleChartsMixin = {
             
             // Find the element to attach the chart to.
             let elem = document.querySelector('#' + this.propID);
-
+            
             this.chart = new GoogleCharts.api.visualization[chartName](elem);
+
+            let localThis = this;
+            this.addListener('ready', function () {
+                localThis.$emit('jsc_ready');
+            });
+
             this.chart.draw(this.dataTable, this.config);
         },
         /**

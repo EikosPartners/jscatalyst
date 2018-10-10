@@ -178,6 +178,8 @@
             .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
             .text(function(d) { return d.data.name; });
 
+          // Emit ready event.
+				  this.$emit('jsc_ready');
         }
     }
   };

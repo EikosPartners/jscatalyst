@@ -207,6 +207,8 @@ export default {
           d.fy = null;
         }
 
+        // Emit ready event.
+				this.$emit('jsc_ready');
       }
 
     }

@@ -228,6 +228,9 @@
 
         //     d3.event.stopPropogation();
         //   });
+
+        // Emit ready event.
+				this.$emit('jsc_ready');
       },
 
       /**

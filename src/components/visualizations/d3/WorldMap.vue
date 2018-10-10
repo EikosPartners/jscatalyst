@@ -176,6 +176,9 @@
               .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
               .attr("class", "boundary")
               .attr("d", path);
+
+          // Emit ready event.
+				  this.$emit('jsc_ready');
         });
 
         d3.select(self.frameElement).style("height", height + "px");

@@ -294,6 +294,9 @@
           .on("click", function (d) {
             localThis.$emit('jsc_click', d);
           });
+
+          // Emit ready event.
+				  this.$emit('jsc_ready');
       },
       /**
       * @function resizeSVG - redraws the SVG on window resize

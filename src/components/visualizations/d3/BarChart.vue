@@ -290,6 +290,9 @@ export default {
               localThis.$emit('jsc_click', d);
             });
         }
+
+        // Emit ready event.
+				this.$emit('jsc_ready');
     }
   }
 };

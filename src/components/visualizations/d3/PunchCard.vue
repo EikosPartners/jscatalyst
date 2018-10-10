@@ -804,6 +804,9 @@
           .attr("stroke-width", 1)
           .style("shape-rendering", "crispEdges")
           .attr('class', 'punch-border');
+        
+        // Emit ready event.
+				this.$emit('jsc_ready');
       }
     }
   };
