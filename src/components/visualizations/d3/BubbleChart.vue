@@ -370,7 +370,7 @@ DLG: this is not needed should be the responsibility of the user of the componen
 				.on("mouseout", this.mouseOutBubble)
 				.on("click", click);
 			// Emit ready event.
-			this.$emit('jsc_ready');
+			this.$emit('ready');
 		},
 		mouseOverBubble: function(d) {
 			var tooltip = d3.select(`.${this.propID}_tooltip`);

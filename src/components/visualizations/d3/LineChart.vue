@@ -274,7 +274,7 @@
               });
 
             // Emit ready event.
-			this.$emit('jsc_ready');
+			this.$emit('ready');
           },
           draw: function() {
               this.drawd3(this.dataModel, '#' + this._props.propID)

@@ -140,7 +140,7 @@ const googleChartsMixin = {
 
             let localThis = this;
             this.addListener('ready', function () {
-                localThis.$emit('jsc_ready');
+                localThis.$emit('ready');
             });
 
             this.chart.draw(this.dataTable, this.config);

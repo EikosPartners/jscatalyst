@@ -286,7 +286,7 @@
                   return keys[i].slice(0,1).toUpperCase() + keys[i].slice(1)
                 });
           // Emit ready event.
-				  this.$emit('jsc_ready');
+				  this.$emit('ready');
         }
       }
     }

@@ -368,7 +368,7 @@
 					.on('click', component.click);
 
 				// Emit ready event.
-				this.$emit('jsc_ready');
+				this.$emit('ready');
 	    },
 	    numberWithCommas: function(x) {
 	      x = x.toString();

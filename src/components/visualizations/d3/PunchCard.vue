@@ -806,7 +806,7 @@
           .attr('class', 'punch-border');
         
         // Emit ready event.
-				this.$emit('jsc_ready');
+				this.$emit('ready');
       }
     }
   };
