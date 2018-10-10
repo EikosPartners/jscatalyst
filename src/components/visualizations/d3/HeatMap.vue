@@ -381,12 +381,14 @@
 				}
 
 	      let item = this.dataModel.filter(function(item) {
-						return item.x === d.x && item.y === d.y
+						return item.x === d.x;
 				});
-				
-				console.log(item);
+			
 				let tooltipText = "Occurrences: " + "<b>" + item.length + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
 			 
+			 	if (d.y) {
+					tooltipText += "<b>Y: " + d.y + "</b>";
+				}
 			 tooltip
 	        .html(tooltipText)
 	        .style("left", d3.event.pageX + 5 + "px")
@@ -411,7 +413,7 @@
 					if (localThis.dataType === 'calendar') {
 						return item.x === d;
 					} else {
-						return item.x === d.x && item.y === d.y;
+						return item.x === d.x;
 					}
 				});
 
