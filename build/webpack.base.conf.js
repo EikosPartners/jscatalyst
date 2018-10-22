@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -54,6 +55,10 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
         exclude: /(windowmanager|node_modules)/
+      },
+      {
+        test: /\.js$/,
+        loader: 'ify-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
