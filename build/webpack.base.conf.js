@@ -70,6 +70,7 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
+          'vue-style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
@@ -105,5 +106,6 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  // plugins: [    new VueLoaderPlugin()  ]
 }

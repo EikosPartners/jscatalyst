@@ -16,13 +16,12 @@
     "start": "npm run dev",
     "test": "nyc jest",
     "build": "node build/build.js",
-    "test_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js",
+    "test_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.release.conf.js --display-error-details",
     "npm_build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  ./build/webpack.prodRelease.conf.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prepublishOnly": "npm run test_build && npm run npm_build"
   },
   "dependencies": {
-    "@babel/core": "^7.1.2",
     "ag-grid": "^18.1.2",
     "ag-grid-enterprise": "^19.0.0",
     "ag-grid-vue": "^19.0.0",
@@ -116,7 +115,7 @@
     "webpack": "^4",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9",
+    "webpack-dev-server": "^3.1.10",
     "webpack-hot-middleware": "^2.24.2",
     "webpack-merge": "^4.1.4"
   },
