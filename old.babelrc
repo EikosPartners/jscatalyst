@@ -1,0 +1,12 @@
+{
+  "presets": [
+    '@vue/app'
+  ],
+  // "plugins": ["transform-vue-jsx", "transform-runtime"],
+  "env": {
+    "test": {
+      "presets": ["@vue/app"],
+      "plugins": ["dynamic-import-node", "istanbul", "transform-es2015-modules-commonjs"]
+    }
+  }
+}
