@@ -386,9 +386,9 @@
 	      let item = this.dataModel.filter(function(item) {
 						return item.x === d.x;
 				});
-			
+
 				let tooltipText = "Occurrences: " + "<b>" + item.length + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
-			 
+
 			 	if (d.y) {
 					tooltipText += "<b>Y: " + d.y + "</b>";
 				}
@@ -419,8 +419,7 @@
 						return item.x === d.x;
 					}
 				});
-
-				this.$emit('jsc_click', item);
+				this.$emit('jsc_click', {data: item, event: d3.event});
 			},
 	    monthPath: function(t0) {
 	      let day = d3.timeFormat("%w");

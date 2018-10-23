@@ -53,6 +53,7 @@
         <heatmap
           :dataModel="heatData"
           :dataType="'calendar'"
+          @jsc_click="testButton"
         ></heatmap>
       </div>
 
@@ -132,7 +133,8 @@ export default {
   mounted(){
   },
   methods: {
-    testButton(){
+    testButton(event){
+      // debugger
       // this.$store.commit('toggleAllowCustom')
 
     }
