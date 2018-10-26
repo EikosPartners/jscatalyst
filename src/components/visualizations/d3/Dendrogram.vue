@@ -110,7 +110,7 @@
         var width = element.width(),
          height = element.height();
 
-        
+
         // Account for panel heading height if title exists.
         if (this.title) {
           height -= 40;
@@ -168,7 +168,7 @@
               localThis.$emit('jsc_mouseover', d);
             })
             .on('click', function(d) {
-              localThis.$emit('jsc_click', d);
+              localThis.$emit('jsc_click', {data: d, event: d3.event});
             });
 
         //text for each node

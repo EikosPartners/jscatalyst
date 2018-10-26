@@ -24,7 +24,7 @@
   * @param {string} xAxisLabel - x-axis label
   * @param {string} dateFormat - 'YYYY-MM-DD'
   * @param {Array} keys - overwrite what the displayed labels will be for the data, instead of expected and actual
-  * 
+  *
   * @example
   * usage on a page:
   * <difference-chart
@@ -95,7 +95,7 @@
 			*/
       draw: function(allData) {
         let localThis = this;
-        
+
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
         if ($(selection_string + " svg") != null) {
@@ -292,7 +292,7 @@
                 .style("fill", 'black');
           })
           .on("click", function (d) {
-            localThis.$emit('jsc_click', d);
+            localThis.$emit('jsc_click', {data: d, event: d3.event});
           });
 
           // Emit ready event.

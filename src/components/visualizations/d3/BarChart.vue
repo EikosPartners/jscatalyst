@@ -24,7 +24,7 @@
   * @param {string} title - The title of the chart
   * @param {Number} xAxisAngle - the angle at which to rotate the x-axis labels, either 45 or 90 degrees
   *
-  * 
+  *
   * The data for this component can be customized; it currently contains:
   * @typedef {Array} dataModel
   * @property {string} date - date string on x-axis ("5/15 - 6/14")
@@ -198,7 +198,7 @@ export default {
           .attr("y", 30)
           .style("text-anchor", "middle")
           .text(xaxisvalue);
-        
+
         let text = chart.selectAll("text");
 
         if (this.xAxisAngle > 0) {
@@ -217,9 +217,9 @@ export default {
               text.attr("x", dimensions.width - 10)
                   .attr("y", 0);
             }
-            
+
         }
-          
+
 
         chart
           .append("g")
@@ -287,7 +287,7 @@ export default {
                 .style("opacity", 0);
             }).
             on("click", function (d) {
-              localThis.$emit('jsc_click', d);
+              localThis.$emit('jsc_click', {data: d, event: d3.event});
             });
         }
 

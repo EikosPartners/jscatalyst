@@ -168,7 +168,7 @@
               })
               .on("click", (d)=>{
                 var selected = data.find(el => parseInt(el.id) === parseInt(d.id))
-                localThis.$emit("jsc_click", selected)
+                localThis.$emit("jsc_click", {data: selected, event: d3.event})
               })
 
 

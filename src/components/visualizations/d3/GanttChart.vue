@@ -145,7 +145,7 @@
 
       drawGantt: function(tasks, taskNames, taskStatuses, dateFormat, timeDomain) {
         let localThis = this;
-        
+
         d3.selectAll(`.${this.propID}_tooltip`).remove()
         let selection_string = "#" + this.propID;
         if ($(selection_string + " svg") != null) {
@@ -264,7 +264,7 @@
                 .style("opacity", 0);
             })
             .on('click', function (d) {
-              localThis.$emit('jsc_click', d);
+              localThis.$emit('jsc_click', {data: d, event: d3.event});
             });
 
           // Emit ready event.

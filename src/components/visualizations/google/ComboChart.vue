@@ -37,7 +37,7 @@
         },
         methods: {
             /**
-             * @function draw - function to draw the combo chart            
+             * @function draw - function to draw the combo chart
              */
             draw: function () {
                 let localThis = this;
@@ -56,7 +56,7 @@
                         this.config.backgroundColor = this.themeColors.vuetifyDark;
                     }
                 }
-               
+
 
                 this.drawChart('ComboChart');
 
@@ -76,7 +76,7 @@
                 if (selection.length > 0) {
                     let row = this.dataModel.rows[selection[0].row];
 
-                    this.$emit('jsc_click', row);
+                    this.$emit('jsc_click', {data: row, event: d3.event});
                 }
             }
         }

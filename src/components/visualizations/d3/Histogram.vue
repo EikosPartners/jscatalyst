@@ -21,7 +21,7 @@
   * @param {string} propID - the ID for the component
   * @param {string} xAxisLabel - x-axis label
   * @param {string} yAxisLabel - y-axis label
-  * 
+  *
   * The data for this component can be customized; it currently contains:
   * @typedef {Object} dataModel
   * @property {Array} - array of numbers
@@ -213,7 +213,7 @@
             )
             .style("left", d3.event.pageX + "px")
             .style("top", d3.event.pageY + "px");
-          
+
           localThis.$emit('jsc_mouseover', d);
         })
         .on("mouseout", function(d) {
@@ -222,7 +222,7 @@
             .style("opacity", 0);
         })
         .on("click", function (d) {
-          localThis.$emit('jsc_click', d);
+          localThis.$emit('jsc_click', {data: d, event: d3.event});
         });
 
         // Emit ready event.

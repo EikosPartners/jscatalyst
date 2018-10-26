@@ -79,7 +79,7 @@
 
   			var	width = element.width()
         var	height = element.height()
-        
+
         // Account for panel heading height if it exists.
         if (this.title) {
           height -= 40;
@@ -131,8 +131,8 @@
             .style("fill", function(d) { return color((d.children ? d : d.parent).data.name); })
             .on("click", function(d){
               click(d)
-              localThis.$emit("jsc_click", d)
-              
+              localThis.$emit("jsc_click", {data: d, event: d3.event})
+
             })
             .on("mouseover", function(d) {
               localThis.$emit("jsc_mouseover", d)

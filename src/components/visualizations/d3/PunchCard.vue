@@ -384,7 +384,7 @@
               }
             }
 
-            localThis.$emit('jsc_click', d);
+            localThis.$emit('jsc_click', {data: d, event: d3.event});
           });
 
 
@@ -804,7 +804,7 @@
           .attr("stroke-width", 1)
           .style("shape-rendering", "crispEdges")
           .attr('class', 'punch-border');
-        
+
         // Emit ready event.
 				this.$emit('ready');
       }

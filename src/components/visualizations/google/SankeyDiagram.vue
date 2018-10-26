@@ -13,12 +13,12 @@
 
     /** Sankey Diagram Google Chart Component
      * @module SankeyDiagram
-     * 
+     *
      * @param {Array} dataModel - the dataModel for the component
      * @param {string} propID - the ID for the component
      * @param {string} title - the title of the chart
      * @param {Object} config - the configuration object for the chart, see google charts API for options
-     * 
+     *
      */
     export default {
         name: 'SankeyDiagram',
@@ -33,7 +33,7 @@
                 default: 'container-sankey-diagram'
             }
         },
-        data () { 
+        data () {
             return {
                 toIdx: -1,
                 fromIdx: -1
@@ -100,13 +100,13 @@
                     let name = selection[0].name;
 
                     let nodes = this.findNodes(name);
-                    
-                    this.$emit('jsc_click', nodes);
+
+                    this.$emit('jsc_click', {data: nodes, event: d3.event});
                 }
             },
             /**
              * @function findNodes - function to find the nodes that have name as to or from
-             * 
+             *
              * @return Returns an array of all nodes containing name as to or from
              */
             findNodes: function (name) {

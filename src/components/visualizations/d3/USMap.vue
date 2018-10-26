@@ -234,14 +234,14 @@
               })
               .on('click', (d)=>{
                 var selected = data.find(el => parseInt(el.id) === parseInt(d.id))
-                localThis.$emit("jsc_click", d)
+                localThis.$emit("jsc_click", {data: selected, event: d3.event})
               });
 
           svg.append("path")
               .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
               .attr("class", attributes['class2'])
               .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; })));
-            
+
           // Emit ready event.
 				  this.$emit('ready');
 

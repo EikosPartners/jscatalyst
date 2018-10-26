@@ -75,7 +75,7 @@
         this.drawPieChart()
       },
       colors: function(data) {
-        if (!Object.values(this.savedColors).includes(data[0])) { 
+        if (!Object.values(this.savedColors).includes(data[0])) {
           this.savedColors = {}
         }
         this.drawPieChart()
@@ -169,7 +169,7 @@
           // calculate the percent of total for the slice
           d3.select(this).selectAll('path').
             attr('fill', function(dt){
-    
+
                 let currentFill = this.attributes.fill.value
              currentFill = hex2rgb(currentFill)
             // if (currentFill.includes('#')){
@@ -210,7 +210,7 @@
             })
           })
           .on("click", function (d) {
-            localThis.$emit('jsc_click', d);
+            localThis.$emit('jsc_click', {data: d, event: d3.event});
           });
 
         var colors = this.colors
@@ -223,7 +223,7 @@
             if (localThis.savedColors[d.data.label]){
               color = localThis.savedColors[d.data.label]
             } else {
-              i >= length ? color = colors[i-length] : color = colors[i]; 
+              i >= length ? color = colors[i-length] : color = colors[i];
               localThis.savedColors[d.data.label] = color
 
             }
@@ -292,7 +292,7 @@
                   })
                   return `rgb(${darker[0]}, ${darker[1]}, ${darker[2]})`
                 } else {
-                  return 
+                  return
                 }
               })
             });

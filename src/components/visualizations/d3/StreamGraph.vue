@@ -33,7 +33,7 @@
   * @property {string} B - y-axis value
   * @property {string} C - y-axis value
   * you can specify as many values as you need.
-  * 
+  *
   * @example
   * usage on a page:
   * <stream-graph
@@ -233,10 +233,9 @@
                 .style("opacity", 0);
             })
             .on('click', function(d) {
-              console.log(d['key'] + ' was clicked');
-              localThis.$emit("jsc_click", d)
+              localThis.$emit("jsc_click", {data: d, event: d3.event})
             })
-            
+
 
         function stackMax(layer) {
           return d3.max(layer, function(d) { return d[1]; });

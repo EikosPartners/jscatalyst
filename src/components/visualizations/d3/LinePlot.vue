@@ -295,7 +295,7 @@
               .attr("opacity", 0);
           })
           .on("click", function (d) {
-            localThis.$emit('jsc_click', d);
+            localThis.$emit('jsc_click', {data: d, event: d3.event});
           });
 
         svg

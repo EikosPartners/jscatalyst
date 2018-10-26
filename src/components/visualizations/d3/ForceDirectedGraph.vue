@@ -142,7 +142,7 @@ export default {
             .attr("r", 8)
             .attr("fill", function(d) { return color(d.group); })
             .on('click', function (d) {
-              localThis.$emit('jsc_click', d);
+              localThis.$emit('jsc_click', {data: d, event: d3.event});
             })
             .on('mouseover', function (d) {
               tooltip.transition()

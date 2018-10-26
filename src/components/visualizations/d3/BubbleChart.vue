@@ -196,7 +196,7 @@ export default {
 			} else {
 				xScale = d3.scaleLinear().range([0, width]);
 			}
-			
+
 
 			var xMap = function(d) {
 					return xScale(xValue(d));
@@ -205,7 +205,7 @@ export default {
 					.scale(xScale)
 					.tickSizeInner(-height)
 					.ticks(6)
-				
+
 				if (this.isDate) {
 					xAxis.tickFormat(d3.timeFormat(this.d3Time[this.dateFormat]));
 				} else {
@@ -244,7 +244,7 @@ export default {
 			var valMin = d3.min(data, zValue);
 			var valMax = d3.max(data, zValue);
 
-			
+
 			var color = d3.scaleQuantize().range(colors).domain([valMin, valMax]);
 
 			d3.select("body")
@@ -402,7 +402,7 @@ DLG: this is not needed should be the responsibility of the user of the componen
 				d3.select(".d3_visuals_tooltip").transition().style('opacity', 0);
 			}
 
-			this.$emit('jsc_click', d);
+			this.$emit('jsc_click', {data: d, event: d3.event});
 		},
 		agentClickedOnBubble: function(d) {
 			var tooltip = d3.select(".d3_visuals_tooltip");

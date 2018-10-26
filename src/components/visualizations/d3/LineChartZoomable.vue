@@ -132,11 +132,11 @@
             x2 = d3.scaleTime().range([0, width]),
             y = d3.scaleLinear().range([height, 0]),
             y2 = d3.scaleLinear().range([height2, 0]);
-          
+
         var xValue = function(d) { return d.date; },
             xMap = function(d) {
               // Account for margins because of attaching to outer rect.
-              let xval = x(xValue(d)) + margin.left; 
+              let xval = x(xValue(d)) + margin.left;
 
               // If the dot shouldn't be shown because zoomed in, make sure its
               // off the screen.
@@ -146,11 +146,11 @@
 
               return xval;
             };
-        
+
         var yValue = function(d) { return d.value; };
-        var yMap = function(d) { 
+        var yMap = function(d) {
           // Account for margins because of attaching to outer rect.
-          return y(yValue(d)) + margin.top; 
+          return y(yValue(d)) + margin.top;
         };
 
         var xAxis = d3.axisBottom(x),
@@ -206,7 +206,7 @@
               .datum(data)
               .attr("class", "area zoom")
               .attr("d", area);
-        
+
 
           focus.append("g")
               .attr("class", "axis axis--x")
@@ -259,7 +259,7 @@
               .attr("height", height)
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
               .call(zoom);
-          
+
           svg.selectAll(".dot")
             .data(data)
             .enter()
@@ -287,7 +287,7 @@
                 .style("opacity", 0);
             })
             .on("click", function (d) {
-              localThis.$emit('jsc_click', d);
+              localThis.$emit('jsc_click', {data: d, event: d3.event});
             })
 
         function brushed() {

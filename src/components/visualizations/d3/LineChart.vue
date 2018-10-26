@@ -180,7 +180,7 @@
                 .attr("dy", ".71em")
                 .style("text-anchor", "middle")
                 .attr("font-size", "16px")
-                .text(this.xAxisLabel); 
+                .text(this.xAxisLabel);
 
               svg.append("g")
                   .attr("class", "y axis")
@@ -192,7 +192,7 @@
                   .style("text-anchor", "end")
                   .attr("font-size", "16px")
                   .text(this.yAxisLabel);
-            
+
 
               svg.append("path")
                   .datum(data)
@@ -200,7 +200,7 @@
                   .attr("d", area)
                   .attr("clip-path", "url(#" + clip_id + ")")
                   .attr("opacity", 0.5)
-                  
+
               svg.append("path")
                   .datum(data)
                   .attr("class", "line")
@@ -270,7 +270,7 @@
                       x0 = xScale.invert(x),
                       i = bisectDate(data, x0, 1),
                       d = data[i];
-                  localThis.$emit('jsc_click', d);
+                  localThis.$emit('jsc_click', {data: d, event: d3.event});
               });
 
             // Emit ready event.

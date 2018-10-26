@@ -108,7 +108,7 @@
             d3.event.stopPropagation();
           })
           .on('click', function (d) {
-            localThis.$emit('jsc_click', d);
+            localThis.$emit('jsc_click', {data: d, event: d3.event});
           })
         .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")")

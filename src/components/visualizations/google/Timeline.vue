@@ -14,7 +14,7 @@
 
     /** Timeline Google Chart Component
      * @module Timeline chart
-     * 
+     *
      * @param {Array} dataModel - the dataModel for the component
      * @param {string} propID - the ID for the component
      * @param {string} title - the title of the chart
@@ -47,7 +47,7 @@
                 if (!this.config.height) {
                     this.config.height = 500;
                 }
-                
+
                 if (!this.disableCustomThemeing) {
                     if (this.$store.state.themeMod.displayTheme === 'light') {
                         this.config.backgroundColor = 'white';
@@ -82,7 +82,7 @@
                 if (selection.length > 0) {
                     let row = this.dataModel.rows[selection[0].row];
 
-                    this.$emit('jsc_click', row);
+                    this.$emit('jsc_click', {data: row, event: d3.event});
                 }
             }
         }

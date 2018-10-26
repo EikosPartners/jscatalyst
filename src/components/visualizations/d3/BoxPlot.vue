@@ -24,7 +24,7 @@
   * The data for this component can be customized; it currently contains:
   * @typedef {Array} dataModel
   * @property {string} value - time ("Q1") with the value for that time
-  * 
+  *
   * @example
   * usage on a page:
   * <box-plot
@@ -156,7 +156,7 @@
       	var yAxis = d3.axisLeft()
           .scale(y);
 
-        /** 
+        /**
          * @param d : Array -> [label, values]
          *              label is the label of the box being drawn
          *              values is the range of values for the box
@@ -336,7 +336,7 @@
               .transition()
               .duration(100)
               .style("opacity", 1);
-            
+
             tooltip
               .html(
                 `Label: ${data.label} <br/>
@@ -361,7 +361,7 @@
           .on("click", function (d) {
             let data = computeBoxValues(d);
 
-            localThis.$emit('jsc_click', data);
+            localThis.$emit('jsc_click', {data: data, event: d3.event});
           });
 
       	 // draw y axis
