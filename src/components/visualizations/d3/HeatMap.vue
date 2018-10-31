@@ -63,6 +63,7 @@
 			 * Possible values are
 			 * "calendar" - date time string
 			 * "other" - any number, string, etc.
+       * if calendar type, dataModel must be pre-processed so there is only one data point for each date mapped
 			 */
 			dataType: {
 				type: String,
@@ -385,9 +386,9 @@
 
 	      let item = this.dataModel.filter(function(item) {
 						return item.x === d.x;
-				});
+				})[0];
 
-				let tooltipText = "Occurrences: " + "<b>" + item.length + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
+        let tooltipText = "Occurrences: " + "<b>" + item.magnitude + "</b>" + "<br>X: " + "<b>" + d.x + "</b></br>";
 
 			 	if (d.y) {
 					tooltipText += "<b>Y: " + d.y + "</b>";
